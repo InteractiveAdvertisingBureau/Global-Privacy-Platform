@@ -147,7 +147,7 @@ The `ping` command can be used to determine the state of the CMP.
 var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
 ```
 
-###PingReturn <a name="pingreturn"></a>
+### PingReturn <a name="pingreturn"></a>
 
 This object contains information about the loading status and configuration of the CMP.
 
@@ -366,7 +366,7 @@ The `removeEventListener` command can be used to remove an existing event listen
  
 
 
-*Example: *
+*Example:*
 
 ```javascript
 var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
