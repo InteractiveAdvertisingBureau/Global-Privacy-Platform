@@ -40,7 +40,7 @@ The IAB Technology Laboratory ("Tech Lab") is a non-profit research and developm
 
 Learn more about IAB Tech Lab here: https://www.iabtechlab.com/
 
-_________
+
 ## CMP API
 
 ### What does the CMP API support?
@@ -106,6 +106,7 @@ Requirements for the interface:
 
 All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://iabcom-my.sharepoint.com/:w:/g/personal/rowena_iabtechlab_com/EdQTFH1DFedPjML-DHXrmU0BmDjWq-mAXTit1jmBlN9ySw?e=ymVBnJ). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), [‘getField’](#getfield) and [‘getGPPData’](#getgppdata). 
 
+________
 ### ping <a name="ping"></a>
 
 The `ping` command can be used to determine the state of the CMP. 
@@ -214,7 +215,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 </table>
 
 
-
+___________
 ### addEventListener <a name="addeventlistener"></a> 
 
 The `addEventListener` command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
@@ -371,6 +372,7 @@ The `removeEventListener` command can be used to remove an existing event listen
 var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
 ```
 
+__________
 ### hasSection <a name="hassection"></a>
 
 The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. Please note that the command may return `null` when the CMP is not yet loaded. 
@@ -551,7 +553,7 @@ The `getGPPData` command can be used in order to receive the current version of 
 var s = __gpp('getGPPData');
 ```
 
-
+_________
 ### GPPData <a name="gppdataobject"></a>
 
 The `GPPData` object contains the parsed header section fields, the currently in force section, and the encoded `GPPString` and is defined as follows: 
