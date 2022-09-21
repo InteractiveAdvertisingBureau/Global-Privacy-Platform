@@ -40,7 +40,7 @@ The IAB Technology Laboratory ("Tech Lab") is a non-profit research and developm
 
 Learn more about IAB Tech Lab here: https://www.iabtechlab.com/
 
-
+_________
 ## CMP API
 
 ### What does the CMP API support?
@@ -98,7 +98,7 @@ Requirements for the interface:
 - Parameter can be of mixed type depending on used command
 - The return value of the function is of mixed type depending on used command
 - If a CMP cannot immediately respond to a query, the CMP must queue all calls to the function and execute them later. The CMP must execute the commands in the same order in which the function was called.
-- A CMP must support all generic commands. All generic commands must always be available when a __gpp function is present on the page. This means that  *PUT SOMWTIHNG HERE A LINK INTERNALLY* [“stub code”](#stubcode) that supports all generic commands must be in place before/during CMP load.	
+- A CMP must support all generic commands. All generic commands must always be available when a __gpp function is present on the page. This means that [“stub code”](#stubcode) that supports all generic commands must be in place before/during CMP load.	
 
 
 ### What required API commands must a CMP support? <a name="javascript"></a>
@@ -259,7 +259,7 @@ var EventListenerReturn = __gpp('addEventListener',myFunction);
 ```
 
 
-Note: The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
+> **Note:** The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
 
 
 ### EventListener <a name="eventlistenerobject"></a>
@@ -605,7 +605,7 @@ Calling with this command and a valid vendorListVersion parameter shall return a
 In the example above, a call to` __gpp (‘iabtcfeuv2.getVendorList’,myfunction)` will be treated in the same way as a call to `__tcfapi(‘getVendorList’,2,myfunction)` by the CMP.
 
 
-
+__________
 
 ## In-App Details
 
@@ -621,7 +621,7 @@ The pre-parsed GPP data as well as the GPP string shall be stored under [NSUserD
 - GPP data to be portable between CMPs to provide flexibility for a publisher to exchange one CMP SDK for another
 - Vendors within an app to avoid code duplication by not being required to include a GPP string decoder while still enabling all typical use cases
 
-Note: If a Publisher chooses to remove a CMP SDK from their app they are responsible for clearing all IABGPP_* vestigial values for users so that vendors do not continue to use the GPP data therein. 
+> **Note:** If a Publisher chooses to remove a CMP SDK from their app they are responsible for clearing all IABGPP_* vestigial values for users so that vendors do not continue to use the GPP data therein. 
 
 ### In-App Key Names
 
@@ -828,7 +828,7 @@ Application Preferences, also referred to as a Registry in certain CTV environme
  
 Private Storage shall be used under the condition that the CTV environment does not offer a Web Runtime that supports the Web Storage (Second Edition) specification, data does not persist beyond the lifecycle of the Application, or offer an Application Preferences (Registry) interface. The GPP data and GPP String are to be saved in a standardized and private storage space. Files are to follow the same naming convention as the key names detailed in the [How is GPP used in-app](#gppinapp) section of this spec with the contents being the value of the corresponding key.
  
-*Note:* CTV Applications require proper permission scopes to be configured to read and write to the virtual Application file system.
+> **Note:** CTV Applications require proper permission scopes to be configured to read and write to the virtual Application file system.
 
 
 
