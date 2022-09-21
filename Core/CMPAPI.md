@@ -725,7 +725,7 @@ Below are example key names from existing APIs. For a complete list of key names
   </tr>
   <tr>
 	  <td>IABGPP_TCFEU2_Version</td>    
-<td><code>IAB TCF EU v2 Version number see  <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string">IAB TCF EU v2 specification</code></td>
+<td><code>IAB TCF EU v2 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string">IAB TCF EU v2 specification)</code></td>
   </tr>
   <tr>
 	  <td>IABGPP_TCFEU2_Created</td>    
@@ -757,7 +757,7 @@ Below are example key names from existing APIs. For a complete list of key names
      </tr>
   <tr>
 	  <td>IABGPP_TCFCA1_Version</td>    
-<td><code>IAB TCF CA v2 Version number (see  <a href="https://docs.google.com/document/d/1DIkc7DhHSvq1vS2958osAxUEUO56WWiX-xTdn5dY188/edit">IAB TCF CA v1 specification</code></td>
+<td><code>IAB TCF CA v2 Version number (see  <a href="https://docs.google.com/document/d/1DIkc7DhHSvq1vS2958osAxUEUO56WWiX-xTdn5dY188/edit">IAB TCF CA v1 specification)</code></td>
    </tr>
   <tr>
 	  <td>IABGPP_TCFCA1_Created</td>    
@@ -769,7 +769,7 @@ Below are example key names from existing APIs. For a complete list of key names
      </tr>
   <tr>
 	  <td>IABGPP_USP1_Version</td>    
-<td><code>IAB US Privacy String Version number (see <a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md#us-privacy-string-format">IAB US Privacy v1 specification </code></td>
+<td><code>IAB US Privacy String Version number (see <a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md#us-privacy-string-format">IAB US Privacy v1 specification) </code></td>
    </tr>
   <tr>
 	  <td>IABGPP_USP1_Notice</td>    
