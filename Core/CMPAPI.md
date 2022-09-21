@@ -29,7 +29,7 @@ The Global Privacy Platform (GPP) has the objective to enable all parties in the
 Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit creativecommons.org/licenses/by/3.0/ or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
 
 
-Disclaimer
+**Disclaimer**
 
 THE STANDARDS, THE SPECIFICATIONS, THE MEASUREMENT GUIDELINES, AND ANY OTHER MATERIALS OR SERVICES PROVIDED TO OR USED BY YOU HEREUNDER (THE “PRODUCTS AND SERVICES”) ARE PROVIDED “AS IS” AND “AS AVAILABLE,” AND IAB TECHNOLOGY LABORATORY, INC. (“TECH LAB”) MAKES NO WARRANTY WITH RESPECT TO THE SAME AND HEREBY DISCLAIMS ANY AND ALL EXPRESS, IMPLIED, OR STATUTORY WARRANTIES, INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AVAILABILITY, ERROR-FREE OR UNINTERRUPTED OPERATION, AND ANY WARRANTIES ARISING FROM A COURSE OF DEALING, COURSE OF PERFORMANCE, OR USAGE OF TRADE. TO THE EXTENT THAT TECH LAB MAY NOT AS A MATTER OF APPLICABLE LAW DISCLAIM ANY IMPLIED WARRANTY, THE SCOPE AND DURATION OF SUCH WARRANTY WILL BE THE MINIMUM PERMITTED UNDER SUCH LAW. THE PRODUCTS AND SERVICES DO NOT CONSTITUTE BUSINESS OR LEGAL ADVICE. TECH LAB DOES NOT WARRANT THAT THE PRODUCTS AND SERVICES PROVIDED TO OR USED BY YOU HEREUNDER SHALL CAUSE YOU AND/OR YOUR PRODUCTS OR SERVICES TO BE IN COMPLIANCE WITH ANY APPLICABLE LAWS, REGULATIONS, OR SELF-REGULATORY FRAMEWORKS, AND YOU ARE SOLELY RESPONSIBLE FOR COMPLIANCE WITH THE SAME.
 
@@ -106,7 +106,7 @@ Requirements for the interface:
 
 All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://iabcom-my.sharepoint.com/:w:/g/personal/rowena_iabtechlab_com/EdQTFH1DFedPjML-DHXrmU0BmDjWq-mAXTit1jmBlN9ySw?e=ymVBnJ). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: ‘ping’, ‘addEventListener’, ‘removeEventListener’, ‘hasSection’, ‘getSection’, ‘getField’ and ‘getGPPData’. *THESE ARE A BUNCH OF INTERNAL LINKS*
 
-`ping`
+**ping**
 
 The `ping` command can be used to determine the state of the CMP. 
 <table>
@@ -140,7 +140,8 @@ The `ping` command can be used to determine the state of the CMP.
 </table>
 
 
-Example: 
+
+*Example: *
 
 ```
 var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
@@ -169,7 +170,8 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
 ```
 
-Ping Status Codes
+
+**Ping Status Codes**
 
 <table>
   <tr>
@@ -213,9 +215,9 @@ Ping Status Codes
 
 
 
-`addEventListener`
+**addEventListener**
 
-The addEventListener command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
+The `addEventListener` command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
 
 
 <table>
@@ -250,7 +252,7 @@ The addEventListener command can be used to define a callback function (or a pos
  
 
 
-Example: 
+*Example:*
 
 ```
 var EventListenerReturn = __gpp('addEventListener',myFunction);
@@ -326,8 +328,7 @@ A call to the `addEventListener` command must always respond with a return objec
 
 
 
-
-`removeEventListener`
+**removeEventListener**
 
 The `removeEventListener` command can be used to remove an existing event listener.
 
@@ -365,11 +366,11 @@ The `removeEventListener` command can be used to remove an existing event listen
  
 
 
-Example: 
+*Example: *
 
 `var EventListenerReturn = __gpp('removeEventListener',null, listenerId);`
 
-`hasSection`
+**hasSection**
 
 The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -414,7 +415,7 @@ A client wants to ask the CMP if there is data for IAB TCF v2.0:
 `var b = __gpp('hasSection',null, "tcfeuv2");`
 
 
-`getSection`
+**getSection**
 
 The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. Please note that the command may return null when the CMP is not yet loaded. 
 
@@ -457,7 +458,7 @@ For example, client can ask the CMP to get the IAB TCF v2.0 TCData:
 ```var s = __gpp('getSection',null, "tcfeuv2");```
 
 
-`getField`
+**getField**
 
 The `getField` command can be used to receive a specific field out of a certain section. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -536,7 +537,7 @@ The `getGPPData` command can be used in order to receive the current version of 
 
 
 
-Example:
+*Example:*
 
 `var s = __gpp('getGPPData');`
 
@@ -701,9 +702,9 @@ Valid data types are Integer and String. All other data types such as Boolean, D
 
 
 
-Example key names: 
+*Example key names: *
 
-Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections]([https://developer.android.com/training/data-storage/shared-preferences](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections).
+Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections)
 
 
 
@@ -714,7 +715,7 @@ Below are example key names from existing APIs. For a complete list of key names
   </tr>
   <tr>
 	  <td>IABGPP_TCFEU2_Version</td>    
-<td><code>IAB TCF EU v2 Version number (see [IAB TCF EU v2 specification](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string)</code></td>
+<td><code>IAB TCF EU v2 Version number see [IAB TCF EU v2 specification](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string)</code></td>
   </tr>
   <tr>
 	  <td>IABGPP_TCFEU2_Created</td>    
