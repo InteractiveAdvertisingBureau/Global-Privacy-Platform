@@ -98,15 +98,15 @@ Requirements for the interface:
 - Parameter can be of mixed type depending on used command
 - The return value of the function is of mixed type depending on used command
 - If a CMP cannot immediately respond to a query, the CMP must queue all calls to the function and execute them later. The CMP must execute the commands in the same order in which the function was called.
-- A CMP must support all generic commands. All generic commands must always be available when a __gpp function is present on the page. This means that  *PUT SOMWTIHNG HERE A LINK INTERNALLY* “stub code” that supports all generic commands must be in place before/during CMP load.	
+- A CMP must support all generic commands. All generic commands must always be available when a __gpp function is present on the page. This means that  *PUT SOMWTIHNG HERE A LINK INTERNALLY* [“stub code”](#stubcode) that supports all generic commands must be in place before/during CMP load.	
 
 
-### What required API commands must a CMP support?
+### What required API commands must a CMP support? <a name="javascript"></a>
 
 
-All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://iabcom-my.sharepoint.com/:w:/g/personal/rowena_iabtechlab_com/EdQTFH1DFedPjML-DHXrmU0BmDjWq-mAXTit1jmBlN9ySw?e=ymVBnJ). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: ‘ping’, ‘addEventListener’, ‘removeEventListener’, ‘hasSection’, ‘getSection’, ‘getField’ and ‘getGPPData’. *THESE ARE A BUNCH OF INTERNAL LINKS*
+All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://iabcom-my.sharepoint.com/:w:/g/personal/rowena_iabtechlab_com/EdQTFH1DFedPjML-DHXrmU0BmDjWq-mAXTit1jmBlN9ySw?e=ymVBnJ). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), [‘getField’](#getfield) and [‘getGPPData’](#getgppdata). 
 
-**ping**
+### ping <a name="ping"></a>
 
 The `ping` command can be used to determine the state of the CMP. 
 <table>
@@ -132,7 +132,7 @@ The `ping` command can be used to determine the state of the CMP.
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td>PingReturn object</td>
+    <td>[PingReturn object](#pingreturn)</td>
     <td></td>
      </td>
      </td>
@@ -141,13 +141,13 @@ The `ping` command can be used to determine the state of the CMP.
 
 
 
-*Example: *
+*Example:*
 
 ``` javascript
 var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
 ```
 
-**PingReturn**
+###PingReturn <a name="pingreturn"></a>
 
 This object contains information about the loading status and configuration of the CMP.
 
@@ -215,7 +215,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
 
 
-**addEventListener**
+### addEventListener <a name="addeventlistener"></a> 
 
 The `addEventListener` command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
 
@@ -243,7 +243,7 @@ The `addEventListener` command can be used to define a callback function (or a p
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td>EventListener object</td>
+    <td>[EventListener object](#eventlistenerobject)</td>
     <td></td>
      </td>
      </td>
@@ -262,7 +262,7 @@ var EventListenerReturn = __gpp('addEventListener',myFunction);
 Note: The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
 
 
-**EventListener**
+### EventListener <a name="eventlistenerobject"></a>
 
 The EventListener object is defined as: 
 
@@ -328,7 +328,7 @@ A call to the `addEventListener` command must always respond with a return objec
 
 
 
-**removeEventListener**
+### removeEventListener <a name="removeeventlistener"></a>
 
 The `removeEventListener` command can be used to remove an existing event listener.
 
@@ -356,7 +356,7 @@ The `removeEventListener` command can be used to remove an existing event listen
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td>EventListener object</td>
+    <td>[EventListener object](#eventlistenerobject)</td>
     <td></td>
      </td>
      </td>
@@ -372,7 +372,7 @@ The `removeEventListener` command can be used to remove an existing event listen
 var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
 ```
 
-**hasSection**
+### hasSection <a name="hassection"></a>
 
 The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -419,7 +419,7 @@ var b = __gpp('hasSection',null, "tcfeuv2");
 ```
 
 
-**getSection**
+### getSection <a name="getsection"></a>
 
 The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. Please note that the command may return null when the CMP is not yet loaded. 
 
@@ -465,7 +465,7 @@ var s = __gpp('getSection',null, "tcfeuv2");
 ```
 
 
-**getField**
+### getField <a name="getfield"></a>
 
 The `getField` command can be used to receive a specific field out of a certain section. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -508,7 +508,7 @@ For example, a client can ask the CMP to get the last updated field from the IAB
 var s = __gpp('getField',null, "tcfeuv2.LastUpdated");
 ```
 
-**getGPPData**
+### getGPPData <a name="getgppdata"></a>
 
 The `getGPPData` command can be used in order to receive the current version of the (encoded) GPP String (e.g. in order to pass it along the supply chain). Please note that the command may return `null` when the CMP is not yet loaded.
 
@@ -536,7 +536,7 @@ The `getGPPData` command can be used in order to receive the current version of 
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td>GPPData object or null</td>
+    <td>[GPPData object](#gppdataobject) or null</td>
     <td>Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
      </td>
      </td>
@@ -553,7 +553,7 @@ var s = __gpp('getGPPData');
 ```
 
 
-**GPPData**
+### GPPData <a name="gppdataobject"></a>
 
 The `GPPData` object contains the parsed header section fields, the currently in force section, and the encoded `GPPString` and is defined as follows: 
 
@@ -573,7 +573,7 @@ gppString: String // the complete encoded GPP string
 }
 ```
 
-### What are non-generic commands?
+## What are non-generic commands?
 
 In addition to the generic commands, a CMP can support other commands that are defined by any GPP section. See the non-generic commands by reviewing a specific sections’ specifications. Any GPP section that wants to make use of the GPP API spec should define a set of commands as follows: 
 
@@ -608,9 +608,9 @@ In the example above, a call to` __gpp (‘iabtcfeuv2.getVendorList’,myfunctio
 
 
 
-### In-App Details
+## In-App Details
 
-How is a CMP used in-app?
+How is a CMP used in-app? <a name="gppinapp"></a>
 
 The GPP standardizes storage locations and naming for the content of the GPP data and GPP string so that ad tags embedded in mobile apps can find the GPP data and string in a consistent way. 
 
@@ -624,11 +624,11 @@ The pre-parsed GPP data as well as the GPP string shall be stored under [NSUserD
 
 Note: If a Publisher chooses to remove a CMP SDK from their app they are responsible for clearing all IABGPP_* vestigial values for users so that vendors do not continue to use the GPP data therein. 
 
-**In-App Key Names**
+### In-App Key Names
 
 The key names are a combination of the “IABGPP_” prefix followed by the section prefix followed by an underline and then followed by the name of the value (field name from the corresponding specification) it represents. The relevant sections documented in this spec are HDR (header), TCFEU2 (tcfv2), TCFCA1 (Canadian TCF), USP1 (U.S. Privacy).
 
- [NSUserDefaults](https://developer.apple.com/documentation/foundation/nsuserdefaults#1664798?language=objc)(iOS) or [SharedPreferences](https://developer.android.com/training/data-storage/shared-preferences) (Android) values
+ [NSUserDefaults](https://developer.apple.com/documentation/foundation/nsuserdefaults#1664798?language=objc) (iOS) or [SharedPreferences](https://developer.android.com/training/data-storage/shared-preferences) (Android) values
  
  
 
@@ -713,7 +713,7 @@ Valid data types are Integer and String. All other data types such as Boolean, D
 
 
 
-*Example key names: *
+*Example key names:*
 
 Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections)
 
@@ -799,23 +799,23 @@ On both Android OS and iOS, the vendor can be notified when the values of the sh
 On Android OS, the GPP data and GPP string shall be stored in the default Shared Preferences for the application context. This can be accessed using the `getDefaultSharedPreferences` method from the *android.preference.PreferenceManager* class using the application context. The GPP data values can be retrieved from the application Shared Preferences by key name using the get methods on the *android.content.SharedPreferences* class.
 
 
-### CTV Details
+## CTV Details
 
 How is a CMP used in the CTV context?
 
 The context of the CTV application will determine the storage locations and naming of the GPP data.
 
 
-**Web Runtime**
+### Web Runtime
 
-Applications running in a web runtime environment that supports, at minimum, the Web Storage (Second Edition) specification shall follow all storage and naming conventions detailed in the Javascript section of this spec. Data is to be retrieved using the Generic and Non-generic API commands, offering a consistent interface for Vendors to access GPP information.
+Applications running in a web runtime environment that supports, at minimum, the Web Storage (Second Edition) specification shall follow all storage and naming conventions detailed in the [Javascript](#javascript) section of this spec. Data is to be retrieved using the Generic and Non-generic API commands, offering a consistent interface for Vendors to access GPP information.
 
-Should data not persist in Web Storage beyond the lifecycle of the application (application close, standby, or device shutdown), all data storage and naming conventions are to follow the specifications outlined in the CTV Native Private Storage section of this spec.
+Should data not persist in Web Storage beyond the lifecycle of the application (application close, standby, or device shutdown), all data storage and naming conventions are to follow the specifications outlined in the [CTV Native Private Storage](#native) section of this spec.
 
 
-**Native**
+### Native <a name="native"></a>
 
-Native CTV applications are to follow the naming conventions of the GPP data and GPP String outlined in the How is GPP used in-app section of this spec. Data is to be limited to the context of the Application and inaccessible to external applications.
+Native CTV applications are to follow the naming conventions of the GPP data and GPP String outlined in the [How is GPP used in-app](#gppinapp) section of this spec. Data is to be limited to the context of the Application and inaccessible to external applications.
  
  
  
@@ -827,7 +827,7 @@ Application Preferences, also referred to as a Registry in certain CTV environme
  
 *Private Storage*
  
-Private Storage shall be used under the condition that the CTV environment does not offer a Web Runtime that supports the Web Storage (Second Edition) specification, data does not persist beyond the lifecycle of the Application, or offer an Application Preferences (Registry) interface. The GPP data and GPP String are to be saved in a standardized and private storage space. Files are to follow the same naming convention as the key names detailed in the How is GPP used in-app section of this spec with the contents being the value of the corresponding key.
+Private Storage shall be used under the condition that the CTV environment does not offer a Web Runtime that supports the Web Storage (Second Edition) specification, data does not persist beyond the lifecycle of the Application, or offer an Application Preferences (Registry) interface. The GPP data and GPP String are to be saved in a standardized and private storage space. Files are to follow the same naming convention as the key names detailed in the [How is GPP used in-app](#gppinapp) section of this spec with the contents being the value of the corresponding key.
  
 *Note:* CTV Applications require proper permission scopes to be configured to read and write to the virtual Application file system.
 
@@ -837,9 +837,9 @@ Private Storage shall be used under the condition that the CTV environment does 
 ## Using the CMP API
 
 
-# Examples
+## Examples
 
-Example stub code
+*Example stub code* <a name="stubcode"></a>
 
 The following code represents an example stub code.
 
