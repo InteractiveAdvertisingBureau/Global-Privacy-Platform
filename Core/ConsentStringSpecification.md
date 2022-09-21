@@ -101,10 +101,10 @@ Digital property owners or CMPs are responsible for generating, persisting, and 
 When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1-val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
 
 
-Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the GPP String, and applicable section, are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macro ${GPP_STRING_XXXXX} where XXXXX is the numeric GPP ID of the vendor receiving the string. The applicable section must also be inserted, where the ${GPP_SID}macro is present.
+Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the GPP String, and applicable section, are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macro `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. The applicable section must also be inserted, where the ${GPP_SID}macro is present.
 
 
-For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros gpp=${GPP_STRING_123} and gpp_sid=${GPP_SID}.
+For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
 
 
 The resulting URL is: 
@@ -128,6 +128,7 @@ The available URL parameters and macros to relay information down the supply cha
 **Full GPP String passing**
 
 Services that are called using a URL from the user's browser, like cookie staplers, user id associators, and tracking pixels (the 'callee') are passed as macros within the URL and formatted as:
+
 ` &url_parameter=${macro_name}`
 
 The supported URL parameters and the corresponding macros are defined below:
@@ -372,266 +373,325 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
     <td><strong>Header Example 1</strong></td>
   </tr>
   <tr>
-    <td><code>Conditions:</code></td>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2</td>
   </tr>
   <tr>
-    <td><code>Version</code></td>
-    <td>Int(6)</td>
-    <td>Version of the GPP spec (currently 1)</td>
+<td>Header Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 0<br><br> -- Item 1 start ID = 011<br><br>Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
   </tr>
   <tr>
-    <td><code>Sections</code></td>
-    <td>Range(Int)</td>
-    <td>List of Section IDs that are contained in the GPP string. Each ID represents a discrete Section that will be concatenated to the Header Section. The IDs must be represented in the order the related Sections appear in the string. This is required to make real time string processing less resource intensive.</td>
+    <td><code>Full header bit string: 000011 000001 000000000001 0 011</code></td>
+ </tr>
+  <tr>  
+    <td>Encoded header: DBABMA</td>
      </td>
      </td>
   </tr>
  </table>
-Header Examples
-The following examples provide a sample Header Section that represents the stated conditions.
-Header Example 1
-Conditions: 
-Version 1 of the GPP string is being used
-Includes the section for EU TCF v2
-Header Bit Representation: 
-Type = 000011
-Version = 000001
-Section Range
-Amount = 000000000001
-Item 1 Single = 0
-Item 1 start ID = 011
-
-Based on the Section ID table above, the Section ID for EU TCF v2 is 2.
-Full header bit string: 
-000011 000001 000000000001 0 011
-Encoded header: 
-DBABMA
 
 
-Header Example 2
-Conditions: 
-Version 1 of the GPP string is being used
-Includes the sections for EU TCF v2 and US Privacy
-Header Bit Representation: 
-Type = 000011
-Version = 000001
-Section Range
-Amount = 000000000010
-Item 1 Single = 0
-Item 1 start ID = 011
-Item 2 Single = 0
-Item 2 offset to last ID = 1011
 
-Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.
-Full header bit string: 
-000011 000001 000000000010 0 011 0 1011
-Encoded header: 
-DBACNYA
+**Header Example 2**
+
+<table>
+  <tr>
+    <td><strong>Header Example 2</strong></td>
+  </tr>
+  <tr>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2 and US Privacy</td>
+  </tr>
+  <tr>
+<td>Header Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 0<br><br> -- Item 1 start ID = 011<br><br> -- Item 2 Single = 0 <br><br> -- Item 2 offset to last ID = 1011 <br><br> Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
+  </tr>
+  <tr>
+    <td><code>Full header bit string: 000011 000001 000000000010 0 011 0 1011</code></td>
+ </tr>
+  <tr>  
+    <td>Encoded header: DBACNYA</td>
+     </td>
+     </td>
+  </tr>
+ </table>
 
 
-Header Example 3
-Conditions: 
-Version 1 of the GPP string is being used
-Includes the sections for Canadian TCF and US Privacy
-Bit Representation: 
-Type = 000011
-Version = 000001
-Section Range
-Amount = 000000000001
-Item 1 Single = 1
-Item 1 start ID = 00011
-Item 1 offset to last ID = 11
 
-Based on the Section ID table above, the Section ID for Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the Data Types table for more detail on these fields.
-Full bit string: 
-000011 000001 000000000001 1 00011 11
-Encoded: 
-DBABjw
+**Header Example 3** 
 
-Discrete Sections
+
+<table>
+  <tr>
+    <td><strong>Header Example 3</strong></td>
+  </tr>
+  <tr>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for Canadian TCF and US Privacy</td>
+  </tr>
+  <tr>
+<td>Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 1<br><br> -- Item 1 start ID = 00011<br><br> -- Item 1 offset to last ID = 11 <br><br> Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the Data Types table for more detail on these fields.</td>
+  </tr>
+  <tr>
+    <td><code>Full bit string: 000011 000001 000000000001 1 00011 11</code></td>
+ </tr>
+  <tr>  
+    <td>Encoded header: DBABjw</td>
+     </td>
+     </td>
+  </tr>
+ </table>
+
+
+#### Discrete Sections
+
 Discrete sections are used to support multiple signals from one architecture while maintaining the ability to modify each section as needed. 
 
+
 Each string segment is scoped to the same body that updates the spec. This allows for regional sovereignty policies to make changes that might include more delimited information. For example, if TCF needs a version 3 and eliminates the concept of “out of band” vendors—which would result in the removal of DisclosedVendors and AllowedVendors—that should not require a version bump to the GPP string specification. 
+
  
-Delimiters
+#### Delimiters
+
 In order to be backward compatible with IAB Europe’s TC String and US Privacy String formats, the delimiter used to separate segments is “~” (tilde).
 
-Note: URL-safe characters are important to meet the integration needs of those not reading privacy signals server side or via the client-side APIs. URL-safe characters are:
 
-A-Z, a-z, 0-9
-- (minus)
-. (dot)
-_ (underscore)
-~ (tilde)
+> **Note:** URL-safe characters are important to meet the integration needs of those not reading privacy signals server side or via the client-side APIs. URL-safe characters are:
+
+- A-Z, a-z, 0-9
+- - (minus)
+- . (dot)
+- _ (underscore)
+- ~ (tilde)
 
 “.” and “-” and “_” are in use which leaves “~” as the only possible delimiter unless we re-use “.”.
 
 
-Section Encoding
+#### Section Encoding
+
 A discrete section is encoded according to that specific section’s needs. This means today’s implementations that read and adapt to TCF v2.0 signals or US Privacy signals don't need to change their logic for a given discrete section of the string, as long as the implementation is aware of where the discrete section is.
+
 
 New sections should follow the guidelines below. Guidelines like these help developers quickly adopt new sections and allow for parsing new sections without the need to reinvent new data types.
 
+
 The possible data types are: 
 
-Data Type
-Encoding
-Description
-Boolean
-1 bit
-0=true, 1=false
-Integer (fixed length of x)
-x bit
-A fixed amount of bit representing an integer. Usual lengths are 3, 6 or 12 bit. 
-Example: int(6) “000101” represents the number 5
-Integer (Fibonacci)
-Variable length
-Integer encoded using Fibonacci encoding
 
-See “About Fibonacci Encoding” for more detail
-String (fixed length of x) (including country codes)
-x*6 bit
-A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6).
-
-
-Example: int(6) “101010” represents integer 47 + 65 = char “h”
-Datetime
-36 bit
-A datetime is encoded as a 36 bit integer representing the 1/10th seconds since January 01 1970 00:00:00 UTC.
-
-
-Example JavaScript representation: Math.round((new Date()).getTime()/100)
-Bitfield (fixed length of x)
-x bit
-A fixed amount of bit. Usually each bit represents a boolean for an ID within a group where the first bit corresponds to true/false for ID 1, the second bit corresponds to true/false for ID 2 and so on.
-Range (Int)
-variable
-A range field always consists of the following fields:
-int(12) - representing the amount of items to follow
-(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true)
-(per item) int(16) - representing a) the single ID or b) the start ID in case of a group
-(per item + only if group)  int(16) - representing the end ID of the group
-
-Example:
-int(12) = 2 // 2 items
-Bool = 0 // item 1 is type single ID
-int(16) = 3 // ID of item 1
-Bool = 1 // item 2 is type group
-int(16) = 5 // item 2 start ID
-int(16) = 8 // item 2 end ID
-
-Range = [3,5,6,7,8]
-Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000
-
-Note: items may not be in sorted order.
-Range (Fibonacci)
-variable
-A range field always consists of the following fields:
-int(12) - representing the amount of items to follow
-(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true)
-(per item) int(Fibonacci) - representing a) the single ID or b) the offset to the last end ID in case of a group
-(per item + only if group)  int(Fibonacci) - length of the group
-
-Example:
-int(12) = 2 // 2 items
-Bool = 0 // item 1 is type single ID
-int(Fibonacci) = 3 // ID of item 1
-Bool = 1 // item 2 is type group
-int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)
-int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)
-
-Range = [3,5,6,7,8]
-Bits = 000000000010 0 0011 1 011 0011
-
-Note: items MUST be in sorted order.
+<table>
+  <tr>
+    <td><strong>Data Type</strong></td>
+    <td><strong>Encoding</strong></td>
+    <td><strong>Description</strong></td>
+  </tr>
+  <tr>
+    <td><code>Boolean</code></td>
+    <td>1 bit</td>
+    <td>0=true, 1=false</td>
+  </tr>
+  <tr>
+    <td><code>Integer (fixed length of x)</code></td>
+    <td>x bit</td>
+    <td>A fixed amount of bit representing an integer. Usual lengths are 3, 6 or 12 bit. <br><br> Example: int(6) “000101” represents the number 5</td>
+  </tr>
+  <tr>
+    <td><code>Integer (Fibonacci)</code></td>
+    <td>Variable Length</td>
+    <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.8wsq3j5xr13e"> “About Fibonacci Encoding” for more detail</td>
+  </tr>
+  <tr>
+    <td><code>String (fixed length of x) (including country codes)</code></td>
+    <td>x*6 bit</td>
+    <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
+</tr>
+  <tr>
+    <td><code>Datetime</code></td>
+    <td>36 bit</td>
+    <td>A datetime is encoded as a 36 bit integer representing the 1/10th seconds since January 01 1970 00:00:00 UTC. <br><br>Example JavaScript representation: Math.round((new Date()).getTime()/100)</td>
+  </tr>
+  <tr>
+    <td><code>Bitfield (fixed length of x)</code></td>
+    <td>x bit</td>
+    <td>A fixed amount of bit. Usually each bit represents a boolean for an ID within a group where the first bit corresponds to true/false for ID 1, the second bit corresponds to true/false for ID 2 and so on.</td>
+ </tr>
+  <tr>
+    <td><code>String (fixed length of x) (including country codes)</code></td>
+    <td>x*6 bit</td>
+    <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
+</tr>
+  <tr>
+    <td><code>Range (Int)</code></td>
+    <td>variable</td>
+    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(16) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(16) - representing the end ID of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(16) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(16) = 5 // item 2 start ID<br><br>int(16) = 8 // item 2 end ID <br><br>   <br><br>Range = [3,5,6,7,8]<br><br>Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000<br><br>   <br><br> Note: items may not be in sorted order.</td>
+  </tr>
+  <tr>
+    <td><code>Range (Fibonacci)</code></td>
+    <td>variable</td>
+    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(Fibonacci) - length of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(Fibonacci) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)<br><br>int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)<br><br>   <br><br>Range = [3,5,6,7,8]<br><br>Bits =  000000000010 0 0011 1 011 0011<br><br>   <br><br> Note: items MUST be in sorted order..</td>
+     </td>
+     </td>
+  </tr>
+ </table>
+ 
+ 
 
 
 When defining a new Section, regional policy writers should consider the above format to describe their segment.
 
-Example Section 
-Example Field name
-Example Type
-Example Description
-Version
-int(6)
-Version of Specification XYZ
-LastUpdated
-datetime
-Datetime of last update
-OptOutPurposes
-Bitfield(6)
-Purposes the user opted out for, each bit representing the purpose ID
-...
-...
-...
+
+<table>
+  <tr>
+    <td><strong>Example Field name</strong></td>
+    <td><strong>Example Type</strong></td>
+    <td><strong>Example Description</strong></td>
+  </tr>
+  <tr>
+    <td><code>Version</code></td>
+    <td>int(6)</td>
+    <td>Version of Specification XYZ</td>
+  </tr>
+  <tr>
+    <td><code>LastUpdated</code></td>
+    <td>datetime</td>
+    <td>Datetime of last update</td>
+  </tr>
+  <tr>
+    <td><code>OptOutPurposes</code></td>
+    <td>Bitfield(6)</td>
+    <td>Purposes the user opted out for, each bit representing the purpose ID</td>
+  </tr>
+  <tr>
+    <td><code>...</code></td>
+    <td>...</td>
+    <td>...</td>
+     </td>
+     </td>
+  </tr>
+ </table>
 
 
 
-Note: It is recommended to use Field names in CamelCase and without any special characters or space. This allows the use of the same field names within other APIs (e.g. GPP JS API or GPP Mobile API)
+> **Note:** It is recommended to use Field names in CamelCase and without any special characters or space. This allows the use of the same field names within other APIs (e.g. GPP JS API or GPP Mobile API)
 
 
-Sub-Sections / Segments
+**Sub-Sections / Segments**
+
 If a section uses sub-sections to separate information or to be more flexible, it can use the delimiter “.” (dot) to separate the sub-sections from each other. 
-Other Signals
-Header Reference
+
+
+## Other Signals
+
+
+### Header Reference
+
 Other Signals are referenced in the Header when available. Each signal will have its own ID as indicated in the Header documentation of this specification. When Other Signals are present they will be indicated in the encoding format specified in the Header documentation of this specification. Note, in some cases the signal may be present in the user agent (ex. Global Privacy Control), but the CMP or other entity creating the privacy signal may not have fetched the signal.
-Currently Supported Signals, Values, and References
+
+### Currently Supported Signals, Values, and References
+
 In order to be included as a supported GPP signal, Other Signals must meet the following criteria:
-Be open designs
-Be widely understood and adopted
-Have a clear interface for machines
-Global Privacy Control 
-Global Privacy Control or GPC defines itself as “a signal, transmitted over HTTP and through the DOM, that conveys a person's request to websites and services to not sell or share their personal information with third parties.” It is a result of the California Consumer Privacy Act (CCPA) and has subsequently grown in popularity as other US States debate and enact privacy laws and even US Federal lawmakers weigh privacy legislation options. It is also supported by a number of different market participants including some IAB Tech Lab members.
+
+- Be open designs
+- Be widely understood and adopted
+- Have a clear interface for machines
+
+
+### Global Privacy Control 
+
+Global Privacy Control or GPC [defines itself](#https://globalprivacycontrol.github.io/gpc-spec/) as “a signal, transmitted over HTTP and through the DOM, that conveys a person's request to websites and services to not sell or share their personal information with third parties.” It is a result of the California Consumer Privacy Act (CCPA) and has subsequently grown in popularity as other US States debate and enact privacy laws and even US Federal lawmakers weigh privacy legislation options. It is also supported by a number of different market participants including some IAB Tech Lab members.
+
+
 
 GPC is signaled in user agent headers (Sec-GPC) and a simple javascript API (globalPrivacyControl). CMPs or other entities creating GPP strings may check for whether GPC is set and pass along the value they find in a GPC section of the GPP string. Potential values are boolean (0/1 for header and true/false for javascript API). True is an opt out of sale under CCPA (“Do not sell my personal information”).
-Where can I find specific section details?
+
+
+## Where can I find specific section details?
+
 You can find all section specific details in the discrete section’s documentation.
-GPP String Examples
+
+## GPP String Examples
+
 Using the same cases as in the Header Examples above, the following examples provide a sample GPP string that represents the stated conditions.
 
-GPP String Example 1
-Conditions: 
-Version 1 of the GPP string is being used
-Includes the section for EU TCF v2
-Encoded header: 
-DBABMA
-Full GPP String: 
-DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA
+
+<table>
+  <tr>
+    <td><strong>GPP String Example 1</strong></td>
+  </tr>
+  <tr>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2</td>
+  </tr>
+  <tr>
+  <td>Encoded header:<br><br>DBABMA</td>
+	</tr>
+	<tr>
+	<td>Full GPP String:<br><br>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</td>
+</td>
+</td>
+</tr>
+</table>
 
 
-GPP String Example 2
-Conditions: 
-Version 1 of the GPP string is being used
-Includes the sections for EU TCF v2 and US Privacy
-Encoded header: 
-DBACNYA
-Full GPP String:
-DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN
+
+<table>
+  <tr>
+    <td><strong>GPP String Example 2</strong></td>
+  </tr>
+  <tr>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2 and US Privacy</td>
+  </tr>
+  <tr>
+  <td>Encoded header:<br><br>DBACNYA</td>
+	</tr>
+	<tr>
+	<td>Full GPP String:<br><br>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
+</td>
+</td>
+</tr>
+</table>
 
 
-GPP String Example 3
-Conditions: 
-Version 1 of the GPP string is being used
-The GPP string includes the sections for Canadian TCF and US Privacy
-Encoded header: 
-DBABjw
-Full GPP String:
-DBABjw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN
 
-Signal Integrity
-As part of the first version of GPP, signal integrity will be accomplished in concert with the Accountability Platform. The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
-GPP Identifier 
+<table>
+  <tr>
+    <td><strong>GPP String Example 3</strong></td>
+  </tr>
+  <tr>
+<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>The GPP string includes the sections for Canadian TCF and US Privacy</td>
+  </tr>
+  <tr>
+  <td>Encoded header:<br><br>DBABjw</td>
+	</tr>
+	<tr>
+	<td>Full GPP String:<br><br>DBABjw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
+</td>
+</td>
+</tr>
+</table>
+
+
+
+
+## Signal Integrity
+
+As part of the first version of GPP, signal integrity will be accomplished in concert with the [Accountability Platform.](#https://iabtechlab.com/wp-content/uploads/2021/03/iabtechlab_accountability_platform_rfc_2021_march.pdf) The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
+
+
+## GPP Identifier 
+
 Callers needing to consume privacy signals with business entity level disclosures across multiple markets need the ability to do so with the assurance that business entities do not have duplicate or overlapping IDs. There are already existing vendor lists (see note with non-exhaustive list below) on which the same business entity may appear. Frameworks that are supported by the GPP must retrieve their IDs from the IAB Tech Lab Transparency Center. This will ensure the creation of concurrent non-overlapping vendor IDs. 
+
 
 Registration to participate in a specific framework is governed by the local jurisdiction Policy and T&Cs, who would also be responsible for enforcement and compliance. 
 
-I’m a vendor, how do I get a GPP identifier?
+
+### I’m a vendor, how do I get a GPP identifier?
+
 Vendors should decide which framework signals they plan to participate in to determine which list registrations may be required. If approved, a GPP Identifier will be assigned. 
 
-Vendors looking to register for the European GVL or Canadian GVL should do so on this registration portal. Additional details on the Global Vendor List can be found in the Consent string and vendor list format specification.
 
-Vendors looking to sign the LSPA may do so at the Transparency Center. Additional details about the LSPA can be found here. 
-I’m a vendor and I already have an GVL ID, is there anything that I need to do?
+Vendors looking to register for the European GVL or Canadian GVL should do so on this [registration portal](#https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [Consent string and vendor list format](#https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
+
+
+Vendors looking to sign the LSPA may do so at the [Transparency Center](#https://tools.iabtechlab.com/lspa). Additional details about the LSPA can be found here. 
+
+
+### I’m a vendor and I already have an GVL ID, is there anything that I need to do?
+
 If you are a vendor with a GVL ID for a specific framework, you already have a GPP ID. However, you may still need to complete registration to participate in a specific framework.
 
 
