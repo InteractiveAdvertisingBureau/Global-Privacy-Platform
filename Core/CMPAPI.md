@@ -143,7 +143,7 @@ The `ping` command can be used to determine the state of the CMP.
 
 *Example: *
 
-```
+``` javascript
 var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
 ```
 
@@ -151,7 +151,7 @@ var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
 
 This object contains information about the loading status and configuration of the CMP.
 
-```
+```javascript
 PingReturn = {
 
 gppVersion : String, // must be “Version.Subversion”, current: “1.0”
@@ -254,7 +254,7 @@ The `addEventListener` command can be used to define a callback function (or a p
 
 *Example:*
 
-```
+```javascript
 var EventListenerReturn = __gpp('addEventListener',myFunction);
 ```
 
@@ -266,7 +266,7 @@ Note: The `addEventListener` command returns an `EventListener` object immediate
 
 The EventListener object is defined as: 
 
-```
+```javascript
 EventListener = {
 eventName : String, // for possible values see events below
 listenerId : Number, // Registered ID of the listener
@@ -368,7 +368,9 @@ The `removeEventListener` command can be used to remove an existing event listen
 
 *Example: *
 
-`var EventListenerReturn = __gpp('removeEventListener',null, listenerId);`
+```javascript
+var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
+```
 
 **hasSection**
 
@@ -412,7 +414,9 @@ Example:
 
 A client wants to ask the CMP if there is data for IAB TCF v2.0:
 
-`var b = __gpp('hasSection',null, "tcfeuv2");`
+```javascript
+var b = __gpp('hasSection',null, "tcfeuv2");
+```
 
 
 **getSection**
@@ -455,7 +459,10 @@ The `getSection` command can be used to receive the (parsed) object representati
 
 For example, client can ask the CMP to get the IAB TCF v2.0 TCData: 
 
-```var s = __gpp('getSection',null, "tcfeuv2");```
+
+```javascript
+var s = __gpp('getSection',null, "tcfeuv2");
+```
 
 
 **getField**
@@ -497,7 +504,9 @@ The `getField` command can be used to receive a specific field out of a certain 
 
 For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
 
-```var s = __gpp('getField',null, "tcfeuv2.LastUpdated");```
+```javascript
+var s = __gpp('getField',null, "tcfeuv2.LastUpdated");
+```
 
 **getGPPData**
 
@@ -539,14 +548,16 @@ The `getGPPData` command can be used in order to receive the current version of 
 
 *Example:*
 
-`var s = __gpp('getGPPData');`
+```javascript
+var s = __gpp('getGPPData');
+```
 
 
 **GPPData**
 
 The `GPPData` object contains the parsed header section fields, the currently in force section, and the encoded `GPPString` and is defined as follows: 
 
-```
+```javascript
 GPPData = {
 
 sectionId : Number,  // Always 3 to indicate the header section
@@ -832,7 +843,7 @@ Example stub code
 
 The following code represents an example stub code.
 
-```
+```javascript
 window.__gpp_addFrame = function (n)
 {
  if (!window.frames[n])
@@ -948,7 +959,7 @@ if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function')
 Example of determining vendor consent under TCF Canada
 The following example demonstrates how a vendor can listen to changes for IAB TCF Canada and find out if consent is given for a specific vendor or purpose.
 
-```
+```javascript
 if(__gpp)
 {
  __gpp('addEventListener', function (evt)
