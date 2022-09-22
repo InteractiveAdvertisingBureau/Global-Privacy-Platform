@@ -593,7 +593,27 @@ Note: items may not be in sorted order.</td>
   <tr>
     <td><code>Range (Fibonacci)</code></td>
     <td>variable</td>
-    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(Fibonacci) - length of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(Fibonacci) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)<br><br>int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)<br><br>Range = [3,5,6,7,8]<br><br>Bits =  000000000010 0 0011 1 011 0011<br><br> Note: items MUST be in sorted order..</td>
+    <td>A range field always consists of the following fields: 
+	    <ul>
+		    <li>int(12) - representing the amount of items to follow </li>
+		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) </li>
+		    <li>(per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group </li>
+		    <li>(per item + only if group)  int(Fibonacci) - length of the group </li>
+	    </ul>
+	    Example: 
+	    <ul>
+		    <li>int(12) = 2 // 2 items</li>
+		    <li>Bool = 0 // item 1 is type single ID</li>
+		    <li>int(Fibonacci) = 3 // ID of item 1</li>
+		    <li>Bool = 1 // item 2 is type group</li>
+		    <li>int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)</li>
+		    <li>int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)</li>
+	    </ul>
+	    <ul>
+		    <li>Range = [3,5,6,7,8]</li>
+		    <li>Bits =  000000000010 0 0011 1 011 0011</li>
+	    </ul>
+Note: items MUST be in sorted order..</td>
      </td>
      </td>
   </tr>
