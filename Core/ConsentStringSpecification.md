@@ -373,10 +373,26 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
     <td><strong>Header Example 1</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2</td>
+<td>Conditions:
+	<ul>
+		<li>Version 1 of the GPP string is being used</li>
+		<li>Includes the section for EU TCF v2</li>
+	</ul>
+</td>
   </tr>
   <tr>
-<td>Header Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 0<br><br> -- Item 1 start ID = 011<br><br>Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
+<td>Header Bit Representation
+	<ul>
+		<li>Type = 000011</li>
+		<li>Version = 000001</li>
+		<li>Section Range</li>
+			<ul>
+				<li>Amount = 000000000001</li>
+				<li>Item 1 Single = 0</li>
+				<li>Item 1 start ID = 011</li>
+			</ul>
+	</ul>
+Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
   </tr>
   <tr>
     <td><code>Full header bit string: 000011 000001 000000000001 0 011</code></td>
@@ -397,10 +413,28 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
     <td><strong>Header Example 2</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2 and US Privacy</td>
+<td>Conditions:
+	<ul>
+		<li>Version 1 of the GPP string is being used</li>
+		<li>Includes the section for EU TCF v2 and US Privacy</li>
+	</ul>
+</td>
   </tr>
   <tr>
-<td>Header Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 0<br><br> -- Item 1 start ID = 011<br><br> -- Item 2 Single = 0 <br><br> -- Item 2 offset to last ID = 1011 <br><br> Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
+<td>Header Bit Representation
+	<ul>
+		<li>Type = 000011</li>
+		<li>Version = 000001</li>
+		<li>Section Range</li>
+			<ul>
+				<li>Amount = 000000000001</li>
+				<li>Item 1 Single = 0</li>
+				<li>Item 1 start ID = 011</li>
+				<li>Item 2 Single = 0 </li>
+				<li>Item 2 offset to last ID = 1011 </li>
+		</ul>
+	</ul>
+Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
   </tr>
   <tr>
     <td><code>Full header bit string: 000011 000001 000000000010 0 011 0 1011</code></td>
@@ -422,10 +456,27 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
     <td><strong>Header Example 3</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for Canadian TCF and US Privacy</td>
+<td>Conditions:
+	<ul>
+		<li>Version 1 of the GPP string is being used</li>
+		<li>Includes the section for Canadian TCF and US Privacy</li>
+	</ul>
+</td>
   </tr>
   <tr>
-<td>Bit Representation<br><br> - Type = 000011<br><br> - Version = 000001<br><br> - Section Range<br><br> -- Amount = 000000000001<br><br> -- Item 1 Single = 1<br><br> -- Item 1 start ID = 00011<br><br> -- Item 1 offset to last ID = 11 <br><br> Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the Data Types table for more detail on these fields.</td>
+<td>Bit Representation
+	<ul>
+		<li>Type = 000011</li>
+		<li>Version = 000001</li>
+		<li>Section Range</li>
+			<ul>
+				<li>Amount = 000000000001</li>
+				<li>Item 1 Single = 1</li>
+				<li>Item 1 start ID = 00011</li>
+				<li>Item 1 offset to last ID = 11 </li>
+		</ul>
+	</ul>
+Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the Data Types table for more detail on these fields.</td>
   </tr>
   <tr>
     <td><code>Full bit string: 000011 000001 000000000001 1 00011 11</code></td>
@@ -621,10 +672,10 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	</td>
   </tr>
   <tr>
-  <td>Encoded header:<br>`DBABMA`</td>
+  <td>Encoded header:<br>DBABMA</td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>`DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA`</td>
+	<td>Full GPP String:<br><br>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</td>
 </td>
 </td>
 </tr>
@@ -648,7 +699,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
   <td>Encoded header:<br><br>`DBACNYA`</td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>`DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN`</td>
+	<td>Full GPP String:<br><br>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
 </td>
 </td>
 </tr>
