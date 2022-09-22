@@ -684,10 +684,10 @@ Registration to participate in a specific framework is governed by the local jur
 Vendors should decide which framework signals they plan to participate in to determine which list registrations may be required. If approved, a GPP Identifier will be assigned. 
 
 
-Vendors looking to register for the European GVL or Canadian GVL should do so on this [registration portal](#https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [Consent string and vendor list format](#https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
+Vendors looking to register for the TCF EU GVL or TCF Canada GVL should do so on this [registration portal](#https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [TCF v2 Consent string and vendor list format](#https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
 
 
-Vendors looking to sign the LSPA may do so at the [Transparency Center](#https://tools.iabtechlab.com/lspa). Additional details about the LSPA can be found here. 
+Vendors looking to sign the LSPA may do so at the [Transparency Center](#https://tools.iabtechlab.com/lspa).  
 
 
 ### I’m a vendor and I already have an GVL ID, is there anything that I need to do?
