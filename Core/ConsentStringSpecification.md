@@ -504,13 +504,13 @@ In order to be backward compatible with IAB Europe’s TC String and US Privacy 
 
 > **Note:** URL-safe characters are important to meet the integration needs of those not reading privacy signals server side or via the client-side APIs. URL-safe characters are:
 
-- A-Z, a-z, 0-9
-- - (minus)
-- . (dot)
-- _ (underscore)
-- ~ (tilde)
+>- A-Z, a-z, 0-9
+>- - (minus)
+>- . (dot)
+>- _ (underscore)
+>- ~ (tilde)
 
-“.” and “-” and “_” are in use which leaves “~” as the only possible delimiter unless we re-use “.”.
+>“.” and “-” and “_” are in use which leaves “~” as the only possible delimiter unless we re-use “.”.
 
 
 #### Section Encoding
@@ -568,12 +568,32 @@ The possible data types are:
   <tr>
     <td><code>Range (Int)</code></td>
     <td>variable</td>
-    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(16) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(16) - representing the end ID of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(16) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(16) = 5 // item 2 start ID<br><br>int(16) = 8 // item 2 end ID <br><br>   <br><br>Range = [3,5,6,7,8]<br><br>Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000<br><br>   <br><br> Note: items may not be in sorted order.</td>
+    <td>A range field always consists of the following fields: 
+	    <ul>
+		    <li>int(12) - representing the amount of items to follow </li>
+		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true)</li>
+		    <li>(per item) int(16) - representing a) the single ID or b) the start ID in case of a group </li>
+		    <li>(per item + only if group)  int(16) - representing the end ID of the group </li>
+	    </ul>
+	Example: 
+	    <ul>
+		    <li>int(12) = 2 // 2 items</li>
+		    <li>Bool = 0 // item 1 is type single ID</li>
+		    <li>int(16) = 3 // ID of item 1</li>
+		    <li>Bool = 1 // item 2 is type group</li>
+		    <li>int(16) = 5 // item 2 start ID</li>
+		    <li>int(16) = 8 // item 2 end ID </li>    
+	    </ul>
+	    <ul>
+		    <li> Range = [3,5,6,7,8]</li>
+		    <li>Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000</li>
+	    </ul> 
+Note: items may not be in sorted order.</td>
   </tr>
   <tr>
     <td><code>Range (Fibonacci)</code></td>
     <td>variable</td>
-    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(Fibonacci) - length of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(Fibonacci) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)<br><br>int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)<br><br>   <br><br>Range = [3,5,6,7,8]<br><br>Bits =  000000000010 0 0011 1 011 0011<br><br>   <br><br> Note: items MUST be in sorted order..</td>
+    <td>A range field always consists of the following fields: <br><br> 1. int(12) - representing the amount of items to follow <br><br> 2. (per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) <br><br> 3. (per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group <br><br> 4. (per item + only if group)  int(Fibonacci) - length of the group <br><br>Example: <br><br>int(12) = 2 // 2 items<br><br>Bool = 0 // item 1 is type single ID<br><br>int(Fibonacci) = 3 // ID of item 1<br><br>Bool = 1 // item 2 is type group<br><br>int(Fibonacci) = 2 // offset to last ID (3+2 = 5 is first ID)<br><br>int(Fibonacci) = 3 // length of group (5+3 =>8 is last ID)<br><br>Range = [3,5,6,7,8]<br><br>Bits =  000000000010 0 0011 1 011 0011<br><br> Note: items MUST be in sorted order..</td>
      </td>
      </td>
   </tr>
