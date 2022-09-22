@@ -34,11 +34,11 @@ This document is one of the IAB Tech Lab Global Privacy Platform Specifications.
 Updates were made to existing Tech Lab standards to support the Global Privacy Platform. These updates are based on industry consensus, driven by relevant IAB Tech Lab working groups, including the Global Privacy working group and Programmatic Supply Chain working group. They include:
 
 
-**OpenRTB Community Extensions: ** 
+**OpenRTB Community Extensions:** 
 
 Given limited adoption of the AdCom / OpenRTB 3.0 specification, GPP assumes the use of OpenRTB 2.x. 
 
-- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will begin as an extension within the Regs object. For additional guidance, see the [OpenRTB community extensions Github repo](#https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions).
+- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will begin as an extension within the Regs object. For additional guidance, see the [OpenRTB community extensions Github repo](#https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) . ""THIS IS GIVING ME A PROBLEM"
 
 ## About the Global Privacy Platform
 
