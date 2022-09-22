@@ -95,7 +95,7 @@ The core segment must always be present. It consists of the following fields:
   <tr>
   <td>UseNonStandardStacks</td>
   <td>Boolean</td>
-  <td>1 CMP used non-IAB standard stacks during consent gathering<br><br>0 IAB standard stacks were used<br><br> Setting this to 1 means that a publisher-run CMP – that is still IAB Europe registered – is using customized Stack descriptions and not the standard stack descriptions defined in the [Policies](https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/) (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
+  <td>1 CMP used non-IAB standard stacks during consent gathering<br><br>0 IAB standard stacks were used<br><br> Setting this to 1 means that a publisher-run CMP – that is still IAB Europe registered – is using customized Stack descriptions and not the standard stack descriptions defined in the <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies</a> (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
   </tr>
   <tr>
     <td>SpecialFeatureOptIns</td>
@@ -105,7 +105,7 @@ The core segment must always be present. It consists of the following fields:
       <li>1 Opten in</li>
       <li>0 Not opted in</li>
     </ul>
-   The TCF [Policies]<a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies designates certain Features as “special” which means a CMP must afford the user a means to expressly consent to their use. These “Special Features” are published and numerically identified in the [Global Vendor List](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) separately from normal Features.</td>
+   The TCF <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies </a> designates certain Features as “special” which means a CMP must afford the user a means to expressly consent to their use. These “Special Features” are published and numerically identified in the <a href="https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list">Global Vendor List </a> separately from normal Features.</td>
    </tr>
    <tr>
   <td>PurposeConsent</td>
@@ -136,7 +136,7 @@ The core segment must always be present. It consists of the following fields:
   <td>PublisherCC</td>
   <td>String (2)</td>
   <td>The country code of the country that determines legislation of reference. Commonly, this corresponds to the country in which the publisher’s business entity is established.
-    Each letter is encoded as 6 bits, <code>a=0..z=25</code>. [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) </td>
+    Each letter is encoded as 6 bits, <code>a=0..z=25</code>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"> ISO 3166-1 alpha-2 code </a> </td>
   </tr>
   <tr>
   <td>VendorConsent</td>
