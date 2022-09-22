@@ -49,7 +49,7 @@ The Global Privacy Platform (GPP) has the objective to enable all parties in the
 
 
 The IAB Technology Laboratory (Tech Lab) is a non-profit consortium that engages a member community globally to develop foundational technology and standards that enable growth and trust in the digital media ecosystem. Comprised of digital publishers, ad technology firms, agencies, marketers, and other member companies, IAB Tech Lab focuses on improving the digital advertising supply chain, measurement, and consumer experiences, while promoting responsible use of data. Its work includes the OpenRTB real-time bidding protocol, ads.txt anti-fraud specification, Open Measurement SDK for viewability and verification, VAST video specification, and DigiTrust identity service. Established in 2014, the IAB Tech Lab is headquartered in New York City with staff in San Francisco, Seattle, and London.
-Learn more at iabtechlab.com.
+Learn more at [iabtechlab.com](iabtechlab.com).
 
 **Contributors and Technical Governance**
 
@@ -57,7 +57,7 @@ IAB Tech Lab's Global Privacy Working Group members provide contributions to thi
 
 **License**
 
-Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit creativecommons.org/licenses/by/3.0/ or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
+Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit [creativecommons.org/licenses/by/3.0/](creativecommons.org/licenses/by/3.0/) or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
 
 **Disclaimer**
 
@@ -668,7 +668,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 
 ## Signal Integrity
 
-As part of the first version of GPP, signal integrity will be accomplished in concert with the [Accountability Platform.](#https://iabtechlab.com/wp-content/uploads/2021/03/iabtechlab_accountability_platform_rfc_2021_march.pdf) The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
+As part of the first version of GPP, signal integrity will be accomplished in concert with the [Accountability Platform.](https://iabtechlab.com/wp-content/uploads/2021/03/iabtechlab_accountability_platform_rfc_2021_march.pdf) The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
 
 
 ## GPP Identifier <a name="gppstring"></a>
@@ -684,10 +684,10 @@ Registration to participate in a specific framework is governed by the local jur
 Vendors should decide which framework signals they plan to participate in to determine which list registrations may be required. If approved, a GPP Identifier will be assigned. 
 
 
-Vendors looking to register for the TCF EU GVL or TCF Canada GVL should do so on this [registration portal](#https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [TCF v2 Consent string and vendor list format](#https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
+Vendors looking to register for the TCF EU GVL or TCF Canada GVL should do so on this [registration portal](https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [TCF v2 Consent string and vendor list format](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
 
 
-Vendors looking to sign the LSPA may do so at the [Transparency Center](#https://tools.iabtechlab.com/lspa).  
+Vendors looking to sign the LSPA may do so at the [Transparency Center](https://tools.iabtechlab.com/lspa).  
 
 
 ### I’m a vendor and I already have an GVL ID, is there anything that I need to do?
