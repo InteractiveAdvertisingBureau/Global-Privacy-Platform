@@ -655,9 +655,9 @@ The key names are a combination of the “IABGPP_” prefix followed by the sect
     <td>Full consent string in its encoded form</td>
   </tr>
   <tr>
-    <td><code>IABGPP_GppSid</code></td>
-    <td>Array</td>
-    <td>Section ID(s) considered to be in force </td>
+    <td><code>IABGPP_GppSID</code></td>
+    <td>String</td>
+    <td>Section ID(s) considered to be in force. Multiple IDs are separated by underscore, e.g. “2_3”</td>
    </tr>
   <tr>
     <td><code>IABGPP_[SectionID]_String</code></td>
@@ -996,4 +996,38 @@ if(__gpp)
 }
 ```
 
-How can vendors that use iframes call the CMP API from an iframe?
+## How can vendors that use iframes call the CMP API from an iframe?
+
+### Using postmessage
+
+The `window.postMessage()` method may be used from a child iframe to make requests from a parent or any ancestor frame's CMP API. To locate an ancestor frame capable of responding to `postMessage()` CMP API calls, search for an ancestor frame that has a child frame named `'__gppapiLocator'`.
+
+CMPs shall create an event listener to handle `postMessage` requests via the CMP `“stub”` API script so that `postMessage` events can be queued and processed by the full-implementation of the CMP API as soon as it is initialized.
+
+### Sent Message
+
+The sent message shall follow the form outlined below. The command, parameter and version object properties correspond to their namesake parameters defined as method argument parameters for `__gppapi()` method. The “sent message” also requires a unique `callId` property to help match the request with a response. The callId property shall be either a string or a number, but the calling script shall not use the two types interchangeably.
+
+
+``` javascript
+{
+  __gppapiCall: {
+    command: "command",
+    parameter: parameter,
+    version: version
+  }
+}
+```
+
+The `event.data` object payload shall follow the form outlined below. The `returnValue` object property shall be the corresponding TC data object for the `command` used upon sending the “sent message”. The `success` object property shall reflect the `__tcfapi()` success callback argument and the `callId` will correspond to the “sent message” unique id passed in the callId property.
+
+
+``` javascript
+{
+  __gppapiReturn: {
+   returnValue: returnValue,
+   success: boolean,
+   callId: uniqueId
+  }
+}
+```
