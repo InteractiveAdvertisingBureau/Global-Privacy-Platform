@@ -613,13 +613,13 @@ Using the same cases as in the Header Examples above, the following examples pro
     <td><strong>GPP String Example 1</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2</td>
+<td>Conditions:<br>- Version 1 of the GPP string is being used<br>- Includes the section for EU TCF v2</td>
   </tr>
   <tr>
-  <td>Encoded header:<br><br>DBABMA</td>
+  <td>Encoded header:<br>```DBABMA```</td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</td>
+	<td>Full GPP String:<br><br>```DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA```</td>
 </td>
 </td>
 </tr>
