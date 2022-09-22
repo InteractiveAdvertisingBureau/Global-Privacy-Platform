@@ -38,7 +38,7 @@ Updates were made to existing Tech Lab standards to support the Global Privacy P
 
 Given limited adoption of the AdCom / OpenRTB 3.0 specification, GPP assumes the use of OpenRTB 2.x. 
 
-- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will begin as an extension within the Regs object. For additional guidance, see the [OpenRTB community extensions Github repo](#https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) . ""THIS IS GIVING ME A PROBLEM"
+- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will begin as an extension within the Regs object. For additional guidance, see the [OpenRTB community extensions Github repo](https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) . 
 
 ## About the Global Privacy Platform
 
@@ -66,7 +66,7 @@ THE STANDARDS, THE SPECIFICATIONS, THE MEASUREMENT GUIDELINES, AND ANY OTHER MAT
 
 ## About the Global Privacy Platform String
 
-In the GPP, a GPP String is used to encapsulate relevant details about how transparency and consent was established and encoded as it applies for each supported regional or other signal. This document specifies how that string must be formatted and how it must be used.
+In the GPP, a GPP String is used to encapsulate relevant details about how transparency and consent was established and encoded as it applies for each [supported regional or other signal](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections). This document specifies how that string must be formatted and how it must be used.
 
 # What purpose does a GPP String serve?
 
@@ -87,7 +87,7 @@ Section specifications will clearly define which of the above data are represent
 3. Where applicable to the jurisdiction or region, the vendor ID's and data processing purposes as enumerated in the TCF v2.0 GVL can be reused in whole or adapted. 
 
 
-See “Discrete Sections” below for more detail.
+See [“Discrete Sections”](#discretesections) below for more detail.
 
 
 # Who should create a GPP String?
@@ -101,7 +101,7 @@ Digital property owners or CMPs are responsible for generating, persisting, and 
 When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1-val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
 
 
-Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the GPP String, and applicable section, are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macro `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. The applicable section must also be inserted, where the ${GPP_SID}macro is present.
+Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable section, are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macro `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. The applicable section must also be inserted, where the ${GPP_SID}macro is present.
 
 
 For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
@@ -181,7 +181,7 @@ The creator of the URL should ensure these parameters are added only once, and a
 </table>
 
 
-### Fibonacci Encoding to Deal with String Length
+### Fibonacci Encoding to Deal with String Length <a name="fibonacci"></a>
 
 There are cases in existing privacy signals where strings are too long for certain applications. Since the GPP expects additional Discrete Sections to be added, it is reasonable to expect that string length will continue be a concern. To optimize this, we look to Fibonacci coding. 
 
@@ -245,7 +245,7 @@ The advantage of this is, that a sequence of numbers can be encoded into a seque
 
 The encoding and decoding is simple and can be done in basically all development languages.
 
-(From [Wikipedia](#https://en.wikipedia.org/wiki/Fibonacci_coding))
+(From [Wikipedia](https://en.wikipedia.org/wiki/Fibonacci_coding))
 
 To encode an integer *N*:
 
@@ -282,14 +282,14 @@ The string must contain a header and applicable discrete section(s):
 
 **Header**
 
-The header is always required and comes first. The purpose of the Header is to identify which transparency and control signals are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions and counties and their jurisdictions. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](#https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
+The header is always required and comes first. The purpose of the Header is to identify which transparency and control signals are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions and counties and their jurisdictions. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
 
-The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](#https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
+The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
 
 
 **Section IDs**
 
-Below is an example of how Section IDs are enumerated. For the full list of Section IDs, see [Section information](#https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
+Below is an example of how Section IDs are enumerated. For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
 
 
 <table>
@@ -336,7 +336,7 @@ Below is an example of how Section IDs are enumerated. For the full list of Sect
 
 **Header Encoding**
 
-The Header consists of the following encoded fields and uses Fibonacci encoding. For more information about Fibonacci Encoding, see the “About Fibonacci Encoding” section.
+The Header consists of the following encoded fields and uses Fibonacci encoding. For more information about [Fibonacci Encoding](#fibonacci), see the “About Fibonacci Encoding” section.
 
 
 
@@ -366,7 +366,7 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
  </table>
 
 
-**Header Examples**
+**Header Examples** <a name="header"></a>
 
 <table>
   <tr>
@@ -438,7 +438,7 @@ The Header consists of the following encoded fields and uses Fibonacci encoding.
  </table>
 
 
-#### Discrete Sections
+#### Discrete Sections <a name="discretesections"></a>
 
 Discrete sections are used to support multiple signals from one architecture while maintaining the ability to modify each section as needed. 
 
@@ -592,7 +592,7 @@ In order to be included as a supported GPP signal, Other Signals must meet the f
 
 ### Global Privacy Control 
 
-Global Privacy Control or GPC [defines itself](#https://globalprivacycontrol.github.io/gpc-spec/) as “a signal, transmitted over HTTP and through the DOM, that conveys a person's request to websites and services to not sell or share their personal information with third parties.” It is a result of the California Consumer Privacy Act (CCPA) and has subsequently grown in popularity as other US States debate and enact privacy laws and even US Federal lawmakers weigh privacy legislation options. It is also supported by a number of different market participants including some IAB Tech Lab members.
+Global Privacy Control or GPC [defines itself](https://globalprivacycontrol.github.io/gpc-spec/) as “a signal, transmitted over HTTP and through the DOM, that conveys a person's request to websites and services to not sell or share their personal information with third parties.” It is a result of the California Consumer Privacy Act (CCPA) and has subsequently grown in popularity as other US States debate and enact privacy laws and even US Federal lawmakers weigh privacy legislation options. It is also supported by a number of different market participants including some IAB Tech Lab members.
 
 
 
@@ -605,7 +605,7 @@ You can find all section specific details in the discrete section’s documentat
 
 ## GPP String Examples
 
-Using the same cases as in the Header Examples above, the following examples provide a sample GPP string that represents the stated conditions.
+Using the same cases as in the [Header Examples](#header) above, the following examples provide a sample GPP string that represents the stated conditions.
 
 
 <table>
@@ -671,7 +671,7 @@ Using the same cases as in the Header Examples above, the following examples pro
 As part of the first version of GPP, signal integrity will be accomplished in concert with the [Accountability Platform.](#https://iabtechlab.com/wp-content/uploads/2021/03/iabtechlab_accountability_platform_rfc_2021_march.pdf) The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
 
 
-## GPP Identifier 
+## GPP Identifier <a name="gppstring"></a>
 
 Callers needing to consume privacy signals with business entity level disclosures across multiple markets need the ability to do so with the assurance that business entities do not have duplicate or overlapping IDs. There are already existing vendor lists (see note with non-exhaustive list below) on which the same business entity may appear. Frameworks that are supported by the GPP must retrieve their IDs from the IAB Tech Lab Transparency Center. This will ensure the creation of concurrent non-overlapping vendor IDs. 
 
