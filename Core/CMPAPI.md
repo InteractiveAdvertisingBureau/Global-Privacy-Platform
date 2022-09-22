@@ -358,6 +358,7 @@ The `removeEventListener` command can be used to remove an existing event listen
   <tr>
     <td><code>return</code></td>
     <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMPAPI.md#eventlistener-"> EventListener object</td>
+ <td></td>
      </td>
      </td>
   </tr>
@@ -403,7 +404,7 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
   <tr>
     <td><code>return</code></td>
     <td>boolean or null</td>
-    <td>**True** if the specified section is present, otherwise **false**</td>
+    <td>True if the specified section is present, otherwise false</td>
      </td>
      </td>
   </tr>
@@ -583,9 +584,9 @@ Example command xyz
 
 Command:     prefix.command
 
-Callback:        function (…)    or   “not used”
+Callback:    function (…)    or   “not used”
 
-Parameter:     data type         or    “not used”
+Parameter:   data type       or   “not used”
 
 A description of the command, what it does, what it’s meant for, when to use it and how.
 ```
@@ -597,9 +598,9 @@ getVendorList
 
 Command:     iabtcfeuv2.getVendorList
 
-Callback:        function(gvl: GlobalVendorList, success: boolean)
+Callback:    function(gvl: GlobalVendorList, success: boolean)
 
-Parameter:     (optional) int or string
+Parameter:   (optional) int or string
 
 Calling with this command and a valid vendorListVersion parameter shall return a GlobalVendorList object to the callback function….
 ```
