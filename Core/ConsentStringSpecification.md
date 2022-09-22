@@ -613,13 +613,18 @@ Using the same cases as in the [Header Examples](#header) above, the following e
     <td><strong>GPP String Example 1</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br>- Version 1 of the GPP string is being used<br>- Includes the section for EU TCF v2</td>
+ <td>Conditions:
+	<ul>
+	<li>Version 1 of the GPP string is being used</li>
+	<li>Includes the section for EU TCF v2</li>
+	  </ul>
+	</td>
   </tr>
   <tr>
-  <td>Encoded header:<br>```DBABMA```</td>
+  <td>Encoded header:<br>`DBABMA`</td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>```DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA```</td>
+	<td>Full GPP String:<br><br>`DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA`</td>
 </td>
 </td>
 </tr>
@@ -632,13 +637,18 @@ Using the same cases as in the [Header Examples](#header) above, the following e
     <td><strong>GPP String Example 2</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>Includes the section for EU TCF v2 and US Privacy</td>
+<td>Conditions:
+	<ul>
+		<li>Version 1 of the GPP string is being used</li>
+		<li>Includes the section for EU TCF v2 and US Privacy</li>
+	<ul>
+</td>
   </tr>
   <tr>
-  <td>Encoded header:<br><br>DBACNYA</td>
+  <td>Encoded header:<br><br>`DBACNYA`</td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
+	<td>Full GPP String:<br><br>`DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN`</td>
 </td>
 </td>
 </tr>
@@ -651,7 +661,12 @@ Using the same cases as in the [Header Examples](#header) above, the following e
     <td><strong>GPP String Example 3</strong></td>
   </tr>
   <tr>
-<td>Conditions:<br><br>Version 1 of the GPP string is being used<br><br>The GPP string includes the sections for Canadian TCF and US Privacy</td>
+<td>Conditions:
+	<ul>
+		<li>Version 1 of the GPP string is being used</li>
+		<li>The GPP string includes the sections for Canadian TCF and US Privacy</li>
+	<ul>
+</td>
   </tr>
   <tr>
   <td>Encoded header:<br><br>DBABjw</td>
