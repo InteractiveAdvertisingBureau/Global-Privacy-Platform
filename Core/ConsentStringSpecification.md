@@ -398,7 +398,7 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
     <td><code>Full header bit string: 000011 000001 000000000001 0 011</code></td>
  </tr>
   <tr>  
-    <td>Encoded header: DBABMA</td>
+	  <td>Encoded header: <code>DBABMA</code></td>
      </td>
      </td>
   </tr>
@@ -440,7 +440,7 @@ Based on the Section ID table above, the Section ID for EU TCF is 2 and the Sect
     <td><code>Full header bit string: 000011 000001 000000000010 0 011 0 1011</code></td>
  </tr>
   <tr>  
-    <td>Encoded header: DBACNYA</td>
+	  <td>Encoded header: <code>DBACNYA</code></td>
      </td>
      </td>
   </tr>
@@ -482,7 +482,7 @@ Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and t
     <td><code>Full bit string: 000011 000001 000000000001 1 00011 11</code></td>
  </tr>
   <tr>  
-    <td>Encoded header: DBABjw</td>
+	  <td>Encoded header: <code>DBABjw</code></td>
      </td>
      </td>
   </tr>
@@ -712,10 +712,10 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	</td>
   </tr>
   <tr>
-  <td>Encoded header:<br>DBABMA</td>
+	  <td>Encoded header:<br><code>DBABMA</code></td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</td>
+		<td>Full GPP String:<br><br><code>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
 </td>
 </td>
 </tr>
@@ -736,10 +736,10 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 </td>
   </tr>
   <tr>
-  <td>Encoded header:<br><br>`DBACNYA`</td>
+	  <td>Encoded header:<br><br><code>DBACNYA</code></td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
+		<td>Full GPP String:<br><br><code>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
 </td>
 </td>
 </tr>
@@ -760,10 +760,10 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 </td>
   </tr>
   <tr>
-  <td>Encoded header:<br><br>DBABjw</td>
+	  <td>Encoded header:<br><br><code>DBABjw</code></td>
 	</tr>
 	<tr>
-	<td>Full GPP String:<br><br>DBABjw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</td>
+		<td>Full GPP String:<br><br><code>DBABjw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
 </td>
 </td>
 </tr>
