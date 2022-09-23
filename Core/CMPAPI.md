@@ -18,11 +18,11 @@
 
 
 ## Introduction
-This is one of the IAB Tech Lab Global Privacy Platform Specifications. It defines the API for Consent Management Providers (CMPs). The CMP API is the interface a CMP provides to callers (web and in-app) to access information regarding the privacy preferences disclosed and obtained from the end user by the CMP. Both required functionality that the CMP must provide and optional features are described.
+This is one of the IAB Tech Lab Global Privacy Platform Specifications. It defines the API for Consent Management Platforms (CMPs). The CMP API is the interface a CMP provides to callers (web and in-app) to access information regarding the privacy preferences disclosed and obtained from the end user by the CMP. Both required functionality that the CMP must provide and optional features are described.
 
 
 ## About the Global Privacy Platform
-The Global Privacy Platform (GPP) has the objective to enable all parties in the digital advertising chain to comply with regional privacy regulations more easily. It is a transport layer that communicates user consent and preference signaling throughout the digital supply chain that supports existing consent formats and is flexible enough to support new markets with unique needs. IAB Tech Lab stewards the development of these technical specifications.
+The Global Privacy Platform (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
 
 
 ## License
@@ -45,11 +45,11 @@ Learn more about IAB Tech Lab here: https://www.iabtechlab.com/
 
 ### What does the CMP API support?
 
-Consent Management Providers (CMPs) provide a user interface to establish transparency to users, and obtain consent or register objections from end users, and capture their preferences in Signals. These Signals are packaged in a standardized, easily communicated payload called a GPP String. The CMP API provides a standardized means for parties, such as the hosting publisher or an advertising vendor, to access these preferences managed by the CMP.
+Consent Management Platforms (CMPs) provide a user interface to establish transparency to users, and obtain consent or register objections from end users, and capture their preferences in signals. These signals are packaged in a standardized, easily communicated payload called a GPP String. The CMP API provides a standardized means for parties, such as the hosting publisher or an advertising vendor, to access these preferences managed by the CMP.
 
 Using the API, scripts may obtain the GPP String payload and the information it contains, which is ready to use without having to understand how to “unpack” the payload format. This makes it easy to make immediate data processing decisions based on the returned information.
 
-This API allows for accessing consent information across legislations, regulations, and standards. It provides a common interface that can be used to access underlying APIs such as the [IAB TCF](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md) and [USPrivacy](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/USP%20API.md). 
+This API allows for accessing signals across legislations, regulations, and standards. It provides a common interface that can be used to access underlying APIs such as the [IAB TCF](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md) and [USPrivacy](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/USP%20API.md). 
 
 ### API Prefixes
 
@@ -801,7 +801,7 @@ On both Android OS and iOS, the vendor can be notified when the values of the sh
 On Android OS, the GPP data and GPP string shall be stored in the default Shared Preferences for the application context. This can be accessed using the `getDefaultSharedPreferences` method from the *android.preference.PreferenceManager* class using the application context. The GPP data values can be retrieved from the application Shared Preferences by key name using the get methods on the *android.content.SharedPreferences* class.
 
 
-## CTV Details
+## Connected TV (CTV) Details
 
 How is a CMP used in the CTV context?
 
