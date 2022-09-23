@@ -31,18 +31,18 @@ This document is one of the IAB Tech Lab Global Privacy Platform Specifications.
 
 # Updates to Standards Needed to Support GPP
 
-Updates were made to existing Tech Lab standards to support the Global Privacy Platform. These updates are based on industry consensus, driven by relevant IAB Tech Lab working groups, including the Global Privacy working group and Programmatic Supply Chain working group. They include:
+Updates were made to existing IAB Tech Lab standards to support the Global Privacy Platform. These updates are based on industry consensus, driven by relevant IAB Tech Lab working groups, including the Global Privacy Working Group and Programmatic Supply Chain Working Group. They include:
 
 
-**OpenRTB Community Extensions:** 
+**OpenRTB Attributes:** 
 
-Given limited adoption of the AdCom / OpenRTB 3.0 specification, GPP assumes the use of OpenRTB 2.x. 
+GPP assumes the use of OpenRTB 2.x. 
 
-- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will begin as an extension within the Regs object. For additional guidance, see the [OpenRTB community extensions Github repo](https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) . 
+- Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will be included in the Regs object in the November 2022 release. See this [document](https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) for approved design prior to release.
 
 ## About the Global Privacy Platform
 
-The Global Privacy Platform (GPP) has the objective to enable all parties in the digital advertising chain to comply with regional privacy regulations more easily. It is a transport layer that communicates user consent and preference signaling throughout the digital supply chain that supports existing consent formats and is flexible enough to support new markets with unique needs. IAB Tech Lab stewards the development of these technical specifications.
+The Global Privacy Platform (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
 
 
 ## About IAB Tech Lab
@@ -66,11 +66,11 @@ THE STANDARDS, THE SPECIFICATIONS, THE MEASUREMENT GUIDELINES, AND ANY OTHER MAT
 
 ## About the Global Privacy Platform String
 
-In the GPP, a GPP String is used to encapsulate relevant details about how transparency and consent was established and encoded as it applies for each [supported regional or other signal](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections). This document specifies how that string must be formatted and how it must be used.
+In the GPP, a GPP String is used to encapsulate relevant details about transparency and consumer choice and encoded as it applies for each [supported regional or other signal](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections). This document specifies how that string must be formatted and how it must be used.
 
 # What purpose does a GPP String serve?
 
-A GPP String’s primary purpose is to encapsulate and encode all the information disclosed to a user and the expression of their preferences for their personal data processing, for all applicable regions. Using a Consent Management Platform (CMP), the information is captured into an encoded and compact HTTP-transferable string. This string enables communication of transparency and consent information to entities that process a user’s personal data. Vendors decode a GPP String to determine whether they have the necessary legal bases to process a user’s personal data for their purposes. The concise string data format enables a CMP to persist and retrieve a user’s preferences any time they’re needed as well as transfer that information to any vendors who need it.
+A GPP String’s primary purpose is to encapsulate and encode all the information disclosed to a user and the expression of their choices, for all applicable regions. Using a Consent Management Platform (CMP), the information is captured into an encoded and compact HTTP-transferable string. This string enables communication of the consumer's choices from sites and apps to ad tech providers. Ad tech providers decode a GPP String to determine whether they have the necessary requirements to process a user’s personal data for their purposes. 
 
 # What information is stored in a GPP String?
 
@@ -81,7 +81,7 @@ Version 1 of the GPP String contains the following information:
 3. **Restrictions:** possible additional legal, publisher, or framework restrictions
 
 
-Section specifications will clearly define which of the above data are represented, and in what form. Whenever possible, the various technical enumerations that have been developed for TCF v2.0 can be used directly or adapted: 
+Section specifications will clearly define which of the above data are represented, and in what form. Whenever possible, the various technical enumerations that were developed for TCF v2.0 have been used directly or adapted: 
 1. Integer identifiers for version & screens
 2. CMP ID’s from TCF v2.0
 3. Where applicable to the jurisdiction or region, the vendor ID's and data processing purposes as enumerated in the TCF v2.0 GVL can be reused in whole or adapted. 
@@ -95,95 +95,10 @@ See [“Discrete Sections”](#discretesections) below for more detail.
 Digital property owners or CMPs are responsible for generating, persisting, and passing the GPP String. Vendors or any other third-party service providers must neither create nor alter GPP Strings.
 
 
-# How does a URL-based service process the GPP String when it can’t execute Javascript?
-
-
-When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1-val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
-
-
-Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable section, are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macro `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. The applicable section must also be inserted, where the ${GPP_SID}macro is present.
-
-
-For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
-
-
-The resulting URL is: 
-`http://vendor-a.com/key1-val1&key2=val2&gpp=${GPP_STRING_123}&gpp_sid=${GPP_SID}`
-
-
-If the GPP String is: 
-`DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN`
-
-
-Then the caller replaces the macro in the URL with the actual GPP String so that the originally placed pixel containing the macro is modified as follows when making the call to the specified server.
- 
- 
-`http://vendor-a.com/key1=val1&key2=val2&gpp=DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN&gpp_sid=2`
-
-GPP Strings must always be propagated as is, and not modified. Additional URLs in the supply chain are addressed the same way with remaining vendors. 
-
-The available URL parameters and macros to relay information down the supply chain are listed in the following section.
-
-
-**Full GPP String passing**
-
-Services that are called using a URL from the user's browser, like cookie staplers, user id associators, and tracking pixels (the 'callee') are passed as macros within the URL and formatted as:
-
-` &url_parameter=${macro_name}`
-
-The supported URL parameters and the corresponding macros are defined below:
-
-<table>
-  <tr>
-    <td><strong>URL Parameter</strong></td>
-	  <td><strong>Corresponding Macro</strong></td>
-    <td><strong>Representation in URL</strong></td>
-  </tr>
-  <tr>
-	  <td>gpp</td>    
-<td><code>GPP_STRING_XXXXX (XXXXX is numeric GPP ID - the ID of the vendor on the GPP ID List who is expecting this URL call)</code></td>
-    <td>&gpp=${GPP_STRING_123}</td>
-    </tr>
-  <tr>
-	  <td>gpp_sid</td>    
-<td><code>GPP_SID</code></td>
-    <td>&gpp_sid=${GPP_SID}</td>
-   </td>
-   </td>
-  </tr>
-</table>
-
-
-
-The service making the call must replace the macros with appropriate values described in the table below. For macro ${GPP_STRING_XXXXX}, the service making the call must also check that the macro name contains a valid GPP ID before replacing the macro. 
-
-
-The creator of the URL should ensure these parameters are added only once, and are passed to services which are expecting them and can handle them properly.
-
-<table>
-  <tr>
-    <td><strong>Macro</strong></td>
-	  <td><strong>Possible Values</strong></td>
-    <td><strong>Purpose</strong></td>
-  </tr>
-  <tr>
-	  <td>${GPP_STRING_XXXXX}</td>    
-<td><code>Url-safe base64-encoded GPP string.</code></td>
-    <td>Encodes the GPP string, as obtained from the CMP JS API or OpenRTB</td>
-    </tr>
-  <tr>
-	  <td>${GPP_SID}</td>    
-<td><code>The section ID(s) in force for the current transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values, separated by a comma.</code></td>
-    <td>As the GPP String may encode user preferences for multiple jurisdictions, this field indicates to the callee which section of the string is considered “in force” by the caller. This should match the value returned by the CMP API (see below).</td>
-   </td>
-   </td>
-  </tr>
-</table>
-
 
 ### Fibonacci Encoding to Deal with String Length <a name="fibonacci"></a>
 
-There are cases in existing privacy signals where strings are too long for certain applications. Since the GPP expects additional Discrete Sections to be added, it is reasonable to expect that string length will continue be a concern. To optimize this, we look to Fibonacci coding. 
+There are cases in existing privacy signals where strings are too long for certain applications. Since the GPP expects additional discrete sections to be added, it is reasonable to expect that string length will continue to be a concern. To optimize this, we look to Fibonacci coding. 
 
 **About Fibonacci Encoding**
 
@@ -262,7 +177,7 @@ To decode a code word, remove the final "1", assign the remaining values 1,2,3,5
 The following details provide information on creating, storing, and managing a GPP String. The basic steps for creating a GPP String are as follows: 
 
 1. **Create discrete sections.** For each section: 
- - For sections that use the recommended base64-websafe encoding, create a bit representation of the Section’s header (if it exists) and each sub-section. Then, convert them to base64-websafe without padding (i.e. removing “=” at the end) and concatenate the header and all sub-sections using the “.” (dot) character.
+ - For sections that use the recommended base64-websafe encoding, create a bit representation of the section’s header (if it exists) and each sub-section. Then, convert them to base64-websafe without padding (i.e. removing “=” at the end) and concatenate the header and all sub-sections using the “.” (dot) character.
  - For sections that use different encoding, ensure that the data is websafe and does not include the “~” (tilde) character.
 2. **Create header section.** Create a bit representation of the GPP header section. Include all IDs for discrete sections in a sorted order. Then, convert it to base64-websafe without padding.
 3. **Concatenate all sections.** Concatenate the GPP-header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter.
@@ -282,14 +197,14 @@ The string must contain a header and applicable discrete section(s):
 
 **Header**
 
-The header is always required and comes first. The purpose of the Header is to identify which transparency and control signals are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions and counties and their jurisdictions. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
+The header is always required and comes first. The purpose of the Header is to identify which sections are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions, countries or policies. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
 
 The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
 
 
 **Section IDs**
 
-Below is an example of how Section IDs are enumerated. For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
+For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
 
 
 <table>
@@ -336,7 +251,7 @@ Below is an example of how Section IDs are enumerated. For the full list of Sect
 
 **Header Encoding**
 
-The Header consists of the following encoded fields and uses Fibonacci encoding. For more information about [Fibonacci Encoding](#fibonacci), see the “About Fibonacci Encoding” section.
+The Header is always required and always comes first. It consists of the following encoded fields and uses Fibonacci encoding. For more information about [Fibonacci Encoding](#fibonacci), see the “About Fibonacci Encoding” section.
 
 
 
@@ -476,7 +391,7 @@ Based on the Section ID table above, the Section ID for EU TCF is 2 and the Sect
 				<li>Item 1 offset to last ID = 11 </li>
 		</ul>
 	</ul>
-Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the Data Types table for more detail on these fields.</td>
+Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the <code>Data Types table</code> for more detail on these fields.</td>
   </tr>
   <tr>
     <td><code>Full bit string: 000011 000001 000000000001 1 00011 11</code></td>
@@ -692,7 +607,7 @@ GPC is signaled in user agent headers (Sec-GPC) and a simple javascript API (glo
 
 ## Where can I find specific section details?
 
-You can find all section specific details in the discrete section’s documentation.
+You can find all section specific details in the discrete section’s [documentation](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections).
 
 ## GPP String Examples
 
@@ -771,7 +686,6 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 
 
 
-
 ## Signal Integrity
 
 As part of the first version of GPP, signal integrity will be accomplished in concert with the [Accountability Platform.](https://iabtechlab.com/wp-content/uploads/2021/03/iabtechlab_accountability_platform_rfc_2021_march.pdf) The Global Privacy Working Group is committed to introducing signal integrity technology for GPP in future versions. 
@@ -793,7 +707,7 @@ Vendors should decide which framework signals they plan to participate in to det
 Vendors looking to register for the TCF EU GVL or TCF Canada GVL should do so on this [registration portal](https://register.consensu.org/). Additional details on the Global Vendor List can be found in the [TCF v2 Consent string and vendor list format](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list) specification.
 
 
-Vendors looking to sign the LSPA may do so at the [Transparency Center](https://tools.iabtechlab.com/lspa).  
+Vendors looking to sign the MSPA may do so at the [Transparency Center](https://tools.iabtechlab.com/lspa).  
 
 
 ### I’m a vendor and I already have an GVL ID, is there anything that I need to do?
@@ -802,5 +716,91 @@ If you are a vendor with a GVL ID for a specific framework, you already have a G
 
 
 
+ # How does a URL-based service process the GPP String when it can’t execute Javascript?
+
+
+When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1-val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
+
+
+Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable GPP Section IDs (SID), are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macros:
+
+- `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. - The applicable GPP Section ID must also be inserted, where the ${GPP_SID}macro is present.
+
+
+For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
+
+
+The resulting URL is: 
+`http://vendor-a.com/key1-val1&key2=val2&gpp=${GPP_STRING_123}&gpp_sid=${GPP_SID}`
+
+
+If the GPP String is: 
+`DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN`
+
+
+Then the caller replaces the macro in the URL with the actual GPP String so that the originally placed pixel containing the macro is modified as follows when making the call to the specified server.
  
+ 
+`http://vendor-a.com/key1=val1&key2=val2&gpp=DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN&gpp_sid=2`
+
+GPP Strings must always be propagated as is, and not modified. Additional URLs in the supply chain are addressed the same way with remaining vendors. 
+
+The available URL parameters and macros to relay information down the supply chain are listed in the following section.
+
+
+**Full GPP String passing**
+
+Services that are called using a URL from the user's browser, like cookie staplers, user id associators, and tracking pixels (the 'callee') are passed as macros within the URL and formatted as:
+
+` &url_parameter=${macro_name}`
+
+The supported URL parameters and the corresponding macros are defined below:
+
+<table>
+  <tr>
+    <td><strong>URL Parameter</strong></td>
+	  <td><strong>Corresponding Macro</strong></td>
+    <td><strong>Representation in URL</strong></td>
+  </tr>
+  <tr>
+	  <td>gpp</td>    
+<td><code>GPP_STRING_XXXXX (XXXXX is numeric GPP ID - the ID of the vendor on the GPP ID List who is expecting this URL call)</code></td>
+    <td>&gpp=${GPP_STRING_123}</td>
+    </tr>
+  <tr>
+	  <td>gpp_sid</td>    
+<td><code>GPP_SID</code></td>
+    <td>&gpp_sid=${GPP_SID}</td>
+   </td>
+   </td>
+  </tr>
+</table>
+
+
+
+The service making the call must replace the macros with appropriate values described in the table below. For macro ${GPP_STRING_XXXXX}, the service making the call must also check that the macro name contains a valid GPP ID before replacing the macro. 
+
+
+The creator of the URL should ensure these parameters are added only once, and are passed to services which are expecting them and can handle them properly.
+
+<table>
+  <tr>
+    <td><strong>Macro</strong></td>
+	  <td><strong>Possible Values</strong></td>
+    <td><strong>Purpose</strong></td>
+  </tr>
+  <tr>
+	  <td>${GPP_STRING_XXXXX}</td>    
+<td><code>Url-safe base64-encoded GPP string.</code></td>
+    <td>Encodes the GPP string, as obtained from the CMP JS API or OpenRTB</td>
+    </tr>
+  <tr>
+	  <td>${GPP_SID}</td>    
+<td><code>The section ID(s) in force for the current transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values, separated by a comma.</code></td>
+    <td>As the GPP String may encode user preferences for multiple jurisdictions, this field indicates to the callee which section of the string is considered “in force” by the caller. This should match the value returned by the CMP API (see below).</td>
+   </td>
+   </td>
+  </tr>
+</table>
+
 
