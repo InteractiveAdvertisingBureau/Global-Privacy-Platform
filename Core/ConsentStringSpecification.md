@@ -207,47 +207,6 @@ The header contains only a GPP version, the section ID(s) and index of the place
 For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
 
 
-<table>
-  <tr>
-    <td><strong>Section ID</strong></td>
-	  <td><strong>Description</strong></td>
-  </tr>
-  <tr>
-	  <td>1</td>    
-<td><code>EU TCF v1 section (deprecated)</code></td>
-  </tr>
-  <tr>
-	  <td>2</td>    
-<td><code>EU TCF v2 section (see note below)</code></td>
-     </tr>
-  <tr>
-	  <td>3</td>    
-<td><code>GPP Header section (see note below)</code></td>
-   </tr>
-  <tr>
-	  <td>4</td>    
-<td><code>GPP signal integrity section</code></td>
-    </tr>
-  <tr>
-	  <td>5</td>    
-<td><code>Canadian TCF section</code></td>
-     </tr>
-  <tr>
-	  <td>6</td>    
-<td><code>USPrivacy String section</code></td>
-   </tr>
-  <tr>
-	  <td>...</td>    
-<td><code>...</code></td>
-  </td>
-  </td>
-  </tr>
-  </table>
-	
-
-
-**Note:** In order to make it simple to distinguish a GPP string from the existing IAB Europe TCF  v2 TC String the first space in the header should be the version. This would allow current implementations to more easily understand and adapt to a GPP string. If the reader of a string finds “C” as the first character this indicates the string is IAB Europe’s TCF v2.0 ("2" in bits corresponds to letter "C" in base64). If the reader of a string finds a “D” as the first character this indicates the string is GPP ("3" in bits corresponds to letter "D" in base64). 
-
 
 **Header Encoding**
 
