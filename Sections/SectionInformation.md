@@ -29,12 +29,12 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>2</code></td>
     <td>tcfeuv2</td>
-    <td>EU TCF v2 section (see note below)</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/EEA">EU TCF v2 section</a> (see note below)</td>
   </tr>
   <tr>
     <td><code>3</code></td>
     <td></td>
-    <td>GPP Header section (see note below)</td>
+    <td>GPP Header section (REQUIRED, see note below)</td>
   </tr>
   <tr>
     <td><code>4</code></td>
@@ -44,7 +44,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>5</code></td>
     <td>tcfcav1</td>
-    <td>Canadian TCF section</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">Canadian TCF section</a></td>
   </tr>
   <tr>
     <td><code>6</code></td>
@@ -84,4 +84,6 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
      </td>
   </tr>
 </table>
+
+>**Note:** In order to make it simple to distinguish a GPP string from the existing IAB Europe TCF  v2 TC String the first space in the header should be the version. This would allow current implementations to more easily understand and adapt to a GPP string. If the reader of a string finds “C” as the first character this indicates the string is IAB Europe’s TCF v2.0 ("2" in bits corresponds to letter "C" in base64). If the reader of a string finds a “D” as the first character this indicates the string is GPP ("3" in bits corresponds to letter "D" in base64). 
 
