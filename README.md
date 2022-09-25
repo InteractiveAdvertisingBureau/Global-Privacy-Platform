@@ -1,5 +1,14 @@
 # Global-Privacy-Platform
-IAB Tech Lab Global Privacy Platform specification
+
+Hosted in this repository are the technical specifications for the IAB Global Privacy Platform (GPP). The relevant documents are:
+
+- [Global Privacy Platform Consent String Specification](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md)
+- [Consent Management API Specification](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md)
+- [Supported Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
+
+### About the Global Privacy Platform
+
+The Global Privacy Platform (GPP) has the objective to enable all parties in the digital advertising chain to comply with regional privacy regulations more easily. It is a transport layer that communicates user consent and preference signaling throughout the digital supply chain that supports existing consent formats and is flexible enough to support new markets with unique needs. IAB Tech Lab stewards the development of these technical specifications.
 
 ### About IAB Tech Lab <a name="about-iabtechlab"></a>
 
@@ -16,7 +25,7 @@ IAB Tech Lab's Global Privacy Working Group members provide contributions to thi
 
 Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License.   To view a copy of this license, visit [creativecommons.org/licenses/by/3.0/](http://creativecommons.org/licenses/by/3.0/) or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
 
-
+![](https://drive.google.com/uc?id=1cbwEGlb8S69SndIDoHnvc5_3TfmkGM7R)
 
 #### Disclaimer
 
