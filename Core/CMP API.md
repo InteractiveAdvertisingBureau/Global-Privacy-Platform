@@ -21,11 +21,11 @@
 This is one of the IAB Tech Lab Global Privacy Platform Specifications. It defines the API for Consent Management Platforms (CMPs). The CMP API is the interface a CMP provides to callers (web and in-app) to access information regarding the privacy preferences disclosed and obtained from the end user by the CMP. Both required functionality that the CMP must provide and optional features are described.
 
 
-## About the Global Privacy Platform
+### About the Global Privacy Platform
 The Global Privacy Platform (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
 
 
-## License
+### License
 Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit creativecommons.org/licenses/by/3.0/ or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
 
 
@@ -51,7 +51,7 @@ Using the API, scripts may obtain the GPP String payload and the information it 
 
 This API allows for accessing signals across legislations, regulations, and standards. It provides a common interface that can be used to access underlying APIs such as the [IAB TCF](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md) and [USPrivacy](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/USP%20API.md). 
 
-### API Prefixes
+#### API Prefixes
 
 In order to distinguish between the different underlying APIs, each API will be assigned a prefix. A complete list of available API prefixes can be found in the [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information).
 
@@ -74,7 +74,7 @@ Example API prefixes:
      </tr>
   <tr>
 	  <td>IAB TCF v2 (Canada)</td>    
-<td><code>tcfeuv1 (no longer used)</code></td>
+<td><code>tcfeuv1</code></td>
    </tr>
   <tr>
 	  <td>IAB CCPA/USP v1</td>    
@@ -88,26 +88,27 @@ Example API prefixes:
 
 
 Every consent manager must provide the following API function: 
-__gpp(command, callback, parameter, [version])
+
+<code>__gpp(command, callback, parameter, [version])</code>
 
 
 Requirements for the interface: 
-- The function __gpp must always be a function and cannot be any other type, even if only temporarily on initialization – the API must be able to handle calls at all times.
+- The function <code>__gpp</code> must always be a function and cannot be any other type, even if only temporarily on initialization – the API must be able to handle calls at all times.
 - The command must always be a string.
 - The callback must be either a function or null.
 - Parameter can be of mixed type depending on used command
 - The return value of the function is of mixed type depending on used command
 - If a CMP cannot immediately respond to a query, the CMP must queue all calls to the function and execute them later. The CMP must execute the commands in the same order in which the function was called.
-- A CMP must support all generic commands. All generic commands must always be available when a __gpp function is present on the page. This means that [“stub code”](#stubcode) that supports all generic commands must be in place before/during CMP load.	
+- A CMP must support all generic commands. All generic commands must always be available when a <code>__gpp</code> function is present on the page. This means that “[stub code](#stubcode)” that supports all generic commands must be in place before/during CMP load.	
 
 
 ### What required API commands must a CMP support? <a name="javascript"></a>
 
 
-All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://iabcom-my.sharepoint.com/:w:/g/personal/rowena_iabtechlab_com/EdQTFH1DFedPjML-DHXrmU0BmDjWq-mAXTit1jmBlN9ySw?e=ymVBnJ). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), [‘getField’](#getfield) and [‘getGPPData’](#getgppdata). 
+All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), [‘getField’](#getfield) and [‘getGPPData’](#getgppdata). 
 
 ________
-### ping <a name="ping"></a>
+#### `ping` <a name="ping"></a>
 
 The `ping` command can be used to determine the state of the CMP. 
 <table>
@@ -148,7 +149,7 @@ The `ping` command can be used to determine the state of the CMP.
 var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
 ```
 
-### PingReturn <a name="pingreturn"></a>
+#### `PingReturn` <a name="pingreturn"></a>
 
 This object contains information about the loading status and configuration of the CMP.
 
@@ -216,7 +217,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
 
 ___________
-### addEventListener <a name="addeventlistener"></a> 
+#### `addEventListener` <a name="addeventlistener"></a> 
 
 The `addEventListener` command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
 
@@ -263,7 +264,7 @@ var EventListenerReturn = __gpp('addEventListener',myFunction);
 > **Note:** The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
 
 
-### EventListener <a name="eventlistenerobject"></a>
+#### `EventListener` <a name="eventlistenerobject"></a>
 
 The EventListener object is defined as: 
 
@@ -326,10 +327,8 @@ A call to the `addEventListener` command must always respond with a return objec
   </tr>
 </table>
 
-
-
-
-### removeEventListener <a name="removeeventlistener"></a>
+______
+#### `removeEventListener` <a name="removeeventlistener"></a>
 
 The `removeEventListener` command can be used to remove an existing event listener.
 
@@ -374,7 +373,7 @@ var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
 ```
 
 __________
-### hasSection <a name="hassection"></a>
+#### `hasSection` <a name="hassection"></a>
 
 The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -420,8 +419,8 @@ A client wants to ask the CMP if there is data for IAB TCF v2.0:
 var b = __gpp('hasSection',null, "tcfeuv2");
 ```
 
-
-### getSection <a name="getsection"></a>
+______
+#### `getSection` <a name="getsection"></a>
 
 The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. Please note that the command may return null when the CMP is not yet loaded. 
 
@@ -466,8 +465,8 @@ For example, client can ask the CMP to get the IAB TCF v2.0 TCData:
 var s = __gpp('getSection',null, "tcfeuv2");
 ```
 
-
-### getField <a name="getfield"></a>
+______
+#### `getField` <a name="getfield"></a>
 
 The `getField` command can be used to receive a specific field out of a certain section. Please note that the command may return `null` when the CMP is not yet loaded. 
 
@@ -510,7 +509,8 @@ For example, a client can ask the CMP to get the last updated field from the IAB
 var s = __gpp('getField',null, "tcfeuv2.LastUpdated");
 ```
 
-### getGPPData <a name="getgppdata"></a>
+______
+#### `getGPPData` <a name="getgppdata"></a>
 
 The `getGPPData` command can be used in order to receive the current version of the (encoded) GPP String (e.g. in order to pass it along the supply chain). Please note that the command may return `null` when the CMP is not yet loaded.
 
@@ -546,8 +546,6 @@ The `getGPPData` command can be used in order to receive the current version of 
  </table>
 
 
-
-
 *Example:*
 
 ```javascript
@@ -555,7 +553,7 @@ var s = __gpp('getGPPData');
 ```
 
 _________
-### GPPData <a name="gppdataobject"></a>
+#### `GPPData` <a name="gppdataobject"></a>
 
 The `GPPData` object contains the parsed header section fields, the currently in force section, and the encoded `GPPString` and is defined as follows: 
 
@@ -575,7 +573,7 @@ gppString: String // the complete encoded GPP string
 }
 ```
 
-## What are non-generic commands?
+### What are non-generic commands?
 
 In addition to the generic commands, a CMP can support other commands that are defined by any GPP section. See the non-generic commands by reviewing a specific sections’ specifications. Any GPP section that wants to make use of the GPP API spec should define a set of commands as follows: 
 
@@ -717,7 +715,7 @@ Valid data types are Integer and String. All other data types such as Boolean, D
 
 *Example key names:*
 
-Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections)
+Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
 
 
 
@@ -727,64 +725,64 @@ Below are example key names from existing APIs. For a complete list of key names
 	  <td><strong>Description</strong></td>
   </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_Version</td>    
-<td><code>IAB TCF EU v2 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string">IAB TCF EU v2 specification)</code></td>
+	  <td><code>IABGPP_TCFEU2_Version</code></td>    
+<td>IAB TCF EU v2 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-core-string">IAB TCF EU v2 specification)</td>
   </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_Created</td>    
-<td><code>IAB TECF EU v2 creation date</code></td>
+	  <td><code>IABGPP_TCFEU2_Created</code></td>    
+<td>IAB TECF EU v2 creation date</td>
      </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_LastUpdated</td>    
-<td><code>IAB TCF EU v2 last update date</code></td>
+	  <td><code>IABGPP_TCFEU2_LastUpdated</code></td>    
+<td>IAB TCF EU v2 last update date</td>
    </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_CmpId</td>    
-<td><code>IAB TCF EU v2 CMP ID</code></td>
+	  <td><code>IABGPP_TCFEU2_CmpId</code></td>    
+<td>IAB TCF EU v2 CMP ID</td>
     </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_CmpVersion</td>    
-<td><code>IAB TECF EU v2 CMP Version </code></td>
+	  <td><code>IABGPP_TCFEU2_CmpVersion</code></td>    
+<td>IAB TECF EU v2 CMP Version</td>
      </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_PurposesConsent</td>    
-<td><code>IAB TCF EU v2 CMP Purpose consents list</code></td>
+	  <td><code>IABGPP_TCFEU2_PurposesConsent</code></td>    
+<td>IAB TCF EU v2 CMP Purpose consents list</td>
    </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_VendorConsent</td>    
-<td><code>IAB TCF EU v2 CMP Vendor consents list</code></td>
+	  <td><code>IABGPP_TCFEU2_VendorConsent</code></td>    
+<td>IAB TCF EU v2 CMP Vendor consents list</td>
     </tr>
   <tr>
-	  <td>IABGPP_TCFEU2_...</td>    
-<td><code>Other IAB TCF EU v2 fields according to IAB TCF UE specification</code></td>
+	  <td><code>IABGPP_TCFEU2_...</code></td>    
+<td>Other IAB TCF EU v2 fields according to IAB TCF UE specification</td>
      </tr>
   <tr>
-	  <td>IABGPP_TCFCA1_Version</td>    
-<td><code>IAB TCF CA v2 Version number (see  <a href="https://docs.google.com/document/d/1DIkc7DhHSvq1vS2958osAxUEUO56WWiX-xTdn5dY188/edit">IAB TCF CA v1 specification)</code></td>
+	  <td><code>IABGPP_TCFCA1_Version</code></td>    
+<td>IAB TCF CA v2 Version number (see  <a href="https://docs.google.com/document/d/1DIkc7DhHSvq1vS2958osAxUEUO56WWiX-xTdn5dY188/edit">IAB TCF CA v1 specification)</td>
    </tr>
   <tr>
-	  <td>IABGPP_TCFCA1_Created</td>    
-<td><code>IAB TCF CA v1 creation date</code></td>
+	  <td><code>IABGPP_TCFCA1_Created</code></td>    
+<td>IAB TCF CA v1 creation date</td>
     </tr>
   <tr>
-	  <td>IABGPP_TCFCA1_…</td>    
-<td><code>Other IAB TCF CA v1 fields according to IAB TCF CA specification</code></td>
+	  <td><code>IABGPP_TCFCA1_…</code></td>    
+<td>Other IAB TCF CA v1 fields according to IAB TCF CA specification</td>
      </tr>
   <tr>
-	  <td>IABGPP_USP1_Version</td>    
-<td><code>IAB US Privacy String Version number (see <a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md#us-privacy-string-format">IAB US Privacy v1 specification) </code></td>
+	  <td><code>IABGPP_USP1_Version</code></td>    
+<td>IAB US Privacy String Version number (see <a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md#us-privacy-string-format">IAB US Privacy v1 specification)</td>
    </tr>
   <tr>
-	  <td>IABGPP_USP1_Notice</td>    
-<td><code>IAB US Privacy notice has been provided</code></td>
+	  <td><code>IABGPP_USP1_Notice</code></td>    
+<td>IAB US Privacy notice has been provided</td>
     </tr>
   <tr>
-	  <td>IABGPP_USP1_OptOut</td>    
-<td><code>IAB US Privacy opt out of sale</code></td>
+	  <td><code>IABGPP_USP1_OptOut</code></td>    
+<td>IAB US Privacy opt out of sale</td>
     </tr>
   <tr>
-	  <td>IABGPP_USP1_LSPACovered</td>    
-<td><code>IAB US Privacy publisher is signatory to the LSPA</code></td>
+	  <td><code>IABGPP_USP1_LSPACovered</code></td>    
+<td>IAB US Privacy publisher is signatory to the LSPA</td>
    </td>
    </td>
   </tr>
