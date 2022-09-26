@@ -758,7 +758,7 @@ Below are example key names from existing APIs. For a complete list of key names
      </tr>
   <tr>
 	  <td><code>IABGPP_TCFCA1_Version</code></td>    
-<td>IAB TCF CA v2 Version number (see  <a href="https://docs.google.com/document/d/1DIkc7DhHSvq1vS2958osAxUEUO56WWiX-xTdn5dY188/edit">IAB TCF CA v1 specification)</td>
+<td>IAB TCF CA v2 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">IAB TCF CA v1 specification)</td>
    </tr>
   <tr>
 	  <td><code>IABGPP_TCFCA1_Created</code></td>    
