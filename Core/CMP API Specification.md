@@ -134,7 +134,7 @@ The `ping` command can be used to determine the state of the CMP.
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMPAPI.md#pingreturn-"> PingReturn object</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-"> PingReturn object</td>
     <td></td>
      </td>
      </td>
@@ -245,7 +245,7 @@ The `addEventListener` command can be used to define a callback function (or a p
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMPAPI.md#eventlistener-"> EventListener object</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
     <td></td>
      </td>
      </td>
@@ -356,7 +356,7 @@ The `removeEventListener` command can be used to remove an existing event listen
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMPAPI.md#eventlistener-"> EventListener object</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
  <td></td>
      </td>
      </td>
@@ -538,7 +538,7 @@ The `getGPPData` command can be used in order to receive the current version of 
   </tr>
   <tr>
     <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMPAPI.md#gppdata-">GPPData object or null</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData object or null</td>
     <td>Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
      </td>
      </td>
@@ -715,7 +715,7 @@ Valid data types are Integer and String. All other data types such as Boolean, D
 
 *Example key names:*
 
-Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
+Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections.](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
 
 
 
