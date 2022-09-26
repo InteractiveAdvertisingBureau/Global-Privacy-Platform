@@ -73,8 +73,8 @@ Example API prefixes:
 <td><code>tcfeuv2</code></td>
      </tr>
   <tr>
-	  <td>IAB TCF v2 (Canada)</td>    
-<td><code>tcfeuv1</code></td>
+	  <td>IAB TCF v1 (Canada)</td>    
+<td><code>tcfcav1</code></td>
    </tr>
   <tr>
 	  <td>IAB CCPA/USP v1</td>    
