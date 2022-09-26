@@ -197,14 +197,14 @@ The string must contain a header and applicable discrete section(s):
 
 **Header**
 
-The header is always required and comes first. The purpose of the Header is to identify which sections are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions, countries or policies. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
+The header is always required and comes first. The purpose of the Header is to identify which sections are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions, countries or policies. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#discrete-sections-) below)
 
-The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.28tuopy3glus) below)
+The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#discrete-sections-) below)
 
 
 **Section IDs**
 
-For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information). 
+For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md). 
 
 
 
@@ -417,7 +417,7 @@ The possible data types are:
   <tr>
     <td><code>Integer (Fibonacci)</code></td>
     <td>Variable Length</td>
-    <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://docs.google.com/document/d/1cl9vdDN3kVO0AZFOL7gBCGcyUh5obbjcbXmn3IlLsM4/edit?pli=1#heading=h.8wsq3j5xr13e"> “About Fibonacci Encoding” for more detail</td>
+    <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#fibonacci-encoding-to-deal-with-string-length-"> “About Fibonacci Encoding” </a> for more detail</td>
   </tr>
   <tr>
     <td><code>String (fixed length of x) (including country codes)</code></td>
