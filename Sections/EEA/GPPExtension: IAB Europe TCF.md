@@ -2,7 +2,7 @@
 
 ## About this document
 
-The global standard [GPP](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform) defines a way how local standards can “plug-in” into the existing mechanics defined by GPP and the [GPP client side API](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20specification). This document outlines the technical specification for using the IAB Europe Transparency & Consent Framework under these GPP specifications. 
+The global standard [GPP](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform) defines a way how local standards can “plug-in” into the existing mechanics defined by GPP and the [GPP client side API](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md). This document outlines the technical specification for using the IAB Europe Transparency & Consent Framework under these GPP specifications. 
 
 ## Summary
 
