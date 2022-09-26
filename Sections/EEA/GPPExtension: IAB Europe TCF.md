@@ -173,118 +173,190 @@ The core segment must always be present. It consists of the following fields:
   
 
 
+> **Note:** Fields marked with * are only included in the string encoded version of the GPP segment but will not be returned by the client side API. Instead, the client side API will return an array of int with the corresponding IDs.
 
 
-Note: Fields marked with * are only included in the string encoded version of the GPP segment but will not be returned by the client side API. Instead, the client side API will return an array of int with the corresponding IDs.
-Disclosed Vendors Segment
-The 
+## Disclosed Vendors Segment
 
-Field name
-GPP Field Type
-Description
-SegmentType
-Int(3)
-Always set to 1.
-DisclosedVendors
-OptimizedIntRange
-List of Vendor IDs that were disclosed in a CMP UI to the user. 
+The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter.
+
+<table>
+<tr>
+<td><strong>Field Name</strong></td>
+<td><strong>GPP Field Type</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>SegmentType</td>
+<td>Int(3)</td>
+<td>Always set to 1.</td>
+</tr>
+<tr>
+<td>DisclosedVendors</td>
+<td>OptimizedIntRange</td>
+<td>List of Vendor IDs that were disclosed in a CMP UI to the user. </td>
+</tr>
+</table>
 
 
-Publisher Purposes Segment
+
+## Publisher Purposes Segment
+
 The publisher purposes segment is appended to the core segment by using the “.” (dot) delimiter. The segment is optional. The segment fields are:
 
-Field name
-GPP Field Type
-Description
-SegmentType
-Int(3)
-Always set to 3.
-PubPurposesConsent 
-Bitfield(24)
-One bit for each Purpose:
-1 Consent
-0 No Consent
+
+<table>
+<tr>
+<td><strong>Field Name</strong></td>
+<td><strong>GPP Field Type</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>SegmentType</td>
+<td>Int(3)</td>
+<td>Always set to 3.</td>
+</tr>
+<tr>
+<td>PubPurposesConsent</td>
+<td>Bitfield(24)</td>
+<td>One bit for each Purpose:<br></br>1 Consent<br></br>0 No Consent</td>
+</tr>
+<tr>
+<td>PubPurposesLITransparency</td>
+<td>Bitfield(24)</td>
+<td>One bit for each Purpose:<br></br>1 legitimate interest established<br></br>0 legitimate interest was NOT established or it was established but user exercised their “Right to Object” to the Purpose</td>
+</tr>
+<tr>
+<td>NumCustomPurposes</td>
+<td>Int(6)</td>
+<td>The number of Custom Purposes.</td>
+</tr>
+<tr>
+<td>CustomPurposesConsent</td>
+<td>Bitfield(NumCustomPurposes)</td>
+<td>One bit for each Purpose:<br></br>1 Consent<br></br>0 No Consent</td>
+</tr>
+<tr>
+<td>CustomPurposesLITransparency</td>
+<td>Bitfield(NumCustomPurposes)</td>
+<td>One bit for each Purpose:<br></br>1 legitimate interest established<br></br>0 implied consent was NOT established or it was established but user exercised their “Right to Object” to the Custom Purpose</td>
+</tr>
+</table>
 
 
-PubPurposesLITransparency
-Bitfield(24)
-One bit for each Purpose:
-1 legitimate interest established
 
-0 legitimate interest was NOT established or it was established but user exercised their “Right to Object” to the Purpose
-NumCustomPurposes
-Int(6)
-The number of Custom Purposes.
-CustomPurposesConsent 
-Bitfield(NumCustomPurposes)
-One bit for each Custom Purpose:
-1 Consent
-0 No Consent
+# Client side API
 
-
-CustomPurposesLITransparency 
-Bitfield(NumCustomPurposes)
-One bit for each Custom Purpose:
-1 legitimate interest established
-
-0 implied consent was NOT established or it was established but user exercised their “Right to Object” to the Custom Purpose
-
-Client side API
 The client side API does not expose the following custom GPP commands:
-getTCData
 
-Command:
-tcfcav2.getTCData
-Callback:
-function(tcData: object, success: boolean)
-Parameter:
-not used
-Description
-Please note that this command is only used for downward compatibility. Developers should use the generic GPP command getSection or getField instead.
-
-When called, the callback function will be called with the javascript representation of the parsed Core Segment (see above) (and Publisher segment?) as tcData.
+## getTCData
 
 
-Key Names
-In the mobile or CTV context, the key names to be used in GPP are listed below. For complete details on the expected values for each key listed below, see the IAB TCF EU v2 specification.
-
-TCF Key Name
-GPP Key Name
-IABTCF_CmpSdkID
-IABGPP_TCFEU2_CmpSdkID
-IABTCF_CmpSdkVersion
-IABGPP_TCFEU2_CmpSdkVersion
-IABTCF_PolicyVersion
-IABGPP_TCFEU2_PolicyVersion
-IABTCF_gdprApplies
-IABGPP_TCFEU2_gdprApplies
-IABTCF_PublisherCC
-IABGPP_TCFEU2_PublisherCC
-IABTCF_PurposeOneTreatment
-IABGPP_TCFEU2_PurposeOneTreatment
-IABTCF_UseNonStandardStacks
-IABGPP_TCFEU2_UseNonStandardStacks
-IABTCF_TCString
-IABGPP_2_TCString
-IABTCF_VendorConsents
-IABGPP_TCFEU2_VendorConsents
-IABTCF_VendorLegitimateInterests
-IABGPP_TCFEU2_VendorLegitimateInterests
-IABTCF_PurposeConsents
-IABGPP_TCFEU2_PurposeConsents
-IABTCF_PurposeLegitimateInterests
-IABGPP_TCFEU2_PurposeLegitimateInterests
-IABTCF_SpecialFeaturesOptIns
-IABGPP_TCFEU2_SpecialFeaturesOptIns
-IABTCF_PublisherRestrictions{ID}
-IABGPP_TCFEU2_PublisherRestrictions{ID}
-IABTCF_PublisherConsent
-IABGPP_TCFEU2_PublisherConsent
-IABTCF_PublisherLegitimateInterests
-IABGPP_TCFEU2_PublisherLegitimateInterests
-IABTCF_PublisherCustomPurposesConsents
-IABGPP_TCFEU2_PublisherCustomPurposesConsents
-IABTCF_PublisherCustomPurposesLegitimateInterests
-IABGPP_TCFEU2_PublisherCustomPurposesLegitimateInterests
+<table>
+<tr>
+<td>Command:</td>
+<td>tcfcav2.getTCData</td>
+</tr>
+<tr>
+<td>Callback:</td>
+<td>function(tcData: object, success: boolean)</td>
+</tr>
+<tr>
+<td>Parameter:</td>
+<td>not used</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>Please note that this command is only used for downward compatibility. Developers should use the generic GPP command getSection or getField instead.<br></br>When called, the callback function will be called with the javascript representation of the parsed Core Segment (see above) and Publisher segment as tcData.</td>
+</tr>
+</table>
 
 
+
+## Key Names
+
+In the mobile or CTV context, the key names to be used in GPP are listed below. For complete details on the expected values for each key listed below, see the [IAB TCF EU v2 specification.](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#what-is-the-cmp-in-app-internal-structure-for-the-defined-api)
+
+
+<table>
+<tr>
+<td><strong>TCF Key Name</strong></td>
+<td><strong>GPP Key Name</strong></td>
+</tr>
+<tr>
+<td>IABTCF_CmpSdkID</td>
+<td>IABGPP_TCFEU2_CmpSdkID</td>
+</tr>
+<tr>
+<td>IABTCF_CmpSdkVersion</td>
+<td>IABGPP_TCFEU2_CmpSdkVersion</td>
+</tr>
+<tr>
+<td>IABTCF_PolicyVersion</td>
+<td>IABGPP_TCFEU2_PolicyVersion</td>
+</tr>
+<tr>
+<td>IABTCF_gdprApplies</td>
+<td>IABGPP_TCFEU2_gdprApplies</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherCC</td>
+<td>IABGPP_TCFEU2_PublisherCC</td>
+</tr>
+<tr>
+<td>IABTCF_PurposeOneTreatment</td>
+<td>IABGPP_TCFEU2_PurposeOneTreatment</td>
+</tr>
+<tr>
+<td>IABTCF_UseNonStandardStacks</td>
+<td>IABGPP_TCFEU2_UseNonStandardStacks</td>
+</tr>
+<tr>
+<td>IABTCF_TCString</td>
+<td>IABGPP_2_TCString</td>
+</tr>
+<tr>
+<td>IABTCF_VendorConsents</td>
+<td>IABGPP_TCFEU2_VendorConsents</td>
+</tr>
+<tr>
+<td>IABTCF_VendorLegitimateInterests</td>
+<td>IABGPP_TCFEU2_VendorLegitimateInterests</td>
+</tr>
+<tr>
+<td>IABTCF_gdprApplies</td>
+<td>IABGPP_TCFEU2_gdprApplies</td>
+</tr>
+<tr>
+<td>IABTCF_PurposeConsents</td>
+<td>IABGPP_TCFEU2_PurposeConsents</td>
+</tr>
+<tr>
+<td>IABTCF_PurposeLegitimateInterests</td>
+<td>IABGPP_TCFEU2_PurposeLegitimateInterests</td>
+</tr>
+<tr>
+<td>IABTCF_SpecialFeaturesOptIns</td>
+<td>IABGPP_TCFEU2_SpecialFeaturesOptIns</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherRestrictions{ID}</td>
+<td>IABGPP_TCFEU2_PublisherRestrictions{ID}</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherConsent</td>
+<td>IABGPP_TCFEU2_PublisherConsent</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherLegitimateInterests</td>
+<td>IABGPP_TCFEU2_PublisherLegitimateInterests</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherCustomPurposesConsents</td>
+<td>IABGPP_TCFEU2_PublisherCustomPurposesConsents</td>
+</tr>
+<tr>
+<td>IABTCF_PublisherCustomPurposesLegitimateInterests</td>
+<td>IABGPP_TCFEU2_PublisherCustomPurposesLegitimateInterests</td>
+</tr>
+</table>
