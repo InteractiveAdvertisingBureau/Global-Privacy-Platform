@@ -53,7 +53,7 @@ This API allows for accessing signals across legislations, regulations, and stan
 
 #### API Prefixes
 
-In order to distinguish between the different underlying APIs, each API will be assigned a prefix. A complete list of available API prefixes can be found in the [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20information).
+In order to distinguish between the different underlying APIs, each API will be assigned a prefix. A complete list of available API prefixes can be found in the [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md).
 
 
 Example API prefixes: 
