@@ -25,8 +25,8 @@ This document is one of the IAB Tech Lab Global Privacy Platform Specifications.
 
 # Additional Reading and Referenced Documents
 
-- Consent Manager Provider JS API
-- GPP Sections
+- [Consent Management Platform JS API](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md)
+- [GPP Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections)
 
 
 # Updates to Standards Needed to Support GPP
@@ -81,10 +81,7 @@ Version 1 of the GPP String contains the following information:
 3. **Restrictions:** possible additional legal, publisher, or framework restrictions
 
 
-Section specifications will clearly define which of the above data are represented, and in what form. Whenever possible, the various technical enumerations that were developed for TCF v2.0 have been used directly or adapted: 
-1. Integer identifiers for version & screens
-2. CMP ID’s from TCF v2.0
-3. Where applicable to the jurisdiction or region, the vendor ID's and data processing purposes as enumerated in the TCF v2.0 GVL can be reused in whole or adapted. 
+Section specifications will clearly define which of the above data are represented, and in what form.  
 
 
 See [“Discrete Sections”](#discretesections) below for more detail.
@@ -537,31 +534,6 @@ When defining a new Section, regional policy writers should consider the above f
 **Sub-Sections / Segments**
 
 If a section uses sub-sections to separate information or to be more flexible, it can use the delimiter “.” (dot) to separate the sub-sections from each other. 
-
-
-## Other Signals
-
-
-### Header Reference
-
-Other Signals are referenced in the Header when available. Each signal will have its own ID as indicated in the Header documentation of this specification. When Other Signals are present they will be indicated in the encoding format specified in the Header documentation of this specification. Note, in some cases the signal may be present in the user agent (ex. Global Privacy Control), but the CMP or other entity creating the privacy signal may not have fetched the signal.
-
-### Currently Supported Signals, Values, and References
-
-In order to be included as a supported GPP signal, Other Signals must meet the following criteria:
-
-- Be open designs
-- Be widely understood and adopted
-- Have a clear interface for machines
-
-
-### Global Privacy Control 
-
-Global Privacy Control or GPC [defines itself](https://globalprivacycontrol.github.io/gpc-spec/) as “a signal, transmitted over HTTP and through the DOM, that conveys a person's request to websites and services to not sell or share their personal information with third parties.” It is a result of the California Consumer Privacy Act (CCPA) and has subsequently grown in popularity as other US States debate and enact privacy laws and even US Federal lawmakers weigh privacy legislation options. It is also supported by a number of different market participants including some IAB Tech Lab members.
-
-
-
-GPC is signaled in user agent headers (Sec-GPC) and a simple javascript API (globalPrivacyControl). CMPs or other entities creating GPP strings may check for whether GPC is set and pass along the value they find in a GPC section of the GPP string. Potential values are boolean (0/1 for header and true/false for javascript API). True is an opt out of sale under CCPA (“Do not sell my personal information”).
 
 
 ## Where can I find specific section details?
