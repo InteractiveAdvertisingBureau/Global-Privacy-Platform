@@ -97,7 +97,7 @@ The core segment must always be present. It consists of the following fields:
   <tr>
   <td>PurposesExpressConsent</td>
   <td>Bitfield(24)</td>
-  <td>One bit for each Purpose:<br></br>1 Express Consent<br></br>0 No Express Consent <br></br>The user’s consent value for each Purpose established on the legal basis of consent.<br></br> <br></br>The Purposes are numerically identified and published in the <a href="https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list">Global Vendor List</a>. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field. Note that purpose 1 bit is not used in TCF Canada.</td>
+  <td>One bit for each Purpose:<br></br>1 Express Consent<br></br>0 No Express Consent <br></br>The user’s consent value for each Purpose established on the legal basis of consent.<br></br>The Purposes are numerically identified and published in the <a href="https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list">Global Vendor List</a>. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field. Note that purpose 1 bit is not used in TCF Canada.</td>
   </tr>
   <tr>
   <td>PurposesImpliedConsent</td>
