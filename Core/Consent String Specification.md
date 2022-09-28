@@ -400,41 +400,49 @@ The possible data types are:
     <td><strong>Data Type</strong></td>
     <td><strong>Encoding</strong></td>
     <td><strong>Description</strong></td>
+	  <td> </td>
   </tr>
   <tr>
     <td><code>Boolean</code></td>
     <td>1 bit</td>
     <td>0=true, 1=false</td>
+	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (fixed length of x)</code></td>
     <td>x bit</td>
     <td>A fixed amount of bit representing an integer. Usual lengths are 3, 6 or 12 bit. <br><br> Example: int(6) “000101” represents the number 5</td>
+	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (Fibonacci)</code></td>
     <td>Variable Length</td>
     <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#fibonacci-encoding-to-deal-with-string-length-"> “About Fibonacci Encoding” </a> for more detail</td>
+	  <td></td>
   </tr>
   <tr>
     <td><code>String (fixed length of x) (including country codes)</code></td>
     <td>x*6 bit</td>
     <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
+	  <td></td>
 </tr>
   <tr>
     <td><code>Datetime</code></td>
     <td>36 bit</td>
     <td>A datetime is encoded as a 36 bit integer representing the 1/10th seconds since January 01 1970 00:00:00 UTC. <br><br>Example JavaScript representation: Math.round((new Date()).getTime()/100)</td>
+	  <td></td>
   </tr>
   <tr>
     <td><code>Bitfield (fixed length of x)</code></td>
     <td>x bit</td>
     <td>A fixed amount of bit. Usually each bit represents a boolean for an ID within a group where the first bit corresponds to true/false for ID 1, the second bit corresponds to true/false for ID 2 and so on.</td>
+	  <td></td>
  </tr>
   <tr>
-    <td><code>String (fixed length of x) (including country codes)</code></td>
-    <td>x*6 bit</td>
-    <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
+	  <td><code>Variable length Bitfield</code></td>
+	  <td>variable</td>
+	  <td>Array of Number</td>
+	  <td>Consists of two datapoints: a fixed length Integer(16) that denotes the length and a bitfield with that specific length.<br></br>Please note: Although the API reads/writes to fields (length + bitfield), it will only output the IDs from the bitfield via JS APIs.</td>
 </tr>
   <tr>
     <td><code>Range (Int)</code></td>
@@ -460,6 +468,7 @@ The possible data types are:
 		    <li>Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000</li>
 	    </ul> 
 Note: items may not be in sorted order.</td>
+	<td></td>
   </tr>
   <tr>
     <td><code>Range (Fibonacci)</code></td>
@@ -485,9 +494,33 @@ Note: items may not be in sorted order.</td>
 		    <li>Bits =  000000000010 0 0011 1 011 0011</li>
 	    </ul>
 Note: items MUST be in sorted order..</td>
-     </td>
-     </td>
+     <td></td>
   </tr>
+  <tr>
+	<td><code>OptimizedRange</code></td>
+	<td>variable</td>
+	<td>Array of Number</td>
+	<td>Consists of two data types:
+		<ul>
+			<li>First data type is always a Boolean.</li>
+			<li>If the first data type is 1/true, the second data type is a Fibonacci Range</li>
+			<li>If the first data type is 0/false, the second data type is a Variable length bitfield.</li>
+		</ul>
+		Please note: although the API reads/writes multiple fields, the API will only return the array of found IDs</td>
+	</tr>
+	<tr>
+	<td><code>OptimizedIntRange</code></td>
+	<td>variable</td>
+	<td>Array of Number</td>
+	<td>Consists of three data types:
+		<ul>
+			<li>First data type is an Integer (fixed length of 16 bit).</li>
+			<li>Second data type is always a Boolean.</li>
+			<li>If the second data type is 1/true, the third data type is an Int Range</li>
+			<li>If the second data type is 0/false, the second data type is a Variable length bitfield.</li>
+		</ul>
+		Note: This data type is used for downwards compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
+	</tr>	
  </table>
  
  
