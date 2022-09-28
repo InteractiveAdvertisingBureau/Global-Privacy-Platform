@@ -4,7 +4,7 @@ Hosted in this repository are the technical specifications for the IAB Global Pr
 
 - [Global Privacy Platform Consent String Specification](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md)
 - [Consent Management API Specification](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md)
-- [Supported Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
+- [Supported Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md)
 
 ### About the Global Privacy Platform
 
