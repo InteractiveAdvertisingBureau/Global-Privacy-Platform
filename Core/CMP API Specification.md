@@ -999,34 +999,35 @@ if(__gpp)
 
 ### Using postmessage
 
-The `window.postMessage()` method may be used from a child iframe to make requests from a parent or any ancestor frame's CMP API. To locate an ancestor frame capable of responding to `postMessage()` CMP API calls, search for an ancestor frame that has a child frame named `'__gppapiLocator'`.
+The `window.postMessage()` method may be used from a child iframe to make requests from a parent or any ancestor frame's CMP API. To locate an ancestor frame capable of responding to postMessage() CMP API calls, search for an ancestor frame that has a child frame named `'__gppLocator'`.
 
-CMPs shall create an event listener to handle `postMessage` requests via the CMP `“stub”` API script so that `postMessage` events can be queued and processed by the full-implementation of the CMP API as soon as it is initialized.
+CMPs shall create an event listener to handle postMessage requests via the CMP “stub” API script so that postMessage events can be queued and processed by the full-implementation of the CMP API as soon as it is initialized.
 
 ### Sent Message
 
-The sent message shall follow the form outlined below. The command, parameter and version object properties correspond to their namesake parameters defined as method argument parameters for `__gppapi()` method. The “sent message” also requires a unique `callId` property to help match the request with a response. The callId property shall be either a string or a number, but the calling script shall not use the two types interchangeably.
+The sent message shall follow the form outlined below. The command, parameter and version object properties correspond to their namesake parameters defined as method argument parameters for `__gpp()` method. The “sent message” also requires a unique `callId` property to help match the request with a response. The callId property shall be either a string or a number, but the calling script shall not use the two types interchangeably.
 
-
-``` javascript
+```javascript
 {
-  __gppapiCall: {
+  __gppCall: {
     command: "command",
-    parameter: parameter,
-    version: version
+    parameter: “parameter”,
+    version: 1,
+    callId: “randomID”
   }
 }
 ```
 
-The `event.data` object payload shall follow the form outlined below. The `returnValue` object property shall be the corresponding TC data object for the `command` used upon sending the “sent message”. The `success` object property shall reflect the `__tcfapi()` success callback argument and the `callId` will correspond to the “sent message” unique id passed in the callId property.
+The `event.data` object payload shall follow the form outlined below. The `returnValue` object property shall be the corresponding TC data object for the command used upon sending the “sent message”. The success object property shall reflect the `__gpp()` success callback argument and the callId will correspond to the “sent message” unique id passed in the callId property.
 
-
-``` javascript
+```javascript
 {
-  __gppapiReturn: {
+  __gppReturn: {
    returnValue: returnValue,
    success: boolean,
    callId: uniqueId
   }
 }
 ```
+
+
