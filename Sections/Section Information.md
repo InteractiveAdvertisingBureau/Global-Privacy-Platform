@@ -90,7 +90,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
 
 ### Reusable Sub-Sections
 
-New privacy framework signals may start as reusable sub-sections in the GPP. Over time as they become more widely adopted, they may become sections with their own ID and referenced in the Header. Reusable sections may be added to any section using the delimiter “.” (dot) to separate the sub-sections from each other. Details on a reusable section, including whether it is available, required, or optional, for a specific section are included in each specific section’s documentation.
+New privacy framework signals may start as reusable sub-sections in the GPP. Over time as they become more widely adopted, they may become sections with their own ID and referenced in the Header. Reusable sub-sections may be added to any section using the delimiter “.” (dot) to separate the sub-sections from each other. Details on a reusable sub-section, including whether it is available, required, or optional, for a specific section are included in each specific section’s documentation.
  
  
 In order to be included as a supported reusable sub-section, the signal must meet the following criteria: 
@@ -104,5 +104,5 @@ Below is a list of supported reusable sections.
 
 ### [Global Privacy Control (GPC)](https://globalprivacycontrol.github.io/gpc-spec/)
 
-GPC is signaled in user agent headers `(Sec-GPC)` and a simple javascript API `(globalPrivacyControl)`. Entities creating GPP strings may check for whether GPC is set and pass along the value they find in the GPC sub-section for all sections where it is available. Potential values in the user agent API are boolean (0/1 for header and true/false for javascript API). At the time of publication, true is an opt out of sale under CCPA (“Do not sell my personal information”).
+GPC is signaled in user agent headers `(Sec-GPC)` and a simple javascript API `(globalPrivacyControl)`. Entities creating GPP strings may check for whether GPC is set and pass along the value they find (from the headers or javascript API) in the GPC sub-section for all sections where it is available. Potential values in the user agent API are boolean (0/1 for header and true/false for javascript API). At the time of publication, true is an opt out of sale under CCPA (“Do not sell my personal information”).
 
