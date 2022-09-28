@@ -100,7 +100,7 @@ In order to be included as a supported reusable sub-section, the signal must mee
 - Have a clear interface for machines
 
 
-Below is a list of supported reusable sections. 
+Below is a list of supported reusable sub-sections. 
 
 ### [Global Privacy Control (GPC)](https://globalprivacycontrol.github.io/gpc-spec/)
 
