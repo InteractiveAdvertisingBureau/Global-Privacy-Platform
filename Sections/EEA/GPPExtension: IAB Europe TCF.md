@@ -141,32 +141,32 @@ The core segment must always be present. It consists of the following fields:
   <tr>
   <td>VendorConsent</td>
   <td>OptimizedIntRange</td>
-  <td>List of Vendor IDs that indicate Consent for these vendors. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.</td>
+  <td>List of Vendor IDs that indicate Consent for these vendors. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br></br>Equivalent of the fields listed under the Vendor Consent Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a> <br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
   </tr>
   <tr>
   <td>VendorLegitimateInterest</td>
   <td>OptimizedIntRange</td>
-  <td>List of Vendor IDs for which Legitimate Interest is established and the user did not exercise their “Right to Object”. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.</td>
+  <td>List of Vendor IDs for which Legitimate Interest is established and the user did not exercise their “Right to Object”. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br></br>Equivalent of the fields listed under the Vendor Legitimate Interest Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId </td>
   </tr>
   <tr>
   <td>NumPubRestrictions</td>
   <td>Int(12)</td>
-  <td></td>
+  <td>Number of restriction records to follow.<br></br>Value is required even if it is <code>0</code></td>
   </tr>
   <tr>
   <td>PurposeID</td>
   <td>Int(6)</td>
-  <td></td>
+  <td>The Vendor’s declared Purpose ID that the publisher has indicated that they are overriding.</td>
   </tr>
   <tr>
   <td>RestrictionType</td>
-  <td>Enum</td>
-  <td></td>
+  <td>Int</td>
+  <td>0 Purpose Flatly Not Allowed by Publisher (regardless of Vendor declarations)<br></br><code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest and flexible)<br></br><code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br></br><code>3</code> UNDEFINED (not used)</td>
   </tr>
   <tr>
   <td>PubRestrictionEntry</td>
   <td>OptimizedIntRange</td>
-  <td>List of VendorIDs</td>
+  <td>A single or range of Vendor ID(s) who the publisher has designated as restricted under the Purpose ID in this PubRestrictionsEntry<br></br>Equivalent of the fields listed under the Publisher Restrictions Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
   </tr>
   </table>
   
@@ -178,7 +178,7 @@ The core segment must always be present. It consists of the following fields:
 
 ## Disclosed Vendors Segment
 
-The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter.
+The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter. This is an optional TC String segment. The segment fields are:
 
 <table>
 <tr>
@@ -194,7 +194,7 @@ The disclosed vendors segment is appended to the core segment by using the “.�
 <tr>
 <td>DisclosedVendors</td>
 <td>OptimizedIntRange</td>
-<td>List of Vendor IDs that were disclosed in a CMP UI to the user. </td>
+  <td>List of Vendor IDs that were disclosed in a CMP UI to the user. <br></br>Equivalent of the fields listed under Disclosed Vendors as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
 </tr>
 </table>
 
