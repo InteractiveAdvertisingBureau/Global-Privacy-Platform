@@ -23,7 +23,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   </tr>
   <tr>
     <td><code>1</code></td>
-    <td>tcfeuv2</td>
+    <td>tcfeuv1</td>
     <td>EU TCF v1 section (deprecated)</td>
   </tr>
   <tr>
@@ -43,7 +43,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
       </tr>
   <tr>
     <td><code>5</code></td>
-    <td>tcfcav1</td>
+    <td>tcfca</td>
     <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">Canadian TCF section</a></td>
   </tr>
   <tr>
@@ -53,32 +53,32 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   </tr>
   <tr>
     <td><code>7</code></td>
-    <td>usnatv1</td>
+    <td>usnat</td>
     <td>US - national section (coming soon)</td>
   </tr>
   <tr>
     <td><code>8</code></td>
-    <td>uscav1</td>
+    <td>usca</td>
     <td>US - California section (coming soon)</td>
      </tr>
   <tr>
     <td><code>9</code></td>
-    <td>usvav1</td>
+    <td>usva</td>
     <td>US - Virginia section (coming soon)</td>
       </tr>
   <tr>
     <td><code>10</code></td>
-    <td>uscov1</td>
+    <td>usco</td>
     <td>US - Colorado section (coming soon)</td>
   </tr>
   <tr>
     <td><code>11</code></td>
-    <td>usutv1</td>
+    <td>usut</td>
     <td>US - Utah section (coming soon)</td>
   </tr>
   <tr>
     <td><code>12</code></td>
-    <td>usctv1</td>
+    <td>usct</td>
     <td>US - Connecticut section (coming soon)</td>
      </td>
      </td>
