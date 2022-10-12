@@ -1,3 +1,3 @@
 # US States Signals
 
-Contained in this directory are details on supported privacy strings for US States.
+Contained in this directory are technical specifications to support privacy strings for US Privacy initiatives. 
