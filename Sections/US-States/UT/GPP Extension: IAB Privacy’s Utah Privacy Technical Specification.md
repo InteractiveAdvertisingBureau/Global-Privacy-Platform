@@ -74,7 +74,7 @@
 </tr>
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
-<td style="text-align:left">Bitfield(16)</td>
+<td style="text-align:left">N-Bitfield(2,8)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Did Not Opt Out<p><code>0</code>Opted Out<p>(1) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sexual Orientation.<p>(4) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(5) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Medical History, Mental or Physical Health Condition, or Medical Treatment or Diagnosis by a Health Care Professional.<p>(6) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Genetic Data for the Purpose of Identifying a Specific Individual.<p>(7) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Biometric Data for the Purpose of Identifying a Specific Individual.<p>(8) Opt-Out of the Processing of the Consumer&#39;s Sensitive Data Consisting of Specific Geolocation Data.</td>
 </tr>
 <tr>
