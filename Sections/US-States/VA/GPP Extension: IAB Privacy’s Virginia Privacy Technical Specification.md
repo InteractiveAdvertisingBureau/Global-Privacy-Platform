@@ -69,7 +69,7 @@
 </tr>
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
-<td style="text-align:left">Bitfield(16)</td>
+<td style="text-align:left">N-Bitfield(2,8)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>2</code> No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying a Natural Person.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying a Natural Person.<p>(8) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Precise Geolocation Data.</td>
 </tr>
 <tr>
