@@ -75,7 +75,7 @@
 </tr>
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
-<td style="text-align:left">Bitfield(4)</td>
+<td style="text-align:left">N-Bitfield(2,2)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Business does not have actual knowledge that it Processes Personal Data or Sensitive Data of a Consumer who is at least 13 years of age but younger than 16 years of age.<p><code>1</code> Consent<p><code>2</code> No Consent<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age</td>
 </tr>
 <tr>
