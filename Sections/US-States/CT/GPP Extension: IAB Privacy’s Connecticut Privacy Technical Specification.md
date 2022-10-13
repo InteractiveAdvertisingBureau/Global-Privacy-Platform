@@ -69,12 +69,12 @@
 </tr>
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
-<td style="text-align:left">Bitfield(16)</td>
+<td style="text-align:left">N-Bitfield(2,8)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>0</code>No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(8) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Precise Geolocation Data.</td>
 </tr>
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
-<td style="text-align:left">Bitfield(6)</td>
+<td style="text-align:left">N-Bitfield(2,3)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> Consent<p><code>2</code> No Consent<p>(1) Consent to Process Sensitive Data from a Known Child.<p>(2) Consent to Sell the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age.<p>(3) Consent to Process the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age for Purposes of Targeted Advertising.</td>
 </tr>
 <tr>
