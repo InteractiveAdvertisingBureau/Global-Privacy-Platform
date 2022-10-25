@@ -715,7 +715,7 @@ Valid data types are Integer and String. All other data types such as Boolean, D
 
 *Example key names:*
 
-Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections.](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md)
+Below are example key names from existing APIs. For a complete list of key names for a specific section, see [Sections.](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md)
 
 
 
