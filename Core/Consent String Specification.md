@@ -229,7 +229,7 @@ The Header is always required and always comes first. It consists of the followi
   </tr>
   <tr>
     <td><code>Sections</code></td>
-    <td>Range(Int)</td>
+    <td>Range(Fibonacci)</td>
     <td>List of Section IDs that are contained in the GPP string. Each ID represents a discrete Section that will be concatenated to the Header Section. The IDs must be represented in the order the related Sections appear in the string. This is required to make real time string processing less resource intensive.</td>
      </td>
      </td>
@@ -477,7 +477,7 @@ Note: items may not be in sorted order.</td>
 	    <ul>
 		    <li>int(12) - representing the amount of items to follow </li>
 		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) </li>
-		    <li>(per item) int(Fibonacci) - representing a) the single ID or b) the start ID in case of a group </li>
+		    <li>(per item) int(Fibonacci) - representing a) the offset to a single ID or b) the offset to the start ID in case of a group (the offset is from the last seen number, or 0 for the first entry)</li>
 		    <li>(per item + only if group)  int(Fibonacci) - length of the group </li>
 	    </ul>
 	    Example: 
