@@ -1,8 +1,28 @@
 <h1 id="gpp-extension-iab-privacy-s-connecticut-privacy-technical-specification">GPP Extension: IAB Privacy’s Connecticut Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
 <p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20specification">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+
+<h3>Version History&nbsp;</h3>
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Comments</strong></td>
+</tr>
+<tr>
+<td>November 2022</td>
+<td>1.0</td>
+<td>Version 1.0 released</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
 <h2 id="connecticut-privacy-section">Connecticut Privacy Section</h2>
-<p>The Connecticut Privacy Section consists of the following components. Users should employ the Connecticut Privacy Section only if they have determined the CAPDP applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Connecticut Privacy Section consists of the components described below. Users should employ the Connecticut Privacy Section only if they have determined the CAPDP applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
@@ -20,8 +40,8 @@
 </tr>
 <tr>
 <td style="text-align:left">Client side API prefix</td>
-<td style="text-align:left">uspct</td>
-<td style="text-align:left">The Connecticut Privacy Section is registered with client side API prefix &quot;uspct&quot; in the GPP Client Side API.</td>
+<td style="text-align:left">usct</td>
+<td style="text-align:left">The Connecticut Privacy Section is registered with client side API prefix &quot;usct&quot; in the GPP Client Side API.</td>
 </tr>
 </tbody>
 </table>
@@ -94,34 +114,28 @@
 </tr>
 </tbody>
 </table>
-<h4 id="gpc-segment">GPC Segment</h4>
+
+<h4 id="gpc-subsection">GPC Sub-section</h4>
+<p><a href="https://globalprivacycontrol.github.io/gpc-spec/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</p>
+
 <table>
 <thead>
 <tr>
 <th style="text-align:left"><strong>Field Name</strong></th>
 <th style="text-align:left"><strong>GPP Field Type</strong></th>
 <th style="text-align:left"><strong>Description</strong></th>
-<tr>
-<td style="text-align:left">Gpc</td>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left"><p><code>0</code> false<p><code>1</code> true</td>
-</tr>
-</tbody>
-</table>
-<h3 id="client-side-api">Client side API</h3>
-<h4 id="key-names">Key Names</h4>
-<p>In the mobile or CTV context, the key names to be used in GPP are listed below.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>GPP Key Name</strong></th>
-<th style="text-align:left"><strong>Value(s)</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">IABGPP_12_String</td>
-<td style="text-align:left">String: Full encoded USPCT string</td>
+<td style="text-align:left">SubsectionType</td>
+<td style="text-align:left">Int(2)</td>
+<td style="text-align:left"><p><code>0</code> Core<p><code>1</code> GPC</td>
+</tr>
+<tr>
+<td style="text-align:left">Gpc</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left"><p><code>0</code> false<p><code>1</code> true</td>
 </tr>
 </tbody>
 </table>

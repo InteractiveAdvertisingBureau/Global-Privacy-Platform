@@ -1,8 +1,28 @@
 <h1 id="gpp-extension-iab-privacy-s-colorado-privacy-technical-specification">GPP Extension: IAB Privacy’s Colorado Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
 <p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20specification">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+
+<h3>Version History&nbsp;</h3>
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Comments</strong></td>
+</tr>
+<tr>
+<td>November 2022</td>
+<td>1.0</td>
+<td>Version 1.0 released</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
 <h2 id="colorado-privacy-section">Colorado Privacy Section</h2>
-<p>The Colorado Privacy Section consists of the following components. Users should employ the Colorado Privacy Section only if they have determined the CPA applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Colorado Privacy Section consists of the components described below. Users should employ the Colorado Privacy Section only if they have determined the CPA applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
@@ -20,8 +40,8 @@
 </tr>
 <tr>
 <td style="text-align:left">Client side API prefix</td>
-<td style="text-align:left">uspco</td>
-<td style="text-align:left">The Colorado Privacy Section is registered with client side API prefix &quot;uspco&quot; in the GPP Client Side API.</td>
+<td style="text-align:left">usco</td>
+<td style="text-align:left">The Colorado Privacy Section is registered with client side API prefix &quot;usco&quot; in the GPP Client Side API.</td>
 </tr>
 </tbody>
 </table>
@@ -45,17 +65,17 @@
 <tr>
 <td style="text-align:left">SharingNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties.<p><code>0</code>Not Applicable. The Business does not share Personal Data with Third Parties.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties.<p><code>0</code>Not Applicable. The Controller does not share Personal Data with Third Parties.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">SaleOptOutNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Opportunity to Opt Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code>Not Applicable. The Business does not Sell Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Opportunity to Opt Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code>Not Applicable. The Controller does not Sell Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">TargetedAdvertisingOptOutNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Opportunity to Opt Out of Processing of the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code>Not Applicable.The Business does not Process Personal Data for Targeted Advertising.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Opportunity to Opt Out of Processing of the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code>Not Applicable.The Controller does not Process Personal Data for Targeted Advertising.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">SaleOptOut</td>
@@ -70,12 +90,12 @@
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
 <td style="text-align:left">N-Bitfield(2,7)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Business does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>0</code>No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Citizenship Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>0</code>No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Citizenship Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</td>
 </tr>
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Consent to Process Sensitive Data from a Known Child.<p><code>0</code>Not Applicable. The Business does not Process Sensitive Data of a known Child.<p><code>1</code> Consent<p><code>2</code> No Consent</td>
+<td style="text-align:left">Consent to Process Sensitive Data from a Known Child.<p><code>0</code>Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> Consent<p><code>2</code> No Consent</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>
@@ -94,20 +114,28 @@
 </tr>
 </tbody>
 </table>
-<h3 id="client-side-api">Client side API</h3>
-<h4 id="key-names">Key Names</h4>
-<p>In the mobile or CTV context, the key names to be used in GPP are listed below.</p>
+
+<h4 id="gpc-subsection">GPC Sub-section</h4>
+<p><a href="https://globalprivacycontrol.github.io/gpc-spec/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</p>
+
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>GPP Key Name</strong></th>
-<th style="text-align:left"><strong>Value(s)</strong></th>
+<th style="text-align:left"><strong>Field Name</strong></th>
+<th style="text-align:left"><strong>GPP Field Type</strong></th>
+<th style="text-align:left"><strong>Description</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">IABGPP_10_String</td>
-<td style="text-align:left">String: Full encoded USPCO string</td>
+<td style="text-align:left">SubsectionType</td>
+<td style="text-align:left">Int(2)</td>
+<td style="text-align:left"><p><code>0</code> Core<p><code>1</code> GPC</td>
+</tr>
+<tr>
+<td style="text-align:left">Gpc</td>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:left"><p><code>0</code> false<p><code>1</code> true</td>
 </tr>
 </tbody>
 </table>

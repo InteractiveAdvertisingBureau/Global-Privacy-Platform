@@ -54,32 +54,32 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>7</code></td>
     <td>usnat</td>
-    <td>US - national section (coming soon)</td>
+    <td>US - national section </td>
   </tr>
   <tr>
     <td><code>8</code></td>
     <td>usca</td>
-    <td>US - California section (coming soon)</td>
+    <td>US - California section </td>
      </tr>
   <tr>
     <td><code>9</code></td>
     <td>usva</td>
-    <td>US - Virginia section (coming soon)</td>
+    <td>US - Virginia section </td>
       </tr>
   <tr>
     <td><code>10</code></td>
     <td>usco</td>
-    <td>US - Colorado section (coming soon)</td>
+    <td>US - Colorado section </td>
   </tr>
   <tr>
     <td><code>11</code></td>
     <td>usut</td>
-    <td>US - Utah section (coming soon)</td>
+    <td>US - Utah section </td>
   </tr>
   <tr>
     <td><code>12</code></td>
     <td>usct</td>
-    <td>US - Connecticut section (coming soon)</td>
+    <td>US - Connecticut section </td>
      </td>
      </td>
   </tr>
