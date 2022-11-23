@@ -162,9 +162,7 @@ cmpStatus : String, // possible values: stub, loading, loaded, error
 
 cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
-apiSupport : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"]
-
-currentAPI: String, // name of detected API once CMP is loaded, may be empty while loading. Example “tcfeuv2”
+apiSupport : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"] 
 
 cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
@@ -566,10 +564,11 @@ gppVersion : Number, // The version number parsed from the header
 
 sectionList : Array of Number, // the sections contained within the encoded GPP string as parsed from the header
 
-applicableSection: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values.
+applicableSection: Array of Number, // Section ID considered to be in force for this transaction. The value should be 0 during stub/load. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. When no section is applicable, the value will be -1.
 
 gppString: String // the complete encoded GPP string
 
+pingData: object // see PingReturn
 }
 ```
 
