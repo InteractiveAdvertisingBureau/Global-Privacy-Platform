@@ -564,7 +564,7 @@ gppVersion : Number, // The version number parsed from the header
 
 sectionList : Array of Number, // the sections contained within the encoded GPP string as parsed from the header
 
-applicableSection: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
+applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
 
 gppString: String // the complete encoded GPP string
 
@@ -892,7 +892,7 @@ window.__gpp_stub = function ()
   return {
    eventName : 'listenerRegistered',
    listenerId: lnr, // Registered ID of the listener
-   data      : true // positive signal
+   data      : true, // positive signal
 pingData: {
  gppVersion      : '1.0',
  cmpStatus       : 'stub',
@@ -918,7 +918,7 @@ pingData: {
   return {
    eventName : 'listenerRemoved', 
    listenerId: par, // Registered ID of the listener
-   data      : success // status info
+   data      : success, // status info
 pingData: {
  gppVersion      : '1.0',
  cmpStatus       : 'stub',
@@ -947,7 +947,7 @@ pingData: {
 };
 }
  //these commands must not be queued but may return null while in stub-mode
- else if (cmd === 'hasSection' || cmd === 'getSection' || cmd === 'getField'
+ else if (cmd === 'hasSection' || cmd === 'getSection' || cmd === 'getField')
  {
   return null;
  }
