@@ -661,7 +661,7 @@ The key names are a combination of the “IABGPP_” prefix followed by the sect
   <tr>
     <td><code>IABGPP_[SectionID]_String</code></td>
     <td>String</td>
-    <td>String representaiton of each section. E.g. IAB TCF EU v2 String will be found at IABGPP_TCFEU2_String</td>
+    <td>String representaiton of each section. E.g. IAB TCF EU v2 String will be found at IABGPP_2_String</td>
      </td>
      </td>
   </tr>
