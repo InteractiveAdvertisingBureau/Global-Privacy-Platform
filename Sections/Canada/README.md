@@ -2,7 +2,7 @@
 
 Contained in this directory are details on the IAB Canada TCF string. 
 
-The IAB Canada TCF is governed by the policies defined and managed by IAB Canada. The policies can be found here: [https://iabcanada.com/transparency-and-consent-framework/.](https://iabcanada.com/transparency-and-consent-framework/)
+The IAB Canada TCF is governed by the policies defined and managed by IAB Canada. The policies can be found here: [https://iabcanada.com/tcf-canada/.](https://iabcanada.com/tcf-canada/)
 
 <p>For ease of implementation, similarities and differences between the IAB Europe TCF and IAB Canada TCF signal definitions as well as information about the CMP List and Global Vendor Lists are available here: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada/TCF%20EU%20TCF%20CA%20Comparison.md" target="_blank" rel="noopener">IAB Europe TCF with IAB Canada TCF Signal Definition</a></p>
 
