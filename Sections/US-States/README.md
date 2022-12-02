@@ -1,9 +1,11 @@
 <h1>IAB Privacy&rsquo;s Multi-State Privacy Technical Specifications</h1>
-<p><strong><em>The section specifications included in this directory are in public comment until October 27, 2022. Comments may be submitted to </em></strong><a href="mailto:support@iabtechlab.com" target="_blank" rel="noopener"><strong><em>support@iabtechlab.com</em></strong></a><strong><em>.&nbsp;</em></strong></p>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform" target="_blank" rel="noopener">GPP</a> defines a way for local standards to &ldquo;plug-in&rdquo; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20specification" target="_blank" rel="noopener">GPP client side API </a>. The IAB Privacy&rsquo;s Multi-State Privacy technical specifications were developed by the IAB Tech Lab&rsquo;s Global Privacy Working Group with the IAB&rsquo;s Legal Affairs Council providing the policy requirements.&nbsp;</p>
+
+
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform" target="_blank" rel="noopener">GPP</a> defines a way for local standards to &ldquo;plug-in&rdquo; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md" target="_blank" rel="noopener">GPP client side API </a>. The IAB Privacy&rsquo;s Multi-State Privacy technical specifications were developed by the IAB Tech Lab&rsquo;s Global Privacy Working Group with the IAB&rsquo;s Legal Affairs Council providing the string requirements.&nbsp;</p>
+
 <h2>Relevant Specification Documents</h2>
 <ul>
-<li><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National" target="_blank" rel="noopener">IAB Privacy&rsquo;s National Privacy Technical Specification</a></li>
+<li><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National" target="_blank" rel="noopener">IAB Privacy&rsquo;s US National Privacy Technical Specification</a></li>
 <li><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CA" target="_blank" rel="noopener">IAB Privacy&rsquo;s California Privacy Technical Specification</a></li>
 <li><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/VA" target="_blank" rel="noopener">IAB Privacy&rsquo;s Virginia Privacy Technical Specification</a></li>
 <li><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CO" target="_blank" rel="noopener">IAB Privacy&rsquo;s Colorado Privacy Technical Specification</a></li>

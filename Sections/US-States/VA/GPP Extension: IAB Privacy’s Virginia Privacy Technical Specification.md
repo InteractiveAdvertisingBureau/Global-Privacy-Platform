@@ -1,8 +1,29 @@
 <h1 id="gpp-extension-iab-privacy-s-virginia-privacy-technical-specification">GPP Extension: IAB Privacy’s Virginia Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
 <p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20specification">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+
+<h3>Version History&nbsp;</h3>
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Date</strong></td>
+<td><strong>Version</strong></td>
+<td><strong>Comments</strong></td>
+</tr>
+<tr>
+<td>November 2022</td>
+<td>1.0</td>
+<td>Version 1.0 released</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+
 <h2 id="virginia-privacy-section">Virginia Privacy Section</h2>
-<p>The Virginia Privacy Section consists of the following components. Users should employ the Virginia Privacy Section only if they have determined the VCDPA applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Virginia Privacy Section consists of the components described below. Users should employ the Virginia Privacy Section only if they have determined the VCDPA applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
@@ -20,8 +41,8 @@
 </tr>
 <tr>
 <td style="text-align:left">Client side API prefix</td>
-<td style="text-align:left">uspva</td>
-<td style="text-align:left">The Virginia Privacy Section is registered with client side API prefix &quot;uspva&quot; in the GPP Client Side API.</td>
+<td style="text-align:left">usva</td>
+<td style="text-align:left">The Virginia Privacy Section is registered with client side API prefix &quot;usva&quot; in the GPP Client Side API.</td>
 </tr>
 </tbody>
 </table>
@@ -45,69 +66,52 @@
 <tr>
 <td style="text-align:left">SharingNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties<p><code>0</code>Not Applicable. The Controller does not share Personal Data with Third Parties.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties<p><code>0</code> Not Applicable. The Controller does not share Personal Data with Third Parties.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">SaleOptOutNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Opportunity to Opt Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code>Not Applicable. The Controller does not Sell Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Opportunity to Opt Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code> Not Applicable. The Controller does not Sell Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">TargetedAdvertisingOptOutNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Opportunity to Opt Out of Processing of the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code>Not Applicable.The Controller does not Process Personal Data for Targeted Advertising.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Opportunity to Opt Out of Processing of the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code> Not Applicable.The Controller does not Process Personal Data for Targeted Advertising.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
 <td style="text-align:left">SaleOptOut</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Opt-Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code>Not Applicable. SaleOptOutNotice value was not applicable or no notice was provided<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
+<td style="text-align:left">Opt-Out of the Sale of the Consumer&#39;s Personal Data<p><code>0</code> Not Applicable. SaleOptOutNotice value was not applicable or no notice was provided<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
 </tr>
 <tr>
 <td style="text-align:left">TargetedAdvertisingOptOut</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Opt-Out of Processing the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code>Not Applicable. TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
+<td style="text-align:left">Opt-Out of Processing the Consumer&#39;s Personal Data for Targeted Advertising<p><code>0</code> Not Applicable. TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
 </tr>
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
 <td style="text-align:left">N-Bitfield(2,8)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code>Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>2</code> No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying a Natural Person.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying a Natural Person.<p>(8) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Precise Geolocation Data.</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> Consent<p><code>2</code> No Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying a Natural Person.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying a Natural Person.<p>(8) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Precise Geolocation Data.</td>
 </tr>
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Consent to Process Sensitive Data from a Known Child<p><code>0</code>Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> Consent<p><code>2</code> No Consent</td>
+<td style="text-align:left">Consent to Process Sensitive Data from a Known Child<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> Consent<p><code>2</code> No Consent</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &quot;Covered Transaction&quot; as defined in the MSPA.<p><code>0</code>Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
+<td style="text-align:left">Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &quot;Covered Transaction&quot; as defined in the MSPA.<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaOptOutOptionMode</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Opt-Out Option Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code>Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
+<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Opt-Out Option Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaServiceProviderMode</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Service Provider Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code>Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
-</tr>
-</tbody>
-</table>
-<h3 id="client-side-api">Client side API</h3>
-<h4 id="key-names">Key Names</h4>
-<p>In the mobile or CTV context, the key names to be used in GPP are listed below.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"><strong>GPP Key Name</strong></th>
-<th style="text-align:left"><strong>Value(s)</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">IABGPP_9_String</td>
-<td style="text-align:left">String: Full encoded USPVA string</td>
+<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Service Provider Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 </tbody>
 </table>
