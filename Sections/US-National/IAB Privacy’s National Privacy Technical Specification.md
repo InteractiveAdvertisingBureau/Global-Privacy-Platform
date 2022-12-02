@@ -280,17 +280,17 @@
 <tr>
 <td>MspaCoveredTransaction</td>
 <td>Int(2)</td>
-<td>Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &ldquo;Covered Transaction&rdquo; as defined in the MSPA.&nbsp;<code>0</code>  Not Applicable<p><code>1</code>  Yes<p><code>2</code>  No</td>
+<td>Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &ldquo;Covered Transaction&rdquo; as defined in the MSPA.&nbsp;<p><code>1</code>  Yes<p><code>2</code>  No</td>
 </tr>
 <tr>
 <td>MspaOptOutOptionMode</td>
 <td>Int(2)</td>
-<td>Publisher or Advertiser, as applicable, has enabled &ldquo;Opt-Out Option Mode&rdquo; for the &ldquo;Covered Transaction,&rdquo; as such terms are defined in the MSPA.<code>0</code>  Not Applicable.<p><code>1</code>  Yes<p><code>2</code>  No</td>
+<td>Publisher or Advertiser, as applicable, has enabled &ldquo;Opt-Out Option Mode&rdquo; for the &ldquo;Covered Transaction,&rdquo; as such terms are defined in the MSPA.<p><code>0</code>  Not Applicable.<p><code>1</code>  Yes<p><code>2</code>  No</td>
 </tr>
 <tr>
 <td>MspaServiceProviderMode</td>
 <td>Int(2)</td>
-<td>Publisher or Advertiser, as applicable, has enabled &ldquo;Service Provider Mode&rdquo; for the &ldquo;Covered Transaction,&rdquo; as such terms are defined in the MSPA.<code>0</code>  Not Applicable<p><code>1</code>  Yes<p><code>2</code>  No</td>
+<td>Publisher or Advertiser, as applicable, has enabled &ldquo;Service Provider Mode&rdquo; for the &ldquo;Covered Transaction,&rdquo; as such terms are defined in the MSPA.<p><code>0</code>  Not Applicable<p><code>1</code>  Yes<p><code>2</code>  No</td>
 </tr>
 </tbody>
 </table>
