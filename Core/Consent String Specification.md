@@ -423,7 +423,7 @@ The possible data types are:
   <tr>
     <td><code>String (fixed length of x) (including country codes)</code></td>
     <td>x*6 bit</td>
-    <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
+    <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 42 + 65 = char “k”</td>
 	  <td></td>
 </tr>
   <tr>
@@ -517,7 +517,7 @@ Note: items MUST be in sorted order..</td>
 			<li>First data type is an Integer (fixed length of 16 bit).</li>
 			<li>Second data type is always a Boolean.</li>
 			<li>If the second data type is 1/true, the third data type is an Int Range</li>
-			<li>If the second data type is 0/false, the second data type is a Variable length bitfield.</li>
+			<li>If the second data type is 0/false, the second data type is a bitfield of length determined by the first data type (see above)</li>
 		</ul>
 		Note: This data type is used for downwards compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
 	</tr>	
