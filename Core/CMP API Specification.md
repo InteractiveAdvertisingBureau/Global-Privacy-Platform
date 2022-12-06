@@ -924,7 +924,7 @@ window.__gpp_stub = function ()
  //queue all other commands
  else
  {
-  __cmp.queue.push([].slice.apply(b));
+  __gpp.queue.push([].slice.apply(b));
  }
 };
 window.__gpp_msghandler = function (event)
