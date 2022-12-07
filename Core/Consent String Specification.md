@@ -365,12 +365,12 @@ Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and t
 Discrete sections are used to support multiple signals from one architecture while maintaining the ability to modify each section as needed. 
 
 
-Each string segment is scoped to the same body that updates the spec. This allows for regional sovereignty policies to make changes that might include more delimited information. For example, if TCF needs a version 3 and eliminates the concept of “out of band” vendors—which would result in the removal of DisclosedVendors and AllowedVendors—that should not require a version bump to the GPP string specification. 
+Each string section is scoped to the same body that updates the spec. This allows for regional sovereignty policies to make changes that might include more delimited information. For example, if TCF needs a version 3 and eliminates the concept of “out of band” vendors—which would result in the removal of DisclosedVendors and AllowedVendors—that should not require a version bump to the GPP string specification. 
 
  
 #### Delimiters
 
-In order to be backward compatible with IAB Europe’s TC String and US Privacy String formats, the delimiter used to separate segments is “~” (tilde).
+In order to be backward compatible with IAB Europe’s TC String and US Privacy String formats, the delimiter used to separate sections is “~” (tilde).
 
 
 > **Note:** URL-safe characters are important to meet the integration needs of those not reading privacy signals server side or via the client-side APIs. URL-safe characters are:
@@ -399,42 +399,49 @@ The possible data types are:
   <tr>
     <td><strong>Data Type</strong></td>
     <td><strong>Encoding</strong></td>
+    <td><strong>JS API output</strong></td>
     <td><strong>Description</strong></td>
 	  <td> </td>
   </tr>
   <tr>
     <td><code>Boolean</code></td>
     <td>1 bit</td>
+    <td>true|false</td>
     <td>0=true, 1=false</td>
 	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (fixed length of x)</code></td>
     <td>x bit</td>
+    <td>Number</td>
     <td>A fixed amount of bit representing an integer. Usual lengths are 3, 6 or 12 bit. <br><br> Example: int(6) “000101” represents the number 5</td>
 	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (Fibonacci)</code></td>
     <td>Variable Length</td>
+    <td>Number</td>
     <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#fibonacci-encoding-to-deal-with-string-length-"> “About Fibonacci Encoding” </a> for more detail</td>
 	  <td></td>
   </tr>
   <tr>
     <td><code>String (fixed length of x) (including country codes)</code></td>
     <td>x*6 bit</td>
+    <td>String</td>
     <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
 	  <td></td>
 </tr>
   <tr>
     <td><code>Datetime</code></td>
     <td>36 bit</td>
+    <td>Date</td>
     <td>A datetime is encoded as a 36 bit integer representing the 1/10th seconds since January 01 1970 00:00:00 UTC. <br><br>Example JavaScript representation: Math.round((new Date()).getTime()/100)</td>
 	  <td></td>
   </tr>
   <tr>
     <td><code>Bitfield (fixed length of x)</code></td>
     <td>x bit</td>
+    <td>Array of Number</td>
     <td>A fixed amount of bit. Usually each bit represents a boolean for an ID within a group where the first bit corresponds to true/false for ID 1, the second bit corresponds to true/false for ID 2 and so on.</td>
 	  <td></td>
  </tr>
@@ -447,6 +454,7 @@ The possible data types are:
   <tr>
     <td><code>Range (Int)</code></td>
     <td>variable</td>
+    <td>Array of Number</td>
     <td>A range field always consists of the following fields: 
 	    <ul>
 		    <li>int(12) - representing the amount of items to follow </li>
@@ -473,6 +481,7 @@ Note: items may not be in sorted order.</td>
   <tr>
     <td><code>Range (Fibonacci)</code></td>
     <td>variable</td>
+    <td>Array of Number</td>
     <td>A range field always consists of the following fields: 
 	    <ul>
 		    <li>int(12) - representing the amount of items to follow </li>
@@ -526,7 +535,7 @@ Note: items MUST be in sorted order..</td>
  
 
 
-When defining a new Section, regional policy writers should consider the above format to describe their segment.
+When defining a new Section, regional policy writers should consider the above format to describe their section.
 
 
 <table>
@@ -564,7 +573,7 @@ When defining a new Section, regional policy writers should consider the above f
 > **Note:** It is recommended to use Field names in CamelCase and without any special characters or space. This allows the use of the same field names within other APIs (e.g. GPP JS API or GPP Mobile API)
 
 
-**Sub-Sections / Segments**
+**Sub-Sections / Sections**
 
 If a section uses sub-sections to separate information or to be more flexible, it can use the delimiter “.” (dot) to separate the sub-sections from each other. 
 
