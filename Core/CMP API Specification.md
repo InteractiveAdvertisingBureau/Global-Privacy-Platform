@@ -162,9 +162,7 @@ cmpStatus : String, // possible values: stub, loading, loaded, error
 
 cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
-apiSupport : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"]
-
-currentAPI: String, // name of detected API once CMP is loaded, may be empty while loading. Example “tcfeuv2”
+supportedAPIs : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"] 
 
 cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
@@ -566,10 +564,11 @@ gppVersion : Number, // The version number parsed from the header
 
 sectionList : Array of Number, // the sections contained within the encoded GPP string as parsed from the header
 
-applicableSection: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values.
+applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
 
 gppString: String // the complete encoded GPP string
 
+pingData: object // see PingReturn
 }
 ```
 
@@ -875,8 +874,7 @@ window.__gpp_stub = function ()
   gppVersion      : '1.0', // must be “Version.Subversion”, current: “1.0”
   cmpStatus       : 'stub', // possible values: stub, loading, loaded, error
   cmpDisplayStatus: 'hidden', // possible values: hidden, visible, disabled
-  apiSupport      : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
-  currentAPI      : '', // name of detected API once CMP is loaded
+  supportedAPIs      : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
   cmpId           : 31 // IAB assigned CMP ID, may be 0 during stub/loading
   };
  }
@@ -894,7 +892,14 @@ window.__gpp_stub = function ()
   return {
    eventName : 'listenerRegistered',
    listenerId: lnr, // Registered ID of the listener
-   data      : true // positive signal
+   data      : true, // positive signal
+pingData: {
+ gppVersion      : '1.0',
+ cmpStatus       : 'stub',
+ cmpDisplayStatus: 'hidden',
+ supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
+ cmpId           : 31
+}
   };
  }
  else if (cmd === 'removeEventListener')
@@ -913,11 +918,36 @@ window.__gpp_stub = function ()
   return {
    eventName : 'listenerRemoved', 
    listenerId: par, // Registered ID of the listener
-   data      : success // status info
+   data      : success, // status info
+pingData: {
+ gppVersion      : '1.0',
+ cmpStatus       : 'stub',
+ cmpDisplayStatus: 'hidden',
+ supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
+ cmpId           : 31
+}
   };
- }
+}
+ else if (cmd === 'getGPPData')
+{
+ //return null; //CMPs can decide to return null during load
+ return {
+sectionId         : 3,
+gppVersion        : 1,
+sectionList       : [],
+applicableSections: [0], /*may be filled by publisher*/
+gppString         : '',
+pingData: {
+ gppVersion      : '1.0',
+ cmpStatus       : 'stub',
+ cmpDisplayStatus: 'hidden',
+ supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
+ cmpId           : 31
+}
+};
+}
  //these commands must not be queued but may return null while in stub-mode
- else if (cmd === 'hasSection' || cmd === 'getSection' || cmd === 'getField' || cmd === 'getGPPString')
+ else if (cmd === 'hasSection' || cmd === 'getSection' || cmd === 'getField')
  {
   return null;
  }
@@ -936,16 +966,16 @@ window.__gpp_msghandler = function (event)
  {
   var i = json.__gppCall;
   window.__gpp(i.command, function (retValue, success)
-  {
-   var returnMsg = {
-   '__gppReturn': {
-    'returnValue': retValue,
-    'success'    : success,
-    'callId'     : i.callId
-   }
-  };
-  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
-  }, i.parameter);
+{
+var returnMsg = {
+ '__gppReturn': {
+  'returnValue': retValue,
+  'success'    : success,
+  'callId'     : i.callId
+ }
+};
+event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
+},'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
  }
 };
 if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function')
