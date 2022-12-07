@@ -174,9 +174,9 @@ To decode a code word, remove the final "1", assign the remaining values 1,2,3,5
 The following details provide information on creating, storing, and managing a GPP String. The basic steps for creating a GPP String are as follows: 
 
 1. **Create discrete sections.** For each section: 
- - For sections that use the recommended base64-websafe encoding, create a bit representation of the section’s header (if it exists) and each sub-section. Then, convert them to base64-websafe without padding (i.e. removing “=” at the end) and concatenate the header and all sub-sections using the “.” (dot) character.
+ - For sections that use the recommended base64-websafe encoding, create a bit representation of the section’s header (if it exists) and each sub-section adding padding (0) on the right to get to a multiple of 6. Then, convert them to base64-websafe without padding (i.e. removing “=” at the end) and concatenate the header and all sub-sections using the “.” (dot) character.
  - For sections that use different encoding, ensure that the data is websafe and does not include the “~” (tilde) character.
-2. **Create header section.** Create a bit representation of the GPP header section. Include all IDs for discrete sections in a sorted order. Then, convert it to base64-websafe without padding.
+2. **Create header section.** Create a bit representation of the GPP header section. Include all IDs for discrete sections in a sorted order. Add padding (0) on the right to get to a multiple of 6. Then, convert it to base64-websafe without padding.
 3. **Concatenate all sections.** Concatenate the GPP-header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter.
 
 
@@ -266,10 +266,10 @@ The Header is always required and always comes first. It consists of the followi
 Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
   </tr>
   <tr>
-    <td><code>Full header bit string: 000011 000001 000000000001 0 011</code></td>
+    <td><code>Full header bit string with padding: 000011 000001 000000 000001 001100</code></td>
  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBABMA</code></td>
+	  <td>Encoded header: <code>DBABM</code></td>
      </td>
      </td>
   </tr>
@@ -298,7 +298,7 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
 		<li>Version = 000001</li>
 		<li>Section Range</li>
 			<ul>
-				<li>Amount = 000000000001</li>
+				<li>Amount = 000000000010</li>
 				<li>Item 1 Single = 0</li>
 				<li>Item 1 start ID = 011</li>
 				<li>Item 2 Single = 0 </li>
@@ -308,10 +308,10 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
 Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
   </tr>
   <tr>
-    <td><code>Full header bit string: 000011 000001 000000000010 0 011 0 1011</code></td>
+    <td><code>Full header bit string with padding: 000011 000001 000000 000010 001101 011000</code></td>
  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBACNYA</code></td>
+	  <td>Encoded header: <code>DBACNY</code></td>
      </td>
      </td>
   </tr>
@@ -350,7 +350,7 @@ Based on the Section ID table above, the Section ID for EU TCF is 2 and the Sect
 Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the <code>Data Types table</code> for more detail on these fields.</td>
   </tr>
   <tr>
-    <td><code>Full bit string: 000011 000001 000000000001 1 00011 11</code></td>
+    <td><code>Full bit string with padding: 000011 000001 000000 000001 100011 110000</code></td>
  </tr>
   <tr>  
 	  <td>Encoded header: <code>DBABjw</code></td>
