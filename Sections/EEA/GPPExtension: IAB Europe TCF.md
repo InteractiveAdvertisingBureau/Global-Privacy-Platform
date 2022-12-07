@@ -324,10 +324,6 @@ In the mobile or CTV context, the key names to be used in GPP are listed below. 
 <td>IABGPP_TCFEU2_VendorLegitimateInterests</td>
 </tr>
 <tr>
-<td>IABTCF_gdprApplies</td>
-<td>IABGPP_TCFEU2_gdprApplies</td>
-</tr>
-<tr>
 <td>IABTCF_PurposeConsents</td>
 <td>IABGPP_TCFEU2_PurposeConsents</td>
 </tr>
