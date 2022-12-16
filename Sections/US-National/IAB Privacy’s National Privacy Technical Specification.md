@@ -15,7 +15,7 @@
 <td><strong>Comments</strong></td>
 </tr>
 <tr>
-<td>November 2022</td>
+<td>December 2022</td>
 <td>1.0</td>
 <td>Version 1.0 released</td>
 </tr>
@@ -101,7 +101,7 @@
 <tr>
 <td>SharingOptOutNotice</td>
 <td>Int(2)</td>
-<td>Notice of the Opportunity to Opt Out of the Sharing of the Consumer&rsquo;s Personal Data.<p><p>References:&nbsp;(i) Cal. Civ. Code 1798.100(1)(1), (3), (ii) Cal. Civ. Code 1798.135(1) and/or (iii) Cal. Civ. Code 1798.135(2)&nbsp;<code>0</code>  Not Applicable.The Business does not Share Personal Data.<p><code>1</code>  Yes, notice was provided<p><code>2</code>  No, notice was not provided</td>
+<td>Notice of the Opportunity to Opt Out of the Sharing of the Consumer&rsquo;s Personal Data.<p><p>References:&nbsp;(i) Cal. Civ. Code 1798.100(1)(1), (3), (ii) Cal. Civ. Code 1798.135(1) and/or (iii) Cal. Civ. Code 1798.135(2)&nbsp;<p><code>0</code>  Not Applicable.The Business does not Share Personal Data.<p><code>1</code>  Yes, notice was provided<p><code>2</code>  No, notice was not provided</td>
 </tr>
 <tr>
 <td>TargetedAdvertisingOptOutNotice</td>
@@ -170,7 +170,8 @@
 <tr>
 <td>SensitiveDataProcessing</td>
 <td>N-Bitfield(2,12)</td>
-<td>Two bits for each Data Activity:<code>0</code>  Not Applicable. The Business does not Process the specific category of Sensitive Data.<p><code>1</code>  Consent<p><code>2</code>  No Consent&nbsp;(1). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.&nbsp;<p><p>References:
+<td>Two bits for each Data Activity:<code>0</code>  Not Applicable. The Business does not Process the specific category of Sensitive Data.<p><code>1</code> No Consent<p><code>2</code>  Consent&nbsp;<p>Data Activities:
+<p>(1) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.&nbsp;<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -178,7 +179,7 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(2). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Religious or Philosophical Beliefs.&nbsp;<p><p>References:
+(2) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Religious or Philosophical Beliefs.&nbsp;<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -186,7 +187,7 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(3). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Concerning a Consumer&rsquo;s Health (including a Mental or Physical Health Condition or Diagnosis; Medical History; or Medical Treatment or Diagnosis by a Health Care Professional).<p><p>References:
+(3) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Concerning a Consumer&rsquo;s Health (including a Mental or Physical Health Condition or Diagnosis; Medical History; or Medical Treatment or Diagnosis by a Health Care Professional).<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -194,7 +195,7 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(4). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p><p>References:
+(4) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -202,22 +203,14 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(5). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p><p>References:
+(5) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p><p>References:
 <ul>
 <li>Virginia Code 59.1-578(A)(5)</li>
 <li>Colo. Rev. Stat. 6-1-1308(7)</li>
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(6). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying an Individual / Natural Person.<p><p>References:
-<ul>
-<li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
-<li>Virginia Code 59.1-578(A)(5)</li>
-<li>Colo. Rev. Stat. 6-1-1308(7)</li>
-<li>Utah Code 13-61-302(3)(a)</li>
-<li>Conn. PA 22-15, Sec. 6(a)(4)</li>
-</ul>
-(7). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying an Individual / Natural Person.<p><p>References:
+(6) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying an Individual / Natural Person.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -225,26 +218,34 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(8). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Precise Geolocation Data.<p><p>References:
+(7) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying an Individual / Natural Person.<p><p>References:
+<ul>
+<li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
+<li>Virginia Code 59.1-578(A)(5)</li>
+<li>Colo. Rev. Stat. 6-1-1308(7)</li>
+<li>Utah Code 13-61-302(3)(a)</li>
+<li>Conn. PA 22-15, Sec. 6(a)(4)</li>
+</ul>
+(8) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Precise Geolocation Data.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(9). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of a Consumer&rsquo;s Social Security, Driver&rsquo;s License, State Identification Card, or Passport Number.<p><p>References:
+(9) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of a Consumer&rsquo;s Social Security, Driver&rsquo;s License, State Identification Card, or Passport Number.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 </ul>
-(10). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of a Consumer&rsquo;s Account Log-In, Financial Account, Debit Card, or Credit Card Number in Combination with Any Required Security or Access Code, Password, or Credentials Allowing Access to an Account.<p><p>References:
+(10) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of a Consumer&rsquo;s Account Log-In, Financial Account, Debit Card, or Credit Card Number in Combination with Any Required Security or Access Code, Password, or Credentials Allowing Access to an Account.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 </ul>
-(11). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Union Membership.<p><p>References:
+(11) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of Union Membership.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 </ul>
-(12). Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of the contents of a Consumer&rsquo;s Mail, Email, and Text Messages unless You Are the Intended Recipient of the Communication.<p><p>References:
+(12) Consent to Process the Consumer&rsquo;s Sensitive Data Consisting of the contents of a Consumer&rsquo;s Mail, Email, and Text Messages unless You Are the Intended Recipient of the Communication.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.100(a)(2), 1798.121(a), and 1798.135(a)</li>
 </ul>
@@ -253,12 +254,12 @@
 <tr>
 <td>KnownChildSensitiveDataConsents</td>
 <td>N-Bitfield(2,2)</td>
-<td>Two bits for each Data Activity:<code>0</code>  Not Applicable. The Business does not have actual knowledge that it Processes Personal Data or Sensitive Data of a Consumer who is a known child.<p><code>1</code>  Consent<p><code>2</code>  No Consent&nbsp;(1). Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers from Age 13 to 16.<p><p>References:
+<td>Two bits for each Data Activity:<code>0</code>  Not Applicable. The Business does not have actual knowledge that it Processes Personal Data or Sensitive Data of a Consumer who is a known child.<p><code>1</code> No Consent<p><code>2</code> Consent&nbsp;<p>(1) Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers from Age 13 to 16.<p><p>References:
 <ul>
 <li>Cal. Civ. Code Cal. Civ. Code 1798.120(c)</li>
 <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
 </ul>
-(2). Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers Younger Than 13 Years of Age.<p><p>References:
+(2) Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers Younger Than 13 Years of Age.<p><p>References:
 <ul>
 <li>Cal. Civ. Code Cal. Civ. Code 1798.120(c)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
@@ -275,7 +276,7 @@
 <ul>
 <li>&nbsp;Cal. Civ. Code 1798.100(c)&nbsp;</li>
 </ul>
-<code>0</code>  Not Applicable. The Business does not use, retain, Sell, or Share the Consumer&rsquo;s Personal Data for advertising purposes that are unrelated to or incompatible with the purpose(s) for which the Consumer&rsquo;s Personal Data was collected or processed.<p><code>1</code>  Consent<p><code>2</code>  No Consent&nbsp;</td>
+<code>0</code>  Not Applicable. The Business does not use, retain, Sell, or Share the Consumer&rsquo;s Personal Data for advertising purposes that are unrelated to or incompatible with the purpose(s) for which the Consumer&rsquo;s Personal Data was collected or processed.<p><code>1</code> No Consent<p><code>2</code> Consent&nbsp;</td>
 </tr>
 <tr>
 <td>MspaCoveredTransaction</td>

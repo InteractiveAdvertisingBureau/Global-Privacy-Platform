@@ -11,8 +11,9 @@
 <td><strong>Version</strong></td>
 <td><strong>Comments</strong></td>
 </tr>
+
 <tr>
-<td>November 2022</td>
+<td>December 2022</td>
 <td>1.0</td>
 <td>Version 1.0 released</td>
 </tr>
@@ -97,12 +98,12 @@
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">N-Bitfield(2,2)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Business does not have actual knowledge that it Processes Personal Information of Consumers Less Than 16 years of Age.<p><code>1</code> Consent<p><code>2</code> No Consent<p>Data Activities:<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Business does not have actual knowledge that it Processes Personal Information of Consumers Less Than 16 years of Age.<p><code>1</code> No Consent<p><code>2</code> Consent<p>Data Activities:<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age</td>
 </tr>
 <tr>
 <td style="text-align:left">PersonalDataConsents</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Consent to Collection, Use, Retention, Sale, and/or Sharing of the Consumer&#39;s Personal Data that Is Unrelated to or Incompatible with the Purpose(s) for which the Consumer&#39;s Personal Data Was Collected or Processed<p><code>0</code> Not Applicable. The Business does not use, retain, Sell, or Share the Consumer&#39;s Personal Data for advertising purposes that are unrelated to or incompatible with the purpose(s) for which the Consumer&#39;s Personal Data was collected or processed.<p><code>1</code> Consent<p><code>2</code> No Consent</td>
+<td style="text-align:left">Consent to Collection, Use, Retention, Sale, and/or Sharing of the Consumer&#39;s Personal Data that Is Unrelated to or Incompatible with the Purpose(s) for which the Consumer&#39;s Personal Data Was Collected or Processed<p><code>0</code> Not Applicable. The Business does not use, retain, Sell, or Share the Consumer&#39;s Personal Data for advertising purposes that are unrelated to or incompatible with the purpose(s) for which the Consumer&#39;s Personal Data was collected or processed.<p><code>1</code> No Consent<p><code>2</code> Consent</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>
