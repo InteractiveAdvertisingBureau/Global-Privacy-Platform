@@ -965,7 +965,7 @@ window.__gpp_msghandler = function (event)
  if (typeof (json) === 'object' && json !== null && '__gppCall' in json)
  {
   var i = json.__gppCall;
-  window.__gpp(i.command, function (retValue, success)
+  var retValue = window.__gpp(i.command, function (retValue, success)
 {
 var returnMsg = {
  '__gppReturn': {
@@ -976,6 +976,14 @@ var returnMsg = {
 };
 event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
 },'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
+  var returnMsg = {
+   '__gppReturn'  : {
+    'returnValue': retValue,
+    'success'    : true,
+    'callId'     : i.callId
+   }
+  };
+  event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : JSON.parse(JSON.stringify(returnMsg)), '*');
  }
 };
 if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function'))
