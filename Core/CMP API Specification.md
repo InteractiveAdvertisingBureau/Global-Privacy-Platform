@@ -856,7 +856,7 @@ window.__gpp_addFrame = function (n)
   }
   else
   {
-   window.setTimeout(window.__gppaddFrame, 10, n);
+   window.setTimeout(window.__gpp_addFrame, 10, n);
   }
  }
 };
@@ -978,7 +978,7 @@ event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*
 },'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
  }
 };
-if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function')
+if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function'))
 {
  window.__gpp = window.__gpp_stub;
  window.addEventListener('message', window.__gpp_msghandler, false);
