@@ -124,7 +124,7 @@ The `ping` command can be used to determine the state of the CMP.
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-"> PingReturn </a>)</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a>)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -228,19 +228,12 @@ The `addEventListener` command can be used to define a callback function (or a p
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener</a>)</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-">EventListener</a>, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>not used</td>
     <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
-    <td></td>
-     </td>
-     </td>
   </tr>
  </table>
  
@@ -339,7 +332,7 @@ The `removeEventListener` command can be used to remove an existing event listen
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function(data: boolean) // True if removed successfully, otherwise false</td>
+    <td>function (success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -378,7 +371,7 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function(data: boolean or null) // True if the specified section is present, otherwise false</td>
+    <td>function (data: boolean, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -418,7 +411,7 @@ The `getSection` command can be used to receive the (parsed) object representati
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function(data: object or null) // Section string parsed into an object according to the API specification </td>
+    <td>function (data: object or null, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -456,7 +449,7 @@ The `getField` command can be used to receive a specific field out of a certain 
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function(data: mixed or null) // Section string parsed into an object according to the API specification</td>
+    <td>function (data: mixed or null, success)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -494,7 +487,7 @@ The `getGPPData` command can be used in order to receive the current version of 
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function(data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData</a> object or null) // Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData</a> or null, success: boolean)</td>
     
   </tr>
   <tr>
@@ -556,7 +549,7 @@ getVendorList
 
 Command:     iabtcfeuv2.getVendorList
 
-Callback:    function(gvl: GlobalVendorList, success: boolean)
+Callback:    function (gvl: GlobalVendorList, success: boolean)
 
 Parameter:   (optional) int or string
 
