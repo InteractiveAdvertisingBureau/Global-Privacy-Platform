@@ -908,7 +908,7 @@ pingData: {
  //queue all other commands
  else
  {
-  __cmp.queue.push([].slice.apply(b));
+  __gpp.queue.push([].slice.apply(b));
  }
 };
 window.__gpp_msghandler = function (event)
@@ -932,7 +932,7 @@ event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*
 },'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
  }
 };
-if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function')
+if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function'))
 {
  window.__gpp = window.__gpp_stub;
  window.addEventListener('message', window.__gpp_msghandler, false);
