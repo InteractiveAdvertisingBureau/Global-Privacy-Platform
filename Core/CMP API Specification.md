@@ -95,9 +95,8 @@ Every consent manager must provide the following API function:
 Requirements for the interface: 
 - The function <code>__gpp</code> must always be a function and cannot be any other type, even if only temporarily on initialization – the API must be able to handle calls at all times.
 - The command must always be a string.
-- The callback must be either a function or null.
+- The callback must always be a function.
 - Parameter can be of mixed type depending on used command
-- The return value of the function is of mixed type depending on used command
 - If a CMP cannot immediately respond to a query, the CMP must queue all calls to the function and execute them later. The CMP must execute the commands in the same order in which the function was called.
 - A CMP must support all generic commands. All generic commands must always be available when a <code>__gpp</code> function is present on the page. This means that “[stub code](#stubcode)” that supports all generic commands must be in place before/during CMP load.	
 
@@ -124,21 +123,14 @@ The `ping` command can be used to determine the state of the CMP.
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-"> PingReturn </a>)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>not used</td>
     <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-"> PingReturn object</td>
-    <td></td>
-     </td>
-     </td>
-  </tr>
+  </tr>     
 </table>
 
 
@@ -146,7 +138,9 @@ The `ping` command can be used to determine the state of the CMP.
 *Example:*
 
 ``` javascript
-var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
+__gpp('ping', pingReturn => {
+  // do something with pingReturn
+});
 ```
 
 #### `PingReturn` <a name="pingreturn"></a>
@@ -234,7 +228,7 @@ The `addEventListener` command can be used to define a callback function (or a p
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: EventListener)</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener</a>)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -255,11 +249,11 @@ The `addEventListener` command can be used to define a callback function (or a p
 *Example:*
 
 ```javascript
-var EventListenerReturn = __gpp('addEventListener',myFunction);
+__gpp('addEventListener', myFunction);
 ```
 
 
-> **Note:** The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
+> **Note:** The `addEventListener` command passes an `EventListener` object immediately to the callback function. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
 
 
 #### `EventListener` <a name="eventlistenerobject"></a>
@@ -277,7 +271,7 @@ pingData : object // see PingReturn
 ```
 
 
-A call to the `addEventListener` command must always respond with a return object immediately. When registering new event listeners, the CMP (and stub) must therefore generate new listenerIds for each call to this command.
+A call to the `addEventListener` command must always trigger an immediate call to the callback function. When registering new event listeners, the CMP (and stub) must therefore generate new listenerIds for each call to this command.
 
 
 <table>
@@ -331,7 +325,7 @@ ______
 The `removeEventListener` command can be used to remove an existing event listener.
 
 
-<table>
+<table> 
   <tr>
     <td><strong>argument</strong></td>
     <td><strong>type</strong></td>
@@ -344,20 +338,13 @@ The `removeEventListener` command can be used to remove an existing event listen
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function(data: boolean) // True if removed successfully, otherwise false</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>number</td>
     <td>ID of the listenerId property that was returned from addEventListener command</td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
- <td></td>
-     </td>
-     </td>
   </tr>
  </table>
  
@@ -367,7 +354,7 @@ The `removeEventListener` command can be used to remove an existing event listen
 *Example:*
 
 ```javascript
-var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
+__gpp('removeEventListener', myFunction, listenerId);
 ```
 
 __________
@@ -390,20 +377,13 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function(data: boolean or null) // True if the specified section is present, otherwise false</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string</td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>boolean or null</td>
-    <td>True if the specified section is present, otherwise false</td>
-     </td>
-     </td>
   </tr>
  </table>
  
@@ -414,7 +394,7 @@ Example:
 A client wants to ask the CMP if there is data for IAB TCF v2.0:
 
 ```javascript
-var b = __gpp('hasSection',null, "tcfeuv2");
+__gpp('hasSection', myFunction, "tcfeuv2");
 ```
 
 ______
@@ -437,20 +417,13 @@ The `getSection` command can be used to receive the (parsed) object representati
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function(data: object or null) // Section string parsed into an object according to the API specification </td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string</td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>object or null</td>
-    <td>Section string parsed into an object according to the API specification</td>
-     </td>
-     </td>
   </tr>
  </table>
 
@@ -460,7 +433,7 @@ For example, client can ask the CMP to get the IAB TCF v2.0 TCData:
 
 
 ```javascript
-var s = __gpp('getSection',null, "tcfeuv2");
+__gpp('getSection', myFunction, "tcfeuv2");
 ```
 
 ______
@@ -482,21 +455,15 @@ The `getField` command can be used to receive a specific field out of a certain 
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function(data: mixed or null) // Section string parsed into an object according to the API specification</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string + "." (dot) + fieldname</td>
   </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>mixed or null</td>
-    <td>Section string parsed into an object according to the API specification</td>
-     </td>
-     </td>
-  </tr>
+
  </table>
 
 
@@ -504,7 +471,7 @@ The `getField` command can be used to receive a specific field out of a certain 
 For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
 
 ```javascript
-var s = __gpp('getField',null, "tcfeuv2.LastUpdated");
+__gpp('getField', myFunction, "tcfeuv2.LastUpdated");
 ```
 
 ______
@@ -526,20 +493,14 @@ The `getGPPData` command can be used in order to receive the current version of 
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function(data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData</a> object or null) // Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
+    
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>not used</td>
     <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData object or null</td>
-    <td>Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
-     </td>
-     </td>
   </tr>
  </table>
 
