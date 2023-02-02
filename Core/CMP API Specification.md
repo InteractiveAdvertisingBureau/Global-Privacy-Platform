@@ -116,7 +116,8 @@ All CMPs must support all generic commands. Generic commands are commands that c
 ________
 #### `ping` <a name="ping"></a>
 
-The `ping` command can be used to determine the state of the CMP. 
+The `ping` command can be used to determine the state of the CMP. The callback shall be called with a <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a> object as the value of the `data` parameter. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
+
 <table>
   <tr>
     <td><strong>argument</strong></td>
@@ -131,7 +132,7 @@ The `ping` command can be used to determine the state of the CMP.
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a>)</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a>, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -323,7 +324,7 @@ A call to the `addEventListener` command must always trigger an immediate call t
 ______
 #### `removeEventListener` <a name="removeeventlistener"></a>
 
-The `removeEventListener` command can be used to remove an existing event listener. The callback shall be called with `false` as the argument for the `success` parameter if the listener could not be removed (e.g. the CMP cannot find a registered listener corresponding to `listenerId`).
+The `removeEventListener` command can be used to remove an existing event listener. The callback shall be called with `false` as the argument for the `data` parameter if the listener could not be removed (e.g. the CMP cannot find a registered listener corresponding to `listenerId`). A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
 <table> 
@@ -340,7 +341,7 @@ The `removeEventListener` command can be used to remove an existing event listen
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (success: boolean)</td>
+    <td>function (data: boolean, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -361,7 +362,7 @@ __gpp('removeEventListener', myFunction, listenerId);
 __________
 #### `hasSection` <a name="hassection"></a>
 
-The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. The callback shall be called with `true` as the argument for the `data` parameter if the CMP has generated a section for the requested API prefix string. The `data` parameter may be `null` when the CMP is not yet loaded. The callback shall be called with `false` as the argument for the `success` parameter if the CMP fails to process this command.
+The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. The callback shall be called with `true` as the argument for the `data` parameter if the CMP has generated a section for the requested API prefix string. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
 
@@ -399,7 +400,7 @@ __gpp('hasSection', myFunction, "tcfeuv2");
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. The callback shall be called with `false` as the argument for the `success` parameter if the CMP fails to process this command. 
+The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
 
@@ -438,7 +439,7 @@ __gpp('getSection', myFunction, "tcfeuv2");
 ______
 #### `getField` <a name="getfield"></a>
 
-The `getField` command can be used to receive a specific field out of a certain section. The callback shall be called with the value of the requested field as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. The callback shall be called with `false` as the argument for the `success` parameter if the CMP fails to process this command.
+The `getField` command can be used to receive a specific field out of a certain section. The callback shall be called with the value of the requested field as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
 <table>
