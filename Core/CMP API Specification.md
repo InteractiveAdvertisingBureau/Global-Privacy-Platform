@@ -155,7 +155,7 @@ This object contains information about the loading status and configuration of t
 ```javascript
 PingReturn = {
 
-gppVersion : String, // must be “Version.Subversion”, current: “1.0”
+gppVersion : String, // must be “Version.Subversion”, current: “1.1”
 
 cmpStatus : String, // possible values: stub, loading, loaded, error
 
@@ -772,7 +772,7 @@ window.__gpp_stub = function ()
  if (cmd === 'ping')
  {
   return {
-  gppVersion      : '1.0', // must be “Version.Subversion”, current: “1.0”
+  gppVersion      : '1.1', // must be “Version.Subversion”, current: “1.1”
   cmpStatus       : 'stub', // possible values: stub, loading, loaded, error
   cmpDisplayStatus: 'hidden', // possible values: hidden, visible, disabled
   supportedAPIs      : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
@@ -795,7 +795,7 @@ window.__gpp_stub = function ()
    listenerId: lnr, // Registered ID of the listener
    data      : true, // positive signal
 pingData: {
- gppVersion      : '1.0',
+ gppVersion      : '1.1',
  cmpStatus       : 'stub',
  cmpDisplayStatus: 'hidden',
  supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
@@ -821,7 +821,7 @@ pingData: {
    listenerId: par, // Registered ID of the listener
    data      : success, // status info
 pingData: {
- gppVersion      : '1.0',
+ gppVersion      : '1.1',
  cmpStatus       : 'stub',
  cmpDisplayStatus: 'hidden',
  supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
