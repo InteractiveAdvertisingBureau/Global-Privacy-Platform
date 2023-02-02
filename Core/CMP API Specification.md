@@ -8,9 +8,14 @@
 	  <td><strong>Version</strong></td>
     <td><strong>Comments</strong></td>
   </tr>
+    <tr>
+      <td>TBD</td>    
+      <td><code>1.1</code></td>
+      <td>Removal of return values in favor of callback functions. Removal of getGPPData command</td>
+    </tr>
   <tr>
-	  <td>TBD</td>    
-<td><code>1.0</code></td>
+	<td>Sept 28, 2022</td>    
+    <td><code>1.0</code></td>
     <td>Published final public version</td>
   </tr>
 </table>
@@ -535,7 +540,7 @@ The key names are a combination of the “IABGPP_” prefix followed by the sect
   </tr>
   <tr>
     <td><code>IABGPP_HDR_Version</code></td>
-    <td>Integer</td>
+    <td>String</td>
     <td>GPP Version</td>
   </tr>
   <tr>
@@ -637,7 +642,7 @@ Below are example key names from existing APIs. For a complete list of key names
     </tr>
   <tr>
 	  <td><code>IABGPP_TCFEU2_CmpVersion</code></td>    
-<td>IAB TECF EU v2 CMP Version</td>
+<td>IAB TCF EU v2 CMP Version</td>
      </tr>
   <tr>
 	  <td><code>IABGPP_TCFEU2_PurposesConsent</code></td>    
@@ -853,7 +858,7 @@ var returnMsg = {
  }
 };
 event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
-},'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
+},'parameter' in i? i.parameter: null, 'version' in i ? i.version : '1.1');
  }
 };
 if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function'))
@@ -920,7 +925,7 @@ The sent message shall follow the form outlined below. The command, parameter an
   __gppCall: {
     command: "command",
     parameter: “parameter”,
-    version: 1,
+    version: '1.1',
     callId: “randomID”
   }
 }
