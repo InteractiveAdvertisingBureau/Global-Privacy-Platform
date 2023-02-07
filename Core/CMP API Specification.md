@@ -195,7 +195,7 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
     <td>cmpStatus</td>
     <td>CMP is finished loading</td>
   </tr>
-  <tr>
+  <tr>  
     <td><code>'error'</code></td>
     <td>cmpStatus</td>
     <td>CMP is in an error state.  A CMP shall not repsond to any other API requests if this cmpStatus is present. A CMP may set this status if, for any reason, it is unable to perform the operation.</td>
@@ -773,11 +773,14 @@ window.__gpp_stub = function ()
  if (cmd === 'ping')
  {
   return {
-  gppVersion      : '1.1', // must be “Version.Subversion”, current: “1.1”
-  cmpStatus       : 'stub', // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: 'hidden', // possible values: hidden, visible, disabled
-  supportedAPIs      : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
-  cmpId           : 31 // IAB assigned CMP ID, may be 0 during stub/loading
+  gppVersion        : '1.1', // must be “Version.Subversion”, current: “1.1”
+  cmpStatus         : 'stub', // possible values: stub, loading, loaded, error
+  cmpDisplayStatus  : 'hidden', // possible values: hidden, visible, disabled
+  supportedAPIs     : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
+  cmpId             : 31, // IAB assigned CMP ID, may be 0 during stub/loading
+  sectionList       : [],
+  applicableSections: [-1], //or 0 or ID set by publisher
+  gppString         : ''
   };
  }
  else if (cmd === 'addEventListener')
@@ -795,13 +798,16 @@ window.__gpp_stub = function ()
    eventName : 'listenerRegistered',
    listenerId: lnr, // Registered ID of the listener
    data      : true, // positive signal
-pingData: {
- gppVersion      : '1.1',
- cmpStatus       : 'stub',
- cmpDisplayStatus: 'hidden',
- supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
- cmpId           : 31
-}
+   pingData: {
+    gppVersion        : '1.1',
+    cmpStatus         : 'stub',
+    cmpDisplayStatus  : 'hidden',
+    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    cmpId             : 31,
+    sectionList       : [],
+    applicableSections: [-1], //or 0 or ID set by publisher
+    gppString         : ''
+   }
   };
  }
  else if (cmd === 'removeEventListener')
@@ -821,13 +827,16 @@ pingData: {
    eventName : 'listenerRemoved', 
    listenerId: par, // Registered ID of the listener
    data      : success, // status info
-pingData: {
- gppVersion      : '1.1',
- cmpStatus       : 'stub',
- cmpDisplayStatus: 'hidden',
- supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
- cmpId           : 31
-}
+   pingData: {
+    gppVersion        : '1.1',
+    cmpStatus         : 'stub',
+    cmpDisplayStatus  : 'hidden',
+    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    cmpId             : 31,
+    sectionList       : [],
+    applicableSections: [-1], //or 0 or ID set by publisher
+    gppString         : ''
+   }
   };
 }
  //these commands must not be queued but may return null while in stub-mode
@@ -924,10 +933,10 @@ The sent message shall follow the form outlined below. The command, parameter an
 ```javascript
 {
   __gppCall: {
-    command: "command",
-    parameter: “parameter”,
+    command: 'command',
+    parameter: 'parameter,
     version: '1.1',
-    callId: “randomID”
+    callId: 'randomID'
   }
 }
 ```
