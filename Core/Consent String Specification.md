@@ -692,7 +692,7 @@ If you are a vendor with a GVL ID for a specific framework, you already have a G
  # How does a URL-based service process the GPP String when it can’t execute Javascript?
 
 
-When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1-val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
+When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1=val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
 
 
 Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable GPP Section IDs (SID), are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macros:
