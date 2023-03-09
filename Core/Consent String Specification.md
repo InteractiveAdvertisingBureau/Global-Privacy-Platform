@@ -518,7 +518,7 @@ Note: items MUST be in sorted order..</td>
 		Please note: although the API reads/writes multiple fields, the API will only return the array of found IDs</td>
 	</tr>
 	<tr>
-	<td><code>OptimizedIntRange</code></td>
+	<td><code><s>OptimizedIntRange</s></code></td>
 	<td>variable</td>
 	<td>Array of Number</td>
 	<td>Consists of three data types:
@@ -529,6 +529,21 @@ Note: items MUST be in sorted order..</td>
 			<li>If the second data type is 0/false, the second data type is a bitfield of length determined by the first data type (see above)</li>
 		</ul>
 		Note: This data type is used for downwards compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
+	</tr>	
+	<tr>
+	<td><code><s>TypeRange</s></code></td>
+	<td>variable</td>
+	<td>Array of objects: [{type: x (Number), value: y(Number), ids: [1,2,3,4, ...]},  ...]</td>
+	<td>Consists of three data types:
+		<ul>
+			<li>Number of entries (Integer(12))</li>
+			<li>Per item: <ul>
+			     <li>Type (Integer(12))</li>
+			     <li>Value (Integer(2))</li>
+			     <li>IDs (Range(Int))</li>
+			</ul></li>
+		</ul>
+		Note: This data type is used for downwards compatibility only.</td>
 	</tr>	
  </table>
  
