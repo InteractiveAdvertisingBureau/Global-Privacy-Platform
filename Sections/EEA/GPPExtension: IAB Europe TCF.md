@@ -150,7 +150,7 @@ The core segment must always be present. It consists of the following fields:
   </tr>
   <tr>
   <td>PublisherRestrictions</td>
-  <td>TypeRange</td>
+  <td>TCFPublisherRestriction</td>
   <td>List of restrictions to apply.</td>
   </tr>
   </table>
