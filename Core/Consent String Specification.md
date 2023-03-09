@@ -531,19 +531,20 @@ Note: items MUST be in sorted order..</td>
 		Note: This data type is used for downwards compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
 	</tr>	
 	<tr>
-	<td><code><s>TypeRange</s></code></td>
+	<td><code><s>TCFPublisherRestriction</s></code></td>
 	<td>variable</td>
-	<td>Array of objects: [{type: x (Number), value: y(Number), ids: [1,2,3,4, ...]},  ...]</td>
+	<td>Objects of objects: {'[purpose ID]': {'[vendor ID]': Number, ...}, ...}</td>
 	<td>Consists of three data types:
 		<ul>
 			<li>Number of entries (Integer(12))</li>
 			<li>Per item: <ul>
-			     <li>Type (Integer(12))</li>
-			     <li>Value (Integer(2))</li>
-			     <li>IDs (Range(Int))</li>
+			     <li>purpose ID (Integer(12))</li>
+			     <li>restriction type (Integer(2))</li>
+			     <li>vendor IDs (Range(Int))</li>
 			</ul></li>
 		</ul>
-		Note: This data type is used for downwards compatibility only.</td>
+		When parsing the data type, for each entry read the purpose ID, the restriction type and the vendor IDs. Then assign read the restriction type to each of the vendor IDs, using the vendor ID as property name.
+		Note: This data type is used for downwards compatibility for TCF v2 only.</td>
 	</tr>	
  </table>
  
