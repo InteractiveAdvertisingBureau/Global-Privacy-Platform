@@ -269,7 +269,7 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
     <td><code>Full header bit string with padding: 000011 000001 000000 000001 001100</code></td>
  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBABM</code></td>
+	  <td>Encoded header: <code>DBABMA</code></td>
      </td>
      </td>
   </tr>
@@ -302,16 +302,16 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
 				<li>Item 1 Single = 0</li>
 				<li>Item 1 start ID = 011</li>
 				<li>Item 2 Single = 0 </li>
-				<li>Item 2 offset to last ID = 1011 </li>
+				<li>Item 2 start ID = 10011 </li>
 		</ul>
 	</ul>
 Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
   </tr>
   <tr>
-    <td><code>Full header bit string with padding: 000011 000001 000000 000010 001101 011000</code></td>
+    <td><code>Full header bit string with padding: 000011 000001 000000 000010 001101 001100</code></td>
  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBACNY</code></td>
+	  <td>Encoded header: <code>DBACNMA</code></td>
      </td>
      </td>
   </tr>
@@ -624,10 +624,10 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 </td>
   </tr>
   <tr>
-	  <td>Encoded header:<br><br><code>DBACNYA</code></td>
+	  <td>Encoded header:<br><br><code>DBACNMA</code></td>
 	</tr>
 	<tr>
-		<td>Full GPP String:<br><br><code>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
+		<td>Full GPP String:<br><br><code>DBACNMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
 </td>
 </td>
 </tr>
