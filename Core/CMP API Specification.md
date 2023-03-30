@@ -215,7 +215,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
   </tr>
   <tr>
     <td><code>'ready'</code></td>
-    <td>signalStatus</td>
+    <td>cmpDisplayStatus</td>
     <td>Is NULL when there is no display layer. Vendors should rely solely on signalStatus.</td>
     </tr>
     <tr>
