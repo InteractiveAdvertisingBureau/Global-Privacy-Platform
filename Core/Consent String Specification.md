@@ -376,7 +376,7 @@ In order to be backward compatible with IAB Europe’s TC String and US Privacy 
 > **Note:** URL-safe characters are important to meet the integration needs of those not reading privacy signals server side or via the client-side APIs. URL-safe characters are:
 
 >- A-Z, a-z, 0-9
->- - (minus)
+>- &#8211; (minus)
 >- . (dot)
 >- _ (underscore)
 >- ~ (tilde)
