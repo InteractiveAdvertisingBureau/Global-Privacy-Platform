@@ -214,7 +214,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
      </td>
   </tr>
   <tr>
-    <td><code>'ready'</code></td>
+    <td><code>Null / not set</code></td>
     <td>cmpDisplayStatus</td>
     <td>Is NULL when there is no display layer. Vendors should rely solely on signalStatus.</td>
     </tr>
@@ -224,7 +224,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
     <td>The CMP is not ready to respond to any calling scripts with the corresponding GPP string and applicable section ids.</td>
   </tr>	
   <tr>
-    <td><code>Null / not set</code></td>
+    <td><code>'ready'</code></td>
     <td>signalStatus</td>
     <td>The CMP is ready to respond to any calling scripts with the corresponding GPP string and applicable section ids.</td>
     </tr>
