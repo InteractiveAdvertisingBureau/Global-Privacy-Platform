@@ -411,7 +411,7 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
 
 Example:
 
-A client wants to ask the CMP if there is data for IAB TCF v2.0:
+A client wants to ask the CMP if there is data for IAB TCF v2:
 
 ```javascript
 var b = __gpp('hasSection',null, "tcfeuv2");
@@ -420,7 +420,8 @@ var b = __gpp('hasSection',null, "tcfeuv2");
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. Please note that the command may return null when the CMP is not yet loaded. 
+The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification.<br>
+Please note that this command returns `null` for sections that don't allow accessing the section data object outside an event handler. It may also return `null` when the CMP is not yet loaded.
 
 
 
@@ -456,17 +457,18 @@ The `getSection` command can be used to receive the (parsed) object representati
 
 
 
-For example, client can ask the CMP to get the IAB TCF v2.0 TCData: 
+For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData: 
 
 
 ```javascript
-var s = __gpp('getSection',null, "tcfeuv2");
+var s = __gpp('getSection', null, "tcfcav1");
 ```
-
+A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
 ______
 #### `getField` <a name="getfield"></a>
 
-The `getField` command can be used to receive a specific field out of a certain section. Please note that the command may return `null` when the CMP is not yet loaded. 
+The `getField` command can be used to receive a specific field out of a certain section.<br>
+Please note that this command returns `null` for fields in sections that don't allow accessing the section data object outside an event handler. It may also return `null` when the CMP is not yet loaded.
 
 
 <table>
@@ -501,11 +503,12 @@ The `getField` command can be used to receive a specific field out of a certain 
 
 
 
-For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
+For example, a client can ask the CMP to get the last updated field from the IAB TCF CA v1.0 TCData.
 
 ```javascript
-var s = __gpp('getField',null, "tcfeuv2.LastUpdated");
+var s = __gpp('getField', null, "tcfcav1.LastUpdated");
 ```
+A call to ` __gpp('getField', null, "tcfeuv2.LastUpdated);` will return `null`.
 
 ______
 #### `getGPPData` <a name="getgppdata"></a>
