@@ -1946,7 +1946,7 @@ The registration process is described here: [https://iabeurope.eu/tcf](https://i
     *   List of Special Purposes to transparently disclose as their legitimate interest that a user has no right to object.
     *   List of Features they use across Purposes.
     *   List of Special Features they use across Purposes.
-    *   GDPR/privacy policy page URL.
+    *   A list of GDPR/privacy policy page URLs.
     *   HTTP “overflow” options which includes a <code>GET</code> request maximum size in kilobytes to help diagnose problems with TC String passing as well as limit oversized strings.
 
 
@@ -2079,7 +2079,7 @@ Here is an annotated example of the GVL’s JSON format:
 {
   "gvlSpecificationVersion": 2,
   "vendorListVersion": 133, // incremented with each published file change
-  "tcfPolicyVersion": 2, // The TCF MO will increment this value whenever a GVL change (such as adding a new Purpose or Feature or a change in Purpose wording) legally invalidates existing TC Strings and requires CMPs to re-establish transparency and consent from users. TCF Policy changes should be relatively infrequent and only occur when necessary to support changes in global mandate. If the policy version number in the latest GVL is different from the value in your TC String, then you need to re-establish transparency and consent for that user. A version 1 format TC String is considered to have a version value of 1.
+  "tcfPolicyVersion": 1, // The TCF MO will increment this value whenever a GVL change (such as adding a new Purpose or Feature or a change in Purpose wording) legally invalidates existing TC Strings and requires CMPs to re-establish transparency and consent from users. TCF Policy changes should be relatively infrequent and only occur when necessary to support changes in global mandate. If the policy version number in the latest GVL is different from the value in your TC String, then you need to re-establish transparency and consent for that user. A version 1 format TC String is considered to have a version value of 1.
   "lastUpdated": "2018-05-28T00:00:00Z",
   "purposes": {
 
@@ -2209,8 +2209,9 @@ Here is an annotated example of the GVL’s JSON format:
    * empty. List of Special Features the Vendor may utilize when performing
    * some declared Purposes processing.
    *
-   * "policyUrl": url string, REQUIRED URL to the Vendor's privacy policy
-   * document.
+   * "urls": an array of url objects representing language, policy url and
+   * legitimate interest url. At least one entry is REQUIRED. Up to 40 languages
+   * can be specified.
    *
    * "deletedDate": date string ("2019-05-28T00:00:00Z") OPTIONAL, If present,
    * vendor is considered deleted after this date/time and MUST NOT be
@@ -2235,8 +2236,17 @@ Here is an annotated example of the GVL’s JSON format:
     "flexiblePurposes": [1, 2],
     "features": [1, 2],
     "specialFeatures": [1, 2],
-    "policyUrl": "https://vendorname.com/gdpr.html",
-    "deletedDate": "2019-02-28T00:00:00Z",
+    "urls": [
+        {
+          "langId": "en",
+          "privacy": "https://vendorname.com/myPrivacyPolicy.html"
+        },
+        {
+          "langId": "fr",
+          "privacy": "https://vendorname.com/fr/myPrivacyPolicy.html"
+        }
+     ],
+    "deletedDate": "2023-05-28T00:00:00Z",
     "overflow": {
       "httpGetLimit": 32   /* 32 or 128 are supported options */
       }
