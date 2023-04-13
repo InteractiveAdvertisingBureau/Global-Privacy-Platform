@@ -115,7 +115,7 @@ The core segment must always be present. It consists of the following fields:
       <li>1 Consent</li>
       <li>0 Consent</li>
     </ul>
-    The user’s consent value for each Purpose established on the legal basis of consent.<br><br>  <br><br>The Purposes are numerically identified and published in the Global Vendor List. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field.</td>
+    The user’s consent value for each Purpose established on the legal basis of consent.<br><br>The Purposes are numerically identified and published in the Global Vendor List. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field.</td>
   </tr>
   <tr>
   <td>PurposesLITransparency</td>
@@ -125,7 +125,8 @@ The core segment must always be present. It consists of the following fields:
       <li>1 legitimate interest estalished</li>
       <li>0 legitimate interest was NOT established or it was established but user exercised their “Right to Object” to the Purpose</li>
     </ul>
-      The Purpose’s transparency requirements are met for each Purpose on the legal basis of legitimate interest and the user has not exercised their “Right to Object” to that Purpose.<br><br>By default or if the user has exercised their “Right to Object” to a Purpose, the corresponding bit for that Purpose is set to 0. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field.</td>
+      The Purpose’s transparency requirements are met for each Purpose on the legal basis of legitimate interest and the user has not exercised their “Right to Object” to that Purpose.<br><br>By default or if the user has exercised their “Right to Object” to a Purpose, the corresponding bit for that Purpose is set to 0. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field.<br>
+      Note: With TCF v2.2 support for legitimate interest for purpose 3 to 6 has been deprecated. Bits 2 to 5 are required to be set to <code>0</code>.</td>
     </tr>
     <tr>
   <td>PurposeOneTreatment</td>
@@ -178,7 +179,7 @@ The core segment must always be present. It consists of the following fields:
 
 ## Disclosed Vendors Segment
 
-The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter. This is an optional TC String segment. The segment fields are:
+The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter. This is an optional TC String segment. It may be used by a CMP while storing TC Strings, but must not be included in the TC String when returned by the CMP API. The segment fields are:
 
 <table>
 <tr>
@@ -251,25 +252,7 @@ The client side API does not expose the following custom GPP commands:
 
 ## getTCData
 
-
-<table>
-<tr>
-<td>Command:</td>
-<td>tcfcav2.getTCData</td>
-</tr>
-<tr>
-<td>Callback:</td>
-<td>function(tcData: object, success: boolean)</td>
-</tr>
-<tr>
-<td>Parameter:</td>
-<td>not used</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>Please note that this command is only used for downward compatibility. Developers should use the generic GPP command getSection or getField instead.<br></br>When called, the callback function will be called with the javascript representation of the parsed Core Segment (see above) and Publisher segment as tcData.</td>
-</tr>
-</table>
+This command is deprecated in TCF EU v2.2.
 
 
 

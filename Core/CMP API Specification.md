@@ -392,7 +392,7 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
  
 Example:
 
-A client wants to ask the CMP if there is data for IAB TCF v2.0:
+A client wants to ask the CMP if there is data for IAB TCF v2:
 
 ```javascript
 __gpp('hasSection', myFunction, "tcfeuv2");
@@ -401,7 +401,8 @@ __gpp('hasSection', myFunction, "tcfeuv2");
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
+The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. 
+The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` for sections that don't allow accessing the section data object outside an event handler.  It may also be `null` when the CMP is not yet loaded.
 
 
 
@@ -430,17 +431,17 @@ The `getSection` command can be used to receive the (parsed) object representati
 
 
 
-For example, client can ask the CMP to get the IAB TCF v2.0 TCData: 
+For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData: 
 
 
 ```javascript
-__gpp('getSection', myFunction, "tcfeuv2");
+__gpp('getSection', myFunction, "tcfcav1");
 ```
-
+A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
 ______
 #### `getField` <a name="getfield"></a>
 
-The `getField` command can be used to receive a specific field out of a certain section. The callback shall be called with the value of the requested field as the argument for the `data` parameter. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
+The `getField` command can be used to receive a specific field out of a certain section. The callback shall be called with the value of the requested field as the argument for the `data` parameter. The `data` parameter may be `null` for fields in sections that don't allow accessing the section data object outside an event handler.  It may also be `null` when the CMP is not yet loaded.
 
 
 <table>
@@ -464,7 +465,6 @@ The `getField` command can be used to receive a specific field out of a certain 
     <td>string</td>
     <td>API Prefix string + "." (dot) + fieldname</td>
   </tr>
-
  </table>
 
 
