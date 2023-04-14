@@ -8,9 +8,14 @@
 	  <td><strong>Version</strong></td>
     <td><strong>Comments</strong></td>
   </tr>
+    <tr>
+      <td>TBD</td>    
+      <td><code>1.1</code></td>
+      <td>Removal of return values in favor of callback functions. Removal of getGPPData command</td>
+    </tr>
   <tr>
-	  <td>TBD</td>    
-<td><code>1.0</code></td>
+	<td>Sept 28, 2022</td>    
+    <td><code>1.0</code></td>
     <td>Published final public version</td>
   </tr>
 </table>
@@ -93,24 +98,26 @@ Every consent manager must provide the following API function:
 
 
 Requirements for the interface: 
-- The function <code>__gpp</code> must always be a function and cannot be any other type, even if only temporarily on initialization – the API must be able to handle calls at all times.
+- The <code>__gpp</code> function must always be a function and cannot be any other type, even if only temporarily on initialization – the API must be able to handle calls at all times.
 - The command must always be a string.
-- The callback must be either a function or null.
+- The callback must always be a function.
 - Parameter can be of mixed type depending on used command
-- The return value of the function is of mixed type depending on used command
+- The <code>__gpp</code> function does not have a return value
 - If a CMP cannot immediately respond to a query, the CMP must queue all calls to the function and execute them later. The CMP must execute the commands in the same order in which the function was called.
-- A CMP must support all generic commands. All generic commands must always be available when a <code>__gpp</code> function is present on the page. This means that “[stub code](#stubcode)” that supports all generic commands must be in place before/during CMP load.	
+- A CMP must support all generic commands. All generic commands must always be available when a <code>__gpp</code> function is present on the page. This means that “[stub code](#stubcode)” that supports all generic commands must be in place before/during CMP load.
+	
 
 
 ### What required API commands must a CMP support? <a name="javascript"></a>
 
 
-All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), [‘getField’](#getfield) and [‘getGPPData’](#getgppdata). 
+All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), and [‘getField’](#getfield). 
 
 ________
 #### `ping` <a name="ping"></a>
 
-The `ping` command can be used to determine the state of the CMP. 
+The `ping` command can be used to determine the state of the CMP. The callback shall be called with a <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a> object as the value of the `data` parameter. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
+
 <table>
   <tr>
     <td><strong>argument</strong></td>
@@ -124,21 +131,14 @@ The `ping` command can be used to determine the state of the CMP.
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn</a>, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>not used</td>
     <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-"> PingReturn object</td>
-    <td></td>
-     </td>
-     </td>
-  </tr>
+  </tr>     
 </table>
 
 
@@ -146,7 +146,7 @@ The `ping` command can be used to determine the state of the CMP.
 *Example:*
 
 ``` javascript
-var PingReturn = __gpp('ping');var PingReturn = __gpp('ping');
+__gpp('ping', myFunction);
 ```
 
 #### `PingReturn` <a name="pingreturn"></a>
@@ -156,7 +156,7 @@ This object contains information about the loading status and configuration of t
 ```javascript
 PingReturn = {
 
-gppVersion : String, // must be “Version.Subversion”, current: “1.0”
+gppVersion : String, // must be “Version.Subversion”, current: “1.1”
 
 cmpStatus : String, // possible values: stub, loading, loaded, error
 
@@ -165,6 +165,13 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 supportedAPIs : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"] 
 
 cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
+
+sectionList : Array of Number, // may be empty during loading of the CMP
+
+applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on July 1, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
+
+
+gppString: String // the complete encoded GPP string, may be empty during CMP load
 
 }
 
@@ -189,7 +196,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
     <td>cmpStatus</td>
     <td>CMP is finished loading</td>
   </tr>
-  <tr>
+  <tr>  
     <td><code>'error'</code></td>
     <td>cmpStatus</td>
     <td>CMP is in an error state.  A CMP shall not repsond to any other API requests if this cmpStatus is present. A CMP may set this status if, for any reason, it is unable to perform the operation.</td>
@@ -217,7 +224,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 ___________
 #### `addEventListener` <a name="addeventlistener"></a> 
 
-The `addEventListener` command can be used to define a callback function (or a postmessage to respond to for cross-domain case) that can be used to detect changes in the CMP. 
+The `addEventListener` command can be used to define a callback function that can be used to detect changes in the CMP. The callback shall be called with an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below).  A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command. 
 
 
 <table>
@@ -234,19 +241,12 @@ The `addEventListener` command can be used to define a callback function (or a p
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: EventListener)</td>
+    <td>function (data: <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-">EventListener</a>, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>not used</td>
     <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
-    <td></td>
-     </td>
-     </td>
   </tr>
  </table>
  
@@ -255,12 +255,9 @@ The `addEventListener` command can be used to define a callback function (or a p
 *Example:*
 
 ```javascript
-var EventListenerReturn = __gpp('addEventListener',myFunction);
+__gpp('addEventListener', myFunction);
 ```
-
-
-> **Note:** The `addEventListener` command returns an `EventListener` object immediately. The GPP script will then call the callback function and return a new EventListener object every time the CMP detects a change (see events below). 
-
+  
 
 #### `EventListener` <a name="eventlistenerobject"></a>
 
@@ -277,7 +274,7 @@ pingData : object // see PingReturn
 ```
 
 
-A call to the `addEventListener` command must always respond with a return object immediately. When registering new event listeners, the CMP (and stub) must therefore generate new listenerIds for each call to this command.
+A call to the `addEventListener` command must always trigger an immediate call to the callback function. When registering new event listeners, the CMP (and stub) must therefore generate new listenerIds for each call to this command.
 
 
 <table>
@@ -328,10 +325,10 @@ A call to the `addEventListener` command must always respond with a return objec
 ______
 #### `removeEventListener` <a name="removeeventlistener"></a>
 
-The `removeEventListener` command can be used to remove an existing event listener.
+The `removeEventListener` command can be used to remove an existing event listener. The callback shall be called with `false` as the argument for the `data` parameter if the listener could not be removed (e.g. the CMP cannot find a registered listener corresponding to `listenerId`). A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
-<table>
+<table> 
   <tr>
     <td><strong>argument</strong></td>
     <td><strong>type</strong></td>
@@ -344,20 +341,13 @@ The `removeEventListener` command can be used to remove an existing event listen
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: boolean, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>number</td>
     <td>ID of the listenerId property that was returned from addEventListener command</td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#eventlistener-"> EventListener object</td>
- <td></td>
-     </td>
-     </td>
   </tr>
  </table>
  
@@ -367,13 +357,13 @@ The `removeEventListener` command can be used to remove an existing event listen
 *Example:*
 
 ```javascript
-var EventListenerReturn = __gpp('removeEventListener',null, listenerId);
-```
+__gpp('removeEventListener', myFunction, listenerId);
+``` 
 
 __________
 #### `hasSection` <a name="hassection"></a>
 
-The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. Please note that the command may return `null` when the CMP is not yet loaded. 
+The `hasSection` command can be used to detect if the CMP has generated a section of a certain specification. The callback shall be called with `true` as the argument for the `data` parameter if the CMP has generated a section for the requested API prefix string. The `data` parameter may be `null` when the CMP is not yet loaded. A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
 
 
 
@@ -390,38 +380,29 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: boolean, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string</td>
   </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>boolean or null</td>
-    <td>True if the specified section is present, otherwise false</td>
-     </td>
-     </td>
-  </tr>
- </table>
+ </table> 
  
-
-
 Example:
 
 A client wants to ask the CMP if there is data for IAB TCF v2:
 
 ```javascript
-var b = __gpp('hasSection',null, "tcfeuv2");
+__gpp('hasSection', myFunction, "tcfeuv2");
 ```
 
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification.<br>
-Please note that this command returns `null` for sections that don't allow accessing the section data object outside an event handler. It may also return `null` when the CMP is not yet loaded.
+The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. 
+The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` for sections that don't allow accessing the section data object outside an event handler.  It may also be `null` when the CMP is not yet loaded.
 
 
 
@@ -438,20 +419,13 @@ Please note that this command returns `null` for sections that don't allow acces
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: object or null, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string</td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>object or null</td>
-    <td>Section string parsed into an object according to the API specification</td>
-     </td>
-     </td>
   </tr>
  </table>
 
@@ -461,14 +435,13 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 
 
 ```javascript
-var s = __gpp('getSection', null, "tcfcav1");
+__gpp('getSection', myFunction, "tcfcav1");
 ```
 A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
 ______
 #### `getField` <a name="getfield"></a>
 
-The `getField` command can be used to receive a specific field out of a certain section.<br>
-Please note that this command returns `null` for fields in sections that don't allow accessing the section data object outside an event handler. It may also return `null` when the CMP is not yet loaded.
+The `getField` command can be used to receive a specific field out of a certain section. The callback shall be called with the value of the requested field as the argument for the `data` parameter. The `data` parameter may be `null` for fields in sections that don't allow accessing the section data object outside an event handler.  It may also be `null` when the CMP is not yet loaded.
 
 
 <table>
@@ -484,95 +457,22 @@ Please note that this command returns `null` for fields in sections that don't a
   </tr>
   <tr>
     <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
+    <td>function</td>
+    <td>function (data: mixed or null, success)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
     <td>string</td>
     <td>API Prefix string + "." (dot) + fieldname</td>
   </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td>mixed or null</td>
-    <td>Section string parsed into an object according to the API specification</td>
-     </td>
-     </td>
-  </tr>
  </table>
 
 
 
-For example, a client can ask the CMP to get the last updated field from the IAB TCF CA v1.0 TCData.
+For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
 
 ```javascript
-var s = __gpp('getField', null, "tcfcav1.LastUpdated");
-```
-A call to ` __gpp('getField', null, "tcfeuv2.LastUpdated);` will return `null`.
-
-______
-#### `getGPPData` <a name="getgppdata"></a>
-
-The `getGPPData` command can be used in order to receive the current version of the (encoded) GPP String (e.g. in order to pass it along the supply chain). Please note that the command may return `null` when the CMP is not yet loaded.
-
-
-<table>
-  <tr>
-    <td><strong>argument</strong></td>
-    <td><strong>type</strong></td>
-    <td><strong>value</strong></td>
-  </tr>
-  <tr>
-    <td><code>command</code></td>
-    <td>string</td>
-    <td>"getGPPData"</td>
-  </tr>
-  <tr>
-    <td><code>callback</code></td>
-    <td>not used</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>parameter</code></td>
-    <td>not used</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><code>return</code></td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#gppdata-">GPPData object or null</td>
-    <td>Parsed header plus the encoded GPP String with all sections representing the current choices.</td>
-     </td>
-     </td>
-  </tr>
- </table>
-
-
-*Example:*
-
-```javascript
-var s = __gpp('getGPPData');
-```
-
-_________
-#### `GPPData` <a name="gppdataobject"></a>
-
-The `GPPData` object contains the parsed header section fields, the currently in force section, and the encoded `GPPString` and is defined as follows: 
-
-```javascript
-GPPData = {
-
-sectionId : Number,  // Always 3 to indicate the header section
-
-gppVersion : Number, // The version number parsed from the header
-
-sectionList : Array of Number, // the sections contained within the encoded GPP string as parsed from the header
-
-applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
-
-gppString: String // the complete encoded GPP string
-
-pingData: object // see PingReturn
-}
+__gpp('getField', myFunction, "tcfeuv2.LastUpdated");
 ```
 
 ### What are non-generic commands?
@@ -598,7 +498,7 @@ getVendorList
 
 Command:     iabtcfeuv2.getVendorList
 
-Callback:    function(gvl: GlobalVendorList, success: boolean)
+Callback:    function (gvl: GlobalVendorList, success: boolean)
 
 Parameter:   (optional) int or string
 
@@ -642,7 +542,7 @@ The key names are a combination of the “IABGPP_” prefix followed by the sect
   </tr>
   <tr>
     <td><code>IABGPP_HDR_Version</code></td>
-    <td>Integer</td>
+    <td>String</td>
     <td>GPP Version</td>
   </tr>
   <tr>
@@ -744,7 +644,7 @@ Below are example key names from existing APIs. For a complete list of key names
     </tr>
   <tr>
 	  <td><code>IABGPP_TCFEU2_CmpVersion</code></td>    
-<td>IAB TECF EU v2 CMP Version</td>
+<td>IAB TCF EU v2 CMP Version</td>
      </tr>
   <tr>
 	  <td><code>IABGPP_TCFEU2_PurposesConsent</code></td>    
@@ -874,11 +774,14 @@ window.__gpp_stub = function ()
  if (cmd === 'ping')
  {
   return {
-  gppVersion      : '1.0', // must be “Version.Subversion”, current: “1.0”
-  cmpStatus       : 'stub', // possible values: stub, loading, loaded, error
-  cmpDisplayStatus: 'hidden', // possible values: hidden, visible, disabled
-  supportedAPIs      : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
-  cmpId           : 31 // IAB assigned CMP ID, may be 0 during stub/loading
+  gppVersion        : '1.1', // must be “Version.Subversion”, current: “1.1”
+  cmpStatus         : 'stub', // possible values: stub, loading, loaded, error
+  cmpDisplayStatus  : 'hidden', // possible values: hidden, visible, disabled
+  supportedAPIs     : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
+  cmpId             : 31, // IAB assigned CMP ID, may be 0 during stub/loading
+  sectionList       : [],
+  applicableSections: [-1], //or 0 or ID set by publisher
+  gppString         : ''
   };
  }
  else if (cmd === 'addEventListener')
@@ -896,13 +799,16 @@ window.__gpp_stub = function ()
    eventName : 'listenerRegistered',
    listenerId: lnr, // Registered ID of the listener
    data      : true, // positive signal
-pingData: {
- gppVersion      : '1.0',
- cmpStatus       : 'stub',
- cmpDisplayStatus: 'hidden',
- supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
- cmpId           : 31
-}
+   pingData: {
+    gppVersion        : '1.1',
+    cmpStatus         : 'stub',
+    cmpDisplayStatus  : 'hidden',
+    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    cmpId             : 31,
+    sectionList       : [],
+    applicableSections: [-1], //or 0 or ID set by publisher
+    gppString         : ''
+   }
   };
  }
  else if (cmd === 'removeEventListener')
@@ -922,32 +828,17 @@ pingData: {
    eventName : 'listenerRemoved', 
    listenerId: par, // Registered ID of the listener
    data      : success, // status info
-pingData: {
- gppVersion      : '1.0',
- cmpStatus       : 'stub',
- cmpDisplayStatus: 'hidden',
- supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
- cmpId           : 31
-}
+   pingData: {
+    gppVersion        : '1.1',
+    cmpStatus         : 'stub',
+    cmpDisplayStatus  : 'hidden',
+    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    cmpId             : 31,
+    sectionList       : [],
+    applicableSections: [-1], //or 0 or ID set by publisher
+    gppString         : ''
+   }
   };
-}
- else if (cmd === 'getGPPData')
-{
- //return null; //CMPs can decide to return null during load
- return {
-sectionId         : 3,
-gppVersion        : 1,
-sectionList       : [],
-applicableSections: [0], /*may be filled by publisher*/
-gppString         : '',
-pingData: {
- gppVersion      : '1.0',
- cmpStatus       : 'stub',
- cmpDisplayStatus: 'hidden',
- supportedAPIs   : ['tcfeuv2', 'tcfva', 'usnat'],
- cmpId           : 31
-}
-};
 }
  //these commands must not be queued but may return null while in stub-mode
  else if (cmd === 'hasSection' || cmd === 'getSection' || cmd === 'getField')
@@ -957,7 +848,7 @@ pingData: {
  //queue all other commands
  else
  {
-  __cmp.queue.push([].slice.apply(b));
+  __gpp.queue.push([].slice.apply(b));
  }
 };
 window.__gpp_msghandler = function (event)
@@ -978,10 +869,10 @@ var returnMsg = {
  }
 };
 event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, '*');
-},'parameter' in i? i.parameter: null, 'version' in i ? i.version : 1);
+},'parameter' in i? i.parameter: null, 'version' in i ? i.version : '1.1');
  }
 };
-if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function')
+if (!('__gpp' in window) || (typeof (window.__gpp) !== 'function'))
 {
  window.__gpp = window.__gpp_stub;
  window.addEventListener('message', window.__gpp_msghandler, false);
@@ -1043,10 +934,10 @@ The sent message shall follow the form outlined below. The command, parameter an
 ```javascript
 {
   __gppCall: {
-    command: "command",
-    parameter: “parameter”,
-    version: 1,
-    callId: “randomID”
+    command: 'command',
+    parameter: 'parameter,
+    version: '1.1',
+    callId: 'randomID'
   }
 }
 ```
