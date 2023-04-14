@@ -162,6 +162,8 @@ cmpStatus : String, // possible values: stub, loading, loaded, error
 
 cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
+signalStatus : String, // possible values: not ready, ready
+
 supportedAPIs : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"] 
 
 cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
@@ -218,6 +220,21 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
      </td>
      </td>
   </tr>
+  <tr>
+    <td><code>Null / not set</code></td>
+    <td>cmpDisplayStatus</td>
+    <td>Is NULL when there is no display layer. Vendors should rely solely on signalStatus.</td>
+    </tr>
+    <tr>
+    <td><code>'not ready'</code></td>
+    <td>signalStatus</td>
+    <td>The CMP is not ready to respond to any calling scripts with the corresponding GPP string and applicable section ids.</td>
+  </tr>	
+  <tr>
+    <td><code>'ready'</code></td>
+    <td>signalStatus</td>
+    <td>The CMP is ready to respond to any calling scripts with the corresponding GPP string and applicable section ids.</td>
+    </tr>
 </table>
 
 
@@ -301,7 +318,13 @@ A call to the `addEventListener` command must always trigger an immediate call t
   <tr>
     <td><code>cmpDisplayStatus</code></td>
     <td>string</td>
-    <td>Event is called whenever the display status of the CMP changes (e.g. the CMP shows the consent layer). The data property will contain the new display status (e.g. “visible”).</td>
+    <td>Event is called whenever the display status of the CMP changes (e.g. the CMP shows the consent layer). The data property will contain the new display status (e.g. “visible”). Note that this is only applicable when a consent layer is displayed.</td>
+    </tr>
+    <tr>
+    <td><code>signalStatus</code></td>
+    <td>string</td>
+    <td>Event is called whenever the signalStatus changes.
+   </td>
     </tr>
   <tr>
     <td><code>error</code></td>
