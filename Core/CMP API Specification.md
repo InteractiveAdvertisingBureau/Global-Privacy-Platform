@@ -424,8 +424,9 @@ __gpp('hasSection', myFunction, "tcfeuv2");
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) object representation of a section of a certain specification. 
-The callback shall be called with the (parsed) object representation as the argument for the `data` parameter. The `data` parameter may be `null` for sections that don't allow accessing the section data object outside an event handler.  It may also be `null` when the CMP is not yet loaded.
+The `getSection` command can be used to receive the (parsed) representation of a section of a certain specification. The callback shall be called with the (parsed) representation as the argument for the data parameter. The parsed representation of a section is an array of objects, where each object represents one segment of this section in the order that is given by the section specification. For example, the data parameter for the TCF Canada will be an array with one or two objects (Core segment plus optional publisher purposes segment). Each object is composed of the fields defined by the section specification.
+
+The data parameter may be `null` for sections that don't allow accessing the section data object outside an event handler. It may also be `null` when the CMP is not yet loaded.
 
 
 
@@ -443,7 +444,7 @@ The callback shall be called with the (parsed) object representation as the argu
   <tr>
     <td><code>callback</code></td>
     <td>function</td>
-    <td>function (data: object or null, success: boolean)</td>
+    <td>function (data: array of objects or null, success: boolean)</td>
   </tr>
   <tr>
     <td><code>parameter</code></td>
@@ -515,10 +516,10 @@ The `getField` command can be used to receive a specific field out of a certain 
 
 
 
-For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
+For example, a client can ask the CMP to get the last updated field from the IAB TCF CA v1.0 TCData. 
 
 ```javascript
-__gpp('getField', myFunction, "tcfeuv2.LastUpdated");
+__gpp('getField', myFunction, "tcfca.LastUpdated");
 ```
 
 ### What are non-generic commands?
