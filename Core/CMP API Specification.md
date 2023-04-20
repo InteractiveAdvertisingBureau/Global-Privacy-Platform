@@ -458,8 +458,31 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 
 
 ```javascript
-__gpp('getSection', myFunction, "tcfcav1");
+__gpp('getSection', myFunction, "tcfca"); 
 ```
+Example value of data passed to the callback: 
+```javascript
+[
+ /* Core segment */
+ {
+  Version:1, 
+  Created: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
+  LastUpdated: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
+  CmpId: 31, 
+  CmpVersion: 123,
+  ConsentScreen: 5,
+  ...
+  }, 
+  /* Publisher Purposes Segment (optional) */
+ {
+  SegmentType:3, 
+  PubPurposesExpressConsent : [1,2,3,4,5],
+  PubPurposesImpliedConsent  : [6,7,8,9],
+  ...
+  } 
+ ]
+```
+
 A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
 ______
 #### `getField` <a name="getfield"></a>
