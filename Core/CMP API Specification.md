@@ -418,7 +418,7 @@ Example:
 A client wants to ask the CMP if there is data for IAB TCF v2:
 
 ```javascript
-__gpp('hasSection', myFunction, "tcfeuv2");
+__gpp('hasSection', myFunction, "tcfcav1");
 ```
 
 ______
@@ -460,7 +460,6 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 ```javascript
 __gpp('getSection', myFunction, "tcfcav1");
 ```
-A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
 ______
 #### `getField` <a name="getfield"></a>
 
@@ -495,7 +494,7 @@ The `getField` command can be used to receive a specific field out of a certain 
 For example, a client can ask the CMP to get the last updated field from the IAB TCF v2.0 TCData. 
 
 ```javascript
-__gpp('getField', myFunction, "tcfeuv2.LastUpdated");
+__gpp('getField', myFunction, "tcfcav1.LastUpdated");
 ```
 
 ### What are non-generic commands?
@@ -519,7 +518,7 @@ Using the IAB TCF v2.0 as an example, the `getVendorList`command would be define
 ```
 getVendorList
 
-Command:     iabtcfeuv2.getVendorList
+Command:     iabtcfcav1.getVendorList
 
 Callback:    function (gvl: GlobalVendorList, success: boolean)
 
@@ -528,7 +527,7 @@ Parameter:   (optional) int or string
 Calling with this command and a valid vendorListVersion parameter shall return a GlobalVendorList object to the callback function….
 ```
 
-In the example above, a call to` __gpp (‘iabtcfeuv2.getVendorList’,myfunction)` will be treated in the same way as a call to `__tcfapi(‘getVendorList’,2,myfunction)` by the CMP.
+In the example above, a call to` __gpp (‘iabtcfcav1.getVendorList’,myfunction)` will be treated in the same way as a call to `__tcfapi(‘getVendorList’,2,myfunction)` by the CMP.
 
 
 __________
@@ -800,7 +799,7 @@ window.__gpp_stub = function ()
   gppVersion        : '1.1', // must be “Version.Subversion”, current: “1.1”
   cmpStatus         : 'stub', // possible values: stub, loading, loaded, error
   cmpDisplayStatus  : 'hidden', // possible values: hidden, visible, disabled
-  supportedAPIs     : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
+  supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'uspv1'], // list of supported APIs
   cmpId             : 31, // IAB assigned CMP ID, may be 0 during stub/loading
   sectionList       : [],
   applicableSections: [-1], //or 0 or ID set by publisher
@@ -826,7 +825,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'tcfva', 'usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
@@ -855,7 +854,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    supportedAPIs     : ['tcfeuv2', 'tcfeuv1', 'tcfva', 'usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
