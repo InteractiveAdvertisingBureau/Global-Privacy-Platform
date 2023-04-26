@@ -911,7 +911,7 @@ if(__gpp)
  __gpp('addEventListener', function (evt)
  {
   //callback will receive all events, we only want to react on TCF canada events
-  if(evt.pingData.currentAPI !== 'tcfcav2'){return ;}
+  if(evt.pingData.currentAPI !== 'tcfcav1'){return ;}
 
   //react on changes or when the data is loaded
   if(
@@ -923,18 +923,18 @@ if(__gpp)
       evt.pingData.cmpDisplayStatus !== 'visible'
      )
      // optional additional/instead check:
-     // __gpp('hasSection', null, 'tcfcav2') === true
+     // __gpp('hasSection', null, 'tcfcav1') === true
     )
   {
-   var consentData =__gpp('getSection', null, 'tcfcav2');
+   var consentData =__gpp('getSection', null, 'tcfcav1');
    //will return the parsed IAB TCF Canada TCstring. All info is in there.	
 
    var vendorConsent = consentData.VendorExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav2.VendorExpressConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorExpressConsent');
    var vendorImpConsent = consentData.VendorImpliedConsent;
-   // equivalent to: __gpp('getField', null, 'tcfcav2.VendorImpliedConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorImpliedConsent');
    var purposeConsent = consentData.PurposesExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav2.PurposesExpressConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.PurposesExpressConsent');
    // ... do something Canadian !
   }
  });
