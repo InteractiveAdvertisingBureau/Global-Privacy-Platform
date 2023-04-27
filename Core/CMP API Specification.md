@@ -415,10 +415,10 @@ The `hasSection` command can be used to detect if the CMP has generated a sectio
  
 Example:
 
-A client wants to ask the CMP if there is data for IAB TCF v2:
+A client wants to ask the CMP if there is data for IAB TCF CA v1.0:
 
 ```javascript
-__gpp('hasSection', myFunction, "tcfeuv2");
+__gpp('hasSection', myFunction, "tcfcav1");
 ```
 
 ______
@@ -459,7 +459,7 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 
 
 ```javascript
-__gpp('getSection', myFunction, "tcfca"); 
+__gpp('getSection', myFunction, "tcfcav1"); 
 ```
 Example value of data passed to the callback: 
 ```javascript
@@ -484,7 +484,7 @@ Example value of data passed to the callback:
  ]
 ```
 
-A call to ` __gpp('getSection', null, "tcfeuv2");` will return `null`.
+
 ______
 #### `getField` <a name="getfield"></a>
 
@@ -519,7 +519,7 @@ The `getField` command can be used to receive a specific field out of a certain 
 For example, a client can ask the CMP to get the last updated field from the IAB TCF CA v1.0 TCData. 
 
 ```javascript
-__gpp('getField', myFunction, "tcfca.LastUpdated");
+__gpp('getField', myFunction, "tcfcav1.LastUpdated");
 ```
 
 ### What are non-generic commands?
@@ -538,12 +538,12 @@ Parameter:   data type       or   “not used”
 A description of the command, what it does, what it’s meant for, when to use it and how.
 ```
 
-Using the IAB TCF v2.0 as an example, the `getVendorList`command would be defined as: 
+Using the IAB TCF CA v1.0 as an example, the `getVendorList`command would be defined as: 
 
 ```
 getVendorList
 
-Command:     iabtcfeuv2.getVendorList
+Command:     iabtcfcav1.getVendorList
 
 Callback:    function (gvl: GlobalVendorList, success: boolean)
 
@@ -552,7 +552,7 @@ Parameter:   (optional) int or string
 Calling with this command and a valid vendorListVersion parameter shall return a GlobalVendorList object to the callback function….
 ```
 
-In the example above, a call to` __gpp (‘iabtcfeuv2.getVendorList’,myfunction)` will be treated in the same way as a call to `__tcfapi(‘getVendorList’,2,myfunction)` by the CMP.
+In the example above, a call to` __gpp (‘iabtcfcav1.getVendorList’,myfunction)` will be treated in the same way as a call to `__tcfapi(‘getVendorList’,2,myfunction)` by the CMP.
 
 
 __________
