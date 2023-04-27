@@ -248,14 +248,6 @@ The publisher purposes segment is appended to the core segment by using the “.
 
 # Client side API
 
-The client side API does not expose the following custom GPP commands:
-
-## getTCData
-
-This command is deprecated in TCF EU v2.2.
-
-
-
 ## Key Names
 
 In the mobile or CTV context, the key names to be used in GPP are listed below. For complete details on the expected values for each key listed below, see the [IAB TCF EU v2 specification.](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#what-is-the-cmp-in-app-internal-structure-for-the-defined-api)

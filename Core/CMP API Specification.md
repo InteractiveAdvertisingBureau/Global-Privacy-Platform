@@ -461,6 +461,7 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 ```javascript
 __gpp('getSection', myFunction, "tcfcav1"); 
 ```
+
 Example value of data passed to the callback: 
 ```javascript
 [
@@ -483,7 +484,6 @@ Example value of data passed to the callback:
   } 
  ]
 ```
-
 
 ______
 #### `getField` <a name="getfield"></a>
@@ -824,7 +824,7 @@ window.__gpp_stub = function ()
   gppVersion        : '1.1', // must be “Version.Subversion”, current: “1.1”
   cmpStatus         : 'stub', // possible values: stub, loading, loaded, error
   cmpDisplayStatus  : 'hidden', // possible values: hidden, visible, disabled
-  supportedAPIs     : ['tcfeuv2', 'tcfcav2', 'uspv1'], // list of supported APIs
+  supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'uspv1'], // list of supported APIs
   cmpId             : 31, // IAB assigned CMP ID, may be 0 during stub/loading
   sectionList       : [],
   applicableSections: [-1], //or 0 or ID set by publisher
@@ -850,7 +850,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'tcfva', 'usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
@@ -879,7 +879,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfva', 'usnat'],
+    supportedAPIs     : ['tcfeuv2', 'tcfeuv1', 'tcfva', 'usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
@@ -936,7 +936,7 @@ if(__gpp)
  __gpp('addEventListener', function (evt)
  {
   //callback will receive all events, we only want to react on TCF canada events
-  if(evt.pingData.currentAPI !== 'tcfcav2'){return ;}
+  if(evt.pingData.currentAPI !== 'tcfcav1'){return ;}
 
   //react on changes or when the data is loaded
   if(
@@ -948,18 +948,18 @@ if(__gpp)
       evt.pingData.cmpDisplayStatus !== 'visible'
      )
      // optional additional/instead check:
-     // __gpp('hasSection', null, 'tcfcav2') === true
+     // __gpp('hasSection', null, 'tcfcav1') === true
     )
   {
-   var consentData =__gpp('getSection', null, 'tcfcav2');
+   var consentData =__gpp('getSection', null, 'tcfcav1');
    //will return the parsed IAB TCF Canada TCstring. All info is in there.	
 
    var vendorConsent = consentData.VendorExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav2.VendorExpressConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorExpressConsent');
    var vendorImpConsent = consentData.VendorImpliedConsent;
-   // equivalent to: __gpp('getField', null, 'tcfcav2.VendorImpliedConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorImpliedConsent');
    var purposeConsent = consentData.PurposesExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav2.PurposesExpressConsent');
+   // equivalent to: __gpp('getField', null, 'tcfcav1.PurposesExpressConsent');
    // ... do something Canadian !
   }
  });
