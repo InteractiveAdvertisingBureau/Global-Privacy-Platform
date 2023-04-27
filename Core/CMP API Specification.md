@@ -424,7 +424,7 @@ __gpp('hasSection', myFunction, "tcfcav1");
 ______
 #### `getSection` <a name="getsection"></a>
 
-The `getSection` command can be used to receive the (parsed) representation of a section of a certain specification. The callback shall be called with the (parsed) representation as the argument for the data parameter. The parsed representation of a section is an array of objects, where each object represents one segment of this section in the order that is given by the section specification. For example, the data parameter for the TCF Canada will be an array with one or two objects (Core segment plus optional publisher purposes segment). Each object is composed of the fields defined by the section specification.
+The `getSection` command can be used to receive the (parsed) representation of a section of a certain specification. The callback shall be called with the (parsed) representation as the argument for the data parameter. The parsed representation of a section is an array of objects, where each object represents one sub-section of this section in the order that is given by the section specification. For example, the data parameter for the TCF Canada will be an array with one or two objects (Core sub-section plus optional publisher purposes sub-section). Each object is composed of the fields defined by the section specification.
 
 The data parameter may be `null` for sections that don't allow accessing the section data object outside an event handler. It may also be `null` when the CMP is not yet loaded.
 
@@ -464,7 +464,7 @@ __gpp('getSection', myFunction, "tcfcav1");
 Example value of data passed to the callback: 
 ```javascript
 [
- /* Core segment */
+ /* Core Sub-section */
  {
   Version:1, 
   Created: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
@@ -474,9 +474,9 @@ Example value of data passed to the callback:
   ConsentScreen: 5,
   ...
   }, 
-  /* Publisher Purposes Segment (optional) */
+  /* Publisher Purposes Sub-section (optional) */
  {
-  SegmentType:3, 
+  subsectionType:3, 
   PubPurposesExpressConsent : [1,2,3,4,5],
   PubPurposesImpliedConsent  : [6,7,8,9],
   ...
