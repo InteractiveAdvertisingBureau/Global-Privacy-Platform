@@ -345,6 +345,144 @@ A call to the `addEventListener` command must always trigger an immediate call t
   </tr>
 </table>
 
+The “signalStatus” event shall always be the first (if applicable) and last in a chain of events being fired by the CMP. 
+A CMP **must** send all relevant events and it **must** send them in a specific order so that listeners (e.g. vendors) can understand when a task is completed. Whenever the CMP starts to change or is about to change any of the existing sections or is processing user input for an existing GPP string, it **must always** first set "signalStatus" to "not ready" and fire the corresponding event. It can then perform the tasks (e.g. change the sections along with firing the section change events). Only when all tasks are completed, the CMP can set the "signalStatus" to "ready" and fire the corresponding event.
+
+_Event Order Example 1_ 
+The following example illustrates the  events that are fired, and the other order in which they are fired, assuming support for IAB TCF Canada for a new user:
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Event Order</strong></td>
+<td><strong>Event Name</strong></td>
+<td><strong>Data</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td colspan="3"><em>initial data of PingReturn is {gppVersion:1.1, cmpStatus: loading, cmpDisplayStatus: hidden, signalStatus: not ready, ...}</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>listenerRegistered</td>
+<td>&nbsp;</td>
+<td>CMP has registered the event listener. Event is immediately fired after registering.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>cmpStatus</td>
+<td>loaded</td>
+<td>CMP is now loaded. Event is fired with name=cmpStatus and data=loaded.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>cmpDisplayStatus</td>
+<td>visible</td>
+<td>CMP now displays the consent layer. Event is fired with name=cmpDisplayStatus and data = visible</td>
+</tr>
+<tr>
+<td>5</td>
+<td colspan="3"><em>User makes their choices and clicks on accept or reject or save</em></td>
+</tr>
+<tr>
+<td>6</td>
+<td>cmpDisplayStatus</td>
+<td>hidden</td>
+<td>CMP closed the consent layer and processes user input. Event is fired with name=cmpDisplayStatus and data=hidden</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sectionChange</td>
+<td>tcfcav1</td>
+<td>CMP changes the section based on user input. Event is fired with name=sectionChange and data=tcfcav1 Note: if multiple sections are present, multiple sectionChange events may occur after another</td>
+</tr>
+<tr>
+<td>8</td>
+<td>signalStatus</td>
+<td>ready</td>
+<td>CMP is done with the processing, vendors can use the data. Event is fired with name=signalStatus and data = ready.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+_Event Order Example 2_ 
+The following example illustrates the events that are fired, and the order in which they are fired, assuming support for IAB TCF Canada for a returning user with a preexisting choice:
+<div>
+<table>
+<tbody>
+<tr>
+<td><strong>Event Order</strong></td>
+<td><strong>Event Name</strong></td>
+<td><strong>Data</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td colspan="3"><em>initial data of PingReturn is {gppVersion:1.1, cmpStatus: loading, cmpDisplayStatus: hidden, signalStatus: not ready, ... }</em></td>
+</tr>
+<tr>
+<td>2</td>
+<td>listenerRegistered</td>
+<td>&nbsp;</td>
+<td>CMP has registered the event listener. Event is immediately fired after registering.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>cmpStatus</td>
+<td>loaded</td>
+<td>CMP is now loaded. Event is fired with name=cmpStatus and data=loaded</td>
+</tr>
+<tr>
+<td>4</td>
+<td>signalStatus</td>
+<td>ready</td>
+<td>CMP is done with the processing (consent information is loaded, no further processing needed, consent layer will not be shown), vendors can use the data. Event is fired with name=signalStatus and data=ready</td>
+</tr>
+<tr>
+<td>5</td>
+<td colspan="3"><em>User clicks on a link or button to resurface the consent layer in order to change their choice</em></td>
+</tr>
+<tr>
+<td>6</td>
+<td>signalStatus</td>
+<td>Not ready</td>
+<td>CMP is expecting changes, vendors should not use the data but wait and pause their processing. Event is fired with name=signalStatus and data=not ready</td>
+</tr>
+<tr>
+<td>7</td>
+<td>cmpDisplayStatus</td>
+<td>visible</td>
+<td>CMP now displays the consent layer. Event is fired with name=cmpDisplayStatus and data=visible</td>
+</tr>
+<tr>
+<td>8</td>
+<td colspan="3"><em>User makes their choices and clicks on accept or reject or save</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>cmpDisplayStatus</td>
+<td>hidden</td>
+<td>CMP closed the consent layer and processes user input. Event is fired with name=cmpDisplayStatus and data=hidden</td>
+</tr>
+<tr>
+<td>10</td>
+<td>sectionChange</td>
+<td>tcfcav1</td>
+<td>CMP changes the section based on user input. Event is fired with name=sectionChange and data=tcfcav1 Note: If multiple sections are present, multiple sectionChange events may occur after another</td>
+</tr>
+<tr>
+<td>11</td>
+<td>signalStatus</td>
+<td>ready</td>
+<td>CMP is done with the processing, vendors can use the data. Event is fired with name=signalStatus and data=ready</td>
+</tr>
+</tbody>
+</table>
+</div>
 ______
 #### `removeEventListener` <a name="removeeventlistener"></a>
 
