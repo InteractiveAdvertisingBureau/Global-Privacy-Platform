@@ -346,10 +346,12 @@ A call to the `addEventListener` command must always trigger an immediate call t
 </table>
 
 The “signalStatus” event shall always be the first (if applicable) and last in a chain of events being fired by the CMP. 
+
 A CMP **must** send all relevant events and it **must** send them in a specific order so that listeners (e.g. vendors) can understand when a task is completed. Whenever the CMP starts to change or is about to change any of the existing sections or is processing user input for an existing GPP string, it **must always** first set "signalStatus" to "not ready" and fire the corresponding event. It can then perform the tasks (e.g. change the sections along with firing the section change events). Only when all tasks are completed, the CMP can set the "signalStatus" to "ready" and fire the corresponding event.
 
-_Event Order Example 1_ 
-The following example illustrates the  events that are fired, and the other order in which they are fired, assuming support for IAB TCF Canada for a new user:
+_Event Order Example 1:_ 
+
+The following example illustrates the  events that are fired, and the other order in which they are fired, assuming support for IAB TCF Canada for a new user.
 <div>
 <table>
 <tbody>
@@ -407,8 +409,9 @@ The following example illustrates the  events that are fired, and the other orde
 </table>
 </div>
 
-_Event Order Example 2_ 
-The following example illustrates the events that are fired, and the order in which they are fired, assuming support for IAB TCF Canada for a returning user with a preexisting choice:
+_Event Order Example 2:_ 
+
+The following example illustrates the events that are fired, and the order in which they are fired, assuming support for IAB TCF Canada for a returning user with a preexisting choice.
 <div>
 <table>
 <tbody>
@@ -483,7 +486,8 @@ The following example illustrates the events that are fired, and the order in wh
 </tbody>
 </table>
 </div>
-______
+
+___________
 #### `removeEventListener` <a name="removeeventlistener"></a>
 
 The `removeEventListener` command can be used to remove an existing event listener. The callback shall be called with `false` as the argument for the `data` parameter if the listener could not be removed (e.g. the CMP cannot find a registered listener corresponding to `listenerId`). A value of `false` will be passed as the argument to the `success` parameter if the CMP fails to process this command.
