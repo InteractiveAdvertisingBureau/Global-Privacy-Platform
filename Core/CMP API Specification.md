@@ -223,7 +223,7 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
   <tr>
     <td><code>Null / not set</code></td>
     <td>cmpDisplayStatus</td>
-    <td>Is NULL when there is no display layer. Vendors should rely solely on signalStatus.</td>
+    <td>Is NULL when there is no display layer. Display layer refers to a modal that the user may interact with to express their choices. When no such modal is present, the value is NULL,  e.g. when there is only a Do Not Sell or Share Personal Data link on the page that when clicked does not launch a modal. In this example, vendors should rely solely on signalStatus and the cmpDisplayStatus will be NULL / not set.</td>
     </tr>
     <tr>
     <td><code>'not ready'</code></td>
@@ -233,7 +233,7 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
   <tr>
     <td><code>'ready'</code></td>
     <td>signalStatus</td>
-    <td>The CMP is ready to respond to any calling scripts with the corresponding GPP string and applicable section ids.</td>
+    <td>The CMP is ready to respond to any calling scripts with the corresponding GPP string and applicable section ids. The ‘ready’ status should only be sent when the GPP string contains the section that is currently applicable with the user’s current choices reflected.  E.g. the ‘ready’ status should be signaled when applicableSection == -1 or applicableSection != 1 and the GPP string contains the section corresponding to applicableSection reflecting the user’s current choices.</td>
     </tr>
 </table>
 
