@@ -170,7 +170,7 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
 sectionList : Array of Number, // may be empty during loading of the CMP
 
-applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on July 1, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be -1.
+applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on July 1, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be [-1].
 
 
 gppString: String // the complete encoded GPP string, may be empty during CMP load
@@ -284,7 +284,7 @@ The EventListener object is defined as:
 EventListener = {
 eventName : String, // for possible values see events below
 listenerId : Number, // Registered ID of the listener
-data: mixed, // data supplied by the underlying API
+data: mixed, // data supplied by the underlying API. 
 pingData : object // see PingReturn
 
 }
@@ -323,7 +323,7 @@ A call to the `addEventListener` command must always trigger an immediate call t
     <tr>
     <td><code>signalStatus</code></td>
     <td>string</td>
-    <td>Event is called whenever the signalStatus changes.
+    <td>Event is called whenever the signalStatus changes. The data property will contain the new signalStatus value.
    </td>
     </tr>
   <tr>
@@ -1077,34 +1077,22 @@ if(__gpp)
 {
  __gpp('addEventListener', function (evt)
  {
-  //callback will receive all events, we only want to react on TCF canada events
-  if(evt.pingData.currentAPI !== 'tcfcav1'){return ;}
+  //callback will receive all events, we only want to react on signalStatus ready events
+  if(evt.eventName !== 'signalStatus' || evt.data !== 'ready'){return ;}
 
-  //react on changes or when the data is loaded
-  if(
-     evt.eventName === 'sectionChange' //TCF canada section has changed (new consent?)
-     ||
-     (
-      //cmp is loaded and not/no longer visible, a tc string should be available
-      evt.pingData.cmpStatus === 'loaded' && 
-      evt.pingData.cmpDisplayStatus !== 'visible'
-     )
-     // optional additional/instead check:
-     // __gpp('hasSection', null, 'tcfcav1') === true
-    )
-  {
-   var consentData =__gpp('getSection', null, 'tcfcav1');
-   //will return the parsed IAB TCF Canada TCstring. All info is in there.	
-
-   var vendorConsent = consentData.VendorExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorExpressConsent');
-   var vendorImpConsent = consentData.VendorImpliedConsent;
-   // equivalent to: __gpp('getField', null, 'tcfcav1.VendorImpliedConsent');
-   var purposeConsent = consentData.PurposesExpressConsent; 
-   // equivalent to: __gpp('getField', null, 'tcfcav1.PurposesExpressConsent');
+  //if only the TC String is needed, it can be taken directly from pingData.gppString
+  var gppString = evt.pingData.gppString;
+	 
+  //get the data from the TCF Canada section
+  __gpp('getSection',function(data, success)){
+  if(data === null){return ;}
+	 
+   var vendorConsent = data[0].VendorExpressConsent; 
+   var vendorImpConsent = data[0].VendorImpliedConsent;
+   var purposeConsent = data[0].PurposesExpressConsent; 
    // ... do something Canadian !
   }
- });
+ }, 'tcfcav1');
 }
 ```
 
