@@ -849,7 +849,7 @@ Below are example key names from existing APIs. For a complete list of key names
      </tr>
   <tr>
 	  <td><code>IABGPP_TCFCA1_Version</code></td>    
-<td>IAB TCF CA v2 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">IAB TCF CA v1 specification)</td>
+<td>IAB TCF CA v1 Version number (see  <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">IAB TCF CA v1 specification)</td>
    </tr>
   <tr>
 	  <td><code>IABGPP_TCFCA1_Created</code></td>    
@@ -992,7 +992,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'tcfva', 'usnat'],
+    supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'usva', 'usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
