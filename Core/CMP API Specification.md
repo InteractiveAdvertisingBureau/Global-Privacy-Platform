@@ -9,7 +9,7 @@
     <td><strong>Comments</strong></td>
   </tr>
     <tr>
-      <td>TBD</td>    
+      <td>June 2023</td>    
       <td><code>1.1</code></td>
       <td>Removal of return values in favor of callback functions. Removal of getGPPData command</td>
     </tr>
@@ -170,10 +170,11 @@ cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
 sectionList : Array of Number, // may be empty during loading of the CMP
 
-applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on July 1, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be [-1].
-
+applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on September 30, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be [-1].
 
 gppString: String // the complete encoded GPP string, may be empty during CMP load
+
+parsedSections: Object // The parsedSections property represents an object of all parsed sections of the gppString property that are supported by the API on this page (see supportedAPIs property). The object contains one property for each supported API with the name of the API as the property name and the value as a parsed representation of this section (similar to getSection command). If a section is supported but not represented in the gppString, it is omitted in the parsedSections object.
 
 }
 
@@ -1075,24 +1076,26 @@ The following example demonstrates how a vendor can listen to changes for IAB TC
 ```javascript
 if(__gpp)
 {
- __gpp('addEventListener', function (evt)
+ __gpp('addEventListener', function (evt, success)
  {
   //callback will receive all events, we only want to react on signalStatus ready events
-  if(evt.eventName !== 'signalStatus' || evt.data !== 'ready'){return ;}
+  if(evt.eventName !== 'signalStatus' || evt.data !== 'ready')
+  {return ;}
 
-  //if only the TC String is needed, it can be taken directly from pingData.gppString
+  //if only the GPP String is needed, it can be taken directly from pingData.gppString
   var gppString = evt.pingData.gppString;
 	 
   //get the data from the TCF Canada section
-  __gpp('getSection',function(data, success)){
-  if(data === null){return ;}
-	 
+  //Note: You might also want to check if TCF Canada is in the pingData.applicableSections
+  if ('tcfcav1' in evt.pingData.parsedSections) 
+  { 
+   var data = evt.pingData.parsedSections.tcfcav1;
    var vendorConsent = data[0].VendorExpressConsent; 
    var vendorImpConsent = data[0].VendorImpliedConsent;
    var purposeConsent = data[0].PurposesExpressConsent; 
    // ... do something Canadian !
   }
- }, 'tcfcav1');
+ });
 }
 ```
 
