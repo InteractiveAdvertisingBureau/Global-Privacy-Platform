@@ -1076,24 +1076,26 @@ The following example demonstrates how a vendor can listen to changes for IAB TC
 ```javascript
 if(__gpp)
 {
- __gpp('addEventListener', function (evt)
+ __gpp('addEventListener', function (evt, success)
  {
   //callback will receive all events, we only want to react on signalStatus ready events
-  if(evt.eventName !== 'signalStatus' || evt.data !== 'ready'){return ;}
+  if(evt.eventName !== 'signalStatus' || evt.data !== 'ready')
+  {return ;}
 
-  //if only the TC String is needed, it can be taken directly from pingData.gppString
+  //if only the GPP String is needed, it can be taken directly from pingData.gppString
   var gppString = evt.pingData.gppString;
 	 
   //get the data from the TCF Canada section
-  __gpp('getSection',function(data, success)){
-  if(data === null){return ;}
-	 
+  //Note: You might also want to check if TCF Canada is in the pingData.applicableSections
+  if ('tcfcav1' in evt.pingData.parsedSections) 
+  { 
+   var data = evt.pingData.parsedSections.tcfcav1;
    var vendorConsent = data[0].VendorExpressConsent; 
    var vendorImpConsent = data[0].VendorImpliedConsent;
    var purposeConsent = data[0].PurposesExpressConsent; 
    // ... do something Canadian !
   }
- }, 'tcfcav1');
+ });
 }
 ```
 
