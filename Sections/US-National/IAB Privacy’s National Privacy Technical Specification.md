@@ -24,7 +24,11 @@
 </div>
 
 <h2>US National Privacy Section</h2>
-<p style="text-align: justify;">The US National Privacy Section is a string that consists of the components described below. Users should employ the US National Privacy Section only if they will adhere to the National Approach for their processing of a consumer&rsquo;s personal data.</p>
+<p style="text-align: justify;">The US National Privacy Section is a string that consists of the components described below. The US National Privacy Section is intended to be used  for MSPA Covered Transactions.  The requirements for using the US National Privacy Section for MSPA Covered Transactions are defined by the MSPA “US National Approach” as a way to comply with the highest common denominator of all different state privacy law requirements in circumstances where the First Party setting the values for the string: (1) does not know the state residency of the Consumer; or (2) otherwise does not wish to use the Consumer’s specific state residency to differentiate how they will treat the Consumer for purposes of compliance with applicable state privacy laws.  Requirements for using the components of the US National Privacy Section relating to sensitive data and childrens’ data are not currently defined by the MSPA, but may be defined by a future amendment or addendum to the MSPA.</p> 
+
+<p>Notwithstanding that the US National Privacy Section is intended to be used in conjunction with the MSPA, those who use it for non-MSPA Covered Transactions are representing to recipients of the string whether they have complied with the specific state law requirements referenced in the description of each string component.</p>
+
+<p>The US National Privacy Section does not reflect any requirements of US federal law (for example, it does not reflect any COPPA consent requirements) and instead is intended only for use as a tool for compliance with applicable US state privacy law requirements.  </p>
 <h3>Summary</h3>
 <div>
 <table>
@@ -254,12 +258,16 @@
 <tr>
 <td>KnownChildSensitiveDataConsents</td>
 <td>N-Bitfield(2,2)</td>
-<td>Two bits for each Data Activity:<code>0</code>  Not Applicable. The Business does not have actual knowledge that it Processes Personal Data or Sensitive Data of a Consumer who is a known child.<p><code>1</code> No Consent<p><code>2</code> Consent&nbsp;<p>(1) Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers from Age 13 to 16.<p><p>References:
-<ul>
-<li>Cal. Civ. Code Cal. Civ. Code 1798.120(c)</li>
-<li>Conn. PA 22-15, Sec. 6(a)(4)</li>
-</ul>
-(2) Consent to Process the Consumer&rsquo;s Personal Data or Sensitive Data for Consumers Younger Than 13 Years of Age.<p><p>References:
+<td>Two bits for each Data Activity:<code>0</code>  The Business does not have actual knowledge that it Processes Personal Data or Sensitive Data of a Consumer who is under 16 years old.<p><code>1</code> No Consent<p><code>2</code> Consent&nbsp;
+  <p>Data Activities:</p>
+  <p>(1) Consumer Consent to Process the Consumer’s Personal Data or Sensitive Data for selling, sharing, or targeted advertising for a Consumer  between the age of 13 and 16.
+  <p>References:
+    <ul>
+      <li>Cal. Civ. Code Cal. Civ. Code 1798.120(c)</li>
+      <li>Conn. PA 22-15, Sec. 6(a)(4)</li>
+    </ul>
+  <p></p>(2) Verifiable consent obtained from the Consumer’s parent or lawful guardian to Process the Personal Data or Sensitive Data of a Consumer Younger Than 13 Years of Age.
+<p><p>References:
 <ul>
 <li>Cal. Civ. Code Cal. Civ. Code 1798.120(c)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
