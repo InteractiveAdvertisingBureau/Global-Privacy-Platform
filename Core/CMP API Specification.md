@@ -164,7 +164,7 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
 signalStatus : String, // possible values: not ready, ready
 
-supportedAPIs : Array of string, // list of supported APIs (prefix strings), e.g. used while loading. Example: ["tcfeuv2","uspv1"] 
+supportedAPIs : Array of string, // list of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
 
 cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
 
@@ -967,7 +967,7 @@ window.__gpp_stub = function ()
   gppVersion        : '1.1', // must be “Version.Subversion”, current: “1.1”
   cmpStatus         : 'stub', // possible values: stub, loading, loaded, error
   cmpDisplayStatus  : 'hidden', // possible values: hidden, visible, disabled
-  supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'uspv1'], // list of supported APIs
+  supportedAPIs     : ['2:tcfeuv2', '5:tcfcav1', '6:uspv1'], // list of supported APIs
   cmpId             : 31, // IAB assigned CMP ID, may be 0 during stub/loading
   sectionList       : [],
   applicableSections: [-1], //or 0 or ID set by publisher
@@ -993,7 +993,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfcav1', 'usva', 'usnat'],
+    supportedAPIs     : ['2:tcfeuv2', '5:tcfcav1', '9:usva', '7:usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
@@ -1022,7 +1022,7 @@ window.__gpp_stub = function ()
     gppVersion        : '1.1',
     cmpStatus         : 'stub',
     cmpDisplayStatus  : 'hidden',
-    supportedAPIs     : ['tcfeuv2', 'tcfeuv1', 'tcfva', 'usnat'],
+    supportedAPIs     : ['2:tcfeuv2', '5:tcfcav1', '9:usva', '7:usnat'],
     cmpId             : 31,
     sectionList       : [],
     applicableSections: [-1], //or 0 or ID set by publisher
