@@ -98,7 +98,7 @@
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">N-Bitfield(2,2)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Business does not have actual knowledge that it Processes Personal Information of Consumers Less Than 16 years of Age.<p><code>1</code> No Consent<p><code>2</code> Consent<p>Data Activities:<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Business does not have actual knowledge that this transaction involves Processing the Personal Information of a Consumer who is Less Than 16 years of Age.<p><code>1</code> No Consent<p><code>2</code> Consent<p>Data Activities:<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age. For a Consumer the Business has actual knowledge is under 13 years of age, this must be consent given by the Consumer’s parent or guardian. For a Consumer the Business has actual knowledge is  between the ages of 13 and 16, this must be Consumer consent.<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age. For a Consumer the Business has actual knowledge is under 13 years of age, this must be consent given by the Consumer’s parent of guardian. For a Consumer the Business has actual knowledge is between the ages of 13 and 16, this must be Consumer consent.</td>
 </tr>
 <tr>
 <td style="text-align:left">PersonalDataConsents</td>
