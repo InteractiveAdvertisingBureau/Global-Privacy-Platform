@@ -17,7 +17,7 @@
 </tr>
 <tr>
 <td>Client side API prefix</td>
-<td>tcfca</td>
+<td>tcfcav1</td>
 <td>The IAB TCF Canada is registered with client side API prefix &ldquo;tcfcav1&rdquo; in the GPP Client Side API.</td>
 </tr>
 </tbody>

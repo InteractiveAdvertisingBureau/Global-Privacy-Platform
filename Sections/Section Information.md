@@ -9,6 +9,10 @@
 	  <td>Sept 28, 2022</td>    
     <td>Published final public version</td>
   </tr>
+	  <tr>
+	  <td>June, 2023</td>    
+    <td>Fixed Canada api name</td>
+  </tr>
   </table>
   
 ### Section IDs
@@ -43,7 +47,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
       </tr>
   <tr>
     <td><code>5</code></td>
-    <td>tcfca</td>
+    <td>tcfcav1</td>
     <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada">Canadian TCF section</a></td>
   </tr>
   <tr>
@@ -90,12 +94,12 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
 
 ### Reusable Sub-Sections
 
-New privacy framework signals may start as reusable sub-sections in the GPP. Over time as they become more widely adopted, they may become sections with their own ID and referenced in the Header. Reusable sub-sections may be added to any section using the delimiter “.” (dot) to separate the sub-sections from each other. Details on a reusable sub-section, including whether it is available, required, or optional, for a specific section are included in each specific section’s documentation.
+New privacy framework signals may start as reusable sub-sections in the GPP. Over time as they become more widely adopted, they may become sections with their own ID and reference in the Header. Reusable sub-sections may be added to any section using the delimiter “.” (dot) to separate the sub-sections from each other. Details on a reusable sub-section, including whether it is available, required, or optional, for a specific section are included in each specific section’s documentation.
  
  
 In order to be included as a supported reusable sub-section, the signal must meet the following criteria: 
 
-- Be open designs
+- Be openly designed
 - Be widely understood and adopted
 - Have a clear interface for machines
 
