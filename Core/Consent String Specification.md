@@ -364,7 +364,6 @@ Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and t
 
 Discrete sections are used to support multiple signals from one architecture while maintaining the ability to modify each section as needed. 
 
-
 Each string section is scoped to the same body that updates the spec. This allows for regional sovereignty policies to make changes that might include more delimited information. For example, if TCF needs a version 3 and eliminates the concept of “out of band” vendors—which would result in the removal of DisclosedVendors and AllowedVendors—that should not require a version bump to the GPP string specification. 
 
  
@@ -528,14 +527,14 @@ Note: items MUST be in sorted order..</td>
 			<li>If the second data type is 1/true, the third data type is an Int Range</li>
 			<li>If the second data type is 0/false, the second data type is a bitfield of length determined by the first data type (see above)</li>
 		</ul>
-		Note: This data type is used for downwards compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
+		Note: This data type is used for downward compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
 	</tr>	
  </table>
  
  
 
 
-When defining a new Section, regional policy writers should consider the above format to describe their section.
+When defining a new section, regional policy writers should consider the above format to describe their section. Policy writers must ensure that each field within the section has a name that is unique for this section. When using multiple sub-sections within the section, field names with similar meanings (such as "type" or "version") shall be prefixed in order to be unique for the section (e.g. "coreVersion" and "publisherVersion").
 
 
 <table>
