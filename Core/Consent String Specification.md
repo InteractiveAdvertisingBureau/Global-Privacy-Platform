@@ -458,7 +458,7 @@ The possible data types are:
 	  <td></td>
  </tr>
   <tr>
-	  <td><code>Variable length Bitfield</code></td>
+	  <td><code>N-Bitfield (variable length bitfield)</code></td>
 	  <td>variable</td>
 	  <td>Array of Number</td>
 	  <td>Consists of two datapoints: a fixed length Integer(16) that denotes the length and a bitfield with that specific length.<br></br>Please note: Although the API reads/writes to fields (length + bitfield), it will only output the IDs from the bitfield via JS APIs.</td>
