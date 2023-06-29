@@ -23,13 +23,13 @@
 This document is one of the IAB Tech Lab Global Privacy Platform Specifications. It defines the technical implementation of the structure and encoding for a Global Privacy Platform String (GPP String). 
 
 
-# Additional Reading and Referenced Documents
+### Additional Reading and Referenced Documents
 
 - [Consent Management Platform JS API](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md)
 - [GPP Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections)
 
 
-# Updates to Standards Needed to Support GPP
+### Updates to Standards Needed to Support GPP
 
 Updates were made to existing IAB Tech Lab standards to support the Global Privacy Platform. These updates are based on industry consensus, driven by relevant IAB Tech Lab working groups, including the Global Privacy Working Group and Programmatic Supply Chain Working Group. They include:
 
@@ -40,12 +40,12 @@ GPP assumes the use of OpenRTB 2.x.
 
 - Like other existing privacy signals (TCF and USPrivacy), the GPP string is also able to be transported via OpenRTB. This will be included in the Regs object in the November 2022 release. See this [document](https://github.com/InteractiveAdvertisingBureau/openrtb/tree/master/extensions/community_extensions) for approved design prior to release.
 
-## About the Global Privacy Platform
+### About the Global Privacy Platform
 
 The Global Privacy Platform (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
 
 
-## About IAB Tech Lab
+### About IAB Tech Lab
 
 
 The IAB Technology Laboratory (Tech Lab) is a non-profit consortium that engages a member community globally to develop foundational technology and standards that enable growth and trust in the digital media ecosystem. Comprised of digital publishers, ad technology firms, agencies, marketers, and other member companies, IAB Tech Lab focuses on improving the digital advertising supply chain, measurement, and consumer experiences, while promoting responsible use of data. Its work includes the OpenRTB real-time bidding protocol, ads.txt anti-fraud specification, Open Measurement SDK for viewability and verification, VAST video specification, and DigiTrust identity service. Established in 2014, the IAB Tech Lab is headquartered in New York City with staff in San Francisco, Seattle, and London.
@@ -68,11 +68,11 @@ THE STANDARDS, THE SPECIFICATIONS, THE MEASUREMENT GUIDELINES, AND ANY OTHER MAT
 
 In the GPP, a GPP String is used to encapsulate relevant details about transparency and consumer choice and encoded as it applies for each [supported regional or other signal](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections). This document specifies how that string must be formatted and how it must be used.
 
-# What purpose does a GPP String serve?
+### What purpose does a GPP String serve?
 
 A GPP String’s primary purpose is to encapsulate and encode all the information disclosed to a user and the expression of their choices, for all applicable regions. Using a Consent Management Platform (CMP), the information is captured into an encoded and compact HTTP-transferable string. This string enables communication of the consumer's choices from sites and apps to ad tech providers. Ad tech providers decode a GPP String to determine whether they have the necessary requirements to process a user’s personal data for their purposes. 
 
-# What information is stored in a GPP String?
+### What information is stored in a GPP String?
 
 Version 1 of the GPP String contains the following information: 
 
@@ -87,7 +87,7 @@ Section specifications will clearly define which of the above data are represent
 See [“Discrete Sections”](#discretesections) below for more detail.
 
 
-# Who should create a GPP String?
+### Who should create a GPP String?
 
 Digital property owners or CMPs are responsible for generating, persisting, and passing the GPP String. Vendors or any other third-party service providers must neither create nor alter GPP Strings.
 
@@ -173,18 +173,33 @@ To decode a code word, remove the final "1", assign the remaining values 1,2,3,5
 
 The following details provide information on creating, storing, and managing a GPP String. The basic steps for creating a GPP String are as follows: 
 
-1. **Create discrete sections.** For each section: 
- - For sections that use the recommended base64-websafe encoding, create a bit representation of the section’s header (if it exists) and each sub-section adding padding (0) on the right to get to a multiple of 6. Then, convert them to base64-websafe without padding (i.e. removing “=” at the end) and concatenate the header and all sub-sections using the “.” (dot) character.
- - For sections that use different encoding, ensure that the data is websafe and does not include the “~” (tilde) character.
-2. **Create header section.** Create a bit representation of the GPP header section. Include all IDs for discrete sections in a sorted order. Add padding (0) on the right to get to a multiple of 6. Then, convert it to base64-websafe without padding.
-3. **Concatenate all sections.** Concatenate the GPP-header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter.
+<ol>
+<li><b>Create discrete sections.</b>
+<ul><li>For sections that use the recommended encoding mechanism:
+	<ol type=1>
+		<li>Create a bit representation of the section's header (if it exists).</li>
+		<li>Add padding (0) on the right to get to a multiple of 6.</li>
+		<li>Convert the integer into a character where the integer is the index of the character in the <a href="https://en.wikipedia.org/wiki/Base64">base64-websafe table</a>. </li>
+		<li>Concatenate the header and all sub-sections using the "." (dot) character.</li>
+	</ol></li>
+<li>For sections that use a different encoding mechanism, ensure that the data is websafe and does not include the “~” (tilde) character.</li>
+</ul>
+</li>
+<li><b>Create header section.</b> 
+	<ol type=1>
+		<li>Create a bit representation of the GPP header section including all Section IDs for discrete sections in a sorted order. </li>
+		<li>Add padding (0) on the right to get to a multiple of 6.</li>
+		<li>Convert the integer into a character where the integer is the index of the character in the <a href="https://en.wikipedia.org/wiki/Base64">base64-websafe table</a>. </li>
+	</ol></li>
+<li><b>Concatenate all sections.</b> Concatenate the encoded GPP header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter.</li>
+</ol> 
 
 
-# How should the GPP String be stored?
+### How should the GPP String be stored?
 
 The storage mechanism used for GPP Strings is up to a CMP, including any non-cookie storage mechanism.
 
-# GPP String Format
+### GPP String Format
 
 The GPP string is comprised of distinct sections joined together on a “~” (tilde) character.
 
@@ -230,7 +245,7 @@ The Header is always required and always comes first. It consists of the followi
   <tr>
     <td><code>Sections</code></td>
     <td>Range(Fibonacci)</td>
-    <td>List of Section IDs that are contained in the GPP string. Each ID represents a discrete Section that will be concatenated to the Header Section. The IDs must be represented in the order the related Sections appear in the string. This is required to make real time string processing less resource intensive.</td>
+    <td>List of <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md">Section IDs</a> that are contained in the GPP string. Each ID represents a discrete section that will be concatenated to the Header Section. The IDs must be represented in the order the related sections appear in the string. This is required to make real-time string processing less resource intensive.</td>
      </td>
      </td>
   </tr>
@@ -276,8 +291,6 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
  </table>
 
 
-
-**Header Example 2**
 
 <table>
   <tr>
@@ -599,7 +612,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	</td>
   </tr>
   <tr>
-	  <td>Encoded header:<br><code>DBABMA</code></td>
+	  <td>Encoded header:<br><code>DBABM</code></td>
 	</tr>
 	<tr>
 		<td>Full GPP String:<br><br><code>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
@@ -623,7 +636,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 </td>
   </tr>
   <tr>
-	  <td>Encoded header:<br><br><code>DBACNYA</code></td>
+	  <td>Encoded header:<br><br><code>DBACNY</code></td>
 	</tr>
 	<tr>
 		<td>Full GPP String:<br><br><code>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
