@@ -14,6 +14,11 @@
 <td><code>1.0</code></td>
     <td>Published final public version</td>
   </tr>
+	<tr>
+	  <td>July 2023</td>    
+<td><code>1.0</code></td>
+    <td>Added clarifications to encoding mechanism, fixed encoded header examples</td>
+  </tr>
 </table>
 
 
@@ -178,22 +183,23 @@ The following details provide information on creating, storing, and managing a G
 <ul><li>For sections that use the recommended encoding mechanism:
 	<ol type=1>
 		<li>Create a bit representation of the section's header (if it exists).</li>
-		<li>Add padding (0) on the right to get to a multiple of 6.</li>
-		<li>Convert the integer into a character where the integer is the index of the character in the <a href="https://en.wikipedia.org/wiki/Base64">base64-websafe table</a>. </li>
-		<li>Concatenate the header and all sub-sections using the "." (dot) character.</li>
+		<li>Add padding (0) on the right to get to a total bit length that is a multiple of 6.</li>
+		<li>Convert the integer to convert the six bit sequence into a character where the integer is the index of the character in the <a href="https://en.wikipedia.org/wiki/Base64">base64-websafe table</a>. </li>
+		<li>Concatenate the header to all sub-sections using the "." (dot) character.</li>
 	</ol></li>
-<li>For sections that use a different encoding mechanism, ensure that the data is websafe and does not include the “~” (tilde) character.</li>
+<li>For sections that use a different encoding mechanism, ensure that the data is websafe and does not include the “~” (tilde) character or the "." (dot) character.</li>
 </ul>
 </li>
-<li><b>Create header section.</b> 
+<li><b>Create header section.</b> See examples of the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/consent-string-clarifications/Core/Consent%20String%20Specification.md?pr=%2FInteractiveAdvertisingBureau%2FGlobal-Privacy-Platform%2Fpull%2F83#header-examples">header section</a> below.
 	<ol type=1>
 		<li>Create a bit representation of the GPP header section including all Section IDs for discrete sections in a sorted order. </li>
-		<li>Add padding (0) on the right to get to a multiple of 6.</li>
-		<li>Convert the integer into a character where the integer is the index of the character in the <a href="https://en.wikipedia.org/wiki/Base64">base64-websafe table</a>. </li>
+		<li>Add padding (0) on the right to get to a total bit length that is a multiple of 6.</li>
+		<li>Convert the integer to convert the six bit sequence into a character where the integer is the index of the character in the <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-4">base64-websafe table</a>. </li>
 	</ol></li>
-<li><b>Concatenate all sections.</b> Concatenate the encoded GPP header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter.</li>
+<li><b>Concatenate all sections.</b> Concatenate the encoded GPP header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter. See examples of GPP strings below.</li>
 </ol> 
 
+Note that neither the header nor the recommended encoding mechanism for a discrete section utilizes base64 encoding but rather a modified version of it. 
 
 ### How should the GPP String be stored?
 
@@ -207,20 +213,20 @@ The string must contain a header and applicable discrete section(s):
 [Header]~[Discrete Section]
 
 
-**Header**
+#### **Header**
 
 The header is always required and comes first. The purpose of the Header is to identify which sections are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections). It is basically an ordered list of discrete sections that equate to different regions, countries or policies. It lets readers understand what is present in the string and in what order. (See [Discrete Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#discrete-sections-) below)
 
 The header contains only a GPP version, the section ID(s) and index of the place of the associated section in the string. The header delegates regional policy versions and technical encoding versions to each substring section so that each may develop independently of each other and the header design. (See [Discrete Sections](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#discrete-sections-) below)
 
 
-**Section IDs**
+#### **Section IDs**
 
 For the full list of Section IDs, see [Section information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md). 
 
 
 
-**Header Encoding**
+#### **Header Encoding**
 
 The Header is always required and always comes first. It consists of the following encoded fields and uses Fibonacci encoding. For more information about [Fibonacci Encoding](#fibonacci), see the “About Fibonacci Encoding” section.
 
@@ -252,7 +258,7 @@ The Header is always required and always comes first. It consists of the followi
  </table>
 
 
-**Header Examples** <a name="header"></a>
+#### **Header Examples**
 
 <table>
   <tr>
