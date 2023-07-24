@@ -700,14 +700,20 @@ Since the pixel is in an <img> tag without the ability to execute Javascript, th
 - `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. - The applicable GPP Section ID must also be inserted, where the ${GPP_SID}macro is present.
 
 
-For example, for Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
+Vendors not registered to participate in any framework supported by the Global Privacy Platform (e.g. MSPA, TCF CA, TCF EU) may pass ${GPP_STRING} without the GPP ID. Vendors who are registered to participate and have a GPP ID must include it in the macro. When vendors that are callers–who have the option to expand on the macros–are deciding how to proceed with vendor callees not participating in a GPP supported framework (e.g. MSPA, TCF CA, TCF EU), vendors should reference each framework's policy.
 
+**Example when ${GPP_STRING} rather than ${GPP_STRING_XXXXX}may be used:**
 
-The resulting URL is: 
+The GPP String includes one of the US States sections or the US National section, but the string creator has indicated that the transaction is not covered by the MSPA. Vendors who do not participate in the MSPA may request the string, but may not have a GPP ID. In this case, ${GPP_STRING} may be used.
+
+**Example when ${GPP_STRING_XXXXX}is used:**
+
+Vendor A with ID 123 to receive a GPP String which includes the EU TCF v2 as applicable section, an image URL must include two key-value pairs with the URL parameters and macros `gpp=${GPP_STRING_123}` and `gpp_sid=${GPP_SID}`.
+
+- The resulting URL is: 
 `http://vendor-a.com/key1-val1&key2=val2&gpp=${GPP_STRING_123}&gpp_sid=${GPP_SID}`
 
-
-If the GPP String is: 
+- If the GPP String is: 
 `DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN`
 
 
