@@ -809,7 +809,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	  <td>Encoded header:<br><code>DBABM</code></td>
 	</tr>
 	<tr>
-		<td>Full GPP String:<br><br><code>DBABMA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
+		<td>Full GPP String:<br><br><code>DBABM~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
 </td>
 </td>
 </tr>
