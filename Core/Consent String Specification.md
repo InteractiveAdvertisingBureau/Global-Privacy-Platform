@@ -15,7 +15,7 @@
     <td>Published final public version</td>
   </tr>
 	<tr>
-	  <td>September 15, 2023</td>    
+	  <td>Nov 3, 2023</td>    
 <td><code>1.0</code></td>
     <td>Added clarifications to encoding mechanism, fixed encoded header examples</td>
   </tr>
@@ -833,7 +833,7 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	  <td>Encoded header:<br><br><code>DBACNY</code></td>
 	</tr>
 	<tr>
-		<td>Full GPP String:<br><br><code>DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
+		<td>Full GPP String:<br><br><code>DBACNY~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
 </td>
 </td>
 </tr>
