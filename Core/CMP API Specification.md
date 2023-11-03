@@ -113,6 +113,18 @@ Requirements for the interface:
 
 All CMPs must support all generic commands. Generic commands are commands that can be used independent of [section specifications](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/SectionInformation.md). All generic commands must always be executed immediately without any asynchronous logic and call the supplied callback function immediately. The generic commands are: [‘ping’](#ping), [‘addEventListener’](#addeventlistener), [‘removeEventListener’](#removeeventlistener), [‘hasSection’](#hassection), [‘getSection’](#getsection), and [‘getField’](#getfield). 
 
+
+### What is CMP ID?
+
+
+Regional section policy writers may require CMPs to register to operate within the policies for that section. In these cases, CMP IDs must be used if the CMP has an ID. For CMPs that are not registered, a value of 1 must be used by string creators who do not have a CMP ID and are not using a commercially available CMP.
+
+**Examples:**
+
+Publisher A looking to create a GPP string that will contain the section for the US National approach must use 1 as value for CMP ID since the MSPA does not have CMP registration requirements.
+
+Publisher B looking to create a GPP string that will contain sections for the US National approach or the TCF EU must register themselves or work with a registered CMP and use the assigned CMP ID in accordance with the TCF Policies.
+
 ________
 #### `ping` <a name="ping"></a>
 
@@ -166,7 +178,7 @@ signalStatus : String, // possible values: not ready, ready
 
 supportedAPIs : Array of string, // list of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
 
-cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading
+cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading. Reference the above CMP ID section for additional information.
 
 sectionList : Array of Number, // may be empty during loading of the CMP
 
