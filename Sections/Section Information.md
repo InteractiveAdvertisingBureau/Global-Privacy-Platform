@@ -58,32 +58,32 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>7</code></td>
     <td>usnat</td>
-    <td>US - national section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National">US - national section </a></td>
   </tr>
   <tr>
     <td><code>8</code></td>
     <td>usca</td>
-    <td>US - California section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CA">US - California section </a></td>
      </tr>
   <tr>
     <td><code>9</code></td>
     <td>usva</td>
-    <td>US - Virginia section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/VA">US - Virginia section </a></td>
       </tr>
   <tr>
     <td><code>10</code></td>
     <td>usco</td>
-    <td>US - Colorado section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CO">US - Colorado section </a></td>
   </tr>
   <tr>
     <td><code>11</code></td>
     <td>usut</td>
-    <td>US - Utah section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/UT">US - Utah section </a></td>
   </tr>
   <tr>
     <td><code>12</code></td>
     <td>usct</td>
-    <td>US - Connecticut section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CT">US - Connecticut section </a></td>
      </td>
      </td>
   </tr>
