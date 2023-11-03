@@ -201,7 +201,7 @@ The following details provide information on creating, storing, and managing a G
 
 Note that neither the header nor the recommended encoding mechanism for a discrete section utilizes base64 encoding but rather a modified version of it. 
 
-#### Base64 Table from RFC 4648
+#### Table from RFC 4648
 <div>
 <table>
 <tbody>
