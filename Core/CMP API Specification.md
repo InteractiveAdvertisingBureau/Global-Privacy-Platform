@@ -813,6 +813,12 @@ Valid data types are Integer and String. All other data types such as Boolean, D
      </td>
      </td>
   </tr>
+  <tr>
+	<td><code>ArrayOfRanges<code></td>
+	<td>String</td>
+	<td><p>The key name will be combined by a static name and the key of the record. If the input data contains multiple records, the CMP SDK will create multiple keys, each with a combination of name and key.</p>
+	<p>The value consists of a sequence of "id:type"-pairs separated by underscore. E.g. "3:0_5:1_6:1_7:2_12:0"</p></td>	  
+  </tr>
  </table>
 
 
