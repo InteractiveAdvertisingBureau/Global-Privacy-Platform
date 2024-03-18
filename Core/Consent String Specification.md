@@ -594,68 +594,59 @@ In order to be backward compatible with IAB Europe’s TC String and US Privacy 
 
 A discrete section is encoded according to that specific section’s needs. This means today’s implementations that read and adapt to TCF v2.0 signals or US Privacy signals don't need to change their logic for a given discrete section of the string, as long as the implementation is aware of where the discrete section is.
 
-
 New sections should follow the guidelines below. Guidelines like these help developers quickly adopt new sections and allow for parsing new sections without the need to reinvent new data types.
 
-
 The possible data types are: 
-
 
 <table>
   <tr>
     <td><strong>Data Type</strong></td>
     <td><strong>Encoding</strong></td>
     <td><strong>JS API output</strong></td>
-    <td><strong>Description</strong></td>
-	  <td> </td>
+    <td><strong>Description</strong></td>	
   </tr>
   <tr>
     <td><code>Boolean</code></td>
     <td>1 bit</td>
     <td>true|false</td>
     <td>0=true, 1=false</td>
-	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (fixed length of x)</code></td>
     <td>x bit</td>
     <td>Number</td>
     <td>A fixed amount of bit representing an integer. Usual lengths are 3, 6 or 12 bit. <br><br> Example: int(6) “000101” represents the number 5</td>
-	  <td></td>
   </tr>
   <tr>
     <td><code>Integer (Fibonacci)</code></td>
     <td>Variable Length</td>
     <td>Number</td>
     <td>Integer encoded using Fibonacci encoding <br><br> See <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#fibonacci-encoding-to-deal-with-string-length-"> “About Fibonacci Encoding” </a> for more detail</td>
-	  <td></td>
   </tr>
   <tr>
     <td><code>String (fixed length of x) (including country codes)</code></td>
     <td>x*6 bit</td>
     <td>String</td>
     <td>A fixed amount of bit representing a string. The character’s ASCII integer ID is subtracted by 65 and encoded into an int(6). <br><br>Example: int(6) “101010” represents integer 47 + 65 = char “h”</td>
-	  <td></td>
-</tr>
+  </tr>
   <tr>
     <td><code>Datetime</code></td>
     <td>36 bit</td>
     <td>Date</td>
     <td>A datetime is encoded as a 36 bit integer representing the 1/10th seconds since January 01 1970 00:00:00 UTC. <br><br>Example JavaScript representation: Math.round((new Date()).getTime()/100)</td>
-	  <td></td>
   </tr>
   <tr>
     <td><code>Bitfield (fixed length of x)</code></td>
     <td>x bit</td>
     <td>Array of Number</td>
     <td>A fixed amount of bit. Usually each bit represents a boolean for an ID within a group where the first bit corresponds to true/false for ID 1, the second bit corresponds to true/false for ID 2 and so on.</td>
-	  <td></td>
  </tr>
   <tr>
 	  <td><code>N-bitfield (Variable length Bitfield)</code></td>
 	  <td>variable</td>
 	  <td>Array of Number</td>
-	  <td>Consists of two datapoints: a fixed length Integer(16) that denotes the length and a bitfield with that specific length.<br></br>Please note: Although the API reads/writes to fields (length + bitfield), it will only output the IDs from the bitfield via JS APIs.</td>
+	  <td>Consists of two datapoints: a fixed length Integer(16) that denotes the length and a bitfield with that specific length.
+		<p>Please note: Although the API reads/writes to fields (length + bitfield), it will only output the IDs from the bitfield via JS APIs.</p></td>
 </tr>
   <tr>
     <td><code>Range (Int)</code></td>
@@ -682,7 +673,6 @@ The possible data types are:
 		    <li>Bits = 000000000010 0 0000000000000011 1 0000000000000101 0000000000001000</li>
 	    </ul> 
 Note: items may not be in sorted order.</td>
-	<td></td>
   </tr>
   <tr>
     <td><code>Range (Fibonacci)</code></td>
@@ -709,7 +699,6 @@ Note: items may not be in sorted order.</td>
 		    <li>Bits =  000000000010 0 0011 1 011 0011</li>
 	    </ul>
 Note: items MUST be in sorted order..</td>
-     <td></td>
   </tr>
   <tr>
 	<td><code>OptimizedRange</code></td>
@@ -736,6 +725,29 @@ Note: items MUST be in sorted order..</td>
 		</ul>
 		Note: This data type is used for downward compatibility only. OptimizedRange is the recommended data type to be used moving forward.</td>
 	</tr>	
+	<tr>
+		<td><code>ArrayOfRanges</code></td>
+		<td>variable</td>
+		<td>[{'key':number, 'type':number, 'ids':Array of number}, {...}, ...]</td>
+		<td>Consists of a variable amount of fields:
+			<p><ul><li>First field is always of type Int(12). The value indicates the number of records to follow.</li></p>
+				<li>Each entry consists of three datatypes:</li>
+				<ul><li>key - Int(6)</li>
+				<li>type - Int(2)</li>
+				<li>ids - <code>OptimizedIntRange </code>(uses Range(Int) for range of IDs, see <code>OptimizedIntRange</code> data type above for more details)</li></ul></ul>
+			<p>Note: <code>ArrayOfRanges</code> is used for downwards compatibility only.</p></td>
+	</tr>
+	<tr>
+		<td><code>N-ArrayOfRanges(X,Y)</code></td>
+		<td>variable</td>
+		<td>[{'key':number, 'type':number, 'ids':Array of number}, {...}, ...]</td>
+		<td>Consists of a variable amount of fields:
+			<p><ul><li>First field is always of type Int(12). The value indicates the number of records to follow.</li></p>
+				<li>Each record consists of three datatypes:</li>
+				<ul><li><b>key</b> - Int(X) Where X is given by the field definition within the corresponding specification.</li>
+				<li><b>type</b> - Int(Y) Where Y is given by the field definition within the corresponding specification.</li>
+				<li><b>ids</b> - <code>OptimizedRange </code>(uses Fibonacci coding for range of IDs, see <code>OptimizedRange</code> data type above for more details)</li></ul></ul></td></td>
+	</tr>
  </table>
  
  

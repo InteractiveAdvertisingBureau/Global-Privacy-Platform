@@ -1,7 +1,7 @@
 # Global Privacy Platform
 
 
-Hosted in this repository are the technical specifications for the IAB Global Privacy Platform (GPP). The relevant specifications are: 
+Hosted in this repository are the technical specifications for the IAB Global Privacy Platform (GPP). The relevant specifications: 
 
 - Global Privacy Platform String
 - Consent Management API
