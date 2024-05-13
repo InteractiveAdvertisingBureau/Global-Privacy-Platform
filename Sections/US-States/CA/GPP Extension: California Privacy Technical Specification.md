@@ -1,6 +1,7 @@
-<h1 id="gpp-extension-iab-privacy-s-california-privacy-technical-specification">GPP Extension: IAB Privacy’s California Privacy Technical Specification</h1>
+<h1 id="gpp-extension-california-privacy-technical-specification">GPP Extension: California Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; to the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the California section of the GPP specification by those who (i) are Signatories to IAB Privacy, Inc.’s <a href=https://www.iabprivacy.com/>Multi-State Privacy Agreement (MSPA)</a>; and (ii) those who are not signatories of the MSPA.</p>
+
 
 <h3>Version History&nbsp;</h3>
 <div>

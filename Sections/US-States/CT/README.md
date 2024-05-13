@@ -1,4 +1,4 @@
-# IAB Privacy’s Connecticut Privacy Technical Specification
+# Connecticut Privacy Technical Specification
 
 
 

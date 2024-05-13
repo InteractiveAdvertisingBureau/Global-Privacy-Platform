@@ -1,4 +1,4 @@
-# IAB Privacy’s Colorado Privacy Technical Specification
+# Colorado Privacy Technical Specification
 
 
 
