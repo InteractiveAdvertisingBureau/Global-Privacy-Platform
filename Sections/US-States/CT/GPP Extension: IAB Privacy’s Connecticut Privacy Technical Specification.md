@@ -95,7 +95,7 @@
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">N-Bitfield(2,3)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> No Consent<p><code>2</code> Consent<p>(1) Consent to Process Sensitive Data from a Known Child.<p>(2) Consent to Sell the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age.<p>(3) Consent to Process the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age for Purposes of Targeted Advertising.</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a Consumer the Business has actual knowledge is less than 16 years old.<p><code>1</code> No Consent<p><code>2</code> Consent<p>(1) Verifiable parental consent to Process Sensitive Data from a Consumer the Business has actual knowledge is less than 13 years old.<p>(2) Consumer Consent to Sell the Consumer’s Personal Data for a Consumer at Least 13 Years of Age but Younger Than 16 Years of Age.<p>(3) Consumer Consent to Process the Consumer’s Personal Data for Purposes of Targeted Advertising for a Consumer At Least 13 Years of Age but Younger Than 16 Years of Age.</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>

@@ -95,7 +95,7 @@
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Consent to Process Sensitive Data from a Known Child.<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> No Consent<p><code>2</code> Consent</td>
+<td style="text-align:left">Consent to Process Sensitive Data from a Known Child given by the Consumer’s parent or lawful guardian.<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a Known Child.<p><code>1</code> No Consent<p><code>2</code> Consent</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>
