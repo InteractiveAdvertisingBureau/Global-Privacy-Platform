@@ -1,6 +1,6 @@
-<h1 id="gpp-extension-iab-privacy-s-colorado-privacy-technical-specification">GPP Extension: IAB Privacy’s Colorado Privacy Technical Specification</h1>
+<h1 id="gpp-extension-connecticut-privacy-technical-specification">GPP Extension: Connecticut Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; to the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the Connecticut section of the GPP specification by those who (i) are Signatories to IAB Privacy, Inc.’s <a href=https://www.iabprivacy.com/>Multi-State Privacy Agreement (MSPA)</a>; and (ii) those who are not signatories of the MSPA.</p>
 
 <h3>Version History&nbsp;</h3>
 <div>
@@ -21,8 +21,8 @@
 </div>
 
 
-<h2 id="colorado-privacy-section">Colorado Privacy Section</h2>
-<p>The Colorado Privacy Section consists of the components described below. Users should employ the Colorado Privacy Section only if they have determined the CPA applies to their processing of a consumer&#39;s personal data.</p>
+<h2 id="connecticut-privacy-section">Connecticut Privacy Section</h2>
+<p>The Connecticut Privacy Section consists of the components described below. Users should employ the Connecticut Privacy Section only if they have determined the CAPDP applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
@@ -35,19 +35,19 @@
 <tbody>
 <tr>
 <td style="text-align:left">GPP Section ID</td>
-<td style="text-align:left">10</td>
-<td style="text-align:left">The Colorado Section is registered as Section ID 10 under the GPP.</td>
+<td style="text-align:left">12</td>
+<td style="text-align:left">The Connecticut Section is registered as Section ID 12 under the GPP.</td>
 </tr>
 <tr>
 <td style="text-align:left">Client side API prefix</td>
-<td style="text-align:left">usco</td>
-<td style="text-align:left">The Colorado Privacy Section is registered with client side API prefix &quot;usco&quot; in the GPP Client Side API.</td>
+<td style="text-align:left">usct</td>
+<td style="text-align:left">The Connecticut Privacy Section is registered with client side API prefix &quot;usct&quot; in the GPP Client Side API.</td>
 </tr>
 </tbody>
 </table>
 <h3 id="section-encoding">Section encoding</h3>
 <h4 id="core-segment">Core Segment</h4>
-<p>The core segment must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Colo. Rev. Stat. 6-1-1303. It consists of the following fields:</p>
+<p>The core segment must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Conn. PA No. 22-15, Sec. 1 [Pending codification]. It consists of the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -65,7 +65,7 @@
 <tr>
 <td style="text-align:left">SharingNotice</td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties.<p><code>0</code> Not Applicable. The Controller does not share Personal Data with Third Parties.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
+<td style="text-align:left">Notice of the Sharing of Personal Data with Third Parties<p><code>0</code> Not Applicable. The Controller does not share Personal Data with Third Parties.<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>
 <td style="text-align:left">SaleOptOutNotice</td>
@@ -89,13 +89,13 @@
 </tr>
 <tr>
 <td style="text-align:left">SensitiveDataProcessing</td>
-<td style="text-align:left">N-Bitfield(2,7)</td>
-<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> No Consent<p><code>2</code> Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Citizenship Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</td>
+<td style="text-align:left">N-Bitfield(2,8)</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process the specific category of Sensitive Data.<p><code>1</code> No Consent<p><code>2</code> Consent<p>(1) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.<p>(2) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.<p>(3) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis.<p>(4) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.<p>(5) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.<p>(6) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(7) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.<p>(8) Consent to Process the Consumer&#39;s Sensitive Data Consisting of Precise Geolocation Data.</td>
 </tr>
 <tr>
 <td style="text-align:left">KnownChildSensitiveDataConsents</td>
-<td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Consent to Process Sensitive Data from a Known Child.<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> No Consent<p><code>2</code> Consent</td>
+<td style="text-align:left">N-Bitfield(2,3)</td>
+<td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Controller does not Process Sensitive Data of a known Child.<p><code>1</code> No Consent<p><code>2</code> Consent<p>(1) Consent to Process Sensitive Data from a Known Child.<p>(2) Consent to Sell the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age.<p>(3) Consent to Process the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age for Purposes of Targeted Advertising.</td>
 </tr>
 <tr>
 <td style="text-align:left">MspaCoveredTransaction</td>

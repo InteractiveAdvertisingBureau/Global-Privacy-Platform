@@ -1,4 +1,4 @@
-# IAB Privacy’s California Privacy Technical Specification
+# California Privacy Technical Specification
 
 
  
