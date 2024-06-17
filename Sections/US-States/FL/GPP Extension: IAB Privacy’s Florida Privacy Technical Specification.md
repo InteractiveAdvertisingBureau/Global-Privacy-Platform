@@ -1,6 +1,6 @@
 <h1 id="gpp-extension-iab-privacy-s-florida-privacy-technical-specification">GPP Extension: IAB Privacy’s Florida Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the Florida section of the GPP specifications in accordance with the IAB Privacy Multi-State Privacy Agreement legal requirements, applicable to both Signatories and non-Signatories of the MSPA.</p>
 
 <h3>Version History&nbsp;</h3>
 <div>
@@ -22,7 +22,7 @@
 </div>
 
 <h2>Florida Section</h2>
-<p>The Florida Privacy String consists of the following components. Users should employ the Florida Privacy String only if they have determined the Florida Digital Bill of Rights, Fla. Stat. § 501.701 et seq., applies to their processing of a consumer’s personal data.</p>
+<p>The Florida Privacy String consists of the following components. Users should employ the Florida Privacy String if they have determined the Florida Digital Bill of Rights, Fla. Stat. § 501.701 et seq., applies to their processing of a consumer's personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
@@ -132,8 +132,8 @@
         <td>
           <span style="color:rgb(36, 41, 47);">SensitiveDataProcessing</span>
         </td>
-        <td>Bitfield(16)</td>
-        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = Consent <p></p><code>2</code> = No Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.</span><p></p>
+        <td>N-Bitfield(2,8)</td>
+        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = No Consent <p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(2). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Sexual Orientation.</span><p></p>
@@ -147,9 +147,9 @@
         <td>
           <span style="color:rgb(36, 41, 47);">KnownChildSensitiveDataConsents</span>
         </td>
-        <td>Bitfield(6)</td>
+        <td>N-Bitfield(2,3)</td>
         <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not
-          <span style="color:rgb(36, 41, 47);">Process Sensitive Data of a known Child</span><p></p><code>1</code> = Consent <p></p><code>2</code> = No Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process Sensitive Data from a Known Child Under the Age of 13.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">Process Sensitive Data of a known Child</span><p></p><code>1</code> = No Consent <p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process Sensitive Data from a Known Child Under the Age of 13.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(2). Consent to Process Sensitive Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Sensitive Data of Consumers At Least 16 Years of Age but Younger Than 18 Years of Age.</span><p></p>
         </td>
@@ -167,7 +167,7 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.&nbsp;</span><p></p><code>0</code> = Not Applicable<p></p><code>1</code> = Yes<p></p><code>2</code> = No</td>
+          <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.&nbsp;</span><p></p><code>1</code> = Yes<p></p><code>2</code> = No</td>
       </tr>
       <tr>
         <td>
