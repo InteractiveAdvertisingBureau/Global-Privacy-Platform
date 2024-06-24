@@ -22,7 +22,7 @@
 </div>
 
 <h2>Florida Section</h2>
-<p>The Florida Privacy String consists of the following components. Users should employ the Florida Privacy String if they have determined the Florida Digital Bill of Rights, Fla. Stat. § 501.701 et seq., applies to their processing of a consumer's personal data.</p>
+<p>The Florida Privacy String consists of the following components. Users of the spec should employ the Florida Privacy String if they have determined the Florida Digital Bill of Rights, Fla. Stat. § 501.701 et seq., may apply to their processing or their partners’ processing of a consumer's personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
