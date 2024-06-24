@@ -22,7 +22,7 @@
 
 
 <h2 id="colorado-privacy-section">Colorado Privacy Section</h2>
-<p>The Colorado Privacy Section consists of the components described below. Users should employ the Colorado Privacy Section only if they have determined the CPA applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Colorado Privacy Section consists of the components described below. Users of the spec should employ the Colorado Privacy Section only if they have determined the CPA applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
