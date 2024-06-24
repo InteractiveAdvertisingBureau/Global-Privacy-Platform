@@ -22,7 +22,7 @@
 
 
 <h2 id="connecticut-privacy-section">Connecticut Privacy Section</h2>
-<p>The Connecticut Privacy Section consists of the components described below. Users should employ the Connecticut Privacy Section only if they have determined the CAPDP applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Connecticut Privacy Section consists of the components described below. Users of the spec should employ the Connecticut Privacy Section only if they have determined the CAPDP applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
