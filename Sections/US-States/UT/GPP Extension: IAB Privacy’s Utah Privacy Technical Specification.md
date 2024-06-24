@@ -23,7 +23,7 @@
 
 
 <h2 id="utah-privacy-section">Utah Privacy Section</h2>
-<p>The Utah Privacy Section consists of the components described below. Users should employ the Utah Privacy Section only if they have determined the UCPA applies to their processing of a consumer&#39;s personal data.</p>
+<p>The Utah Privacy Section consists of the components described below. Users of the spec should employ the Utah Privacy Section only if they have determined the UCPA applies to their processing of a consumer&#39;s personal data.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
