@@ -24,7 +24,7 @@
 
 
 <h2 id="california-privacy-section">California Privacy Section</h2>
-<p>The California Privacy Section consists of the components described below. Users should employ the California Privacy String only if they have determined the CPRA applies to their processing of a consumer&#39;s personal information.</p>
+<p>The California Privacy Section consists of the components described below. Users of the spec should employ the California Privacy String only if they have determined the CPRA applies to their processing of a consumer&#39;s personal information.</p>
 <h3 id="summary">Summary</h3>
 <table>
 <thead>
