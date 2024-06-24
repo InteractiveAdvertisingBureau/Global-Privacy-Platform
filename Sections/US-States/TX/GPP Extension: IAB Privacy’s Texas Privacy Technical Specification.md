@@ -22,7 +22,7 @@
 </div>
 
 <h2>Texas Section</h2>
-<p>The Texas Privacy String consists of the following components. Users should employ the Texas Privacy String only if they have determined the Texas Data Privacy and Security Act, Tex. Bus. &amp; Com. Code § 541.001 et seq., applies to their processing of a consumer’s personal data.</p>
+<p>The Texas Privacy String consists of the following components. Users of the spec should employ the Texas Privacy String only if they have determined the Texas Data Privacy and Security Act, Tex. Bus. &amp; Com. Code § 541.001 et seq., applies to their processing of a consumer’s personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
