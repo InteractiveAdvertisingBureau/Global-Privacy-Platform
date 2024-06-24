@@ -22,7 +22,7 @@
 </div>
 
 <h2>Montana Section</h2>
-<p>The Montana Privacy String consists of the following components. Users should employ the Montana Privacy String only if they have determined the Montana Consumer Data Privacy Act, SB 384 (2023), applies to their processing of a consumer’s personal data.</p>
+<p>The Montana Privacy String consists of the following components. Users of the spec should employ the Montana Privacy String only if they have determined the Montana Consumer Data Privacy Act, SB 384 (2023), applies to their processing of a consumer’s personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
