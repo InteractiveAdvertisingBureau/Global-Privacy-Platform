@@ -22,7 +22,7 @@
 </div>
 
 <h2>Oregon Section</h2>
-<p>The Oregon Privacy String consists of the following components. Users should employ the Oregon Privacy String only if they have determined the Oregon Act Relating to Protections for Personal Data of Consumers, SB 619 (2023), applies to their processing of a consumer’s personal data.</p>
+<p>The Oregon Privacy String consists of the following components. Users of the spec should employ the Oregon Privacy String only if they have determined the Oregon Act Relating to Protections for Personal Data of Consumers, SB 619 (2023), applies to their processing of a consumer’s personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
