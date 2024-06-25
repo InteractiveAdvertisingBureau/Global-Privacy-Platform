@@ -223,12 +223,12 @@
       <tr>
         <td>SubsectionType</td>
         <td>Int(2)</td>
-        <td>0 = Core1 = GPC</td>
+        <td><p></p><code>0</code> = Core<p></p><code>1</code> = GPC</td>
       </tr>
       <tr>
         <td>Gpc</td>
         <td>Boolean</td>
-        <td>0 = false1 = true</td>
+        <td><p></p><code>0</code> = false<p></p><code>1</code> = true</td>
       </tr>
     </tbody>
   </table>
