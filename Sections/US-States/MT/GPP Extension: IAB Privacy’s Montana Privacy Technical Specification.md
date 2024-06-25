@@ -159,7 +159,7 @@
           <span style="color:rgb(36, 41, 47);">AdditionalDataProcessingConsent</span>
         </td>
         <td>Int(2)</td>
-        <td>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = Consent<p></p><code>2</code> = No Consent&nbsp;</td>
+        <td>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
       </tr>
       <tr>
         <td>
