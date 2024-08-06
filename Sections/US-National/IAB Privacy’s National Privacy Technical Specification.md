@@ -298,7 +298,8 @@
 </div>
 
 <h4 id="gpc-subsection">GPC Sub-section</h4>
-<p><a href="https://globalprivacycontrol.github.io/gpc-spec/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</p>
+<p><a href="https://globalprivacycontrol.github.io/gpc-spec/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPC Subsections should check whether GPC is set and pass along the value from the headers or javascript API in this subsection. Refer to the </span><a target="_blank" rel="noopener noreferrer nofollow" href="https://privacycg.github.io/gpc-spec/"><span style="color: rgb(17, 85, 204)">GPC specifications</span></a><span style="color: rgb(36, 41, 47)"> for details on GPC including how to handle conflicts or inconsistencies.</span>
+</p>
 
 <table>
 <thead>
