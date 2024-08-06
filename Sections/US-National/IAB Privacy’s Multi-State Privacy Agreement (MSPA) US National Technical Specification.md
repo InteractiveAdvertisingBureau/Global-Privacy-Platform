@@ -1,9 +1,9 @@
 
-<h1 id="gpp-extension-iab-privacy-s-mspa-us-national-privacy-technical-specification">GPP Extension: IAB Privacy’s US National Privacy Technical Specification</h1>
+<h1 id="gpp-extension-iab-privacy-s-mspa-us-national-privacy-technical-specification">GPP Extension: IAB Privacy’s MSPA US National Section Technical Specification</h1>
 
 <h2 id="about-this-document">About this document</h2>
 
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the GPP specifications with the IAB Privacy Multi-State Privacy Agreement legal requirements.</p>
+<p>The <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a>  standard is designed to be extensible so that support for new regulations can be added without the need to update existing capabilities defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical requirements for using the GPP specification with the IAB Privacy Multi-State Privacy Agreement (MSPA) legal requirements.</p>
 
 <h3>Version History&nbsp;</h3>
 <div>
@@ -19,12 +19,20 @@
 <td>1.0</td>
 <td>Version 1.0 released</td>
 </tr>
+<tr>
+<td>August 2024</td>
+<td>2.0</td>
+<td>Version 2.0 – Added support for DE, IN, IA, KY, MD, MI, MT, NH, NE, NJ, OR, RI, TN, TX in accordance with the Second Amended and Restated MSPA.</td>
+</tr>
 </tbody>
 </table>
 </div>
 
-<h2>US National Privacy Section</h2>
-<p style="text-align: justify;">The US National Privacy Section is a string that consists of the components described below. Users should employ the US National Privacy Section only if they will adhere to the National Approach for their processing of a consumer&rsquo;s personal data.</p>
+<h2>Multi-State Privacy Agreement (MSPA) US National Section</h2>
+<p>The MSPA US National Section string includes the components described below.&nbsp;</p>
+<p>
+    <br>Implementers should employ the MSPA US National Privacy Section to adhere to the “National Approach” for their Processing of a Consumer’s Personal Information, as defined in Section 1.81 of the MSPA.&nbsp; The MSPA US National Privacy Section should be used by MSPA Signatories and Certified Partners in connection with a Covered Transaction pursuant to the MSPA.&nbsp; Click <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/"><span style="color: rgb(17, 85, 204)">here</span></a> to access the text of the MSPA and to review the Signatory and Certified Partner Identification List.</p>
+
 <h3>Summary</h3>
 <div>
 <table>
@@ -37,12 +45,12 @@
 <tr>
 <td>GPP SectionID</td>
 <td>7</td>
-<td>The US National Section is registered as Section ID 7 under the GPP.&nbsp;</td>
+<td>The MSPA US National Section is assigned GPP Section ID 7.&nbsp;</td>
 </tr>
 <tr>
 <td>Client side API prefix</td>
 <td>usnat</td>
-<td>The US National Privacy section is registered with client side API prefix &ldquo;usnat&rdquo; in the GPP Client Side API.</td>
+<td>The MSPA US National Section is assigned the client side API prefix “usnat” in the GPP Client Side API.</td>
 </tr>
 </tbody>
 </table>
