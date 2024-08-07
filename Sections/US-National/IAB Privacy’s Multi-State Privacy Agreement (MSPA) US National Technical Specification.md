@@ -31,7 +31,7 @@
 <h2>Multi-State Privacy Agreement (MSPA) US National Section</h2>
 <p>The MSPA US National Section string includes the components described below.&nbsp;</p>
 <p>
-    <br>Implementers should employ the MSPA US National Privacy Section to adhere to the “National Approach” for their Processing of a Consumer’s Personal Information, as defined in Section 1.81 of the MSPA.&nbsp; The MSPA US National Privacy Section should be used by MSPA Signatories and Certified Partners in connection with a Covered Transaction pursuant to the MSPA.&nbsp; Click <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/"><span style="color: rgb(17, 85, 204)">here</span></a> to access the text of the MSPA and to review the Signatory and Certified Partner Identification List.</p>
+Implementers should employ the MSPA US National Privacy Section to adhere to the “National Approach” for their Processing of a Consumer’s Personal Information, as defined in Section 1.81 of the MSPA.&nbsp; The MSPA US National Privacy Section should be used by MSPA Signatories and Certified Partners in connection with a Covered Transaction pursuant to the MSPA.&nbsp; Click <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/"><span style="color: rgb(17, 85, 204)">here</span></a> to access the text of the MSPA and to review the Signatory and Certified Partner Identification List.</p>
 
 <h3>Summary</h3>
 <div>
@@ -344,7 +344,7 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
 </ul>
-(5) onsent to Process the Consumer’s Personal Information Consisting of Personal Information Revealing Citizenship or Immigration Status.<p><p>References:
+(5) Consent to Process the Consumer’s Personal Information Consisting of Personal Information Revealing Citizenship or Immigration Status.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.121(a) and 11 CCR 7027</li>
 <li>Colo. Rev. Stat. 6-1-1308(7) and 4 CCR 904-3-6.10</li>
@@ -407,7 +407,7 @@
 <li>Utah Code 13-61-302(3)(a)</li>
 <li>Virginia Code 59.1-578(A)(5)</li>
 </ul>
-(8) onsent to Process the Consumer’s Personal Information Consisting of Precise Geolocation Data.<p><p>References:
+(8) Consent to Process the Consumer’s Personal Information Consisting of Precise Geolocation Data.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.121(a) and 11 CCR 7027</li>
 <li>Conn. Gen. Stat. § 42-520(a)(4)</li>
@@ -481,7 +481,7 @@
 <li>New Jersey Act, Sec. 9(a)(7)</li>
 <li>Oregon Act, Sec. 5(2)(b)</li>
 </ul>
-(2)Consent to Process the Consumer’s Personal Information or Sensitive Personal Information for Consumers Younger Than 13 Years of Age.<p><p>References:
+(2) Consent to Process the Consumer’s Personal Information or Sensitive Personal Information for Consumers Younger Than 13 Years of Age.<p><p>References:
 <ul>
 <li>Cal. Civ. Code 1798.120(c) and 11 CCR 7070-7071</li>
 <li>Colo. Rev. Stat. 6-1-1308(7) and 4 CCR 904-3-7.06</li>
@@ -512,7 +512,7 @@
 <tr>
 <td>PersonalDataConsents</td>
 <td>Int(2)</td>
-<td>onsumer Consented to the Processing of the Consumer’s Personal Information for Digital Advertising Activities that would, but for providing Consent, not otherwise meet the Secondary Use Limitations.&nbsp; The Secondary Use Limitations, as set forth in the National Approach, incorporate the statutory provisions and regulations set forth below:<p><p>References:
+<td>Consumer Consented to the Processing of the Consumer’s Personal Information for Digital Advertising Activities that would, but for providing Consent, not otherwise meet the Secondary Use Limitations.&nbsp; The Secondary Use Limitations, as set forth in the National Approach, incorporate the statutory provisions and regulations set forth below:<p><p>References:
 <ul><li>Cal. Civ. Code 1798.100(c) and 11 CCR 7002</li>
 <li>Colo. Rev. Stat. 6-1-1308(4) and 4 CCR 904-3-6.08</li>
 <li>Conn. Gen. Stat. § 42-520(a)(2)</li>
