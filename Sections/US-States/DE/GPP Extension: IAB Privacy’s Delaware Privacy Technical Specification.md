@@ -137,11 +137,11 @@
           <span style="color:rgb(36, 41, 47);">(2). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition or Diagnosis (Including Pregnancy).</span><p></p>
           <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Status as Transgender or Nonbinary.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(6). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(7). Consent to Process the Consumer’s Sensitive Data Consisting of Genetic Data.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(8). Consent to Process the Consumer’s Sensitive Data Consisting of Biometric Data.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(9). Consent to Process the Consumer’s Sensitive Data Consisting of Precise Geolocation Data.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(6). Consent to Process the Consumer’s Sensitive Data Consisting of Genetic Data.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(7). Consent to Process the Consumer’s Sensitive Data Consisting of Biometric Data.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(8). Consent to Process the Consumer’s Sensitive Data Consisting of Precise Geolocation Data.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(9). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Status as Transgender or Nonbinary.</span><p></p>
         </td>
       </tr>
       <tr>
