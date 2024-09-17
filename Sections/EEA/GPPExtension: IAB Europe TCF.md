@@ -102,7 +102,7 @@ The core segment must always be present. It consists of the following fields:
     <td>Bitfield(12)</td>
     <td>One bit for each Special Feature:
     <ul>
-      <li>1 Opten in</li>
+      <li>1 Opted in</li>
       <li>0 Not opted in</li>
     </ul>
    The TCF <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies </a> designates certain Features as “special” which means a CMP must afford the user a means to expressly consent to their use. These “Special Features” are published and numerically identified in the <a href="https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list">Global Vendor List </a> separately from normal Features.</td>
