@@ -915,7 +915,7 @@ When a creative is rendered, it may contain a number of pixels under <img> tags.
 
 Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable GPP Section IDs (SID), are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macros:
 
-- `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. - The applicable GPP Section ID must also be inserted, where the ${GPP_SID}macro is present.
+- `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. - The applicable GPP Section ID must also be inserted, where the ${GPP_SID} macro is present.
 
 
 Vendors not registered to participate in any framework supported by the Global Privacy Platform (e.g. MSPA, TCF CA, TCF EU) may pass ${GPP_STRING} without the GPP ID. Vendors who are registered to participate and have a GPP ID must include it in the macro. When vendors that are callers–who have the option to expand on the macros–are deciding how to proceed with vendor callees not participating in a GPP supported framework (e.g. MSPA, TCF CA, TCF EU), vendors should reference each framework's policy.
