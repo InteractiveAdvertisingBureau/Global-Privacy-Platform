@@ -54,7 +54,7 @@ Consent Management Platforms (CMPs) provide a user interface to establish transp
 
 Using the API, scripts may obtain the GPP String payload and the information it contains, which is ready to use without having to understand how to “unpack” the payload format. This makes it easy to make immediate data processing decisions based on the returned information.
 
-This API allows for accessing signals across legislations, regulations, and standards. It provides a common interface that can be used to access underlying APIs such as the [IAB TCF](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md) and [USPrivacy](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/USP%20API.md). 
+This API allows for accessing signals across legislations, regulations, and standards. It provides a common interface that can be used to access underlying APIs such as the [IAB TCF](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md) and [USPrivacy](https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/USP%20API.md).
 
 #### API Prefixes
 
