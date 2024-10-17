@@ -58,7 +58,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>7</code></td>
     <td>usnat</td>
-    <td>US - national section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National">MSPA US National Section</a></td>
   </tr>
   <tr>
     <td><code>8</code></td>
