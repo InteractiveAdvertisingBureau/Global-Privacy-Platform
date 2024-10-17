@@ -192,9 +192,9 @@ The following details provide information on creating, storing, and managing a G
 </li>
 <li><b>Create header section.</b> See examples of the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/consent-string-clarifications/Core/Consent%20String%20Specification.md?pr=%2FInteractiveAdvertisingBureau%2FGlobal-Privacy-Platform%2Fpull%2F83#header-examples">header section</a> below.
 	<ol type=1>
-		<li>Create a bit representation of the GPP header section including all Section IDs for discrete sections in a sorted order. </li>
+		<li>Create a bit representation of the GPP header section including all Section IDs for discrete sections in a sorted order.</li>
 		<li>Add padding (0) on the right to get to a total bit length that is a multiple of 6 bits.</li>
-		<li>Convert the integer to convert the six bit sequence into a character where the integer is the index of the character in the table below. </li>
+		<li>Convert the integer to convert the six bit sequence into a character where the integer is the index of the character in the table below.</li>
 	</ol></li>
 <li><b>Concatenate all sections.</b> Concatenate the encoded GPP header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter. See examples of GPP strings below.</li>
 </ol> 
@@ -508,8 +508,8 @@ Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
 				<li>Amount = 000000000010</li>
 				<li>Item 1 Single = 0</li>
 				<li>Item 1 start ID = 011</li>
-				<li>Item 2 Single = 0 </li>
-				<li>Item 2 offset to last ID = 1011 </li>
+				<li>Item 2 Single = 0</li>
+				<li>Item 2 offset to last ID = 1011</li>
 		</ul>
 	</ul>
 Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
@@ -551,7 +551,7 @@ Based on the Section ID table above, the Section ID for EU TCF is 2 and the Sect
 				<li>Amount = 000000000001</li>
 				<li>Item 1 Single = 1</li>
 				<li>Item 1 start ID = 00011</li>
-				<li>Item 1 offset to last ID = 11 </li>
+				<li>Item 1 offset to last ID = 11</li>
 		</ul>
 	</ul>
 Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the <code>Data Types table</code> for more detail on these fields.</td>
@@ -654,10 +654,10 @@ The possible data types are:
     <td>Array of Number</td>
     <td>A range field always consists of the following fields: 
 	    <ul>
-		    <li>int(12) - representing the amount of items to follow </li>
+		    <li>int(12) - representing the amount of items to follow</li>
 		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true)</li>
-		    <li>(per item) int(16) - representing a) the single ID or b) the start ID in case of a group </li>
-		    <li>(per item + only if group)  int(16) - representing the end ID of the group </li>
+		    <li>(per item) int(16) - representing a) the single ID or b) the start ID in case of a group</li>
+		    <li>(per item + only if group)  int(16) - representing the end ID of the group</li>
 	    </ul>
 	Example: 
 	    <ul>
@@ -666,7 +666,7 @@ The possible data types are:
 		    <li>int(16) = 3 // ID of item 1</li>
 		    <li>Bool = 1 // item 2 is type group</li>
 		    <li>int(16) = 5 // item 2 start ID</li>
-		    <li>int(16) = 8 // item 2 end ID </li>    
+		    <li>int(16) = 8 // item 2 end ID</li>    
 	    </ul>
 	    <ul>
 		    <li> Range = [3,5,6,7,8]</li>
@@ -680,10 +680,10 @@ Note: items may not be in sorted order.</td>
     <td>Array of Number</td>
     <td>A range field always consists of the following fields: 
 	    <ul>
-		    <li>int(12) - representing the amount of items to follow </li>
-		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true) </li>
+		    <li>int(12) - representing the amount of items to follow</li>
+		    <li>(per item) Boolean - representing whether the item is a single ID (0/false) or a group of IDs (1/true)</li>
 		    <li>(per item) int(Fibonacci) - representing a) the offset to a single ID or b) the offset to the start ID in case of a group (the offset is from the last seen number, or 0 for the first entry)</li>
-		    <li>(per item + only if group)  int(Fibonacci) - length of the group </li>
+		    <li>(per item + only if group)  int(Fibonacci) - length of the group</li>
 	    </ul>
 	    Example: 
 	    <ul>
@@ -734,7 +734,7 @@ Note: items MUST be in sorted order..</td>
 				<li>Each entry consists of three datatypes:</li>
 				<ul><li>key - Int(6)</li>
 				<li>type - Int(2)</li>
-				<li>ids - <code>OptimizedIntRange </code>(uses Range(Int) for range of IDs, see <code>OptimizedIntRange</code> data type above for more details)</li></ul></ul>
+				<li>ids - <code>OptimizedIntRange</code> (uses Range(Int) for range of IDs, see <code>OptimizedIntRange</code> data type above for more details)</li></ul></ul>
 			<p>Note: <code>ArrayOfRanges</code> is used for downwards compatibility only.</p></td>
 	</tr>
 	<tr>
@@ -746,7 +746,7 @@ Note: items MUST be in sorted order..</td>
 				<li>Each record consists of three datatypes:</li>
 				<ul><li><b>key</b> - Int(X) Where X is given by the field definition within the corresponding specification.</li>
 				<li><b>type</b> - Int(Y) Where Y is given by the field definition within the corresponding specification.</li>
-				<li><b>ids</b> - <code>OptimizedRange </code>(uses Fibonacci coding for range of IDs, see <code>OptimizedRange</code> data type above for more details)</li></ul></ul></td></td>
+				<li><b>ids</b> - <code>OptimizedRange</code> (uses Fibonacci coding for range of IDs, see <code>OptimizedRange</code> data type above for more details)</li></ul></ul></td></td>
 	</tr>
  </table>
  
@@ -910,10 +910,10 @@ If you are a vendor with a GVL ID for a specific framework, you already have a G
  # How does a URL-based service process the GPP String when it can’t execute Javascript?
 
 
-When a creative is rendered, it may contain a number of pixels under <img> tags. For example, `<img src = "http://vendor-a.com/key1=val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
+When a creative is rendered, it may contain a number of pixels under `<img>` tags. For example, `<img src = "http://vendor-a.com/key1=val1&key2=val2">` which fires an HTTP GET request from the browser to Vendor A’s domain.
 
 
-Since the pixel is in an <img> tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable GPP Section IDs (SID), are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macros:
+Since the pixel is in an `<img>` tag without the ability to execute Javascript, the CMP API cannot be used to obtain the GPP String. All parties in the ad supply chain who transact using URLs must add a pair of macros in their URLs where the [GPP String](#gppstring), and applicable GPP Section IDs (SID), are inserted. Any caller with access to the applicable GPP String must insert it within a URL containing the macros:
 
 - `${GPP_STRING_XXXXX}` where `XXXXX` is the numeric GPP ID of the vendor receiving the string. - The applicable GPP Section ID must also be inserted, where the ${GPP_SID}macro is present.
 
