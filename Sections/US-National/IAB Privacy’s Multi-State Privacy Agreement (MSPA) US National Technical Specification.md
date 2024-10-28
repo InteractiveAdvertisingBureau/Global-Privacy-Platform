@@ -20,7 +20,7 @@
 <td>Version 1.0 released</td>
 </tr>
 <tr>
-<td>August 2024</td>
+<td>October 2024</td>
 <td>2.0</td>
 <td>Version 2.0 – Added support for DE, IN, IA, KY, MD, MI, MT, NH, NE, NJ, OR, RI, TN, TX in accordance with the Second Amended and Restated MSPA.</td>
 </tr>
