@@ -47,6 +47,7 @@
 </tbody>
 </table>
 <h3 id="section-encoding">Section encoding</h3>
+<p>Note: in the JS representation of the section, the field name should be in UpperCamelCase, just like the column "Field name". Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map the GPP field types to JavaScript native data types.<p>
 <h4 id="core-segment">Core Segment</h4>
 <p>The core segment must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Utah Code 13-61-101. It consists of the following fields:</p>
 <table>

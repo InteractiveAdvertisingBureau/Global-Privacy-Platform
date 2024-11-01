@@ -31,6 +31,7 @@ The global standard [GPP](https://github.com/InteractiveAdvertisingBureau/Global
 The GPP section for the IAB Europe TCF (Section ID 2) will use the following encoding.
 Note that the resulting TC String produced is expected to be exactly the same as the TC String produced when using the [TCF specification](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md). The GPP introduces new data types that are For full details about the TC String, please refer to the [Consent string and vendor list format v2](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md).
 
+Note: in the JS representation of the section, the field name should be in UpperCamelCase, just like the column "Field Name". Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map the GPP field types to JavaScript native data types.
 
 ### Core segment
 
@@ -177,7 +178,7 @@ The core segment must always be present. It consists of the following fields:
 > **Note:** Fields marked with * are only included in the string encoded version of the GPP segment but will not be returned by the client side API. Instead, the client side API will return an array of int with the corresponding IDs.
 
 
-## Disclosed Vendors Segment
+### Disclosed Vendors Segment
 
 The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter. This is an optional TC String segment. It may be used by a CMP while storing TC Strings, but must not be included in the TC String when returned by the CMP API. The segment fields are:
 
@@ -201,7 +202,7 @@ The disclosed vendors segment is appended to the core segment by using the “.�
 
 
 
-## Publisher Purposes Segment
+### Publisher Purposes Segment
 
 The publisher purposes segment is appended to the core segment by using the “.” (dot) delimiter. The segment is optional. The segment fields are:
 

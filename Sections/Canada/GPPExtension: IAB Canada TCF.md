@@ -25,6 +25,7 @@
 </div>
 <h2>Section encoding</h2>
 <p>The IAB TCF Canada will be using the following encoding for the GPP section. If already familiar with the IAB TCF Europe encoding, you may view the detailed differences between the two on the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada/TCF%20EU%20TCF%20CA%20Comparison.md" target="_blank" rel="noopener">IAB Europe TCF with IAB Canada TCF Signal Definition</a> documentation.</p>
+<p>Note: in the JS representation of the section, the field name should be in UpperCamelCase, just like the column "Field name". Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map the GPP field types to JavaScript native data types.<p>
 <h3>Core sub-section</h3>
 <p>The core sub-section must always be present. It consists of the following fields:</p>
 <div>
