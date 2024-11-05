@@ -176,18 +176,22 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
 signalStatus : String, // possible values: not ready, ready
 
-supportedAPIs : Array of string, // list of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
+// List of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
+supportedAPIs : Array of string,
 
-cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading. Reference the above CMP ID section for additional information.
+// IAB assigned CMP ID, may be 0 during stub/loading. Reference the above CMP ID section for additional information.
+cmpId : Number,
 
 sectionList : Array of Number, // may be empty during loading of the CMP
 
-// Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID.
-// In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During
-// the transition period which ends on September 30, 2023, the legacy USPrivacy section may be determined as applicable
-// along with another US section. In this case, the field may contain up to 3 values where one of the values is 6,
-// representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser,
-// during stub / load. When no section is applicable, the value will be [-1].
+// Section ID considered to be in force for this transaction.
+// In most cases, this field should have a single section ID. In rare occasions where such a single section ID
+// can not be determined, the field may contain up to 2 values. During the transition period which ends on
+// September 30, 2023, the legacy USPrivacy section may be determined as applicable along with another US section.
+// In this case, the field may contain up to 3 values where one of the values is 6, representing the
+// legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during
+// stub / load.
+// When no section is applicable, the value will be [-1].
 applicableSections: Array of Number,
 
 gppString: String // the complete encoded GPP string, may be empty during CMP load
@@ -196,9 +200,9 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
 // by the API on this page (see supportedAPIs property). The object contains one property for each supported API with
 // the name of the API as the property name and the value as a parsed representation of this section (similar to
 // getSection command). If a section is supported but not represented in the gppString, it is omitted in the
-// parsedSections object. Please refer to each section’s spec for the exact field names and data types in JavaScript.
-// The sections here should be consistent with the GPP string, and should not just contain placeholder values (e.g.
-// 0 for CmpId).
+// parsedSections object.
+// Please refer to each section’s spec for the exact field names and data types in JavaScript. The sections here should
+// be consistent with the GPP string, not placeholder values.
 parsedSections: Object
 
 }
@@ -207,7 +211,8 @@ parsedSections: Object
 
 In JavaScript, a `parsedSections` object should be a native JS object that maps from the section's API prefix names
 enumerated [here](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md#section-ids)
-to the section's representation according to its spec. For example:
+to the section's JS representation according to its spec. Each section's is represented as an array of objects, and each
+object corresponds to a subsection in that section. For example:
 ```
 {
   tcfcav1: [
