@@ -223,8 +223,6 @@ types. For example:
     /* Core Sub-section */
     {
       Version: 1,
-      // Note: according to the table of data type mapping, the JS data type
-      // is "Date", not "string". Same below.
       Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
       LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
       CmpId: 31, 
@@ -258,7 +256,7 @@ types. For example:
     {
       SegmentType: 1, 
       ...
-    }
+    },
     /* Publisher Purposes Segment (optional) */
     {
       SegmentType: 3, 
@@ -698,7 +696,6 @@ Example value of data passed to the callback, according to [GPPExtension: IAB Ca
   /* Core Sub-section */
   {
     Version: 1,
-    // Note: the JS data type is "Date", not "string". Same below.
     Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
     LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
     CmpId: 31, 
