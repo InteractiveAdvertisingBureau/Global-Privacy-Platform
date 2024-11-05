@@ -212,15 +212,19 @@ parsedSections: Object
 In JavaScript, a `parsedSections` object should be a native JS object that maps from the section's API prefix names
 enumerated [here](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md#section-ids)
 to the section's JS representation according to its spec. Each section's is represented as an array of objects, and each
-object corresponds to a subsection in that section. For example:
+object corresponds to a sub-section (segment) in that section. Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map each spec's GPP field types to JavaScript native data
+types. For example:
 ```
 {
+  /* GPPExtension: IAB Canada TCF.md. */
   tcfcav1: [
     /* Core Sub-section */
     {
-      Version:1, 
-      Created: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
-      LastUpdated: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
+      Version: 1,
+      // Note: according to the table of data type mapping, the JS data type
+      // is "Date", not "string". Same below.
+      Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+      LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
       CmpId: 31, 
       CmpVersion: 123,
       ConsentScreen: 5,
@@ -228,13 +232,37 @@ object corresponds to a subsection in that section. For example:
     }, 
     /* Publisher Purposes Sub-section (optional) */
     {
-      subsectionType:3, 
-      PubPurposesExpressConsent : [1,2,3,4,5],
-      PubPurposesImpliedConsent  : [6,7,8,9],
+      subsectionType: 3, 
+      PubPurposesExpressConsent: [1,2,3,4,5],
+      PubPurposesImpliedConsent: [6,7,8,9],
       ...
     } 
   ],
-  tcfeuv2: [ ... ], // Array of subsections for this section
+
+  /* GPPExtension: IAB Europe TCF.md. */
+  tcfeuv2: [
+    /* Core Segment */
+    {
+      Version: 2, 
+      Created: new Date ("Thu Nov 10 2024 12:08:22 GMT+0200"),
+      LastUpdated: new Date ("Thu Nov 10 2024 12:08:2 GMT+0200"),
+      CmpId: 10, 
+      CmpVersion: 56,
+      ConsentScreen: 0,
+      VendorConsent: [1,2,4,6],
+      ...
+    }, 
+    /* Disclosed Vendors Segment (optional) */
+    {
+      subsectionType: 1, 
+      ...
+    }
+    /* Publisher Purposes Segment (optional) */
+    {
+      subsectionType: 3, 
+      ...
+    }
+  ]
 }
 ```
 
@@ -665,22 +693,23 @@ __gpp('getSection', myFunction, "tcfcav1");
 Example value of data passed to the callback: 
 ```javascript
 [
- /* Core Sub-section */
- {
-  Version:1, 
-  Created: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
-  LastUpdated: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
-  CmpId: 31, 
-  CmpVersion: 123,
-  ConsentScreen: 5,
-  ...
+  /* Core Sub-section */
+  {
+    Version: 1,
+    // Note: the JS data type is "Date", not "string". Same below.
+    Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+    LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+    CmpId: 31, 
+    CmpVersion: 123,
+    ConsentScreen: 5,
+    ...
   }, 
   /* Publisher Purposes Sub-section (optional) */
- {
-  subsectionType:3, 
-  PubPurposesExpressConsent : [1,2,3,4,5],
-  PubPurposesImpliedConsent  : [6,7,8,9],
-  ...
+  {
+    subsectionType:3, 
+    PubPurposesExpressConsent: [1,2,3,4,5],
+    PubPurposesImpliedConsent: [6,7,8,9],
+    ...
   } 
 ]
 ```
