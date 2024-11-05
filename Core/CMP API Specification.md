@@ -176,10 +176,11 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
 signalStatus : String, // possible values: not ready, ready
 
-// List of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
+// List of supported APIs (section ids and prefix strings), e.g. used while loading.
+// Example: ["2:tcfeuv2","6:uspv1"] 
 supportedAPIs : Array of string,
 
-// IAB assigned CMP ID, may be 0 during stub/loading. Reference the above CMP ID section for additional information.
+// IAB assigned CMP ID, may be 0 during stub/loading. Refer the above CMP ID section for additional information.
 cmpId : Number,
 
 sectionList : Array of Number, // may be empty during loading of the CMP
@@ -212,7 +213,8 @@ parsedSections: Object
 In JavaScript, a `parsedSections` object should be a native JS object that maps from the section's API prefix names
 enumerated [here](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md#section-ids)
 to the section's JS representation according to its spec. Each section's is represented as an array of objects, and each
-object corresponds to a sub-section (segment) in that section. Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map each spec's GPP field types to JavaScript native data
+object corresponds to a sub-section (segment) in that section. Follow this [table of data type mapping](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding)
+to map each spec's GPP field types to JavaScript native data
 types. For example:
 ```
 {
@@ -232,7 +234,7 @@ types. For example:
     }, 
     /* Publisher Purposes Sub-section (optional) */
     {
-      subsectionType: 3, 
+      SubsectionType: 3, 
       PubPurposesExpressConsent: [1,2,3,4,5],
       PubPurposesImpliedConsent: [6,7,8,9],
       ...
@@ -254,12 +256,12 @@ types. For example:
     }, 
     /* Disclosed Vendors Segment (optional) */
     {
-      subsectionType: 1, 
+      SegmentType: 1, 
       ...
     }
     /* Publisher Purposes Segment (optional) */
     {
-      subsectionType: 3, 
+      SegmentType: 3, 
       ...
     }
   ]
@@ -690,7 +692,7 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 __gpp('getSection', myFunction, "tcfcav1"); 
 ```
 
-Example value of data passed to the callback: 
+Example value of data passed to the callback, according to [GPPExtension: IAB Canada TCF.md](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Canada/GPPExtension%3A%20IAB%20Canada%20TCF.md): 
 ```javascript
 [
   /* Core Sub-section */
@@ -706,7 +708,7 @@ Example value of data passed to the callback:
   }, 
   /* Publisher Purposes Sub-section (optional) */
   {
-    subsectionType:3, 
+    SubsectionType: 3, 
     PubPurposesExpressConsent: [1,2,3,4,5],
     PubPurposesImpliedConsent: [6,7,8,9],
     ...
