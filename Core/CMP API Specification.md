@@ -215,8 +215,9 @@ enumerated [here](https://github.com/InteractiveAdvertisingBureau/Global-Privacy
 to the section's JS representation according to its spec. Each section's is represented as an array of objects, and each
 object corresponds to a sub-section (segment) in that section. Follow this [table of data type mapping](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding)
 to map each spec's GPP field types to JavaScript native data
-types. For example:
-```
+types. Examples:
+```javascript
+/* Example of a `parsedSections` that holds two sections: tcfcav1, tcfeuv2 */
 {
   /* GPPExtension: IAB Canada TCF.md. */
   tcfcav1: [
@@ -230,7 +231,7 @@ types. For example:
       ConsentScreen: 5,
       ...
     }, 
-    /* Publisher Purposes Sub-section (optional) */
+    /* Publisher Purposes Sub-section */
     {
       SubsectionType: 3, 
       PubPurposesExpressConsent: [1,2,3,4,5],
@@ -252,16 +253,36 @@ types. For example:
       VendorConsent: [1,2,4,6],
       ...
     }, 
-    /* Disclosed Vendors Segment (optional) */
+    /* Disclosed Vendors Segment */
     {
       SegmentType: 1, 
       ...
     },
-    /* Publisher Purposes Segment (optional) */
+    /* Publisher Purposes Segment */
     {
       SegmentType: 3, 
       ...
     }
+  ],
+```
+```javascript
+/* Example of a `parsedSections` that holds one section: usnat */
+{
+  /* IAB Privacy's Multi-State Privacy Agreement (MSPA) US National Technical Specification.md */
+  usnat: [
+    /* Core Segment */
+    {
+      Version: 1,
+      SharingNotice: 1,
+      KnownChildSensitiveDataConsents: [0, 0],
+      MspaCoveredTransaction: 2,
+      ...
+    },
+    /* GPC Sub-section */
+    {
+      SubsectionType: 1,
+      Gpc: true
+    },
   ]
 }
 ```
