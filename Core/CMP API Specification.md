@@ -219,7 +219,7 @@ types. Examples:
 ```javascript
 /* Example of a `parsedSections` that holds two sections: tcfcav1, tcfeuv2 */
 {
-  /* GPPExtension: IAB Canada TCF.md. */
+  /* See "GPPExtension: IAB Canada TCF.md". */
   tcfcav1: [
     /* Core Sub-section */
     {
@@ -240,7 +240,7 @@ types. Examples:
     } 
   ],
 
-  /* GPPExtension: IAB Europe TCF.md. */
+  /* See "GPPExtension: IAB Europe TCF.md". */
   tcfeuv2: [
     /* Core Segment */
     {
@@ -257,18 +257,15 @@ types. Examples:
     {
       SegmentType: 1, 
       ...
-    },
-    /* Publisher Purposes Segment */
-    {
-      SegmentType: 3, 
-      ...
     }
-  ],
+    /* This example doesn't contain the optional Publisher Purposes Segment */
+  ]
+}
 ```
 ```javascript
 /* Example of a `parsedSections` that holds one section: usnat */
 {
-  /* IAB Privacy's Multi-State Privacy Agreement (MSPA) US National Technical Specification.md */
+  /* See "IAB Privacy's Multi-State Privacy Agreement (MSPA) US National Technical Specification.md". */
   usnat: [
     /* Core Segment */
     {
@@ -282,7 +279,7 @@ types. Examples:
     {
       SubsectionType: 1,
       Gpc: true
-    },
+    }
   ]
 }
 ```
