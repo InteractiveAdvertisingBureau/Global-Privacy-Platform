@@ -101,7 +101,7 @@ The core segment must always be present. It consists of the following fields (pl
   <tr>
   <td>UseNonStandardTexts</td>
   <td>Boolean</td>
-  <td>Setting this to 1 signals to Vendors that a private CMP has modified standard Stack descriptions and/or their translations and/or that a CMP has modified or supplemented standard Illustrations and/or their translations as allowed by the <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">policy</a> (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
+  <td>Setting this to 1 signals to Vendors that a CMP has modified standard Stack descriptions and/or their translations and/or that a CMP has modified or supplemented standard Illustrations and/or their translations as allowed by the <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">policy</a> (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
   </tr>
   <tr>
     <td>SpecialFeatureOptIns</td>
@@ -142,7 +142,7 @@ The core segment must always be present. It consists of the following fields (pl
   </tr>
   <td>PurposeOneTreatment</td>
   <td>Boolean</td>
-  <td>1 Purpose 1 was NOT disclosed at all.<br>0 Purpose 1 was disclosed commonly as consent as expected by the Policies.<br>CMPs can use the PublisherCC field to indicate the legal jurisdiction the publisher is under to help vendors determine whether the vendor needs consent for Purpose 1.</td>
+  <td>0 = No special treatment. Purpose 1 was disclosed commonly as consent as expected by the Policies.<br>1 = Special treatment. Purpose 1 was not disclosed.<br>CMPs can use the PublisherCC field to indicate the legal jurisdiction the publisher is under to help vendors determine whether the vendor needs consent for Purpose 1.</td>
   </tr>
   <tr>
   <td>PublisherCC</td>
@@ -157,12 +157,12 @@ The core segment must always be present. It consists of the following fields (pl
       </td>
   </tr>
   <tr>
-  <td>VendorConsent*</td>
+  <td>VendorConsent</td>
   <td>OptimizedIntRange</td>
   <td>List of Vendor IDs that indicate Consent for these vendors. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is an array of int.<br><br>Equivalent of the fields listed under the Vendor Consent Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a> <br>MaxVendorId, <br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
   </tr>
   <tr>
-  <td>VendorLegitimateInterest*</td>
+  <td>VendorLegitimateInterest</td>
   <td>OptimizedIntRange</td>
   <td>List of Vendor IDs for which Legitimate Interest is established and the user did not exercise their “Right to Object”. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br><br>Equivalent of the fields listed under the Vendor Legitimate Interest Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br>MaxVendorId,<br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
   </tr>
@@ -170,35 +170,23 @@ The core segment must always be present. It consists of the following fields (pl
     <td>
       <strong>Publisher Restrictions Section</strong>
     </td>
-    <td colspan=2>The content of this section is optional EXCEPT for NumPubRestrictions. Encodes any number of single or range restriction entries.
+    <td colspan=2>The content of this section is optional. Encodes any number of single or range restriction entries.
     </td>
   </tr>
   <tr>
-  <td>NumPubRestrictions</td>
-  <td>Int(12)</td>
-  <td>Number of restriction records to follow.<br>Value is required even if it is <code>0</code></td>
-  </tr>
-  <tr>
-  <td>PurposeID</td>
-  <td>Int(6)</td>
-  <td>The Vendor’s declared Purpose ID that the publisher has indicated that they are overriding.</td>
-  </tr>
-  <tr>
-  <td>RestrictionType</td>
-  <td>Int</td>
-  <td><code>0</code> Purpose Flatly Not Allowed by Publisher (regardless of Vendor declarations)<br><code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest and flexible)<br><code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br><code>3</code> UNDEFINED (not used)</td>
-  </tr>
-  <tr>
-  <td>PubRestrictionEntry*</td>
-  <td>OptimizedIntRange</td>
-  <td>A single or range of Vendor ID(s) who the publisher has designated as restricted under the Purpose ID in this PubRestrictionsEntry<br><br>Equivalent of the fields listed under the Publisher Restrictions Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br>MaxVendorId, <br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
+  <td>PubRestrictions</td>
+  <td>ArrayOfRanges</td>
+  <td>First field is always of type Int(12). The value indicates the number of records to follow.<br><br>
+  Each entry consists of three datatypes:<br>
+  <b>Key:</b> The Vendor’s declared Purpose ID that the Publisher has indicated they are overriding.<br>
+  <b>Types:</b><br><code>0</code> Purpose Flatly Not Allowed by Publisher (regardless of Vendor declarations).<br>
+  <code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest or flexible)<br>
+  <code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br>
+  <code>3</code> UNDEFINED (not used)<br>
+  <b>Ids:</b> A single or range of Vendor ID(s) who the publisher has designated as restricted under the purpose id.
+  </td>
   </tr>
   </table>
-  
-  
-
-
-> **Note:** Fields marked with * are only included in the string encoded version of the GPP segment but will not be returned by the client side API. Instead, the client side API will return an array of int with the corresponding IDs.
 
 
 ## Disclosed Vendors Segment
