@@ -183,7 +183,7 @@ The core segment must always be present. It consists of the following fields (pl
   <code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest or flexible)<br>
   <code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br>
   <code>3</code> UNDEFINED (not used)<br>
-  <b>Ids:</b> A list of Vendor ID(s) who the publisher has designated as restricted under the purpose id encoded as bitmask or ranges.<br><br><i>Note:</i> The output of the JS API for the restrictions field is not exactly the same as what is know from the __tcfapi output for the restrictions.
+  <b>Ids:</b> A list of Vendor ID(s) who the publisher has designated as restricted under the purpose id encoded as bitmask or ranges.<br><br>Note: The output of the JS API for the restrictions field is not exactly the same as what is know from the __tcfapi output for the restrictions.
   </td>
   </tr>
   </table>
