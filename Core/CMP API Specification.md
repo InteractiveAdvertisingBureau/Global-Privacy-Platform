@@ -186,7 +186,7 @@ applicableSections: Array of Number, // Section ID considered to be in force for
 
 gppString: String // the complete encoded GPP string, may be empty during CMP load
 
-parsedSections: Object // The parsedSections property represents an object of all parsed sections of the gppString property that are supported by the API on this page (see supportedAPIs property). The object contains one property for each supported API with the name of the API as the property name and the value as a parsed representation of this section (exactly the same as the return to the getSection command, which may include subsections). If a section is supported but not represented in the gppString, it is omitted in the parsedSections object.
+parsedSections: Object // The parsedSections property represents an object of all parsed sections of the gppString property that are supported by the API on this page (see supportedAPIs property). The object contains one property for each supported API with the name of the API as the property name and the value as a parsed representation of this section with exactly the same return as the getSection command, which may include subsections. If a section is supported but not represented in the gppString, it is omitted in the parsedSections object.
 
 }
 
