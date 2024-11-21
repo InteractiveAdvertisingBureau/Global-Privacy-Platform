@@ -25,16 +25,22 @@ The global standard [GPP](https://github.com/InteractiveAdvertisingBureau/Global
   </table>
   
 
+## Special note regarding TCF and GPP
+
+Please note that the standalone TC string will remain in use by many digital property owners until it is officially deprecated by IAB Europe. Until then, the TC string must be included in your transaction headers, the TCF API must be implemented on your page, and vendors are required to look for and interpret the TC string for all transactions where GDPR is applicable.
+
 
 ## Section encoding
 
-The GPP section for the IAB Europe TCF (Section ID 2) will use the following encoding.
-Note that the resulting TC String produced is expected to be exactly the same as the TC String produced when using the [TCF specification](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md). The GPP introduces new data types that are For full details about the TC String, please refer to the [Consent string and vendor list format v2](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md).
+The GPP section for the IAB Europe TCF (Section ID 2) will use the following encoding. The GPP introduces new data types that are compatible with the TCF specification. A list of these GPP data types can be found in the [Section Encoding Chapter of the GPP Consent String Specification](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding).
+Note that the resulting TC String produced is expected to be exactly the same as the TC String produced when using the [TCF specification](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md). For full details about the TC String, please refer to the [Consent string and vendor list format v2](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md).
+
+Note: In the event of any discrepancies between this GPP section specification and the [TCF specifications](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework), the TCF specifications take precedence and must be followed.
 
 
 ### Core segment
 
-The core segment must always be present. It consists of the following fields:
+The core segment must always be present. It consists of the following fields (please refer to the TCF specification for detailed descriptions of each field):
 
 <table>
   <tr>
@@ -90,12 +96,12 @@ The core segment must always be present. It consists of the following fields:
   <tr>
     <td>IsServiceSpecific</td>
     <td>Boolean</td>
-    <td>1 true<br><br>0 false<br><br>This field must always have the value of 1. When a Vendor encounters a TC String with IsServiceSpecific=0 then it is considered invalid.</td>
+    <td>1 true<br>0 false<br>This field must always have the value of 1. When a Vendor encounters a TC String with IsServiceSpecific=0 then it is considered invalid.</td>
   </tr>
   <tr>
-  <td>UseNonStandardStacks</td>
+  <td>UseNonStandardTexts</td>
   <td>Boolean</td>
-  <td>1 CMP used non-IAB standard stacks during consent gathering<br><br>0 IAB standard stacks were used<br><br> Setting this to 1 means that a publisher-run CMP – that is still IAB Europe registered – is using customized Stack descriptions and not the standard stack descriptions defined in the <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies</a> (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
+  <td>Setting this to 1 signals to Vendors that a CMP has modified standard Stack descriptions and/or their translations and/or that a CMP has modified or supplemented standard Illustrations and/or their translations as allowed by the <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">policy</a> (Appendix A section E). A CMP that services multiple publishers sets this value to 0.</td>
   </tr>
   <tr>
     <td>SpecialFeatureOptIns</td>
@@ -105,7 +111,7 @@ The core segment must always be present. It consists of the following fields:
       <li>1 Opten in</li>
       <li>0 Not opted in</li>
     </ul>
-   The TCF <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies </a> designates certain Features as “special” which means a CMP must afford the user a means to expressly consent to their use. These “Special Features” are published and numerically identified in the <a href="https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#the-global-vendor-list">Global Vendor List </a> separately from normal Features.</td>
+   The TCF <a href="https://iabeurope.eu/iab-europe-transparency-consent-framework-policies/">Policies </a> designates certain Features as “special” which means a CMP must afford the user a means to expressly consent to their use. These “Special Features” are published and numerically identified in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#publisher-purposes-transparency-and-consent#the-global-vendor-list">Global Vendor List </a> separately from normal Features.</td>
    </tr>
    <tr>
   <td>PurposeConsent</td>
@@ -113,7 +119,7 @@ The core segment must always be present. It consists of the following fields:
   <td>One bit for each Purpose:
     <ul>
       <li>1 Consent</li>
-      <li>0 Consent</li>
+      <li>0 No Consent</li>
     </ul>
     The user’s consent value for each Purpose established on the legal basis of consent.<br><br>The Purposes are numerically identified and published in the Global Vendor List. From left to right, Purpose 1 maps to the 0th bit, purpose 24 maps to the bit at index 23. Special Purposes are a different ID space and not included in this field.</td>
   </tr>
@@ -129,52 +135,58 @@ The core segment must always be present. It consists of the following fields:
       Note: With TCF v2.2 support for legitimate interest for purpose 3 to 6 has been deprecated. Bits 2 to 5 are required to be set to <code>0</code>.</td>
     </tr>
     <tr>
+  <tr style="background-color:#000;color:#FFF;">
+    <td colspan="4">
+        <strong>Specific Jurisdiction Disclosures</strong>
+    </td>
+  </tr>
   <td>PurposeOneTreatment</td>
   <td>Boolean</td>
-  <td>1 Purpose 1 was NOT disclosed at all.<br><br>0 Purpose 1 was disclosed commonly as consent as expected by the Policies.<br><br>CMPs can use the PublisherCC field to indicate the legal jurisdiction the publisher is under to help vendors determine whether the vendor needs consent for Purpose 1.</td>
+  <td>0 = No special treatment. Purpose 1 was disclosed commonly as consent as expected by the Policies.<br>1 = Special treatment. Purpose 1 was not disclosed.<br>CMPs can use the PublisherCC field to indicate the legal jurisdiction the publisher is under to help vendors determine whether the vendor needs consent for Purpose 1.</td>
   </tr>
   <tr>
   <td>PublisherCC</td>
   <td>String (2)</td>
-  <td>The country code of the country that determines legislation of reference. Commonly, this corresponds to the country in which the publisher’s business entity is established.
-    Each letter is encoded as 6 bits, <code>a=0..z=25</code>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"> ISO 3166-1 alpha-2 code </a> </td>
+    <td>The country code of the country that determines legislation of reference. Commonly, this corresponds to the country in which the publisher’s business entity is established.
+    Each letter is encoded as 6 bits, <code>a=0..z=25</code>. <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2"> ISO 3166-1 alpha-2 code </a>
+    </td>
+  </tr>
+  <tr style="background-color:#000;color:#FFF;">
+  <td colspan="4">
+        <strong>Vendor Consent and Vendor Legitimate Interest Sections</strong>
+      </td>
   </tr>
   <tr>
   <td>VendorConsent</td>
   <td>OptimizedIntRange</td>
-  <td>List of Vendor IDs that indicate Consent for these vendors. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br></br>Equivalent of the fields listed under the Vendor Consent Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a> <br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
+  <td>List of Vendor IDs that indicate Consent for these vendors. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is an array of int.<br><br>Equivalent of the fields listed under the Vendor Consent Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a> <br>MaxVendorId, <br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
   </tr>
   <tr>
   <td>VendorLegitimateInterest</td>
   <td>OptimizedIntRange</td>
-  <td>List of Vendor IDs for which Legitimate Interest is established and the user did not exercise their “Right to Object”. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br></br>Equivalent of the fields listed under the Vendor Legitimate Interest Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId </td>
+  <td>List of Vendor IDs for which Legitimate Interest is established and the user did not exercise their “Right to Object”. Please note that the field is composed of several fields in order to store the data in GPP string format. The client side API format is array of int.<br><br>Equivalent of the fields listed under the Vendor Legitimate Interest Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br>MaxVendorId,<br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
+  </tr>
+  <tr style="background-color:#000;color:#FFF;">
+    <td>
+      <strong>Publisher Restrictions Section</strong>
+    </td>
+    <td colspan=2>The content of this section is optional. Encodes any number of single or range restriction entries.
+    </td>
   </tr>
   <tr>
-  <td>NumPubRestrictions</td>
-  <td>Int(12)</td>
-  <td>Number of restriction records to follow.<br></br>Value is required even if it is <code>0</code></td>
-  </tr>
-  <tr>
-  <td>PurposeID</td>
-  <td>Int(6)</td>
-  <td>The Vendor’s declared Purpose ID that the publisher has indicated that they are overriding.</td>
-  </tr>
-  <tr>
-  <td>RestrictionType</td>
-  <td>Int</td>
-  <td>0 Purpose Flatly Not Allowed by Publisher (regardless of Vendor declarations)<br></br><code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest and flexible)<br></br><code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br></br><code>3</code> UNDEFINED (not used)</td>
-  </tr>
-  <tr>
-  <td>PubRestrictionEntry</td>
-  <td>OptimizedIntRange</td>
-  <td>A single or range of Vendor ID(s) who the publisher has designated as restricted under the Purpose ID in this PubRestrictionsEntry<br></br>Equivalent of the fields listed under the Publisher Restrictions Section as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
+  <td>PubRestrictions</td>
+  <td>ArrayOfRanges</td>
+  <td>First field is always of type Int(12). The value indicates the number of records to follow.<br><br>
+  Each entry consists of three datatypes:<br>
+  <b>Key:</b> The Vendor’s declared Purpose ID that the Publisher has indicated they are overriding.<br>
+  <b>Types:</b><br><code>0</code> Purpose Flatly Not Allowed by Publisher (regardless of Vendor declarations).<br>
+  <code>1</code> Require Consent (if Vendor has declared the Purpose IDs legal basis as Legitimate Interest or flexible)<br>
+  <code>2</code> Require Legitimate Interest (if Vendor has declared the Purpose IDs legal basis as Consent and flexible)<br>
+  <code>3</code> UNDEFINED (not used)<br>
+  <b>Ids:</b> A list of Vendor ID(s) who the publisher has designated as restricted under the purpose id encoded as bitmask or ranges.<br><br>Note: The output of the JS API for the restrictions field is not exactly the same as what is know from the __tcfapi output for the restrictions.
+  </td>
   </tr>
   </table>
-  
-  
-
-
-> **Note:** Fields marked with * are only included in the string encoded version of the GPP segment but will not be returned by the client side API. Instead, the client side API will return an array of int with the corresponding IDs.
 
 
 ## Disclosed Vendors Segment
@@ -195,7 +207,7 @@ The disclosed vendors segment is appended to the core segment by using the “.�
 <tr>
 <td>DisclosedVendors</td>
 <td>OptimizedIntRange</td>
-  <td>List of Vendor IDs that were disclosed in a CMP UI to the user. <br></br>Equivalent of the fields listed under Disclosed Vendors as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br></br>MaxVendorId, <br></br>IsRangeEncoding, <br></br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
+  <td>List of Vendor IDs that were disclosed in a CMP UI to the user. <br><br>Equivalent of the fields listed under Disclosed Vendors as defined in the <a href="https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md">TCF v2 specification:</a><br>MaxVendorId,<br>IsRangeEncoding,<br>BitField, NumEntries, IsARange, StartOrOnlyVendorId, EndVendorId</td>
 </tr>
 </table>
 
@@ -220,12 +232,12 @@ The publisher purposes segment is appended to the core segment by using the “.
 <tr>
 <td>PubPurposesConsent</td>
 <td>Bitfield(24)</td>
-<td>One bit for each Purpose:<br></br>1 Consent<br></br>0 No Consent</td>
+<td>One bit for each Purpose:<br>1 Consent<br>0 No Consent</td>
 </tr>
 <tr>
 <td>PubPurposesLITransparency</td>
 <td>Bitfield(24)</td>
-<td>One bit for each Purpose:<br></br>1 legitimate interest established<br></br>0 legitimate interest was NOT established or it was established but user exercised their “Right to Object” to the Purpose</td>
+<td>One bit for each Purpose:<br>1 legitimate interest established<br>0 legitimate interest was NOT established or it was established but user exercised their “Right to Object” to the Purpose</td>
 </tr>
 <tr>
 <td>NumCustomPurposes</td>
@@ -235,12 +247,12 @@ The publisher purposes segment is appended to the core segment by using the “.
 <tr>
 <td>CustomPurposesConsent</td>
 <td>Bitfield(NumCustomPurposes)</td>
-<td>One bit for each Purpose:<br></br>1 Consent<br></br>0 No Consent</td>
+<td>One bit for each Purpose:<br>1 Consent<br>0 No Consent</td>
 </tr>
 <tr>
 <td>CustomPurposesLITransparency</td>
 <td>Bitfield(NumCustomPurposes)</td>
-<td>One bit for each Purpose:<br></br>1 legitimate interest established<br></br>0 implied consent was NOT established or it was established but user exercised their “Right to Object” to the Custom Purpose</td>
+<td>One bit for each Purpose:<br>1 legitimate interest established<br>0 implied consent was NOT established or it was established but user exercised their “Right to Object” to the Custom Purpose</td>
 </tr>
 </table>
 
@@ -250,7 +262,7 @@ The publisher purposes segment is appended to the core segment by using the “.
 
 ## Key Names
 
-In the mobile or CTV context, the key names to be used in GPP are listed below. For complete details on the expected values for each key listed below, see the [IAB TCF EU v2 specification.](https://github.com/patrickverdon/GDPR-Transparency-and-Consent-Framework/blob/TCF-Canada/TCFv2/IAB%20Tech%20Lab%20-%20CMP%20API%20v2.md#what-is-the-cmp-in-app-internal-structure-for-the-defined-api)
+In the mobile or CTV context, the key names to be used in GPP are listed below. For complete details on the expected values for each key listed below, see the [IAB TCF EU v2 specification.](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework/blob/master/TCFv2/IAB%20Tech%20Lab%20-%20Consent%20string%20and%20vendor%20list%20formats%20v2.md#publisher-purposes-transparency-and-consent#what-is-the-cmp-in-app-internal-structure-for-the-defined-api)
 
 
 <table>
