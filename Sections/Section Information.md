@@ -58,7 +58,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>7</code></td>
     <td>usnat</td>
-    <td>US - national section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National">MSPA US National Section</a></td>
   </tr>
   <tr>
     <td><code>8</code></td>
@@ -111,6 +111,48 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
     <td><code>16</code></td>
     <td>ustx</td>
     <td>US - Texas section </td>
+     </td>
+     </td>
+  </tr>
+<tr>
+    <td><code>17</code></td>
+    <td>usde</td>
+    <td>US - Delaware section </td>
+     </td>
+     </td>
+  </tr>
+ <tr>
+    <td><code>18</code></td>
+    <td>usia</td>
+    <td>US - Iowa section </td>
+     </td>
+     </td>
+  </tr>
+ <tr>
+    <td><code>19</code></td>
+    <td>usne</td>
+    <td>US - Nebraska section </td>
+     </td>
+     </td>
+  </tr>
+ <tr>
+    <td><code>20</code></td>
+    <td>usnh</td>
+    <td>US - New Hampshire section </td>
+     </td>
+     </td>
+  </tr>
+ <tr>
+    <td><code>21</code></td>
+    <td>usnj</td>
+    <td>US - New Jersey section </td>
+     </td>
+     </td>
+  </tr>
+ <tr>
+    <td><code>22</code></td>
+    <td>ustn</td>
+    <td>US - Tennessee section </td>
      </td>
      </td>
   </tr>
