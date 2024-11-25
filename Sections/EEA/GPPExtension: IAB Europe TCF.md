@@ -37,6 +37,7 @@ Note that the resulting TC String produced is expected to be exactly the same as
 
 Note: In the event of any discrepancies between this GPP section specification and the [TCF specifications](https://github.com/InteractiveAdvertisingBureau/GDPR-Transparency-and-Consent-Framework), the TCF specifications take precedence and must be followed.
 
+Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow [this table](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding) to map the GPP field types to JavaScript native data types. Please refer to the [PingReturn's parsedSections object](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-) for an example.
 
 ### Core segment
 
@@ -189,7 +190,7 @@ The core segment must always be present. It consists of the following fields (pl
   </table>
 
 
-## Disclosed Vendors Segment
+### Disclosed Vendors Segment
 
 The disclosed vendors segment is appended to the core segment by using the “.” (dot) delimiter. This is an optional TC String segment. It may be used by a CMP while storing TC Strings, but must not be included in the TC String when returned by the CMP API. The segment fields are:
 
@@ -213,7 +214,7 @@ The disclosed vendors segment is appended to the core segment by using the “.�
 
 
 
-## Publisher Purposes Segment
+### Publisher Purposes Segment
 
 The publisher purposes segment is appended to the core segment by using the “.” (dot) delimiter. The segment is optional. The segment fields are:
 
