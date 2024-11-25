@@ -176,7 +176,7 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
 signalStatus : String, // possible values: not ready, ready
 
-// List of supported APIs (section ids and prefix strings), e.g. used while loading.
+// List of supported APIs (section ids and prefix strings).
 // Example: ["2:tcfeuv2","6:uspv1"] 
 supportedAPIs : Array of string,
 
@@ -199,10 +199,10 @@ gppString: String // the complete encoded GPP string, may be empty during CMP lo
 
 // The parsedSections property represents an object of all parsed sections of the gppString property that are supported
 // by the API on this page (see supportedAPIs property). The object contains one property for each supported API with
-// the name of the API as the property name and the value as a parsed representation of this section (similar to
-// getSection command). If a section is supported but not represented in the gppString, it is omitted in the
-// parsedSections object.
-// Please refer to each section’s spec for the exact field names and data types in JavaScript. The sections here should
+// the name of the API as the property name and the value as a parsed representation of this section with exactly the
+// same return as the getSection command, which may include subsections. If a section is supported but not represented
+// in the gppString, it is omitted in the parsedSections object.
+// Please refer to each section's spec for the exact field names and data types in JavaScript. The sections here should
 // be consistent with the GPP string, not placeholder values.
 parsedSections: Object
 
