@@ -176,22 +176,113 @@ cmpDisplayStatus: String, // possible values: hidden, visible, disabled
 
 signalStatus : String, // possible values: not ready, ready
 
-supportedAPIs : Array of string, // list of supported APIs (section ids and prefix strings), e.g. used while loading. Example: ["2:tcfeuv2","6:uspv1"] 
+// List of supported APIs (section ids and prefix strings).
+// Example: ["2:tcfeuv2","6:uspv1"] 
+supportedAPIs : Array of string,
 
-cmpId : Number, // IAB assigned CMP ID, may be 0 during stub/loading. Reference the above CMP ID section for additional information.
+// IAB assigned CMP ID, may be 0 during stub/loading. Refer the above CMP ID section for additional information.
+cmpId : Number,
 
 sectionList : Array of Number, // may be empty during loading of the CMP
 
-applicableSections: Array of Number, // Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. During the transition period which ends on September 30, 2023, the legacy USPrivacy section may be determined as applicable along with another US section. In this case, the field may contain up to 3 values where one of the values is 6, representing the legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be [-1].
+// Section ID considered to be in force for this transaction.
+// In most cases, this field should have a single section ID. In rare occasions where such a single section ID
+// can not be determined, the field may contain up to 2 values. During the transition period which ends on
+// September 30, 2023, the legacy USPrivacy section may be determined as applicable along with another US section.
+// In this case, the field may contain up to 3 values where one of the values is 6, representing the
+// legacy USPrivacy section. The value can be 0 or a Section ID specified by the Publisher / Advertiser, during
+// stub / load.
+// When no section is applicable, the value will be [-1].
+applicableSections: Array of Number,
 
 gppString: String // the complete encoded GPP string, may be empty during CMP load
 
-parsedSections: Object // The parsedSections property represents an object of all parsed sections of the gppString property that are supported by the API on this page (see supportedAPIs property). The object contains one property for each supported API with the name of the API as the property name and the value as a parsed representation of this section (similar to getSection command). If a section is supported but not represented in the gppString, it is omitted in the parsedSections object.
+// The parsedSections property represents an object of all parsed sections of the gppString property that are supported
+// by the API on this page (see supportedAPIs property). The object contains one property for each supported API with
+// the name of the API as the property name and the value as a parsed representation of this section with exactly the
+// same return as the getSection command, which may include subsections. If a section is supported but not represented
+// in the gppString, it is omitted in the parsedSections object.
+// Please refer to each section's spec for the exact field names and data types in JavaScript. The sections here should
+// be consistent with the GPP string, not placeholder values.
+parsedSections: Object
 
 }
 
 ```
 
+In JavaScript, a `parsedSections` object should be a native JS object that maps from the section's API prefix names
+enumerated [here](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md#section-ids)
+to the section's JS representation according to its spec. Each section's is represented as an array of objects, and each
+object corresponds to a sub-section (segment) in that section. Follow this [table of data type mapping](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding)
+to map each spec's GPP field types to JavaScript native data
+types. Examples:
+```javascript
+/* Example of a `parsedSections` that holds two sections: tcfcav1, tcfeuv2 */
+{
+  /* See "GPPExtension: IAB Canada TCF.md". */
+  tcfcav1: [
+    /* Core Sub-section */
+    {
+      Version: 1,
+      Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+      LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+      CmpId: 31, 
+      CmpVersion: 123,
+      ConsentScreen: 5,
+      ...
+    }, 
+    /* Publisher Purposes Sub-section */
+    {
+      SubsectionType: 3, 
+      PubPurposesExpressConsent: [1,2,3,4,5],
+      PubPurposesImpliedConsent: [6,7,8,9],
+      ...
+    } 
+  ],
+
+  /* See "GPPExtension: IAB Europe TCF.md". */
+  tcfeuv2: [
+    /* Core Segment */
+    {
+      Version: 2, 
+      Created: new Date ("Thu Nov 10 2024 12:08:22 GMT+0200"),
+      LastUpdated: new Date ("Thu Nov 10 2024 12:08:2 GMT+0200"),
+      CmpId: 10, 
+      CmpVersion: 56,
+      ConsentScreen: 0,
+      VendorConsent: [1,2,4,6],
+      ...
+    }, 
+    /* Disclosed Vendors Segment */
+    {
+      SegmentType: 1, 
+      ...
+    }
+    /* This example doesn't contain the optional Publisher Purposes Segment */
+  ]
+}
+```
+```javascript
+/* Example of a `parsedSections` that holds one section: usnat */
+{
+  /* See "IAB Privacy's Multi-State Privacy Agreement (MSPA) US National Technical Specification.md". */
+  usnat: [
+    /* Core Segment */
+    {
+      Version: 1,
+      SharingNotice: 1,
+      KnownChildSensitiveDataConsents: [0, 0],
+      MspaCoveredTransaction: 2,
+      ...
+    },
+    /* GPC Sub-section */
+    {
+      SubsectionType: 1,
+      Gpc: true
+    }
+  ]
+}
+```
 
 **Ping Status Codes**
 
@@ -617,27 +708,27 @@ For example, client can ask the CMP to get the IAB TCF CA v1.0 TCData:
 __gpp('getSection', myFunction, "tcfcav1"); 
 ```
 
-Example value of data passed to the callback: 
+Example value of data passed to the callback, according to [GPPExtension: IAB Canada TCF.md](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Canada/GPPExtension%3A%20IAB%20Canada%20TCF.md): 
 ```javascript
 [
- /* Core Sub-section */
- {
-  Version:1, 
-  Created: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
-  LastUpdated: Date (Thu Apr 13 2023 18:07:12 GMT+0200),
-  CmpId: 31, 
-  CmpVersion: 123,
-  ConsentScreen: 5,
-  ...
+  /* Core Sub-section */
+  {
+    Version: 1,
+    Created: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+    LastUpdated: new Date ("Thu Apr 13 2023 18:07:12 GMT+0200"),
+    CmpId: 31, 
+    CmpVersion: 123,
+    ConsentScreen: 5,
+    ...
   }, 
   /* Publisher Purposes Sub-section (optional) */
- {
-  subsectionType:3, 
-  PubPurposesExpressConsent : [1,2,3,4,5],
-  PubPurposesImpliedConsent  : [6,7,8,9],
-  ...
+  {
+    SubsectionType: 3, 
+    PubPurposesExpressConsent: [1,2,3,4,5],
+    PubPurposesImpliedConsent: [6,7,8,9],
+    ...
   } 
- ]
+]
 ```
 
 ______
