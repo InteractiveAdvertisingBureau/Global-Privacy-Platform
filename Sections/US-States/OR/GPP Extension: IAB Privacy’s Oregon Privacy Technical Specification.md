@@ -52,6 +52,7 @@
   </table>
 </div>
 <h3>Section encoding</h3>
+<p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding" target="_blank" rel="noopener">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-" target="_blank" rel="noopener">PingReturn's parsedSections object</a> for an example.<p>
 <h4>Core Segment</h4>
 <p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Oregon Act, Sec. 2 [Pending Codification]. It consists of the following fields:</p>
 <div>

@@ -1,6 +1,6 @@
-<h1 id="gpp-extension-iab-privacy-s-texas-privacy-technical-specification">GPP Extension: IAB Privacy’s Texas Privacy Technical Specification</h1>
+<h1 id="gpp-extension-iab-privacy-s-new-jersey-privacy-technical-specification">GPP Extension: IAB Privacy’s New Jersey Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the Texas section of the GPP specifications in accordance with the IAB Privacy Multi-State Privacy Agreement legal requirements, applicable to both Signatories and non-Signatories of the MSPA.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the New Jersey section of the GPP specifications in accordance with the IAB Privacy Multi-State Privacy Agreement legal requirements, applicable to both Signatories and non-Signatories of the MSPA.</p>
 
 <h3>Version History&nbsp;</h3>
 <div>
@@ -13,7 +13,7 @@
 </tr>
 
 <tr>
-<td>May 2024</td>
+<td>July 2024</td>
 <td>1.0</td>
 <td>Version 1.0 released</td>
 </tr>
@@ -21,8 +21,8 @@
 </table>
 </div>
 
-<h2>Texas Section</h2>
-<p>The Texas Privacy String consists of the following components. Users of the spec should employ the Texas Privacy String only if they have determined the Texas Data Privacy and Security Act, Tex. Bus. &amp; Com. Code § 541.001 et seq., applies to their processing of a consumer’s personal data.</p>
+<h2>New Jersey Section</h2>
+<p>The New Jersey Privacy String consists of the following components. Users of the spec should employ the New Jersey Privacy String only if they have determined the New Jersey Act Concerning Online Services, Consumers, and Personal Data, P.L. 2023, c. 266, applies to their processing of a consumer’s personal data.</p>
 <h3>Summary</h3>
 <div>
   <table>
@@ -40,13 +40,13 @@
       </tr>
       <tr>
         <td>GPP Section ID</td>
-        <td>16</td>
-        <td>The Texas Section is registered as Section ID 16 under the GPP.</td>
+        <td>21</td>
+        <td>The New Jersey Section is registered as Section ID 21 under the GPP.</td>
       </tr>
       <tr>
         <td>Client side API prefix</td>
-        <td>ustx</td>
-        <td>The Texas Privacy Section is registered with client side API prefix “ustx” in the GPP Client Side API.</td>
+        <td>usnj</td>
+        <td>The New Jersey Privacy Section is registered with client side API prefix “usnj” in the GPP Client Side API.</td>
       </tr>
     </tbody>
   </table>
@@ -54,7 +54,7 @@
 <h3>Section encoding</h3>
 <p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding" target="_blank" rel="noopener">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-" target="_blank" rel="noopener">PingReturn's parsedSections object</a> for an example.<p>
 <h4>Core Segment</h4>
-<p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Tex. Bus. &amp; Com. Code § 541.001. It consists of the following fields:</p>
+<p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined in the New Jersey Act Concerning Online Services, Consumers, and Personal Data, P.L. 2023, c. 266. It consists of the following fields:</p>
 <div>
   <table>
     <thead>
@@ -87,7 +87,7 @@
         <td>Int(2)</td>
         <td>
           <span style="color:rgb(36, 41, 47);">Notice of the Processing of Personal Data.</span><p></p><code>0</code> = Not Applicable,
-          <span style="color:rgb(36, 41, 47);">The Controller does not Process Personal Data</span><p></p><code>1</code> = Yes, notice was provided<p></p><code>2</code> = No, notice was not provided</td>
+          <span style="color:rgb(36, 41, 47);">the Controller does not Process Personal Data</span><p></p><code>1</code> = Yes, notice was provided<p></p><code>2</code> = No, notice was not provided</td>
       </tr>
       <tr>
         <td>
@@ -96,7 +96,7 @@
         <td>Int(2)</td>
         <td>
           <span style="color:rgb(36, 41, 47);">Notice of the Opportunity to Opt Out of the Sale of the Consumer’s Personal Data&nbsp;</span><p></p><code>0</code> = Not Applicable<span style="color:rgb(36, 41, 47);">,
-          </span>The
+          </span>the
           <span style="color:rgb(36, 41, 47);">Controller does not Sell Personal Data</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>1</code> = Yes, notice was provided</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>2</code> = No, notice was not provided</span>
@@ -133,25 +133,31 @@
         <td>
           <span style="color:rgb(36, 41, 47);">SensitiveDataProcessing</span>
         </td>
-        <td>N-Bitfield(2,8)</td><p></p>
-        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin</span><p></p>
+        <td>N-Bitfield(2,10)</td>
+        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(2). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Sexuality.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Condition, Treatment, or Diagnosis.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Sex Life or Sexual Orientation.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(6). Consent to Process the Consumer’s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(7). Consent to Process the Consumer’s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(6). Consent to Process the Consumer’s Sensitive Data Consisting of Genetic Data for the Purpose of Uniquely Identifying an Individual.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(7). Consent to Process the Consumer’s Sensitive Data Consisting of Biometric Data for the Purpose of Uniquely Identifying an Individual.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(8). Consent to Process the Consumer’s Sensitive Data Consisting of Precise Geolocation Data.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(9). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Status as Transgender or Nonbinary.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(10). Consent to Process the Consumer’s Sensitive Data Consisting of Financial Information, in Combination with any Required Security Code, Access Code, or Password that Would Permit Access to a Consumer’s Financial Account.</span><p></p>
         </td>
       </tr>
       <tr>
         <td>
           <span style="color:rgb(36, 41, 47);">KnownChildSensitiveDataConsents</span>
         </td>
-        <td>Int(2)</td>
-        <td>
-          <span style="color:rgb(36, 41, 47);">Consent to Process Sensitive Data from a Known Child.</span><p></p><code>0</code> = Not Applicable, the Controller does not
-          <span style="color:rgb(36, 41, 47);">Process Sensitive Data of a known Child</span><p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
+        <td>N-Bitfield(2,5)</td>
+        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not
+          <span style="color:rgb(36, 41, 47);">Process Sensitive Data of a known Child</span><p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process Sensitive Data from a Known Child.</span>
+          <span style="color:rgb(36, 41, 47);">(2). Consent to Sell the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Personal Data of Consumers At Least 13 Years of Age but Younger Than 16 Years of Age for Purposes of Targeted Advertising.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(4). Consent to Sell the Personal Data of Consumers At Least 16 Years of Age but Younger Than 17 Years of Age.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Personal Data of Consumers At Least 16 Years of Age but Younger Than 17 Years of Age for Purposes of Targeted Advertising.</span><p></p>
+        </td>
       </tr>
       <tr>
         <td>
@@ -160,7 +166,7 @@
         <td>Int(2)</td>
         <td>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
       </tr>
-     <tr>
+      <tr>
         <td>
           <span style="color:rgb(36, 41, 47);">MspaCoveredTransaction</span>
         </td>
@@ -195,11 +201,11 @@
   <span style="color:rgb(36, 41, 47);">
     is signaled in user agent headers
   </span>
-  <span style="color:rgb(36, 41, 47);"><code>(Sec-GPC)</code></span>
+  <span style="color:rgb(36, 41, 47);">(Sec-GPC)</span>
   <span style="color:rgb(36, 41, 47);">
     and a simple javascript API
   </span>
-  <span style="color:rgb(36, 41, 47);"><code>(globalPrivacyControl)</code></span>
+  <span style="color:rgb(36, 41, 47);">(globalPrivacyControl)</span>
   <span style="color:rgb(36, 41, 47);">. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</span>
 </p>
 <div>
