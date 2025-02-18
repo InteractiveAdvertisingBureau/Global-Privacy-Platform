@@ -159,6 +159,14 @@
         </td>
         <td>Int(2)</td>
         <td>Consent to Processing of the Consumer’s Personal Information that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Information Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
+         <tr>
+        <td>
+          <span style="color:rgb(36, 41, 47);">MspaCoveredTransaction</span>
+        </td>
+        <td>Int(2)</td>
+        <td>
+          <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.&nbsp;</span><p></p><code>1</code> = Yes<p></p><code>2</code> = No</td>
+      </tr>
       </tr>
       <tr>
         <td>
