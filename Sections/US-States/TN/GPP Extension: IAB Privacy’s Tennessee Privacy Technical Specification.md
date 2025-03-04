@@ -1,6 +1,6 @@
-<h1 id="gpp-extension-iab-privacy-s-texas-privacy-technical-specification">GPP Extension: IAB Privacy’s Texas Privacy Technical Specification</h1>
+<h1 id="gpp-extension-iab-privacy-s-tennessee-privacy-technical-specification">GPP Extension: IAB Privacy’s Tennessee Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the Texas section of the GPP specifications in accordance with the IAB Privacy Multi-State Privacy Agreement legal requirements, applicable to both Signatories and non-Signatories of the MSPA.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; into the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the Tennessee section of the GPP specifications in accordance with the IAB Privacy Multi-State Privacy Agreement legal requirements, applicable to both Signatories and non-Signatories of the MSPA.</p>
 
 <h3>Version History&nbsp;</h3>
 <div>
@@ -13,7 +13,7 @@
 </tr>
 
 <tr>
-<td>May 2024</td>
+<td>July 2024</td>
 <td>1.0</td>
 <td>Version 1.0 released</td>
 </tr>
@@ -21,8 +21,8 @@
 </table>
 </div>
 
-<h2>Texas Section</h2>
-<p>The Texas Privacy String consists of the following components. Users of the spec should employ the Texas Privacy String only if they have determined the Texas Data Privacy and Security Act, Tex. Bus. &amp; Com. Code § 541.001 et seq., applies to their processing of a consumer’s personal data.</p>
+<h2>Tennessee Section</h2>
+<p>The Tennessee Privacy String consists of the following components. Users of the spec should employ the Tennessee Privacy String only if they have determined the Tennessee Information Protection Act, Tenn. Code Ann. 47-18-3301 et seq., applies to their processing of a consumer’s personal information.</p>
 <h3>Summary</h3>
 <div>
   <table>
@@ -40,13 +40,13 @@
       </tr>
       <tr>
         <td>GPP Section ID</td>
-        <td>16</td>
-        <td>The Texas Section is registered as Section ID 16 under the GPP.</td>
+        <td>22</td>
+        <td>The Tennessee Section is registered as Section ID 17 under the GPP.</td>
       </tr>
       <tr>
         <td>Client side API prefix</td>
-        <td>ustx</td>
-        <td>The Texas Privacy Section is registered with client side API prefix “ustx” in the GPP Client Side API.</td>
+        <td>ustn</td>
+        <td>The Tennessee Privacy Section is registered with client side API prefix “ustn” in the GPP Client Side API.</td>
       </tr>
     </tbody>
   </table>
@@ -54,7 +54,7 @@
 <h3>Section encoding</h3>
 <p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding" target="_blank" rel="noopener">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-" target="_blank" rel="noopener">PingReturn's parsedSections object</a> for an example.<p>
 <h4>Core Segment</h4>
-<p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Tex. Bus. &amp; Com. Code § 541.001. It consists of the following fields:</p>
+<p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined in Tenn. Code Ann. 47-18-3301. It consists of the following fields:</p>
 <div>
   <table>
     <thead>
@@ -86,8 +86,8 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Notice of the Processing of Personal Data.</span><p></p><code>0</code> = Not Applicable,
-          <span style="color:rgb(36, 41, 47);">The Controller does not Process Personal Data</span><p></p><code>1</code> = Yes, notice was provided<p></p><code>2</code> = No, notice was not provided</td>
+          <span style="color:rgb(36, 41, 47);">Notice of the Processing of Personal Information.</span><p></p><code>0</code> = Not Applicable,
+          <span style="color:rgb(36, 41, 47);">the Controller does not Process Personal Data</span><p></p><code>1</code> = Yes, notice was provided<p></p><code>2</code> = No, notice was not provided</td>
       </tr>
       <tr>
         <td>
@@ -95,8 +95,8 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Notice of the Opportunity to Opt Out of the Sale of the Consumer’s Personal Data&nbsp;</span><p></p><code>0</code> = Not Applicable<span style="color:rgb(36, 41, 47);">,
-          </span>The
+          <span style="color:rgb(36, 41, 47);">Notice of the Opportunity to Opt Out of the Sale of the Consumer’s Personal Information&nbsp;</span><p></p><code>0</code> = Not Applicable<span style="color:rgb(36, 41, 47);">,
+          </span>the
           <span style="color:rgb(36, 41, 47);">Controller does not Sell Personal Data</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>1</code> = Yes, notice was provided</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>2</code> = No, notice was not provided</span>
@@ -108,7 +108,7 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Notice of the Opportunity to Opt Out of Processing of the Consumer’s Personal Data for Targeted Advertising</span><p></p><code>0</code> = Not Applicable<span style="color:rgb(36, 41, 47);">, the Controller does not Process Personal Data for Targeted Advertising</span>
+          <span style="color:rgb(36, 41, 47);">Notice of the Opportunity to Opt Out of Processing of the Consumer’s Personal Information for Targeted Advertising</span><p></p><code>0</code> = Not Applicable<span style="color:rgb(36, 41, 47);">, the Controller does not Process Personal Data for Targeted Advertising</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>1</code> = Yes, notice was provided</span>
           <span style="color:rgb(36, 41, 47);"><p></p><code>2</code> = No, notice was not provided</span>
         </td>
@@ -119,7 +119,7 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Opt-Out of the Sale of the Consumer’s Personal Data</span><p></p><code>0</code> = Not Applicable, SaleOptOutNotice value was not applicable or no notice was provided<p></p><code>1</code> = Opted Out<p></p><code>2</code> = Did Not Opt Out</td>
+          <span style="color:rgb(36, 41, 47);">Opt-Out of the Sale of the Consumer’s Personal Information</span><p></p><code>0</code> = Not Applicable, SaleOptOutNotice value was not applicable or no notice was provided<p></p><code>1</code> = Opted Out<p></p><code>2</code> = Did Not Opt Out</td>
       </tr>
       <tr>
         <td>
@@ -127,18 +127,18 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Opt-Out of Processing the Consumer’s Personal Data for Targeted Advertising</span><p></p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided<p></p><code>1</code> = Opted Out<p></p><code>2</code> = Did Not Opt Out</td>
+          <span style="color:rgb(36, 41, 47);">Opt-Out of Processing the Consumer’s Personal Information for Targeted Advertising</span><p></p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided<p></p><code>1</code> = Opted Out<p></p><code>2</code> = Did Not Opt Out</td>
       </tr>
       <tr>
         <td>
           <span style="color:rgb(36, 41, 47);">SensitiveDataProcessing</span>
         </td>
-        <td>N-Bitfield(2,8)</td><p></p>
-        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Racial or Ethnic Origin</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(2). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Religious Beliefs.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing a Mental or Physical Health Diagnosis.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Sexuality.</span><p></p>
-          <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Data Revealing Citizenship or Immigration Status.</span><p></p>
+        <td>N-Bitfield(2,8)</td>
+        <td>Two bits for each Data Activity:<p></p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;<span style="color:rgb(36, 41, 47);"><p></p>(1). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Information Revealing Racial or Ethnic Origin.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(2). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Information Revealing Religious Beliefs.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(3). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Information Revealing a Mental or Physical Health Diagnosis.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(4). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Information Revealing Sexual Orientation.</span><p></p>
+          <span style="color:rgb(36, 41, 47);">(5). Consent to Process the Consumer’s Sensitive Data Consisting of Personal Information Revealing Citizenship or Immigration Status.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(6). Consent to Process the Consumer’s Sensitive Data Consisting of Genetic Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(7). Consent to Process the Consumer’s Sensitive Data Consisting of Biometric Data that May Be Processed for the Purpose of Uniquely Identifying an Individual.</span><p></p>
           <span style="color:rgb(36, 41, 47);">(8). Consent to Process the Consumer’s Sensitive Data Consisting of Precise Geolocation Data.</span><p></p>
@@ -146,7 +146,7 @@
       </tr>
       <tr>
         <td>
-          <span style="color:rgb(36, 41, 47);">KnownChildSensitiveDataConsents</span>
+          <span style="color:rgb(36, 41, 47);">KnownChildSensitiveDataConsent</span>
         </td>
         <td>Int(2)</td>
         <td>
@@ -158,15 +158,15 @@
           <span style="color:rgb(36, 41, 47);">AdditionalDataProcessingConsent</span>
         </td>
         <td>Int(2)</td>
-        <td>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
-      </tr>
-     <tr>
+        <td>Consent to Processing of the Consumer’s Personal Information that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Information Was Processed<p></p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)<p></p><code>1</code> = No Consent<p></p><code>2</code> = Consent&nbsp;</td>
+         <tr>
         <td>
           <span style="color:rgb(36, 41, 47);">MspaCoveredTransaction</span>
         </td>
         <td>Int(2)</td>
         <td>
           <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.&nbsp;</span><p></p><code>1</code> = Yes<p></p><code>2</code> = No</td>
+      </tr>
       </tr>
       <tr>
         <td>
@@ -195,11 +195,11 @@
   <span style="color:rgb(36, 41, 47);">
     is signaled in user agent headers
   </span>
-  <span style="color:rgb(36, 41, 47);"><code>(Sec-GPC)</code></span>
+  <span style="color:rgb(36, 41, 47);">(Sec-GPC)</span>
   <span style="color:rgb(36, 41, 47);">
     and a simple javascript API
   </span>
-  <span style="color:rgb(36, 41, 47);"><code>(globalPrivacyControl)</code></span>
+  <span style="color:rgb(36, 41, 47);">(globalPrivacyControl)</span>
   <span style="color:rgb(36, 41, 47);">. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</span>
 </p>
 <div>
