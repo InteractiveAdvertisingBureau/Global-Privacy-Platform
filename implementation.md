@@ -1,11 +1,11 @@
-Global Privacy Platform (GPP) Implementation Guidelines
+Global Privacy Protocol (GPP) Implementation Guidelines
 =======================================================
 
-This document provides technical implementation guidelines related to the Global Privacy Platform (GPP) specifications. The IAB Tech Lab Global Privacy Working Group developed the guidelines to support industry adoption of the GPP. The intended audience for this document includes product and engineering teams building technology based on the specifications who are looking for implementation guidance.
+This document provides technical implementation guidelines related to the Global Privacy Protocol (GPP) specifications. The IAB Tech Lab Global Privacy Working Group developed the guidelines to support industry adoption of the GPP. The intended audience for this document includes product and engineering teams building technology based on the specifications who are looking for implementation guidance.
 
 ## Table of Contents
 
-#### [1. Introduction to the Global Privacy Platform](#1-introduction-to-the-global-privacy-platform)<br>
+#### [1. Introduction to the Global Privacy Protocol](#1-introduction-to-the-global-privacy-protocol)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[1.1 Getting Started](#11-getting-started)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[1.2 Glossary of Terms](#12-glossary-of-terms)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;[1.3 Core GPP Specifications](#13-core-gpp-specifications)<br>
@@ -36,23 +36,23 @@ This document provides technical implementation guidelines related to the Global
 
 #### [6. Implementation Resources](#6-implementation-resources)
 
-## 1. Introduction to the Global Privacy Platform <a name="1"></a>
+## 1. Introduction to the Global Privacy Protocol <a name="1"></a>
 
-The IAB Tech Lab Global Privacy Platform (GPP) was developed to help ecosystem participants support user choice and comply with consumer privacy regulations across diverse regulatory regimes. With increasing numbers of data privacy laws being adopted across the globe, including the GDPR in Europe, PIPEDA in Canada, and multiple US state laws, efforts to maintain compliance were becoming dramatically more complex, cumbersome and fragmented. In response, the Tech Lab’s Global Privacy Working Group developed the GPP, a unified standard for communicating user consent and data preferences efficiently and consistently across diverse legal environments.
+The IAB Tech Lab Global Privacy Protocol (GPP) was developed to help ecosystem participants support user choice and comply with consumer privacy regulations across diverse regulatory regimes. With increasing numbers of data privacy laws being adopted across the globe, including the GDPR in Europe, PIPEDA in Canada, and multiple US state laws, efforts to maintain compliance were becoming dramatically more complex, cumbersome and fragmented. In response, the Tech Lab’s Global Privacy Working Group developed the GPP, a unified standard for communicating user consent and data preferences efficiently and consistently across diverse legal environments.
 
-The GPP aims to maximize interoperability in this complex environment by simplifying and harmonizing user preference communication, making it easier for all parties in the digital advertising supply chain to comply with regional privacy regulations and easier for users to understand their options and to express and manage preferences. The platform accomplishes this by defining a transport layer which standardizes preference encoding and communication and by providing a common set of well defined signals so all participants have a consistent, partnership agnostic understanding of the user preferences.
+The GPP aims to maximize interoperability in this complex environment by simplifying and harmonizing user preference communication, making it easier for all parties in the digital advertising supply chain to comply with regional privacy regulations and easier for users to understand their options and to express and manage preferences. The platform accomplishes this by defining a transport layer that standardizes preference encoding and communication and by providing a common set of well-defined signals so all participants have a consistent, partnership-agnostic understanding of the user preferences.
 
 The IAB Tech Lab Global Privacy Working Group is responsible for the development of the GPP. As of this writing it has added support for the following privacy strings: the [IAB Europe TCF](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/EEA), the [IAB Canada TCF](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/Canada), the MSPA’s [US National string](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-National), and a number of [US state-specific privacy strings](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States). The Global Privacy Platform will continue to be expanded to support additional jurisdictions with data privacy regulations. For the most up-to-date information on supported privacy strings, see [Section Information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md) in the Global Privacy Platform [github repository](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main).
 
 ### 1.1 Getting Started <a name="1.1"></a>
 
-Before adopting and implementing the IAB Global Privacy Platform (GPP) standard, a company should consider the following:
+Before adopting and implementing the IAB Global Privacy Protocol (GPP) standard, a company should consider the following:
 
-1.  **Regulatory Requirements**: You must start with your compliance team or legal counsel and ensure that the GPP standard aligns with the privacy regulations applicable to your business and to verify the platform supports the jurisdictions your company operates in.
+1.  **Regulatory Requirements**: You must start with your compliance team or legal counsel to ensure that the GPP standard aligns with the privacy regulations applicable to your business and to verify the protocol supports the jurisdictions your company operates in.
     
 2.  **Legal and Compliance Review**: Conduct a thorough legal review to ensure that adopting GPP aligns with your privacy policies and terms of service. This includes verifying that the GPP implementation meets the requirements of all relevant data protection laws.
     
-3.  **User Experience**: Determine if implementing GPP will impact the user experience on your platform and if so, how. Consider how consent choices will be presented to users, how users will define and manage their preferences and how changes affecting users will be communicated.
+3.  **User Experience**: Determine if implementing GPP will impact the user experience on your platform and, if so, how. Consider how consent choices will be presented to users, how users will define and manage their preferences and how changes affecting users will be communicated.
     
 4.  **Vendor and Partner Compatibility**: Ensure that your partners, including advertising networks, data processors, and other third-party vendors, are also compatible with GPP. Coordination with these partners is crucial for maintaining compliance across the data supply chain.
     
@@ -62,7 +62,7 @@ Before adopting and implementing the IAB Global Privacy Platform (GPP) standard,
     
 7.  **Staff Training**: Prepare your teams by providing training on your regulatory compliance program and how to implement and manage GPP to support it. This includes compliance teams responsible for monitoring and reporting and product and technical teams responsible for implementation and partner integration.
     
-8.  **Ongoing Maintenance and Updates**: Determine how your organization will manage the process of keeping your GPP implementation up to date as support for new regulations is added and support for existing ones change. This requires a commitment to keeping abreast of updates to the platform, understanding if and how changes impact your implementation and regularly updating your implementation to ensure continuous compliance.
+8.  **Ongoing Maintenance and Updates**: Determine how your organization will manage the process of keeping your GPP implementation up to date as support for new regulations is added and support for existing ones change. This requires a commitment to keeping abreast of updates to the protocol, understanding if and how changes impact your implementation and regularly updating your implementation to ensure continuous compliance.
     
 9.  **Cost and Resources**: Consider the cost of implementing and maintaining GPP, including:
     
@@ -77,7 +77,7 @@ Before adopting and implementing the IAB Global Privacy Platform (GPP) standard,
 10.  **Testing and Monitoring**: Plan for system and end-to-end testing during deployment to ensure the GPP implementation works as expected and that you have sufficient monitoring in place. After deployment, establish monitoring processes and regular reviews and testing to ensure continued compliance and proper functioning of your implementation.
     
 
-By considering these factors, a company can effectively implement the Global Privacy Platform standard to aid in complying with global privacy regulations.
+By considering these factors, a company can effectively implement the Global Privacy Protocol standard to aid in complying with global privacy regulations.
 
 ### 1.2 Glossary of Terms <a name="1.2"></a>
 <table><tbody>
@@ -174,17 +174,17 @@ The GPP API Specification describes the Consent Management Platform (CMP) API, w
 
 The GPP String Specification defines what a GPP string looks like and includes the details for the GPP header section. It also provides the primitive data types that may be used in any section specification.
 
-The header section is always required and always comes first. The purpose of the header is to identify which sections are included in a string payload and be a table of contents of where to find each signal in the string payload (broken into discrete sections).
+The header section is always required and always comes first. The purpose of the header is to identify which sections are included in a string payload and to be a table of contents of where to find each signal in the string payload (broken into discrete sections).
 
-### 1.4 Section Specifications - Understanding sections and sub-sections <a name="1.4"></a>
+### 1.4 Section Specifications - Understanding sections and subsections <a name="1.4"></a>
 
 A section in the GPP represents a unique privacy signal and generally corresponds to a unique jurisdiction. As such, only one section should be sent in a given string, understanding that an individual is typically afforded rights under a single jurisdiction. However, you may encounter multiple sections identified within the Section ID (gpp\_sid).
 
 Today, acceptable use is to allow up to two (2) applicable section IDs to be signaled. See CMP Guidelines, [3.4 Applicable Section(s)](#34-applicable-sections), for more details.
 
-#### 1.4.1 What is the difference between sections and sub-sections? <a name="1.4.1"></a>
+#### 1.4.1 What is the difference between sections and subsections? <a name="1.4.1"></a>
 
-Sections indicate a user’s preferences according to the jurisdiction that the section represents. A high level explanation of sections are provided here for reference.
+Sections indicate a user’s preferences according to the jurisdiction that the section represents. A high-level explanation of sections is provided here for reference.
 
 *   The **EEA/UK section** contains data that, when decoded, produces a TC String that is compatible with the TCF specification. See the Transparency and Consent Framework Specification and Implementation Guidelines for more information.
     
@@ -201,35 +201,35 @@ The standalone TC string will continue to be used by many digital property owner
 *   The **US State Specific sections** provide a way to meet state privacy law requirements. They have been developed to comply with the relevant state privacy laws. The signals in each section, when decoded, can be evaluated for compliance in light of the relevant state laws.
     
 
-Every string consists of at least one section, but each section may contain multiple sub-sections. Sub-sections are used to indicate values representing bespoke requirements under various laws and regulations. For example, while US state privacy laws typically allow for processing unless an opt-out signal has been received, there are different levels of consent required for processing sensitive personal information or children’s data. Sub-sections allow for these nuances to be captured within the consent string.
+Every string consists of at least one section, but each section may contain multiple subsections. Subsections are used to indicate values representing bespoke requirements under various laws and regulations. For example, while US state privacy laws typically allow for processing unless an opt-out signal has been received, there are different levels of consent required for processing sensitive personal information or children’s data. Subsections allow for these nuances to be captured within the consent string.
 
 #### 1.4.2 How new section specifications are added <a name="1.4.2"></a>
 
 The Global Privacy Working Group is responsible for authoring technical specifications for new sections when there is a need to communicate user preferences relevant to specific markets.
 
-Upcoming additions include new sections for U.S. states that have enacted comprehensive data privacy laws, as well as a section designed to help organizations comply with India's Digital Personal Data Protection Act (DPDPA).
+Upcoming additions include new sections for US states that have enacted comprehensive data privacy laws, as well as a section designed to help organizations comply with India's Digital Personal Data Protection Act (DPDPA).
 
 ## 2. Publisher/Advertiser (Digital Property Owners) Guidelines <a name="2"></a>
 This section details the overall guidelines that digital property owners should typically follow when implementing the GPP.
 
 ### 2.1 About Consent Management Platforms (CMPs) <a name="2.1"></a>
 
-A Consent Management Platform (CMP) is used to manage transparency and consent preferences signaled by the end user. The CMP captures and manages the transparency and consent information from a user. The CMP also surfaces this information to vendor technologies operating as part of the publisher’s digital property and supply chain. The CMP acts as an intermediary between the publisher, end user, and vendors.
+A Consent Management Platform (CMP) is used to manage transparency and consent preferences signaled by the end user. The CMP captures and manages the transparency and consent information from a user. The CMP also surfaces this information to vendor technologies operating as part of the publisher or advertiser's digital property and supply chain. The CMP acts as an intermediary between the publisher/advertiser, end user, and vendors.
 
-The publisher may implement a CMP in two ways:
+The digital property owner may implement a CMP in two ways:
 
 1.  **Build**: Develop an in-house CMP
     
 2.  **Outsource**: Rely on the service of a commercial CMP
     
 
-Regardless of the choice to build or outsource the CMP, Publishers should be aware of the sections in the GPP that include additional CMP requirements such as registration. Publishers who choose to develop an in-house CMP should also refer to the [CMP Guidelines](#3-cmp-guidelines) section of these guidelines.
+Regardless of the choice to build or outsource the CMP, digital property owners should be aware of the sections in the GPP that include additional CMP requirements such as registration. Digital property owners who choose to develop an in-house CMP should also refer to the [CMP Guidelines](#3-cmp-guidelines) section of these guidelines.
 
 ### 2.2 Deciding which sections to support <a name="2.2"></a>
 
-Publishers may operate in one or multiple jurisdictions where there is a need to provide their users with transparency and choice. The GPP includes support for multiple jurisdictions including the EU, Canada, and multiple US states. For the most up-to-date list of jurisdictions that the GPP supports, see the [Section Information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md) portion of the specification.
+Digital property owners may operate in one or multiple jurisdictions where there is a need to provide their users with transparency and choice. The GPP includes support for multiple jurisdictions including the EU, Canada, and multiple US states. For the most up-to-date list of jurisdictions that the GPP supports, see the [Section Information](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md) portion of the specification.
 
-Publishers should consult their business and legal teams to determine which sections of the GPP they should support. They should also consult their CMPs (if using a commercial CMP) to determine which sections the CMP is ready to support. Last, publishers should work with their vendor partners to understand which sections their partners are ready to support.
+Digital property owners should consult their business and legal teams to determine which sections of the GPP they should support. They should also consult their CMPs (if using a commercial CMP) to determine which sections the CMP is ready to support. Last, digital property owners should work with their vendor partners to understand which sections their partners are ready to support.
 
 ## 3. CMP Guidelines <a name="3"></a>
 
@@ -254,7 +254,7 @@ The [PingReturn](https://github.com/InteractiveAdvertisingBureau/Global-Privacy-
 
 ### 3.2 Presentation of user choices <a name="3.2"></a>
 
-One of the core responsibilities of a CMP is to surface consent choices to the end user within the publisher’s site, mobile, or CTV application.
+One of the core responsibilities of a CMP is to surface consent choices to the end user within the digital property owner’s site, mobile, or CTV application.
 
 As the IAB GPP supports many individual section frameworks, you will likely need to develop different user interfaces to establish legal bases under different frameworks. As a CMP, you are responsible for complying with the technical specifications and policies set by each privacy framework that your CMP supports. This may further require IAB certification.
 
@@ -272,7 +272,7 @@ The GPP string can be thought of as a list of all individual privacy strings col
 
 This field should be set only to the individual section IDs that you have determined are applicable to this request; it should not be set to the list of all sections that you support as a CMP. If you have determined that no section applies, set \[-1\]. This is typically determined primarily by the end user’s geolocation, although CMPs may use other factors at their discretion in conjunction with your legal and business teams. For example, if you support both the MSPA US National section as well as a state section also supported by MSPA US National, you can determine which section between the two actually applies and should be read by vendors.
 
-Note that you can set up to 2 applicable section IDs in the field. Previously the specification allowed up to 3 to accommodate the now-deprecated US Privacy section, but this is no longer allowed. In the above example where multiple frameworks apply, you may choose to signal both as applicable or select a single section.
+Note that you can set up to 2 applicable section IDs in the field. Previously, the specification allowed up to 3 to accommodate the now-deprecated US Privacy section, but this is no longer allowed. In the above example, where multiple frameworks apply, you may choose to signal both as applicable or select a single section.
 
 ### 3.5 Encoding the GPP string <a name="3.5"></a>
 
@@ -295,11 +295,11 @@ See the [PingReturn](https://github.com/InteractiveAdvertisingBureau/Global-Priv
 
 ## 4. Vendor Guidelines <a name="4"></a>
 
-Today’s global environment requires Vendors to uphold their own compliance obligations as well as to support their partners in their compliance efforts. The GPP provides Vendors with a technical mechanism to understand where processing is allowed and where processing may be restricted under applicable privacy laws and regulations.
+Today’s global environment requires vendors to uphold their own compliance obligations as well as to support their partners in their compliance efforts. The GPP provides vendors with a technical mechanism to understand where processing is allowed and where processing may be restricted under applicable privacy laws and regulations.
 
-Vendors use the GPP in order to
+Vendors use the GPP to:
 
-*   Understand user consent and data preferences and, the compliance posture of Publishers sharing personal data; and
+*   Understand user consent and data preferences and the compliance posture of Publishers sharing personal data; and
     
 *   Support the Vendor’s compliance posture.
     
@@ -338,7 +338,7 @@ GPP strings are created by CMPs and can be found through a CMP API call, through
 
 _CMP API call_
 
-When GPP is received client side (e.g., any code snippet deployed directly on the browser, such as JavaScript), the GPP CMP API should be used to access the encoded string. This information can be collected whether you are in the top parent page (using the \_\_gpp method) or from an iframe (using postMessage method as defined by the CMP API technical specifications). Use a callback function passed to the event listener API (addEventListener) to retrieve the most up to date PingReturn object.
+When GPP is received client side (e.g., any code snippet deployed directly on the browser, such as JavaScript), the GPP CMP API should be used to access the encoded string. This information can be collected whether you are in the top parent page (using the \_\_gpp method) or from an iframe (using postMessage method as defined by the CMP API technical specifications). Use a callback function passed to the event listener API (addEventListener) to retrieve the most up-to-date PingReturn object.
 
 _OpenRTB Regs Object_
 
@@ -348,7 +348,7 @@ If OpenRTB is not supported (for example, for cookie syncs), the GPP string will
 
 ### 4.3 Decoding the GPP String <a name="4.3"></a>
 
-The GPP string runs the risk of causing errors due to string length so that Fibonacci encoding is used to shorten the string length. As a result, you will need to either develop your own decoder or use the IAB provided decoder in order to read the values of the string. Refer to the GPP Consent String Specification for more guidance on decoding the GPP string.
+The GPP string runs the risk of causing errors due to string length so that Fibonacci encoding is used to shorten the string length. As a result, you will need to either develop your own decoder or use the IAB-provided decoder in order to read the values of the string. Refer to the GPP Consent String Specification for more guidance on decoding the GPP string.
 
 _Fibonacci Encoding_
 
