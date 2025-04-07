@@ -187,7 +187,7 @@
         </td>
         <td>Int(2)</td>
         <td>
-          <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, has enabled “Service Provider Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</span><p></p><code>0</code> = Not Applicable<p></p><code>0</code> = Yes<p></p><code>2</code> = No</td>
+          <span style="color:rgb(36, 41, 47);">Publisher or Advertiser, as applicable, has enabled “Service Provider Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</span><p></p><code>0</code> = Not Applicable<p></p><code>1</code> = Yes<p></p><code>2</code> = No</td>
       </tr>
     </tbody>
   </table>
