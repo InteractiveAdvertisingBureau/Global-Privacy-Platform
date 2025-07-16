@@ -11,14 +11,19 @@
   </tr>
   <tr>
 	  <td>Sept 28, 2022</td>    
-<td><code>1.0</code></td>
+    <td><code>1.0</code></td>
     <td>Published final public version</td>
   </tr>
 	<tr>
 	  <td>Nov 3, 2023</td>    
-<td><code>1.0</code></td>
+    <td><code>1.0</code></td>
     <td>Added clarifications to encoding mechanism, fixed encoded header examples</td>
   </tr>
+  <tr>
+    <td>July 2025 (Public Comment)</td>
+    <td><code>1.1</code></td>
+    <td>Added Supported Sections and Applicable Sections to header</td>
+  </tr>   
 </table>
 
 
@@ -443,6 +448,16 @@ The Header is always required and always comes first. It consists of the followi
      </td>
      </td>
   </tr>
+  <tr>
+    <td><code>Supported Sections</code></td>
+    <td>Range (Fibonacci)</td>
+    <td>List of Section IDs that are supported by this CMP</td>
+  </tr>
+  <tr>
+    <td><code>Section Applies</code></td>
+    <td>Range (Fibonacci)</td>
+    <td>Section ID considered to be in force for this transaction. In most cases, this field should have a single section ID. In rare occasions where such a single section ID can not be determined, the field may contain up to 2 values. The value can be a 0 or a section ID specified by the Publisher / Advertiser, during stub / load. When no section is applicable, the value will be [-1].
+  </tr>
  </table>
 
 
@@ -453,118 +468,118 @@ The Header is always required and always comes first. It consists of the followi
     <td><strong>Header Example 1</strong></td>
   </tr>
   <tr>
-<td>Conditions:
-	<ul>
-		<li>Version 1 of the GPP string is being used</li>
-		<li>Includes the section for EU TCF v2</li>
-	</ul>
-</td>
+    <td>Conditions:
+	    <ul>
+		    <li>Version 1 of the GPP string is being used</li>
+		    <li>Includes the section for EU TCF v2</li>
+        <li>This CMP supports the following sections as directed by the first party</li>
+        <ul>
+          <li>EU TCF v2</li>
+          <li>USPrivacy String (Unencoded Format)</li>
+          <li>MSPA US National Section</li>
+        </ul>
+        <li>The section applicable for this transaction is EU TCF v2
+	    </ul>
+    </td>
   </tr>
   <tr>
-<td>Header Bit Representation
-	<ul>
-		<li>Type = 000011</li>
-		<li>Version = 000001</li>
-		<li>Section Range</li>
-			<ul>
-				<li>Amount = 000000000001</li>
-				<li>Item 1 Single = 0</li>
-				<li>Item 1 start ID = 011</li>
-			</ul>
-	</ul>
-Based on the Section ID table above, the Section ID for EU TCF v2 is 2.</td>
+    <td>Header Bit Representation
+	    <ul>
+		    <li>Type = 000011</li>
+		    <li>Version = 000001</li>
+		    <li>Section Range</li>
+			    <ul>
+				  <li>Amount = 000000000001</li>
+				  <li>Item 1 Single = 0</li>
+				  <li>Item 1 start ID = 011</li>
+			    </ul>
+        <li>Supported Sections</li>
+          <ul>
+          <li>Amount = 000000000011</li>
+          <li>Item 1 Single = 0</li>
+          <li>Item 1 start ID = 011</li>
+          <li>Item 2 Single = 0</li>
+          <li>Item 2 offset to last ID = 1011</li>
+          <li>Item 3 Single = 0</li>
+          <li>Item 3 offset to last ID = 11</li>
+          </ul>
+        <li>Section Applies</li>
+          <ul>
+          <li>Amount = 000000000001</li>
+          <li>Item 1 Single = 0</li>
+          <li>Item 1 start ID = 011</li>
+          </ul>
+	    </ul>
+Based on the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md">Section ID table</a>, the Section ID for EU TCF v2 is 2, for USPrivacy String (Unencoded Format) is 6, and for MSPA US National Section is 7.</td>
   </tr>
   <tr>
-    <td><code>Full header bit string with padding: 000011 000001 000000 000001 001100</code></td>
+    <td>Full header bit string with padding: <code>000011 000001 000000 000001 001100 000000 001100 110101 101100 000000 000100 110000</code></td>
  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBABM</code></td>
+	  <td>Encoded header: <code>DBABMAM1sAEw</code></td>
      </td>
      </td>
   </tr>
  </table>
-
-
 
 <table>
   <tr>
     <td><strong>Header Example 2</strong></td>
   </tr>
   <tr>
-<td>Conditions:
-	<ul>
-		<li>Version 1 of the GPP string is being used</li>
-		<li>Includes the section for EU TCF v2 and US Privacy</li>
-	</ul>
-</td>
+    <td>Conditions:
+	    <ul>
+		  <li>Version 1 of the GPP string is being used</li>
+		  <li>Includes the section for EU TCF v2 and US Privacy</li>
+      <li>This CMP supports the following sections as directed by the first party</li>
+        <ul>
+          <li>EU TCF v2</li>
+          <li>USPrivacy String (Unencoded Format)</li>
+          <li>MSPA US National Section</li>
+        </ul>
+      <li>The section applicable for this transaction is EU TCF v2</li>
+	    </ul>
+    </td>
   </tr>
   <tr>
-<td>Header Bit Representation
-	<ul>
-		<li>Type = 000011</li>
-		<li>Version = 000001</li>
-		<li>Section Range</li>
-			<ul>
+    <td>Header Bit Representation
+	    <ul>
+		  <li>Type = 000011</li>
+		  <li>Version = 000001</li>
+		  <li>Section Range</li>
+			  <ul>
 				<li>Amount = 000000000010</li>
 				<li>Item 1 Single = 0</li>
 				<li>Item 1 start ID = 011</li>
 				<li>Item 2 Single = 0</li>
 				<li>Item 2 offset to last ID = 1011</li>
-		</ul>
-	</ul>
-Based on the Section ID table above, the Section ID for EU TCF is 2 and the Section ID for US Privacy is 6.</td>
+		    </ul>
+      <li>Supported Sections</li>
+          <ul>
+          <li>Amount = 000000000011</li>
+          <li>Item 1 Single = 0</li>
+          <li>Item 1 start ID = 011</li>
+          <li>Item 2 Single = 0</li>
+          <li>Item 2 offset to last ID = 1011</li>
+          <li>Item 3 Single = 0</li>
+          <li>Item 3 offset to last ID = 11</li>
+          </ul>
+        <li>Section Applies</li>
+          <ul>
+          <li>Amount = 000000000001</li>
+          <li>Item 1 Single = 0</li>
+          <li>Item 1 start ID = 011</li>
+	    </ul>
+Based on the Section ID table above, the Section ID for EU TCF is 2, for USPrivacy String (Unencoded Format) is 6, and for MSPA US National Section is 7.</td>
   </tr>
   <tr>
-    <td><code>Full header bit string with padding: 000011 000001 000000 000010 001101 011000</code></td>
- </tr>
+    <td>Full header bit string with padding: <code>000011 000001 000000 000010 001101 011000 000000 011001 101011 011000 000000 001001 100000</code></td>
+  </tr>
   <tr>  
-	  <td>Encoded header: <code>DBACNY</code></td>
-     </td>
-     </td>
+	  <td>Encoded header: <code>DBACNYAzrYAJg</code></td> 
   </tr>
  </table>
 
-
-
-**Header Example 3** 
-
-
-<table>
-  <tr>
-    <td><strong>Header Example 3</strong></td>
-  </tr>
-  <tr>
-<td>Conditions:
-	<ul>
-		<li>Version 1 of the GPP string is being used</li>
-		<li>Includes the section for Canadian TCF and US Privacy</li>
-	</ul>
-</td>
-  </tr>
-  <tr>
-<td>Bit Representation
-	<ul>
-		<li>Type = 000011</li>
-		<li>Version = 000001</li>
-		<li>Section Range</li>
-			<ul>
-				<li>Amount = 000000000001</li>
-				<li>Item 1 Single = 1</li>
-				<li>Item 1 start ID = 00011</li>
-				<li>Item 1 offset to last ID = 11</li>
-		</ul>
-	</ul>
-Based on the Section ID table above, the Section ID for  Canadian TCF is 5 and the Section ID for US Privacy is 6. See Range (Fibonacci) in the <code>Data Types table</code> for more detail on these fields.</td>
-  </tr>
-  <tr>
-    <td><code>Full bit string with padding: 000011 000001 000000 000001 100011 110000</code></td>
- </tr>
-  <tr>  
-	  <td>Encoded header: <code>DBABjw</code></td>
-     </td>
-     </td>
-  </tr>
- </table>
 
 
 #### Discrete Sections <a name="discretesections"></a>
@@ -814,14 +829,21 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	<ul>
 	<li>Version 1 of the GPP string is being used</li>
 	<li>Includes the section for EU TCF v2</li>
+  <li>This CMP supports the following sections as directed by the first party</li>
+        <ul>
+          <li>EU TCF v2</li>
+          <li>USPrivacy String (Unencoded Format)</li>
+          <li>MSPA US National Section</li>
+        </ul>
+        <li>The section applicable for this transaction is EU TCF v2
 	  </ul>
 	</td>
   </tr>
   <tr>
-	  <td>Encoded header:<br><code>DBABM</code></td>
+	  <td>Encoded header:<br><code>DBABMAM1sAEw</code></td>
 	</tr>
 	<tr>
-		<td>Full GPP String:<br><br><code>DBABM~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
+		<td>Full GPP String:<br><br><code>DBABMAM1sAEw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA</code></td>
 </td>
 </td>
 </tr>
@@ -838,42 +860,26 @@ Using the same cases as in the [Header Examples](#header) above, the following e
 	<ul>
 		<li>Version 1 of the GPP string is being used</li>
 		<li>Includes the section for EU TCF v2 and US Privacy</li>
+     <li>This CMP supports the following sections as directed by the first party</li>
+        <ul>
+          <li>EU TCF v2</li>
+          <li>USPrivacy String (Unencoded Format)</li>
+          <li>MSPA US National Section</li>
+        </ul>
+      <li>The section applicable for this transaction is EU TCF v2</li>
 	<ul>
 </td>
   </tr>
   <tr>
-	  <td>Encoded header:<br><br><code>DBACNY</code></td>
+	  <td>Encoded header:<br><br><code>DBACNYAzrYAJg</code></td>
 	</tr>
 	<tr>
-		<td>Full GPP String:<br><br><code>DBACNY~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
+		<td>Full GPP String:<br><br><code>DBACNYAzrYAJg~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
 </td>
 </td>
 </tr>
 </table>
 
-
-
-<table>
-  <tr>
-    <td><strong>GPP String Example 3</strong></td>
-  </tr>
-  <tr>
-<td>Conditions:
-	<ul>
-		<li>Version 1 of the GPP string is being used</li>
-		<li>The GPP string includes the sections for Canadian TCF and US Privacy</li>
-	<ul>
-</td>
-  </tr>
-  <tr>
-	  <td>Encoded header:<br><br><code>DBABjw</code></td>
-	</tr>
-	<tr>
-		<td>Full GPP String:<br><br><code>DBABjw~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN</code></td>
-</td>
-</td>
-</tr>
-</table>
 
 
 
