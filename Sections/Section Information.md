@@ -156,6 +156,13 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
      </td>
      </td>
   </tr>
+  <tr>
+    <td><code>23</code></mn>
+    <td>usmn</td>
+    <td>US - Minnesota section </mn>
+     </td>
+     </td>
+  </tr>
 </table>
 
 >**Note:** In order to make it simple to distinguish a GPP string from the existing IAB Europe TCF  v2 TC String the first space in the header should be the version. This would allow current implementations to more easily understand and adapt to a GPP string. If the reader of a string finds “C” as the first character this indicates the string is IAB Europe’s TCF v2.0 ("2" in bits corresponds to letter "C" in base64). If the reader of a string finds a “D” as the first character this indicates the string is GPP ("3" in bits corresponds to letter "D" in base64). 
