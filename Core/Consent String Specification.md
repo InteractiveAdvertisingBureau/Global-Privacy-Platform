@@ -199,9 +199,9 @@ The following details provide information on creating, storing, and managing a G
 <li><b>Concatenate all sections.</b> Concatenate the encoded GPP header as the first item to the encoded versions of the discrete sections using “~” (tilde) as the delimiter. See examples of GPP strings below.</li>
 </ol> 
 
-Note that neither the header nor the recommended encoding mechanism for a discrete section utilizes base64 encoding but rather a modified version of it. 
+Note that the header and the recommended encoding algorithm for discrete sections utilize a modified version of base64 url safe encoding which omits byte alignment. This modification adapts base64 byte encoding to GPP bit encoding. For example, the GPP header `DBABM` decodes to the 30 bit sequence `000011000001000000000001001100` but cannot be decoded with the standard base64 algorithm.
 
-#### Table from RFC 4648
+#### Base 64 URL Encoding Table from RFC 4648
 <div>
 <table>
 <tbody>
@@ -333,7 +333,7 @@ Note that neither the header nor the recommended encoding mechanism for a discre
 <td>45</td>
 <td>t</td>
 <td>62</td>
-<td>+</td>
+<td>-</td>
 </tr>
 <tr>
 <td>12</td>
@@ -343,7 +343,7 @@ Note that neither the header nor the recommended encoding mechanism for a discre
 <td>46</td>
 <td>u</td>
 <td>63</td>
-<td>/</td>
+<td>_</td>
 </tr>
 <tr>
 <td>13</td>
@@ -362,8 +362,8 @@ Note that neither the header nor the recommended encoding mechanism for a discre
 <td>f</td>
 <td>48</td>
 <td>w</td>
-<td>(pad)</td>
-<td>=</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>15</td>
