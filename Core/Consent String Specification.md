@@ -940,7 +940,7 @@ Then the caller replaces the macro in the URL with the actual GPP String so that
  
 `http://vendor-a.com/key1=val1&key2=val2&gpp=DBACNYA~CPXxRfAPXxRfAAfKABENB-CgAAAAAAAAAAYgAAAAAAAA~1YNN&gpp_sid=2`
 
-GPP Strings must always be propagated as is, and not modified. Additional URLs in the supply chain are addressed the same way with remaining vendors. 
+GPP Strings must always be propagated as is, and not modified. Note there are no square brackets surrounding the gpp_sid value. Additional URLs in the supply chain are addressed the same way with remaining vendors. 
 
 The available URL parameters and macros to relay information down the supply chain are listed in the following section.
 
