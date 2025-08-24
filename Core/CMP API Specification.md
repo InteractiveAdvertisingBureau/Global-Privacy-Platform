@@ -1118,7 +1118,7 @@ window.__gpp_stub = function ()
   {
    if(__gpp.events[i].id == par)
    {
-    __gpp.events[i].splice(i,1);
+    __gpp.events.splice(i,1);
     success = true;
     break;
    }
