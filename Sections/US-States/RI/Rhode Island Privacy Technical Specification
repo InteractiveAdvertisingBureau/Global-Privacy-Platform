@@ -97,11 +97,6 @@
       <td><strong>Field Description</strong></td>
     </tr>
     <tr>
-      <td>Version</td>
-      <td>Int(6)</td>
-      <td><p>The version of this section specification used to encode the string.</p></td>
-    </tr>
-    <tr>
       <td>MspaVersion</td>
       <td>Int(6)</td>
       <td><p>Version of the MSPA</p></td>

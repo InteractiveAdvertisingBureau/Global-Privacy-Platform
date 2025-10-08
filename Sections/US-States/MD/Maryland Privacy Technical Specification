@@ -172,7 +172,7 @@
     <td>Int(2)</td>
     <td>
         <p>Opt-out of processing the consumer’s personal data for targeted advertising.</p>
-        <p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided</p>>
+        <p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided</p>
         <p><code>1</code> = Opted Out</p>
         <p><code>2</code> = Did Not Opt Out</p>
     </td>
