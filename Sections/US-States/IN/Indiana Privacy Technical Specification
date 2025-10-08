@@ -1,0 +1,261 @@
+<h1 id="indiana-privacy-technical-specification">Indiana Privacy Technical Specification</h1>
+<h2>Overview</h2>
+<p>The <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">Global Privacy Protocol (GPP)</a> defines a standardized framework that integrates regional privacy specifications with its core mechanics and client-side API. This document outlines the technical specification for implementing the Indiana section of the GPP.</p>
+<h3>Version History</h3>
+<div>
+<table>
+<tbody>
+<tr>
+    <td><strong>Date</strong></td>
+    <td><strong>Version</strong></td>
+    <td><strong>Comments</strong></td>
+</tr>
+<tr>
+<td>October 2025</td>
+    <td>1.0</td>
+    <td>Version 1.0 public comment</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<section id="indiana-section">
+  <h2>Indiana Section</h2>
+  <p>The Indiana Privacy String consists of the following components. Users should employ the Indiana Privacy String only if they have determined the Indiana Consumer Data Protection Act, Ind. Code Ann. § 24-15, applies to their processing of a consumer’s personal data.</p>
+
+  <h3>Summary</h3>
+  <table>
+    <tr>
+      <td><strong>Type</strong></td>
+      <td><strong>Value</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
+    <tr>
+      <td>GPP Section ID</td>
+      <td>25</td>
+      <td><p>The Indiana Section is registered as Section ID 25 under the GPP.</p></td>
+    </tr>
+    <tr>
+      <td>Client side API prefix</td>
+      <td>usin</td>
+      <td><p>The Indiana Privacy Section is registered with client side API prefix “usin” in the GPP Client Side API.</p></td>
+    </tr>
+  </table>
+
+  <h3>Section encoding</h3>
+  <p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a target="_blank" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn's parsedSections object</a> for an example.</p>
+
+  <h4>Section Header</h4>
+  <p>The section header is required and must always be present.</p>
+  <table>
+    <tr>
+      <td><strong>Field</strong></td>
+      <td><strong>Type</strong></td>
+      <td><strong>Field Description</strong></td>
+    </tr>
+    <tr>
+      <td>SectionID</td>
+      <td>Int(6)</td>
+      <td><p>Section ID from the Section IDs list.</p></td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td>Int(6)</td>
+      <td><p>The version of this section specification used to encode the string.</p></td>
+    </tr>
+    <tr>
+      <td>SubSections</td>
+      <td>Range (Fibonacci)</td>
+      <td>
+        <p>List of subsection ids that are contained in this section. The IDs must be represented in the order the related subsections appear in the string. Core subsections must always be first and have an ID of 0.</p>
+      </td>
+    </tr>
+  </table>
+
+  <h4>Subsection IDs</h4>
+  <table>
+    <tr>
+      <td><strong>Subsection ID</strong></td>
+      <td><strong>Description</strong></td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td><p>Core</p></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><p>Sensitive Data Consents</p></td>
+    </tr>
+  </table>
+
+  <h3>Core Subsection</h3>
+  <p>The core subsection must always be present. Where terms are capitalized in the ‘description’ field they are defined in Indiana Consumer Data Protection Act. It consists of the following fields:</p>
+  <table>
+    <tr>
+      <td><strong>Field name</strong></td>
+      <td><strong>GPP Field Type</strong></td>
+      <td><strong>Field Description</strong></td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td>Int(6)</td>
+      <td><p>The version of this section specification used to encode the string.</p></td>
+    </tr>
+    <tr>
+      <td>MspaVersion</td>
+      <td>Int(6)</td>
+      <td><p>Version of the MSPA</p></td>
+    </tr>
+    <tr>
+      <td>MspaCoveredTransaction</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.</p>
+        <p><code>1</code> = Yes</p>
+        <p><code>2</code> = No</p>
+      </td>
+    </tr>
+    <tr>
+      <td>MspaMode</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Publisher or Advertiser, as applicable, has enabled “Opt-Out Option Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</p>
+        <p>Publisher or Advertiser, as applicable, has enabled “Service Provider Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</p>
+        <p><code>0</code> = Not Applicable</p>
+        <p><code>1</code> = Opt-Out Option Mode</p>
+        <p><code>2</code> = Service Provider Mode</p>
+      </td>
+    </tr>
+    <tr>
+      <td>ProcessingNotice</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Notice Describing Processing of Personal Data.</p>
+        <p><code>0</code> = Not Applicable, The Controller does not Process Personal Data</p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>
+      </td>
+    </tr>
+    <tr>
+      <td>SaleOptOutNotice</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Notice of the Opportunity to Opt Out of the Sale of the Consumer’s Personal Data</p>
+        <p><code>0</code> = Not Applicable, The Controller does not Sell Personal Data</p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>
+      </td>
+    </tr>
+    <tr>
+      <td>TargetedAdvertisingOptOutNotice</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Notice of the Opportunity to Opt Out of Processing of the Consumer’s Personal Data for Targeted Advertising</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data for Targeted Advertising</p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>
+      </td>
+    </tr>
+    <tr>
+      <td>SaleOptOut</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Opt-Out of the Sale of the Consumer’s Personal Data</p>
+        <p><code>0</code> = Not Applicable, SaleOptOutNotice value was not applicable or no notice was provided</p>
+        <p><code>1</code> = Opted Out</p>
+        <p><code>2</code> = Did Not Opt Out</p>
+      </td>
+    </tr>
+    <tr>
+      <td>TargetedAdvertisingOptOut</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Opt-Out of Processing the Consumer’s Personal Data for Targeted Advertising</p>
+        <p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided</p>
+        <p><code>1</code> = Opted Out</p>
+        <p><code>2</code> = Did Not Opt Out</p>
+      </td>
+    </tr>
+    <tr>
+      <td>KnownChildSensitiveDataConsents</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Consent to Process Personal Data concerning a known Child in accordance with COPPA as required by Ind. Code Ann. § 24-15-4-1(5)</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Sensitive Data of a known Child</p>
+        <p><code>1</code> = No Consent</p>
+        <p><code>2</code> = Consent</p>
+      </td>
+    </tr>
+    <tr>
+      <td>AdditionalDataProcessingConsent</td>
+      <td>Int(2)</td>
+      <td>
+        <p>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data that is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s)</p>
+        <p><code>1</code> = No Consent</p>
+        <p><code>2</code> = Consent</p>
+      </td>
+    </tr>
+  </table>
+
+  <h3>Sensitive Data Consents Subsection</h3>
+  <p>Optional subsection used to indicate when consent was received from the consumer to process his or her sensitive data in accordance with Ind. Code Ann. § 24-15-4-1(5).</p>
+  <table>
+    <tr>
+      <td><strong>Field</strong></td>
+      <td><strong>Data Types</strong></td>
+      <td><strong>Field Description</strong></td>
+    </tr>
+    <tr>
+      <td>SensitiveDataProcessing</td>
+      <td>N-Bitfield(2,8)</td>
+      <td>
+        <p>Consent from the Consumer to Process his or her Sensitive Data in accordance with Ind. Code Ann. § 24-15-4-1(5).</p>
+        <p>See list of Sensitive Personal Information Categories listed below.</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process the specific category of Sensitive Data</p>
+        <p><code>1</code> = No Consent</p>
+        <p><code>2</code> = Consent</p>
+      </td>
+    </tr>
+  </table>
+
+  <h4>Sensitive Personal Information Categories</h4>
+  <table>
+    <tr>
+      <td><strong>ID</strong></td>
+      <td><strong>Sensitive Personal Information Categories</strong></td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td><p>Racial or Ethnic Origin</p></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><p>Religious Beliefs</p></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><p>Mental or Physical Health Condition or Diagnosis</p></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><p>Sexual Orientation</p></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><p>Citizenship or Immigration Status</p></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><p>Genetic Data for the Purpose of Uniquely Identifying an Individual</p></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><p>Biometric Data for the Purpose of Uniquely Identifying an Individual</p></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td><p>Precise Geolocation Data</p></td>
+    </tr>
+  </table>
+</section>
