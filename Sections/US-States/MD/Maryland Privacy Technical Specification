@@ -1,0 +1,218 @@
+<h1 id="maryland-privacy-technical-specification">Maryland Privacy Technical Specification</h1>
+<h2>Overview</h2>
+<p>The <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">Global Privacy Protocol (GPP)</a> defines a standardized framework that integrates regional privacy specifications with its core mechanics and client-side API. This document outlines the technical specification for implementing the Maryland section of the GPP.</p>
+<h3>Version History</h3>
+<div>
+<table>
+<tbody>
+<tr>
+    <td><strong>Date</strong></td>
+    <td><strong>Version</strong></td>
+    <td><strong>Comments</strong></td>
+</tr>
+<tr>
+<td>October 2025</td>
+    <td>1.0</td>
+    <td>Version 1.0 public comment</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h2>Maryland Section</h2>
+<p>The Maryland Privacy String consists of the following components. Users should employ the Maryland Privacy String only if they have determined the Maryland Online Data Privacy Act of 2024 applies to their processing of a consumer’s personal data.
+</p>
+<h3>Summary</h3>
+<div>
+    <table>
+        <tr>
+            <td><strong>Type</strong></td>
+            <td><strong>Value</strong></td>
+            <td><strong>Description</strong></td>
+        </tr>
+        <tr>
+            <td>GPP Section ID</td>
+            <td>24</td>
+            <td>The Maryland Section is registered as Section ID 24 under the GPP.</td>
+        </tr>
+        <tr>
+            <td>Client side API prefix</td>
+            <td>usmd</td>
+            <td>The Maryland Privacy Section is registered with client-side API prefix "usmn" in the GPP Client Side API.</td>
+        </tr>
+</table>
+    </div>
+
+<h3>Section encoding</h3>
+<p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a target="_blank" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-">PingReturn's parsedSections object</a> for an example.</p>
+
+<h4>Section Header</h4>
+<p>The section header is required and must always be present.</p>
+
+<table>
+<tbody>
+<tr>
+    <td><strong>Field Name</strong></td>
+    <td><strong>GPP Field Type</strong></td>
+    <td><strong>Description</strong></td>
+</tr>
+<tr>
+    <td>SectionID</td>
+    <td>Int(6)</td>
+    <td>Section ID from the <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md">Section IDs</a> list</td>
+</tr>
+<tr>
+    <td>Version</td>
+    <td>Int(6)</td>
+    <td>The version of this section specification used to encode the string</td>
+</tr>
+<tr>
+    <td>SubSections</td>
+    <td>Range (Fibonacci)</td>
+    <td>List of subsection ids that are contained in this section. The IDs must be represented in the order the related subsections appear in the string. Core subsections must always be first and have an ID of 0.</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Subsection IDs</h4>
+
+<table>
+<tbody>
+<tr>
+    <td><strong>Subsection ID</strong></td>
+    <td><strong>Description</strong></td>
+</tr>
+<tr>
+    <td>0</td>
+    <td>Core</td>
+</tr>
+<tr>
+    <td>1</td>
+    <td>GPC</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Core Subsection</h4>
+<p>The core subsection must always be present. Where terms are capitalized in the ‘description’ field they are defined in Maryland Online Data Privacy Act of 2024. It consists of the following fields:</p>
+
+<table>
+<tbody>
+<tr>
+    <td><strong>Field name</strong></td>
+    <td><strong>GPP Field Type</strong></td>
+    <td><strong>Description</strong></td>
+</tr>
+<tr>
+    <td>MspaVersion</td>
+    <td>Int(6)</td>
+    <td>Version of the MSPA</td>
+</tr>
+<tr>
+    <td>MspaCoveredTransaction</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.</p>
+        <p><code>1</code> = Yes</p>
+        <p><code>2</code> = No</p>
+      </td>
+</tr>
+<tr>
+    <td>MspaMode</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Publisher or Advertiser, as applicable, has enabled “Opt-Out Option Mode” or “Service Provider Mode” for the “Covered Transaction,” as defined in the MSPA.</p>
+        <p><code>0</code> = Not Applicable</p>
+        <p><code>1</code> = Opt-Out Option Mode</p>
+        <p><code>2</code> = Service Provider Mode</p>
+    </td>
+</tr>
+<tr>
+    <td>ProcessingNotice</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Notice describing processing of personal data. </p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data</p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>    
+    </td>
+</tr>
+<tr>
+    <td>SaleOptOutNotice</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Notice of the opportunity to opt out of the sale of the consumer’s personal data.</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Sell Personal Data<br></p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>
+    </td>
+</tr>
+<tr>
+    <td>TargetedAdvertisingOptOutNotice</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Notice of the opportunity to opt out of processing the consumer’s personal data for targeted advertising.</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data for Targeted Advertising</p>
+        <p><code>1</code> = Yes, notice was provided</p>
+        <p><code>2</code> = No, notice was not provided</p>
+    </td>
+</tr>
+<tr>
+    <td>SaleOptOut</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Opt-out of the sale of the consumer’s personal data.</p>
+        <p><code>0</code> = Not Applicable, SaleOptOutNotice value was not applicable or no notice was provided<br></p>
+        <p><code>1</code> = Opted Out</p>
+        <p><code>2</code> = Did Not Opt Out</p>
+    </td>
+</tr>
+<tr>
+    <td>TargetedAdvertisingOptOut</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Opt-out of processing the consumer’s personal data for targeted advertising.</p>
+        <p><code>0</code> = Not Applicable, TargetedAdvertisingOptOutNotice value was not applicable or no notice was provided</p>>
+        <p><code>1</code> = Opted Out</p>
+        <p><code>2</code> = Did Not Opt Out</p>
+    </td>
+</tr>
+<tr>
+    <td>AdditionalDataProcessingConsent</td>
+    <td>Int(2)</td>
+    <td>
+        <p>Consent to processing of the consumer’s personal data that is not reasonably necessary for nor compatible with the disclosed purposes for which the consumer’s personal data was processed.</p>
+        <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data beyond disclosed purposes</p>
+        <p><code>1</code> = No Consent</p>
+        <p><code>2</code> = Consent</p>>
+    </td>
+</tr>
+</tbody>
+</table>
+
+<h4>GPC Subsection</h4>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://w3c.github.io/gpc/">GPC</a> is signaled in user agent headers (Sec-GPC) and a simple javascript API (globalPrivacyControl). Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this subsection.</p>
+
+<table>
+    <tr>
+        <td><strong>Field Name</strong></td>
+        <td><strong>GPP Field Type</strong></td>
+        <td><strong>Description</strong></td>
+    </tr>
+    <tr>
+        <td>SubsectionType</td>
+        <td>Int(2)</td>
+        <td>
+           <p><code>0</code> = Core</p>
+            <p><code>1</code> = GPC</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Gpc</td>
+        <td>Boolean</td>
+        <td>
+            <p><code>0</code> = false</p>
+            <p><code>1</code> = true</p>
+        </td>
+    </tr>
+</table>
