@@ -20,7 +20,7 @@
     <td>Added clarifications to encoding mechanism, fixed encoded header examples</td>
   </tr>
   <tr>
-    <td>July 2025 (Public Comment)</td>
+    <td>October 2025 (Public Comment)</td>
     <td><code>1.1</code></td>
     <td>Added Supported Sections and Applicable Sections to header</td>
   </tr>   
