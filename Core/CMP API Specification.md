@@ -8,30 +8,36 @@
 	  <td><strong>Version</strong></td>
     <td><strong>Comments</strong></td>
   </tr>
-    <tr>
-      <td>June 2023</td>    
-      <td><code>1.1</code></td>
-      <td>Removal of return values in favor of callback functions. Removal of getGPPData command</td>
-    </tr>
   <tr>
-	<td>Sept 28, 2022</td>    
+    <td>October 2025</td>
+    <td><code>1.2</code></td>
+    <td>Public comment for the addition of new URL parameter and macro to send supportedSections information (option B)</td>
+  </tr>
+  <tr>
+    <td>June 2023</td>    
+    <td><code>1.1</code></td>
+    <td>Removal of return values in favor of callback functions. Removal of getGPPData command</td>
+  </tr>
+  <tr>
+	  <td>Sept 28, 2022</td>    
     <td><code>1.0</code></td>
     <td>Published final public version</td>
   </tr>
+
 </table>
 
 
 
 ## Introduction
-This is one of the IAB Tech Lab Global Privacy Platform Specifications. It defines the API for Consent Management Platforms (CMPs). The CMP API is the interface a CMP provides to callers (web and in-app) to access information regarding the privacy preferences disclosed and obtained from the end user by the CMP. Both required functionality that the CMP must provide and optional features are described.
+This is one of the IAB Tech Lab Global Privacy Protocol Specifications. It defines the API for Consent Management Platforms (CMPs). The CMP API is the interface a CMP provides to callers (web and in-app) to access information regarding the privacy preferences disclosed and obtained from the end user by the CMP. Both required functionality that the CMP must provide and optional features are described.
 
 
-### About the Global Privacy Platform
-The Global Privacy Platform (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
+### About the Global Privacy Protocol
+The Global Privacy Protocol (GPP) enables advertisers, publishers and technology vendors in the digital advertising industry to adapt to regulatory demands across markets. It is a single protocol designed to streamline transmitting privacy, consent, and consumer choice signals from sites and apps to ad tech providers. IAB Tech Lab stewards the development of these technical specifications.
 
 
 ### License
-Global Privacy Platform technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit creativecommons.org/licenses/by/3.0/ or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
+Global Privacy Protocol technical specifications governed by the IAB Tech Lab is licensed under a Creative Commons Attribution 3.0 License. To view a copy of this license, visit creativecommons.org/licenses/by/3.0/ or write to Creative Commons, 171 Second Street, Suite 300, San Francisco, CA 94105, USA.
 
 
 **Disclaimer**
@@ -852,11 +858,16 @@ The key names are a combination of the “IABGPP_” prefix followed by the sect
     <td><code>IABGPP_GppSID</code></td>
     <td>String</td>
     <td>Section ID(s) considered to be in force. Multiple IDs are separated by underscore, e.g. “2_3”</td>
-   </tr>
+  </tr>
+    <tr>
+    <td><code>IABGPP_GppSsns</code></td>
+    <td>String</td>
+    <td>Section ID(s) supported by this CMP. Multiple IDs are separated by underscore, e.g. “2_3”</td>
+  </tr>
   <tr>
     <td><code>IABGPP_[SectionID]_String</code></td>
     <td>String</td>
-    <td>String representaiton of each section. E.g. IAB TCF EU v2 String will be found at IABGPP_2_String</td>
+    <td>String representation of each section. E.g. IAB TCF EU v2 String will be found at IABGPP_2_String</td>
      </td>
      </td>
   </tr>
