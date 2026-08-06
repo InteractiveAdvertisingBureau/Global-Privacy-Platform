@@ -609,7 +609,7 @@ The possible data types are:
     <td><code>Boolean</code></td>
     <td>1 bit</td>
     <td>true|false</td>
-    <td>0=true, 1=false</td>
+    <td>1=true, 0=false</td>
   </tr>
   <tr>
     <td><code>Integer (fixed length of x)</code></td>
