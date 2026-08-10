@@ -1,4 +1,4 @@
-# IAB Privacy’s Kentucky Privacy Technical Specification
+# Kentucky Privacy Technical Specification
 
 
  

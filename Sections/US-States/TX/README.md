@@ -1,4 +1,4 @@
-# IAB Privacy’s Texas Privacy Technical Specification
+# Texas Privacy Technical Specification
 
 
  

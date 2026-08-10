@@ -11,6 +11,11 @@
     <td><strong>Comments</strong></td>
 </tr>
 <tr>
+<td>August 2026 (<i>Public Comment</i>)</td>
+<td>1.0</td>
+<td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
+</tr>
+<tr>
 <td>August 2025</td>
     <td>1.0</td>
     <td>Version 1.0 released</td>
@@ -54,12 +59,12 @@
         <td><strong>Description</strong></td>
     </tr>
     <tr>
-        <td>Version</td>
+        <td><code>Version</code></td>
         <td>Int(6)</td>
         <td>The version of this section specification used to encode the string.</td>
     </tr>
     <tr>
-        <td>ProcessingNotice</td>
+        <td><code>ProcessingNotice</code></td>
         <td>Int(2)</td>
         <td>
            <p>Notice Describing Processing of Personal Data</p>
@@ -69,7 +74,7 @@
         </td>
     </tr>
     <tr>
-        <td>SaleOptOutNotice</td>
+        <td><code>SaleOptOutNotice</code></td>
         <td>Int(2)</td>
         <td>
             <p>Notice of the Opportunity to Opt Out of the Sale of the Consumer's Personal Data</p>
@@ -79,7 +84,7 @@
         </td>
     </tr>
     <tr>
-        <td>TargetedAdvertisingOptOutNotice</td>
+        <td><code>TargetedAdvertisingOptOutNotice</code></td>
         <td>Int(2)</td>
         <td>
             <p>Notice of the Opportunity to Opt Out of Processing of the Consumer's Personal Data for Targeted Advertising</p>
@@ -89,7 +94,7 @@
         </td>
     </tr>
     <tr>
-        <td>SaleOptOut</td>
+        <td><code>SaleOptOut</code></td>
         <td>Int(2)</td>
         <td>
             <p>Opt-Out of the Sale of the Consumer's Personal Data</p>
@@ -99,7 +104,7 @@
         </td>
     </tr>
     <tr>
-        <td>TargetedAdvertisingOptOut</td>
+        <td><code>TargetedAdvertisingOptOut</code></td>
         <td>Int(2)</td>
         <td>
             <p>Opt-Out of Processing the Consumer's Personal Data for Targeted Advertising</p>
@@ -109,7 +114,7 @@
         </td>
     </tr>
     <tr>
-        <td>SensitiveDataProcessing</td>
+        <td><code>SensitiveDataProcessing</code></td>
         <td>N-Bitfield(2,8)</td>
         <td>
             <p>Two bits for each Category:</p>
@@ -129,7 +134,7 @@
         </td>
     </tr>
     <tr>
-        <td>KnownChildSensitiveDataConsents</td>
+        <td><code>KnownChildSensitiveDataConsents</code></td>
         <td>Int(2)</td>
         <td>
             <p>Consent to process Personal Data from a known Child in accordance with COPPA as required by Minn. Stat. &sect; 325O.07, Subd. 2(d)</p>
@@ -139,7 +144,7 @@
         </td>
     </tr>
     <tr>
-        <td>AdditionalDataProcessingConsent</td>
+        <td><code>AdditionalDataProcessingConsent</code></td>
         <td>Int(2)</td>
         <td>
             <p>Consent to Processing of the Consumer's Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer's Personal Data Was Processed</p>
@@ -149,18 +154,18 @@
         </td>
     </tr>
     <tr>
-        <td>MspaCoveredTransaction</td>
+        <td><code>MspaCoveredTransaction</code></td>
         <td>Int(2)</td>
-        <td>
+        <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>2</code>.</b>
             <p>Publisher or Advertiser, as applicable, is a signatory to the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/#">IAB Multi-State Privacy Agreement (MSPA)</a>, as may be amended from time to time, and declares that the transaction is a "Covered Transaction" as defined in the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/#">MSPA</a>.</p>
             <p><code>1</code> = Yes</p>
             <p><code>2</code> = No</p>
         </td>
     </tr>
     <tr>
-        <td>MspaOptOutOptionMode</td>
+        <td><code>MspaOptOutOptionMode</code></td>
         <td>Int(2)</td>
-        <td>
+        <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
             <p>Publisher or Advertiser, as applicable, has enabled "Opt-Out Option Mode" for the "Covered Transaction," as such terms are defined in the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/#">MSPA</a>.</p>
             <p><code>0</code> = Not Applicable</p>
             <p><code>1</code> = Yes</p>
@@ -168,9 +173,9 @@
         </td>
     </tr>
     <tr>
-        <td>MspaServiceProviderMode</td>
+        <td><code>MspaServiceProviderMode</code></td>
         <td>Int(2)</td>
-        <td>
+        <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
             <p>Publisher or Advertiser, as applicable, has enabled "Service Provider Mode" for the "Covered Transaction," as such terms are defined in the <a target="_blank" rel="noopener noreferrer nofollow" href="https://www.iabprivacy.com/#">MSPA</a>.</p>
             <p><code>0</code> = Not Applicable</p>
             <p><code>1</code> = Yes</p>
@@ -190,15 +195,14 @@
         <td><strong>Description</strong></td>
     </tr>
     <tr>
-        <td>SubsectionType</td>
+        <td><code>SubsectionType</code></td>
         <td>Int(2)</td>
         <td>
-           <p><code>0</code> = Core</p>
             <p><code>1</code> = GPC</p>
         </td>
     </tr>
     <tr>
-        <td>Gpc</td>
+        <td><code>Gpc</code></td>
         <td>Boolean</td>
         <td>
             <p><code>0</code> = false</p>

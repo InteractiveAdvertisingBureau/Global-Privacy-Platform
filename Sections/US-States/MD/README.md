@@ -1,4 +1,4 @@
-# IAB Privacy’s Maryland Privacy Technical Specification
+# Maryland Privacy Technical Specification
 
 
  

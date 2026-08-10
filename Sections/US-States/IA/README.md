@@ -1,4 +1,4 @@
-# IAB Privacy’s Iowa Privacy Technical Specification
+# Iowa Privacy Technical Specification
 
 
  

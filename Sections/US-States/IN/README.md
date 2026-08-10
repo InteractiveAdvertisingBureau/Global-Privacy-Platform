@@ -1,4 +1,4 @@
-# IAB Privacy’s Indiana Privacy Technical Specification
+# Indiana Privacy Technical Specification
 
 
  

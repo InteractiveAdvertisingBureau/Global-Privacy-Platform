@@ -1,4 +1,4 @@
-# IAB Privacy’s Nebraska Privacy Technical Specification
+# Nebraska Privacy Technical Specification
 
 
  

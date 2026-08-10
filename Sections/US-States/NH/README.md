@@ -1,4 +1,4 @@
-# IAB Privacy’s New Hampshire Privacy Technical Specification
+# New Hampshire Privacy Technical Specification
 
 
  

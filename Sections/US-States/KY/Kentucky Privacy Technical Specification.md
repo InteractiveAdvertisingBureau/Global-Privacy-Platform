@@ -11,6 +11,11 @@
     <td><strong>Comments</strong></td>
 </tr>
 <tr>
+<td>August 2026 (<i>Public Comment</i>)</td>
+<td>1.0</td>
+<td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
+</tr>
+<tr>
 <td>April 2026</td>
     <td>1.0</td>
     <td>Updated SubSections field in Section header to never include Core subsection</td>
@@ -94,7 +99,7 @@
   </table>
 
   <h3>Core Subsection</h3>
-  <p>The core subsection must always be present. Where terms are capitalized in the ‘description’ field they are defined in Kentucky Act relating to consumer data privacy, HB 15 (2024). It consists of the following fields:</p>
+  <p>The core subsection must always be present. Where terms are capitalized in the ‘description’ column they are defined in the Kentucky Act relating to consumer data privacy, HB 15 (2024). It consists of the following fields:</p>
   <table>
     <tr>
       <td><strong>Field name</strong></td>
@@ -102,23 +107,23 @@
       <td><strong>Field Description</strong></td>
     </tr>
     <tr>
-      <td>MspaVersion</td>
+      <td><code>MspaVersion</code></td>
       <td>Int(6)</td>
-      <td><p>Version of the MSPA</p></td>
+      <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b><p>Version of the MSPA</p></td>
     </tr>
     <tr>
-      <td>MspaCoveredTransaction</td>
+      <td><code>MspaCoveredTransaction</code></td>
       <td>Int(2)</td>
-      <td>
+      <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>2</code>.</b>
         <p>Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.</p>
         <p><code>1</code> = Yes</p>
         <p><code>2</code> = No</p>
       </td>
     </tr>
     <tr>
-      <td>MspaMode</td>
+      <td><code>MspaMode</code></td>
       <td>Int(2)</td>
-      <td>
+      <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
         <p>Publisher or Advertiser, as applicable, has enabled “Opt-Out Option Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</p>
         <p>Publisher or Advertiser, as applicable, has enabled “Service Provider Mode” for the “Covered Transaction,” as such terms are defined in the MSPA.</p>
         <p><code>0</code> = Not Applicable</p>
@@ -127,7 +132,7 @@
       </td>
     </tr>
     <tr>
-      <td>ProcessingNotice</td>
+      <td><code>ProcessingNotice</code></td>
       <td>Int(2)</td>
       <td>
         <p>Notice Describing Processing of Personal Data.</p>
@@ -137,7 +142,7 @@
       </td>
     </tr>
     <tr>
-      <td>SaleOptOutNotice</td>
+      <td><code>SaleOptOutNotice</code></td>
       <td>Int(2)</td>
       <td>
         <p>Notice of the Opportunity to Opt Out of the Sale of the Consumer’s Personal Data</p>
@@ -147,7 +152,7 @@
       </td>
     </tr>
     <tr>
-      <td>TargetedAdvertisingOptOutNotice</td>
+      <td><code>TargetedAdvertisingOptOutNotice</code></td>
       <td>Int(2)</td>
       <td>
         <p>Notice of the Opportunity to Opt Out of Processing of the Consumer’s Personal Data for Targeted Advertising</p>
@@ -157,7 +162,7 @@
       </td>
     </tr>
     <tr>
-      <td>SaleOptOut</td>
+      <td><code>SaleOptOut</code></td>
       <td>Int(2)</td>
       <td>
         <p>Opt-Out of the Sale of the Consumer’s Personal Data</p>
@@ -167,7 +172,7 @@
       </td>
     </tr>
     <tr>
-      <td>TargetedAdvertisingOptOut</td>
+      <td><code>TargetedAdvertisingOptOut</code></td>
       <td>Int(2)</td>
       <td>
         <p>Opt-Out of Processing the Consumer’s Personal Data for Targeted Advertising</p>
@@ -177,7 +182,7 @@
       </td>
     </tr>
     <tr>
-      <td>KnownChildSensitiveDataConsents</td>
+      <td><code>KnownChildSensitiveDataConsents</code></td>
       <td>Int(2)</td>
       <td>
         <p>Consent to process Personal Data concerning a known Child in accordance with COPPA as required by Kentucky Act, Sec. 4(1)(e).</p>
@@ -187,7 +192,7 @@
       </td>
     </tr>
     <tr>
-      <td>AdditionalDataProcessingConsent</td>
+      <td><code>AdditionalDataProcessingConsent</code></td>
       <td>Int(2)</td>
       <td>
         <p>Consent to Processing of the Consumer’s Personal Data that Is Not Reasonably Necessary for nor Compatible with the Disclosed Purpose(s) for which the Consumer’s Personal Data Was Processed</p>
@@ -207,7 +212,7 @@
       <td><strong>Field Description</strong></td>
     </tr>
     <tr>
-      <td>SensitiveDataProcessing</td>
+      <td><code>SensitiveDataProcessing</code></td>
       <td>N-Bitfield(2,8)</td>
       <td>
         <p>Consent from the Consumer to Process his or her Sensitive Data in accordance with Kentucky Act, Sec. 4(1)(e).</p>

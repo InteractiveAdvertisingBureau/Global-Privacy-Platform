@@ -1,4 +1,4 @@
-# IAB Privacy’s Oregon Privacy Technical Specification
+# Oregon Privacy Technical Specification
 
 
  

@@ -1,6 +1,6 @@
-<h1 id="gpp-extension-california-privacy-technical-specification">GPP Extension: California Privacy Technical Specification</h1>
+<h1 id="gpp-extension-california-privacy-technical-specification">California Privacy Technical Specification</h1>
 <h2 id="about-this-document">About this document</h2>
-<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; to the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the California section of the GPP specification by those who (i) are Signatories to IAB Privacy, Inc.’s <a href=https://www.iabprivacy.com/>Multi-State Privacy Agreement (MSPA)</a>; and (ii) those who are not signatories of the MSPA.</p>
+<p>The global standard <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a> defines a way for local standards to &quot;plug-in&quot; to the existing mechanics defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical specification for using the California section of the GPP.</p>
 
 
 <h3>Version History&nbsp;</h3>
@@ -12,7 +12,11 @@
 <td><strong>Version</strong></td>
 <td><strong>Comments</strong></td>
 </tr>
-
+<tr>
+<td>August 2026 (<i>Public Comment</i>)</td>
+<td>1.0</td>
+<td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
+</tr>
 <tr>
 <td>December 2022</td>
 <td>1.0</td>
@@ -50,8 +54,8 @@
 </table>
 <h3 id="section-encoding">Section encoding</h3>
 <p>Note on the JS representation of the section: the field name should be in UpperCamelCase, with exactly the same spelling as the names in column "Field name". Follow <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/Consent%20String%20Specification.md#section-encoding" target="_blank" rel="noopener">this table</a> to map the GPP field types to JavaScript native data types. Please refer to the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md#pingreturn-" target="_blank" rel="noopener">PingReturn's parsedSections object</a> for an example.<p>
-<h4 id="core-section">Core Sub-section</h4>
-<p>The core sub-section must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Cal. Civ. Code 1798.140. It consists of the following fields:
+<h4 id="core-section">Core Subsection</h4>
+<p>The core subsection must always be present. Where terms are capitalized in the ‘description’ field they are defined terms in Cal. Civ. Code 1798.140. It consists of the following fields:
 </p>
 <table>
 <thead>
@@ -63,71 +67,74 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">Version</td>
+<td style="text-align:left"><code>Version</code></td>
 <td style="text-align:left">Int(6)</td>
 <td style="text-align:left">The version of this section specification used to encode the string.</td>
 </tr>
 <tr>
-<td style="text-align:left">SaleOptOutNotice</td>
+<td style="text-align:left"><code>SaleOptOutNotice</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Notice of the Opportunity to Opt Out of the Sale of the Consumer&#39;s Personal Information<p><code>0</code> Not Applicable. The Business does not Sell Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
-<td style="text-align:left">SharingOptOutNotice</td>
+<td style="text-align:left"><code>SharingOptOutNotice</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Notice of the Opportunity to Opt Out of the Sharing of the Consumer&#39;s Personal Information<p><code>0</code> Not Applicable.The Business does not Share Personal Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
-<td style="text-align:left">SensitiveDataLimitUseNotice</td>
+<td style="text-align:left"><code>SensitiveDataLimitUseNotice</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Notice of the Opportunity to Limit Use or Disclosure of the Consumer&#39;s Sensitive Personal Information<p><code>0</code> Not Applicable. The Business does not use or disclose Sensitive Data.<p><code>1</code> Yes, notice was provided<p><code>2</code> No, notice was not provided</td>
 </tr>
 <tr>
-<td style="text-align:left">SaleOptOut</td>
+<td style="text-align:left"><code>SaleOptOut</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Opt-Out of the Sale of the Consumer&#39;s Personal Information<p><code>0</code> Not Applicable. SaleOptOutNotice value was not applicable or no notice was provided<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
 </tr>
 <tr>
-<td style="text-align:left">SharingOptOut</td>
+<td style="text-align:left"><code>SharingOptOut</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Opt-Out of the Sharing of the Consumer&#39;s Personal Information<p><code>0</code> Not Applicable. SharingOptOutNotice value was not applicable or no notice was provided.<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out</td>
 </tr>
 <tr>
-<td style="text-align:left">SensitiveDataProcessing</td>
+<td style="text-align:left"><code>SensitiveDataProcessing</code></td>
 <td style="text-align:left">N-Bitfield(2,9)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. SensitiveDataLimitUseNotice value was not applicable or no notice was provided.<p><code>1</code> Opted Out<p><code>2</code> Did Not Opt Out<p> Data Activities: <p>(1) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals a Consumer&#39;s Social Security, Driver&#39;s License, State Identification Card, or Passport Number.<p>(2) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals a Consumer&#39;s Account Log-In, Financial Account, Debit Card, or Credit Card Number in Combination with Any Required Security or Access Code, Password, or Credentials Allowing Access to an Account.<p>(3) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals a Consumer&#39;s Precise Geolocation.<p>(4) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals a Consumer&#39;s Racial or Ethnic Origin, Religious or Philosophical Beliefs, or Union Membership.<p>(5) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals the contents of a Consumer&#39;s Mail, Email, and Text Messages unless You Are the Intended Recipient of the Communication.<p>(6) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Which Reveals a Consumer&#39;s Genetic Data.<p>(7) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Consisting of Biometric Information tor the Purpose of Uniquely Identifying a Consumer.<p>(8) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Consisting of Personal Information Collected and Analyzed Concerning a Consumer&#39;s Health.<p>(9) Opt-Out of the Use or Disclosure of the Consumer&#39;s Sensitive Personal Information Consisting of Personal Information Collected and Analyzed Concerning a Consumer&#39;s Sex Life or Sexual Orientation.</td>
 </tr>
 <tr>
-<td style="text-align:left">KnownChildSensitiveDataConsents</td>
+<td style="text-align:left"><code>KnownChildSensitiveDataConsents</code></td>
 <td style="text-align:left">N-Bitfield(2,2)</td>
 <td style="text-align:left">Two bits for each Data Activity:<p><code>0</code> Not Applicable. The Business does not have actual knowledge that it Processes Personal Information of Consumers Less Than 16 years of Age.<p><code>1</code> No Consent<p><code>2</code> Consent<p>Data Activities:<p>(1) Consent to Sell the Personal Information of Consumers Less Than 16 years of Age<p>(2) Consent to Share the Personal Information of Consumers Less Than 16 years of Age</td>
 </tr>
 <tr>
-<td style="text-align:left">PersonalDataConsents</td>
+<td style="text-align:left"><code>PersonalDataConsents</code></td>
 <td style="text-align:left">Int(2)</td>
 <td style="text-align:left">Consent to Collection, Use, Retention, Sale, and/or Sharing of the Consumer&#39;s Personal Data that Is Unrelated to or Incompatible with the Purpose(s) for which the Consumer&#39;s Personal Data Was Collected or Processed<p><code>0</code> Not Applicable. The Business does not use, retain, Sell, or Share the Consumer&#39;s Personal Data for advertising purposes that are unrelated to or incompatible with the purpose(s) for which the Consumer&#39;s Personal Data was collected or processed.<p><code>1</code> No Consent<p><code>2</code> Consent</td>
 </tr>
 <tr>
-<td style="text-align:left">MspaCoveredTransaction</td>
+<td style="text-align:left"><code>MspaCoveredTransaction<code></td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &quot;Covered Transaction&quot; as defined in the MSPA.<p><code>1</code> Yes<p><code>2</code> No</td>
+<td style="text-align:left"><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>2</code>.</b>
+<p>Publisher or Advertiser, as applicable, is a signatory to the IAB Multistate Service Provider Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a &quot;Covered Transaction&quot; as defined in the MSPA.<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>
-<td style="text-align:left">MspaOptOutOptionMode</td>
+<td style="text-align:left"><code>MspaOptOutOptionMode</code></td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Opt-Out Option Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
+<td style="text-align:left"><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
+<p>Publisher or Advertiser, as applicable, has enabled &quot;Opt-Out Option Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>
-<td style="text-align:left">MspaServiceProviderMode</td>
+<td style="text-align:left"><code>MspaServiceProviderMode</code></td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left">Publisher or Advertiser, as applicable, has enabled &quot;Service Provider Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
+<td style="text-align:left"><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
+<p>Publisher or Advertiser, as applicable, has enabled &quot;Service Provider Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 </tbody>
 </table>
 
 
-<h4 id="gpc-subsection">GPC Sub-section</h4>
-<p><a href="https://globalprivacycontrol.github.io/gpc-spec/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this sub-section.</p>
+<h4 id="gpc-subsection">GPC Subsection</h4>
+<p><a href="https://w3c.github.io/gpc/" target="_blank" rel="noopener">GPC</a> is signaled in user agent headers<code>(Sec-GPC)</code> and a simple javascript API <code>(globalPrivacyControl)</code>. Entities creating GPP strings should check for whether GPC is set and pass along the value they find (from the headers or javascript API) in this subsection.</p>
 
 <table>
 <thead>
@@ -139,12 +146,12 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">SubsectionType</td>
+<td style="text-align:left"><code>SubsectionType</code></td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left"><p><code>0</code> Core<p><code>1</code> GPC</td>
+<td style="text-align:left"><p><code>1</code> GPC</td>
 </tr>
 <tr>
-<td style="text-align:left">Gpc</td>
+<td style="text-align:left"><code>Gpc<code></td>
 <td style="text-align:left">Boolean</td>
 <td style="text-align:left"><p><code>0</code> false<p><code>1</code> true</td>
 </tr>

@@ -11,6 +11,10 @@
     <td><strong>Comments</strong></td>
 </tr>
 <tr>
+<td>August 2026 (<i>Public Comment</i>)</td>
+<td>1.0</td>
+<td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
+</tr><tr>
 <td>April 2026</td>
     <td>1.0</td>
     <td>Updated SubSections field in Section header to never include Core subsection</td>
@@ -62,17 +66,17 @@
     <td><strong>Description</strong></td>
 </tr>
 <tr>
-    <td>SectionID</td>
+    <td><code>SectionID<code></td>
     <td>Int(6)</td>
     <td>Section ID from the <a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Sections/Section%20Information.md">Section IDs</a> list</td>
 </tr>
 <tr>
-    <td>Version</td>
+    <td><code>Version<code></td>
     <td>Int(6)</td>
     <td>The version of this section specification used to encode the string</td>
 </tr>
 <tr>
-    <td>SubSections</td>
+    <td><code>SubSections<code></td>
     <td>Range (Fibonacci)</td>
     <td>List of subsection ids that are contained in this section. The IDs must be represented in the order the related subsections appear in the string. The Core subsection is required and always included first, so its ID (zero) is not included in the subsection IDs list.</td>
 </tr>
@@ -99,7 +103,7 @@
 </table>
 
 <h4>Core Subsection</h4>
-<p>The core subsection must always be present. Where terms are capitalized in the ‘description’ field they are defined in Maryland Online Data Privacy Act of 2024. It consists of the following fields:</p>
+<p>The core subsection must always be present. Where terms are capitalized in the ‘description’ column they are defined in Maryland Online Data Privacy Act of 2024. It consists of the following fields:</p>
 
 <table>
 <tbody>
@@ -109,23 +113,24 @@
     <td><strong>Description</strong></td>
 </tr>
 <tr>
-    <td>MspaVersion</td>
+    <td><code>MspaVersion</code></td>
     <td>Int(6)</td>
-    <td>Version of the MSPA</td>
+    <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0</code>.</b>
+    <p>Version of the MSPA</td>
 </tr>
 <tr>
-    <td>MspaCoveredTransaction</td>
+    <td><code>MspaCoveredTransaction</code></td>
     <td>Int(2)</td>
-    <td>
+    <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>2</code>.</b>
         <p>Publisher or Advertiser, as applicable, is a signatory to the IAB Multi-State Privacy Agreement (MSPA), as may be amended from time to time, and declares that the transaction is a “Covered Transaction” as defined in the MSPA.</p>
         <p><code>1</code> = Yes</p>
         <p><code>2</code> = No</p>
       </td>
 </tr>
 <tr>
-    <td>MspaMode</td>
+    <td><code>MspaMode</code></td>
     <td>Int(2)</td>
-    <td>
+    <td><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code></code>.</b>
         <p>Publisher or Advertiser, as applicable, has enabled “Opt-Out Option Mode” or “Service Provider Mode” for the “Covered Transaction,” as defined in the MSPA.</p>
         <p><code>0</code> = Not Applicable</p>
         <p><code>1</code> = Opt-Out Option Mode</p>
@@ -133,7 +138,7 @@
     </td>
 </tr>
 <tr>
-    <td>ProcessingNotice</td>
+    <td><code>ProcessingNotice</code></td>
     <td>Int(2)</td>
     <td>
         <p>Notice describing processing of personal data. </p>
@@ -143,7 +148,7 @@
     </td>
 </tr>
 <tr>
-    <td>SaleOptOutNotice</td>
+    <td><code>SaleOptOutNotice</code></td>
     <td>Int(2)</td>
     <td>
         <p>Notice of the opportunity to opt out of the sale of the consumer’s personal data.</p>
@@ -153,7 +158,7 @@
     </td>
 </tr>
 <tr>
-    <td>TargetedAdvertisingOptOutNotice</td>
+    <td><code>TargetedAdvertisingOptOutNotice</code></td>
     <td>Int(2)</td>
     <td>
         <p>Notice of the opportunity to opt out of processing the consumer’s personal data for targeted advertising.</p>
@@ -163,7 +168,7 @@
     </td>
 </tr>
 <tr>
-    <td>SaleOptOut</td>
+    <td><code>SaleOptOut</code></td>
     <td>Int(2)</td>
     <td>
         <p>Opt-out of the sale of the consumer’s personal data.</p>
@@ -173,7 +178,7 @@
     </td>
 </tr>
 <tr>
-    <td>TargetedAdvertisingOptOut</td>
+    <td><code>TargetedAdvertisingOptOut</code></td>
     <td>Int(2)</td>
     <td>
         <p>Opt-out of processing the consumer’s personal data for targeted advertising.</p>
@@ -183,13 +188,13 @@
     </td>
 </tr>
 <tr>
-    <td>AdditionalDataProcessingConsent</td>
+    <td><code>AdditionalDataProcessingConsent</code></td>
     <td>Int(2)</td>
     <td>
         <p>Consent to processing of the consumer’s personal data that is not reasonably necessary for nor compatible with the disclosed purposes for which the consumer’s personal data was processed.</p>
         <p><code>0</code> = Not Applicable, the Controller does not Process Personal Data beyond disclosed purposes</p>
         <p><code>1</code> = No Consent</p>
-        <p><code>2</code> = Consent</p>>
+        <p><code>2</code> = Consent</p>
     </td>
 </tr>
 </tbody>
@@ -205,15 +210,14 @@
         <td><strong>Description</strong></td>
     </tr>
     <tr>
-        <td>SubsectionType</td>
+        <td><code>SubsectionType</code></td>
         <td>Int(2)</td>
         <td>
-           <p><code>0</code> = Core</p>
             <p><code>1</code> = GPC</p>
         </td>
     </tr>
     <tr>
-        <td>Gpc</td>
+        <td><code>Gpc</code></td>
         <td>Boolean</td>
         <td>
             <p><code>0</code> = false</p>

@@ -1,4 +1,4 @@
-# IAB Privacy’s Rhode Island Privacy Technical Specification
+# Rhode Island Privacy Technical Specification
 
 
  

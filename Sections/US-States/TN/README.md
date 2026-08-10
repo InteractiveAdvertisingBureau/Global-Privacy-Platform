@@ -1,4 +1,4 @@
-# IAB Privacy’s Tennessee Privacy Technical Specification
+# Tennessee Privacy Technical Specification
 
 
  

@@ -1,4 +1,4 @@
-# IAB Privacy’s Delaware Privacy Technical Specification
+# Delaware Privacy Technical Specification
 
 
  
