@@ -15,7 +15,7 @@
 <td><strong>Comments</strong></td>
 </tr>
 <tr>
-<td>August 2026 <i>(Public Comment)</i></td>
+<td>November 2026</td>
 <td>3.0</td>
 <td>Updated to support the Fifth Amended and Restated MSPA</td>
 </tr>
@@ -161,7 +161,7 @@ Implementers must support the MSPA US National Privacy Section to adhere to the 
 <tr>
 <td><code>MspaId</code></td>
 <td>Int(14)</td>
-<td>The MSPA identifier from the First Party where the string originates.
+<td>The MSPA identifier from the First Party where the string originates. The MspaId must match the MSPA Signatory identifier which is generated during the MSPA signup process. If the field does not contain the valid signatory identifier of the party providing the string, it is not covered by the MSPA contract.
 </td>
 </tr>
 </tbody>
