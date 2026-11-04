@@ -6,20 +6,20 @@
 <p>The <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform">GPP</a>  standard is designed to be extensible so that support for new regulations can be added without the need to update existing capabilities defined by GPP and the <a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/blob/main/Core/CMP%20API%20Specification.md">GPP client side API</a>. This document outlines the technical requirements for using the GPP specification with the IAB Privacy Multi-State Privacy Agreement (MSPA) legal requirements.</p>
 
 <h3>Version History</h3>
-<div>
-<table>
-<tbody>
-<tr>
-<td><strong>Date</strong></td>
-<td><strong>Version</strong></td>
-<td><strong>Comments</strong></td>
-</tr>
-<tr>
-<td>November 2026</td>
-<td>3.0</td>
-<td>Updated to support the Fifth Amended and Restated MSPA</td>
-</tr>
-<tr>
+    <div>
+    <table>
+    <tbody>
+    <tr>
+    <td><strong>Date</strong></td>
+    <td><strong>Version</strong></td>
+    <td><strong>Comments</strong></td>
+    </tr>
+    <tr>
+    <td>November 2026</td>
+    <td>3.0</td>
+    <td>Updated to support the Fifth Amended and Restated MSPA</td>
+    </tr>
+    <tr>
 <td>October 2024</td>
 <td>2.0</td>
 <td>Version 2.0 – Added support for DE, IN, IA, KY, MD, MI, MT, NH, NE, NJ, OR, RI, TN, TX in accordance with the Second Amended and Restated MSPA.</td>

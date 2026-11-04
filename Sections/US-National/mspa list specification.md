@@ -233,17 +233,17 @@ The MSPA Signatory List is a technical document that any MSPA signatory can acce
    "mspaVersion": "5",
    "listVersion": 1,
    "lastUpdated": "2026-06-01T12:00:00Z",
-   "certifiedPartners": {
-       "2973": {
+   "certifiedPartners": [
+        {
            "id": "2973",
            "registrationTimestamp": "2026-06-01T12:00:00Z",
            "deletedTimestamp": "2026-06-01T12:00:00Z",
            "partnerName": "Certified Partner Company",
            "partnerProducts": ["Certified Partner Product 1", "Certified Partner Product 2"]
            }
-           },
-   "signatories": {
-       "1234": {
+   ],
+   "signatories": [
+       {
            "id": "1234",
            "signatory": [
                {
@@ -251,8 +251,8 @@ The MSPA Signatory List is a technical document that any MSPA signatory can acce
                    "registrationTimestamp": "2026-06-01T12:00:00Z",
                    "deletedTimestamp": "2026-06-01T12:00:00Z", // If present, entity is no longer an MSPA signatory after this date/time.
                    "entityType": "Company", // Company or Individual
-                   "name" "Company", // Company legal name or name of individual
-                   "coverePropertiesWebsites": [
+                   "name": "Company", // Company legal name or name of individual
+                   "coveredPropertiesWebsites": [
                        {
                            "property": "coveredwebsite1.com",
                            "optOutUrl": "https://coveredwebsite1.com/optout" // Empty if company indicated that it does not sell or share personal information.
@@ -282,8 +282,8 @@ The MSPA Signatory List is a technical document that any MSPA signatory can acce
                    "registrationTimestamp": "2026-06-01T12:00:00Z",
                    "deletedTimestamp": "2026-06-01T12:00:00Z", // If present, entity is no longer an MSPA signatory after this date/time.
                    "entityType": "Company", // Company or Individual
-                   "name" "Company", // Company legal name or name of individual
-                   "coverePropertiesWebsites": [
+                   "name": "Company", // Company legal name or name of individual
+                   "coveredPropertiesWebsites": [
                        {
                            "property": "coveredwebsite1.com",
                            "optOutUrl": "https://coveredwebsite1.com/optout" // Empty if company indicated that it does not sell or share personal information.
@@ -301,7 +301,7 @@ The MSPA Signatory List is a technical document that any MSPA signatory can acce
                    "registrationTimestamp": "2026-06-01T12:00:00Z",
                    "deletedTimestamp": "2026-06-01T12:00:00Z", // If present, entity is no longer an MSPA signatory after this date/time.
                    "entityType": "Company", // Company or Individual
-                   "name" "Company", // Company legal name or name of individual
+                   "name": "Company", // Company legal name or name of individual
                    "domain": "downstreamvendor.com",
                    "optOutUrls":[
                        "downstreamvendor.com/optout1",
@@ -311,6 +311,6 @@ The MSPA Signatory List is a technical document that any MSPA signatory can acce
               
            ]
        }
-   }
+   ]
 }
 ```

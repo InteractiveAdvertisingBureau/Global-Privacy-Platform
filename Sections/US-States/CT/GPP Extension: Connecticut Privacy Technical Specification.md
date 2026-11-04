@@ -12,7 +12,7 @@
 <td><strong>Comments</strong></td>
 </tr>
 <tr>
-<td>August 2026 (<i>Public Comment</i>)</td>
+<td>November 2026</td>
 <td>1.0</td>
 <td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
 </tr>
@@ -112,7 +112,7 @@
 <tr>
 <td style="text-align:left"><code>MspaOptOutOptionMode</code></td>
 <td style="text-align:left">Int(2)</td>
-<td style="text-align:left"><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>20/code>.</b>
+<td style="text-align:left"><b>Note: As of the Fifth Amended and Restated MSPA, this field should not be used and must always be set to <code>0/code>.</b>
 <p>Publisher or Advertiser, as applicable, has enabled &quot;Opt-Out Option Mode&quot; for the &quot;Covered Transaction,&quot; as such terms are defined in the MSPA.<p><code>0</code> Not Applicable<p><code>1</code> Yes<p><code>2</code> No</td>
 </tr>
 <tr>

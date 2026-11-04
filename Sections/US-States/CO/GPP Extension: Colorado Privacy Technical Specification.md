@@ -12,7 +12,7 @@
 <td><strong>Comments</strong></td>
 </tr>
 <tr>
-<td>August 2026 (<i>Public Comment</i>)</td>
+<td>November 2026</td>
 <td>1.0</td>
 <td>Updated guidance on usage of MSPA-specific fields in accordance with the Fifth Amended and Restated MSPA</td>
 </tr><tr>
