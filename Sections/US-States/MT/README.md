@@ -1,4 +1,4 @@
-# IAB Privacy’s Montana Privacy Technical Specification
+# Montana Privacy Technical Specification
 
 
  

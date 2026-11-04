@@ -1,4 +1,4 @@
-# IAB Privacy’s New Jersey Privacy Technical Specification
+# New Jersey Privacy Technical Specification
 
 
  

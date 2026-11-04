@@ -1,4 +1,4 @@
-# IAB Privacy’s Florida Privacy Technical Specification
+# Florida Privacy Technical Specification
 
 
  

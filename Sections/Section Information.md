@@ -5,14 +5,13 @@
     <td><strong>Date</strong></td>
     <td><strong>Comments</strong></td>
   </tr>
-  <tr>
-	  <td>Sept 28, 2022</td>    
-    <td>Published final public version</td>
-  </tr>
 	  <tr>
 	  <td>June, 2023</td>    
     <td>Fixed Canada api name</td>
-  </tr>
+  </tr></tr>
+  <tr>
+	  <td>Sept 28, 2022</td>    
+    <td>Published final public version</td>
   </table>
   
 ### Section IDs
@@ -53,7 +52,7 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>6</code></td>
     <td>uspv1</td>
-    <td><a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md">USPrivacy String </a>(Unencoded Format)</td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/USPrivacy/blob/master/CCPA/US%20Privacy%20String.md">USPrivacy String </a>(deprecated)</td>
   </tr>
   <tr>
     <td><code>7</code></td>
@@ -63,132 +62,123 @@ Each section represents a unique privacy signal, usually a unique jurisdiction. 
   <tr>
     <td><code>8</code></td>
     <td>usca</td>
-    <td>US - California section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CA">US - California section </a></td>
      </tr>
   <tr>
     <td><code>9</code></td>
     <td>usva</td>
-    <td>US - Virginia section </td>
+    <td><a href= "https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/VA">US - Virginia section </a></td>
       </tr>
   <tr>
     <td><code>10</code></td>
     <td>usco</td>
-    <td>US - Colorado section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CO">US - Colorado section </a></td>
   </tr>
   <tr>
     <td><code>11</code></td>
     <td>usut</td>
-    <td>US - Utah section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/UT">US - Utah section </a></td>
   </tr>
   <tr>
     <td><code>12</code></td>
     <td>usct</td>
-    <td>US - Connecticut section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/CT">US - Connecticut section </a></td>
      </td>
      </td>
   </tr>
 <tr>
     <td><code>13</code></td>
     <td>usfl</td>
-    <td>US - Florida section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/FL">US - Florida section </a></td>
      </td>
      </td>
 <tr>
     <td><code>14</code></td>
     <td>usmt</td>
-    <td>US - Montana section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/MT">US - Montana section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>15</code></td>
     <td>usor</td>
-    <td>US - Oregon section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/OR">US - Oregon section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>16</code></td>
     <td>ustx</td>
-    <td>US - Texas section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/TX">US - Texas section </a></td>
      </td>
      </td>
   </tr>
 <tr>
     <td><code>17</code></td>
     <td>usde</td>
-    <td>US - Delaware section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/DE">US - Delaware section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>18</code></td>
     <td>usia</td>
-    <td>US - Iowa section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/IA">US - Iowa section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>19</code></td>
     <td>usne</td>
-    <td>US - Nebraska section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/NE">US - Nebraska section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>20</code></td>
     <td>usnh</td>
-    <td>US - New Hampshire section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/NH">US - New Hampshire section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>21</code></td>
     <td>usnj</td>
-    <td>US - New Jersey section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/NJ">US - New Jersey section </a></td>
      </td>
      </td>
   </tr>
  <tr>
     <td><code>22</code></td>
     <td>ustn</td>
-    <td>US - Tennessee section </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/TN">US - Tennessee section </a></td>
      </td>
      </td>
   </tr>
   <tr>
-    <td><code>23</code></mn>
+    <td><code>23</code></td>
     <td>usmn</td>
-    <td>US - Minnesota section </mn>
-     </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/MN">US - Minnesota section </a></td>
   </tr>
   <tr>
-    <td><code>24</code></mn>
+    <td><code>24</code></td>
     <td>usmd</td>
-    <td>US - Maryland section </mn>
-     </td>
-     </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/MD">US - Maryland section </a></td>
   </tr>
   <tr>
-    <td><code>25</code></mn>
+    <td><code>25</code></td>
     <td>usin</td>
-    <td>US - Indiana section </mn>
-     </td>
-     </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/IN">US - Indiana section </a></td>
   </tr>
   <tr>
-    <td><code>26</code></mn>
+    <td><code>26</code></td>
     <td>usky</td>
-    <td>US - Kentucky section </mn>
-     </td>
-     </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/KY">US - Kentucky section </a></td>
   </tr>
   <tr>
-    <td><code>27</code></mn>
+    <td><code>27</code></td>
     <td>usri</td>
-    <td>US - Rhode Island section </mn>
-     </td>
-     </td>
+    <td><a href="https://github.com/InteractiveAdvertisingBureau/Global-Privacy-Platform/tree/main/Sections/US-States/RI">US - Rhode Island section </a></td>
   </tr>
 </table>
 
