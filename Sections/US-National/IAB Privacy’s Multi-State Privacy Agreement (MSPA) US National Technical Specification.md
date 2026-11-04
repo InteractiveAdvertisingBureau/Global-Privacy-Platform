@@ -145,8 +145,8 @@ Implementers must support the MSPA US National Privacy Section to adhere to the 
 <td><code>MspaNotice</code></td>
 <td>Int(2)</td>
 <td>First Party provided notice pursuant to Section 4.3 of the MSPA
-<p><code>1</code> No, notice was not provided because the First Party does not Sell or Share Personal Information</p>
-<p><code>2</code> Yes, notice was provided</p> 
+<p><code>1</code> Yes, notice was provided</p>
+<p><code>2</code> No, notice was not provided because the First Party does not Sell or Share Personal Information</p> 
 </td>
 </tr>
 <tr>
